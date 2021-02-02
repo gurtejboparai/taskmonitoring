@@ -1,4 +1,4 @@
-# Task Monitoring
+# Task Monitor
 ## Vision statement
 The Task Monitoring System will be used to schedule tasks and events for daily, monthly or yearly based on personal need. The system will display all the activities that have been scheduled in a day. Thus, the system will monitor people about upcoming events in their schedule. In addition, it also maintains information about tasks that have been completed, in progress and in waiting. 
 

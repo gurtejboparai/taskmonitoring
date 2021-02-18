@@ -15,7 +15,7 @@ public class Tasks {
         this.taskDate = taskDate;
     }
 
-    public int getTaskId(){return taskId;}
+    public int getCurrTaskId(){return taskId;}
     public String getTaskTitle(){return taskTitle;}
     public void setTaskTitle(String taskTitle){this.taskTitle = taskTitle;}
     public String getTaskDescription(){return taskDescription;}

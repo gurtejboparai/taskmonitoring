@@ -31,10 +31,9 @@ public class Access_task extends AppCompatActivity {
     }
 
     public final Tasks addTask(final Tasks newTask){
-        if(newTask.getTaskTitle() == null){
-            String taskCreateMessage = "Task Title cannot be empty.";
+        if(newTask.getTaskTitle() == null || newTask.getTaskDescription() == null || newTask.getTaskDate() == null){ //if(newTask == null)
+            String taskCreateMessage = "Please enter all fields.";
             Toast.makeText(getApplicationContext(), taskCreateMessage, Toast.LENGTH_SHORT).show();
-
         }
         return taskPersistence.addTask(newTask);
     }

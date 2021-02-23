@@ -56,7 +56,7 @@ public class TaskDB
         int index = taskList.indexOf(oldTask);
         if(index<0)
         {
-            System.out.println("Task: "+t.getTaskTitle()+" does not exists");
+            System.out.println("Task: "+oldTask.getTaskTitle()+" does not exists");
         }
         else
         {

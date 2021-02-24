@@ -11,7 +11,8 @@ public interface Task_persistence {
     Tasks addTask(Tasks task);
     Tasks deleteTask( Tasks task);
     void editTask(Tasks oldTask, Tasks newTasks);
-    public void setTaskDate(Tasks target,Date taskDate);
+    void setTaskDate(Tasks target, Date taskDate);
+    boolean checkForSame(Tasks task1, Tasks tasks2);
 
     List<Tasks> getAllTasks();
 }

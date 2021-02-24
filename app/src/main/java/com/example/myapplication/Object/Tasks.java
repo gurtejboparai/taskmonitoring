@@ -3,7 +3,7 @@ package com.example.myapplication.Object;
 import java.util.Date;
 
 public class Tasks {
-    private int taskId;
+    private final int taskId;
     private Date taskDate;
     private String taskTitle;
     private String taskDescription;
@@ -22,4 +22,11 @@ public class Tasks {
     public void setTaskDescription(String taskDescription){this.taskDescription = taskDescription;}
     public Date getTaskDate() {return taskDate;}
     public void setTaskDate(Date taskDate){this.taskDate = taskDate;}
+    public boolean checkforSametask(Tasks task1){
+        if(this.taskId==task1.taskId){
+            return true;
+        }
+        else
+            return false;
+    };
 }

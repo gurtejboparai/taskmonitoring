@@ -52,6 +52,10 @@ public class Access_task extends AppCompatActivity {
         taskPersistence.setTaskDate(task, taskDate);
     }
 
+    public boolean checkForSame(Tasks task1, Tasks tasks2) {
+        return taskPersistence.checkForSame(task1,tasks2);
+    }
+
     public List<Tasks> getAllTasks() {
         allTasks = taskPersistence.getAllTasks();
         return allTasks;

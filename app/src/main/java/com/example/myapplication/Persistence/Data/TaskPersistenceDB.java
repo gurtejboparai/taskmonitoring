@@ -66,6 +66,13 @@ public class TaskPersistenceDB implements Task_persistence {
     }
 
     @Override
+    public boolean checkForSame(Tasks task1, Tasks tasks2) {
+        if(task1.getCurrTaskId()==tasks2.getCurrTaskId())
+            return true;
+        return false;
+    }
+
+    @Override
     public List<Tasks> getAllTasks() {
         return this.tasksList;
     }

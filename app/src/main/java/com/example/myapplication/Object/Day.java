@@ -6,10 +6,10 @@ public class Day {
     private int day;
     private int month;
     private int year;
-    private int startTime;
-    private int endTime;
+    private String startTime;
+    private String endTime;
 
-    public Day(int day, int month, int year, int startTime, int endTime){
+    public Day(int day, int month, int year, String startTime, String endTime){
         this.day = day;
         this.month = month;
         this.year = year;
@@ -33,12 +33,12 @@ public class Day {
     }
 
     //get the startTime
-    public int getStartTime(){
+    public String getStartTime(){
         return this.startTime;
     }
 
     //get the endTime
-    public int getEndTime(){
+    public String getEndTime(){
         return this.endTime;
     }
 

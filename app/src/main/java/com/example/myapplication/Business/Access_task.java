@@ -5,7 +5,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.Object.Tasks;
-import com.example.myapplication.Persistence.Data.TaskDB;
 import com.example.myapplication.Persistence.Task_persistence;
 
 
@@ -14,40 +13,46 @@ import java.util.List;
 
 public class Access_task extends AppCompatActivity {
 
-    private final List<Tasks> taskList;
+    private final List<Tasks> allTasks;
     private final Task_persistence taskPersistence;
-    private int numOfTasks;
 
     public Access_task(){
-
-        taskPersistence = new TaskDB();
-        taskList = taskPersistence.getTaskList();
+    // need a fake database here
+        allTasks = taskPersistence.getAllTasks();
     }
 
-    // this constructor is for later when we have a real persistence
     public Access_task(final Task_persistence taskPersistence){
         this.taskPersistence = taskPersistence;
-        taskList = taskPersistence.getTaskList();
+        allTasks = taskPersistence.getAllTasks();
     }
 
-
-    public final void addTask_accessTask(Tasks newTask){
-        taskPersistence.addTask(newTask);
+    public final Tasks getTask(int taskId) {
+        return taskPersistence.getTask(taskId);
     }
 
-    public final void removeTask(final Tasks taskToDel){
-        taskPersistence.removeTask(taskToDel);
+    public final Tasks addTask(final Tasks newTask){
+        if(newTask.getTaskTitle() == null || newTask.getTaskDescription() == null || newTask.getTaskDate() == null){ //if(newTask == null)
+            String taskCreateMessage = "Please enter all fields.";
+            Toast.makeText(getApplicationContext(), taskCreateMessage, Toast.LENGTH_SHORT).show();
+        }
+        return taskPersistence.addTask(newTask);
     }
 
-    public final void updateTask(Tasks oldTask, Tasks newTask){
-        taskPersistence.updateTask(oldTask, newTask);
+    public final Tasks deleteTask(final Tasks taskToDel){
+        return taskPersistence.deleteTask(taskToDel);
     }
 
-    public final List<Tasks> getTaskList() {
-        return taskList;
+    public final void editTask(Tasks task){
+        taskPersistence.editTask(task);
     }
 
-    //public final int getNewTaskId(){return taskPersistence.getNewTaskId(); }
+    public final List<Tasks> getAllTasks() {
+        return allTasks;
+    }
+
+    public final int getNewTaskId(){
+        return taskPersistence.getNewTaskId();
+    }
 
 
 

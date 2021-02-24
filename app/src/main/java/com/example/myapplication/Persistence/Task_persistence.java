@@ -6,13 +6,11 @@ import java.util.List;
 
 public interface Task_persistence {
 
-    //int getNewTaskId();
-    //Tasks getTask(int taskId);
+    Tasks getTask(int taskId);
+    Tasks addTask(final Tasks task);
+    Tasks deleteTask(final Tasks task);
+    void editTask(final Tasks task);
 
-    void addTask(final Tasks task);
-    void removeTask(final Tasks task);
-    void updateTask(final Tasks oldTask, Tasks newTask);
-
-    List<Tasks> getTaskList();
-
+    List<Tasks> getAllTasks();
+    int getNewTaskId();
 }

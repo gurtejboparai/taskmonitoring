@@ -1,4 +1,6 @@
 package com.example.myapplication.Presentation;
 
-public class TaskActivity {
+import android.app.Activity;
+
+public class TaskActivity extends Activity {
 }

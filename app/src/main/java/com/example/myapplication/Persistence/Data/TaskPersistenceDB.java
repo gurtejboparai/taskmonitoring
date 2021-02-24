@@ -57,6 +57,15 @@ public class TaskPersistenceDB implements Task_persistence {
     }
 
     @Override
+    public void setTaskDate(Tasks task,Date taskDate) {
+        int index = this.tasksList.indexOf(task);
+        if(index>=0){
+            task.setTaskDate(taskDate);
+            this.tasksList.set(index,task);
+        }
+    }
+
+    @Override
     public List<Tasks> getAllTasks() {
         return this.tasksList;
     }

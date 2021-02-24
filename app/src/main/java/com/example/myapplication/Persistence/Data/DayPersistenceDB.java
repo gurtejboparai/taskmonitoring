@@ -13,31 +13,31 @@ public class DayPersistenceDB implements Day_persistence {
     }
 
     public void addDays(Day target){
-        dayList.add(new Day(3,3,2021,12,14));
-        dayList.add(new Day(3,3,2021,10,11));
-        dayList.add(new Day(4,3,2021,9,10));
-        dayList.add(new Day(4,3,2021,14,15));
-        dayList.add(new Day(4, 3,2021,17,20));
-        dayList.add(new Day(5,3,2021,9,11));
+        dayList.add(new Day(3,3,2021));
+        dayList.add(new Day(3,3,2021));
+        dayList.add(new Day(4,3,2021));
+        dayList.add(new Day(4,3,2021));
+        dayList.add(new Day(4, 3,2021));
+        dayList.add(new Day(5,3,2021));
     }
 
-    @Override
+    /*@Override
     public void setStartTime(Day target, int newTime) {
         int index = this.dayList.indexOf(target);
         if(index>=0){
             target.changeStartTime(newTime);
             this.dayList.set(index,target);
         }
-    }
+    }*/
 
-    @Override
+    /*@Override
     public void setEndTime(Day target, int newTime) {
         int index = this.dayList.indexOf(target);
         if(index>=0){
             target.changeEndTime(newTime);
             this.dayList.set(index,target);
         }
-    }
+    }*/
 
     @Override
     public void setMonth(Day target, int newMonth) {

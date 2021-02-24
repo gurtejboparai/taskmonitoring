@@ -9,6 +9,7 @@ import com.example.myapplication.Persistence.Task_persistence;
 import com.example.myapplication.application.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Access_task extends AppCompatActivity {
@@ -45,6 +46,10 @@ public class Access_task extends AppCompatActivity {
 
     public void editTask(Tasks oldTask, Tasks newTask){
         taskPersistence.editTask(oldTask,newTask);
+    }
+
+    public void setTaskDate(Tasks task, Date taskDate){
+        taskPersistence.setTaskDate(task, taskDate);
     }
 
     public List<Tasks> getAllTasks() {

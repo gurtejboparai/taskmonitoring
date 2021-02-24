@@ -26,6 +26,10 @@ public class TaskPersistenceDB implements Task_persistence {
 
     @Override
     public Tasks getTask(int taskId) {
+        for(Tasks task : this.tasksList){
+            if(task.getCurrTaskId()==taskId)
+                return task;
+        }
         return null;
     }
 

@@ -8,18 +8,18 @@ import com.example.myapplication.Object.Tasks;
 import com.example.myapplication.Persistence.Task_persistence;
 import com.example.myapplication.application.Service;
 
-
+import java.util.ArrayList;
 import java.util.List;
 
 public class Access_task extends AppCompatActivity {
 
-    private final List<Tasks> allTasks;
+    private List<Tasks> allTasks;
     private final Task_persistence taskPersistence;
 
     public Access_task(){
     // need a fake database here
         taskPersistence = Service.getTaskPersistence();
-        allTasks = taskPersistence.getAllTasks();
+        allTasks=new ArrayList<>();
     }
 
     public Access_task(final Task_persistence taskPersistence){
@@ -48,6 +48,7 @@ public class Access_task extends AppCompatActivity {
     }
 
     public final List<Tasks> getAllTasks() {
+        allTasks = taskPersistence.getAllTasks();
         return allTasks;
     }
 

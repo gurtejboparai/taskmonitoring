@@ -13,16 +13,16 @@ public class DayPersistenceDB implements Day_persistence {
     }
 
     public void addDays(Day target){
-        dayList.add(new Day(3,3,2021,"12:00","14:00"));
-        dayList.add(new Day(3,3,2021,"10:00","11:00"));
-        dayList.add(new Day(4,3,2021,"9:00","10:00"));
-        dayList.add(new Day(4,3,2021,"14:00","15:00"));
-        dayList.add(new Day(4, 3,2021,"17:00","20:00"));
-        dayList.add(new Day(5,3,2021,"9:00","11:00"));
+        dayList.add(new Day(3,3,2021,12,14));
+        dayList.add(new Day(3,3,2021,10,11));
+        dayList.add(new Day(4,3,2021,9,10));
+        dayList.add(new Day(4,3,2021,14,15));
+        dayList.add(new Day(4, 3,2021,17,20));
+        dayList.add(new Day(5,3,2021,9,11));
     }
 
     @Override
-    public void setStartTime(Day target, String newTime) {
+    public void setStartTime(Day target, int newTime) {
         int index = this.dayList.indexOf(target);
         if(index>=0){
             target.changeStartTime(newTime);
@@ -31,7 +31,7 @@ public class DayPersistenceDB implements Day_persistence {
     }
 
     @Override
-    public void setEndTime(Day target, String newTime) {
+    public void setEndTime(Day target, int newTime) {
         int index = this.dayList.indexOf(target);
         if(index>=0){
             target.changeEndTime(newTime);

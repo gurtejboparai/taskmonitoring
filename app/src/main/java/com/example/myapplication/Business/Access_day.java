@@ -6,5 +6,4 @@ import com.example.myapplication.Object.Day;
 
 public class Access_day extends AppCompatActivity {
 
-
 }

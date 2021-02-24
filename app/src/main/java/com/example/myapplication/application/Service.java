@@ -1,6 +1,7 @@
 package com.example.myapplication.application;
 
 import com.example.myapplication.Persistence.Data.TaskPersistenceDB;
+import com.example.myapplication.Persistence.Data.DayPersistenceDB;
 import com.example.myapplication.Persistence.Day_persistence;
 import com.example.myapplication.Persistence.Task_persistence;
 
@@ -12,5 +13,11 @@ public class Service {
         if(taskPersistence==null)
             taskPersistence = new TaskPersistenceDB();
         return taskPersistence;
+    }
+
+    public  static synchronized Day_persistence getDayPersistence(){
+        if(dayPersistence==null)
+            dayPersistence = new DayPersistenceDB();
+        return dayPersistence;
     }
 }

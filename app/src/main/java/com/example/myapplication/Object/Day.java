@@ -42,5 +42,32 @@ public class Day {
         return this.endTime;
     }
 
+    //set startTime
+    public void changeStartTime(String newTime){
+        this.startTime=newTime;
+    }
+
+    //set endTime
+    public void changeEndTime(String newTime){
+        this.endTime=newTime;
+    }
+
+
+
+    //set day
+    public void changeDay(int newDay){
+        this.day = newDay;
+    }
+
+    //set month
+    public void changeMonth(int newMonth){
+        this.month = newMonth;
+    }
+
+    //set year
+    public void changeYear(int newYear){
+        this.year = newYear;
+    }
+
 }
 

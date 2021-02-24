@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.Object.Tasks;
 import com.example.myapplication.Persistence.Task_persistence;
-
+import com.example.myapplication.application.Service;
 
 
 import java.util.List;
@@ -18,6 +18,7 @@ public class Access_task extends AppCompatActivity {
 
     public Access_task(){
     // need a fake database here
+        taskPersistence = Service.getTaskPersistence();
         allTasks = taskPersistence.getAllTasks();
     }
 
@@ -42,16 +43,12 @@ public class Access_task extends AppCompatActivity {
         return taskPersistence.deleteTask(taskToDel);
     }
 
-    public final void editTask(Tasks task){
-        taskPersistence.editTask(task);
+    public final void editTask(Tasks oldTask, Tasks newTask){
+        taskPersistence.editTask(oldTask,newTask);
     }
 
     public final List<Tasks> getAllTasks() {
         return allTasks;
-    }
-
-    public final int getNewTaskId(){
-        return taskPersistence.getNewTaskId();
     }
 
 

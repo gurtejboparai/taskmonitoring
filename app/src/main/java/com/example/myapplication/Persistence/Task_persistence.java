@@ -8,9 +8,8 @@ public interface Task_persistence {
 
     Tasks getTask(int taskId);
     Tasks addTask(final Tasks task);
-    Tasks deleteTask(final Tasks task);
-    void editTask(final Tasks task);
+    Tasks deleteTask( Tasks task);
+    void editTask(Tasks oldTask, Tasks newTasks);
 
     List<Tasks> getAllTasks();
-    int getNewTaskId();
 }

@@ -20,7 +20,7 @@ public class TaskPersistenceDB implements Task_persistence {
         this.tasksList.add(new Tasks(numOfTasks +1,"Workout","Do cardio for 30 minutes",new Date(2021,3,4)));
         this.tasksList.add(new Tasks(numOfTasks +1,"COMP3350 due","Iteration-1 due on Friday",new Date(2021, 3, 3)));
         this.tasksList.add(new Tasks(numOfTasks +1,"Meal Prep","Prepare the meals for next 3 days and store",new Date(2021, 3,1)));
-        this.tasksList.add(new Tasks(numOfTasks +1,"COMP3340 lab","Lab-3 is due tomorrow",new Date(2021,2,28)));
+        this.tasksList.add(new Tasks(numOfTasks +1,"COMP3340 lab","Lab-3 is due tomorrow", new Date(2021,2,28)));
         this.tasksList.add(new Tasks(numOfTasks +1,"Talk to the manager","Inform my new availability to the manager ",new Date(2021,2,28)));
     }
 

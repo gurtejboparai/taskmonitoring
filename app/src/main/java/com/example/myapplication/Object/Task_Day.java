@@ -55,6 +55,9 @@ public class Task_Day {
             day = Integer.parseInt(list[0].trim());
         return day;
     }
+    private boolean checkValidDay(){
+        return false;
+    }
 
 
 }

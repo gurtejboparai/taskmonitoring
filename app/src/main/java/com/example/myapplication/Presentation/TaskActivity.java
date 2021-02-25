@@ -69,7 +69,7 @@ public class TaskActivity extends AppCompatActivity {
         Intent newTaskIntent = new Intent(TaskActivity.this, EditActivity.class);
         TaskActivity.this.startActivity(newTaskIntent);
     }
-    public void addButtonOnclick(View v){
+    public void buttonAddTaskOnClick(View v){
         Intent newTaskIntent = new Intent(TaskActivity.this, AddTask.class);
         TaskActivity.this.startActivity(newTaskIntent);
     }

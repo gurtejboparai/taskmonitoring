@@ -15,6 +15,9 @@ public class TaskPersistenceDB implements Task_persistence {
         tasksList = new ArrayList<>();
     }
 
+
+    public int getNumOfTasks(){return numOfTasks;}
+
     public void addTasks(){
         numOfTasks = 0;
         this.tasksList.add(new Tasks(numOfTasks +1, "Call the doctor","setup appointment for Kevin","2021-03-02"));

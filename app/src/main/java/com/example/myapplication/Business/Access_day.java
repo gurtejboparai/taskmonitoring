@@ -23,12 +23,12 @@ public class Access_day extends AppCompatActivity {
         allDays = DayPersistence.getAllDay();
     }
 
-    void setStartTime(Day target, int newTime){
+    /*void setStartTime(Day target, int newTime){
         DayPersistence.setStartTime(target,newTime);
-    };
-    void setEndTime(Day target, int newTime){
+    };*/
+    /*void setEndTime(Day target, int newTime){
         DayPersistence.setEndTime(target,newTime);
-    };
+    };*/
     void setMonth(Day target, int newMonth){
         DayPersistence.setMonth(target,newMonth);
     };

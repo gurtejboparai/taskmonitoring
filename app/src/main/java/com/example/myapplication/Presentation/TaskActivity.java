@@ -44,16 +44,16 @@ public class TaskActivity extends AppCompatActivity {
             tasksList=new ArrayList<>();
             tasksList.addAll(accessTask.getAllTasks());
             tasksArrayAdapter = new ArrayAdapter<Tasks>(this, android.R.layout.simple_list_item_activated_2, android.R.id.text1, tasksList){
+
                 public View getView(int position, View convertView, ViewGroup parent){
                     View view = super.getView(position,convertView,parent);
+                        TextView title = (TextView) view.findViewById(R.id.nameTask);
+                        TextView day = (TextView) view.findViewById(R.id.descriptionTask);
+                        TextView status = (TextView) view.findViewById(R.id.statusTask);
 
-                    TextView title = (TextView) view.findViewById(R.id.nameTask);
-                    TextView  day = (TextView) view.findViewById(R.id.descriptionTask);
-                    TextView status = (TextView) view.findViewById(R.id.statusTask);
-
-                    title.setText(tasksList.get(position).getTaskTitle());
-                    day.setText(tasksList.get(position).getTaskDate());
-                    status.setText(tasksList.get(position).getStatus());
+                        title.setText(tasksList.get(position).getTaskTitle());
+                        day.setText(tasksList.get(position).getTaskDate());
+                        status.setText(tasksList.get(position).getStatus());
                     return view;
                 }
             };
@@ -70,7 +70,7 @@ public class TaskActivity extends AppCompatActivity {
         TaskActivity.this.startActivity(newTaskIntent);
     }
     public void buttonAddTaskOnClick(View v){
-        Intent newTaskIntent = new Intent(TaskActivity.this, addTaskActivity.class);
+        Intent newTaskIntent = new Intent(TaskActivity.this, AddTask.class);
         TaskActivity.this.startActivity(newTaskIntent);
     }
 

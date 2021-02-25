@@ -70,7 +70,8 @@ public class AddTask extends AppCompatActivity {
     save.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            newTask=new Tasks(0,titleTxt,descriptionTxt,new Date(mYear,mMonth,mDate));
+            newTask=new Tasks(0,titleTxt,descriptionTxt,mYear+"-"+mMonth+"-"+mDate);
+
         }
     });
     }

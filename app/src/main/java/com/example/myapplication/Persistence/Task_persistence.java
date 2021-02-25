@@ -6,22 +6,13 @@ import java.util.List;
 
 public interface Task_persistence {
 
-<<<<<<<<< Temporary merge branch 1
-    //int getNewTaskId();
-    //Tasks getTask(int taskId);
-
-    void addTask(final Tasks task);
-    void removeTask(final Tasks task);
-    void updateTask(final Tasks oldTask, Tasks newTask);
-
-    List<Tasks> getTaskList();
-
-=========
     Tasks getTask(int taskId);
     Tasks addTask(final Tasks task);
     Tasks deleteTask( Tasks task);
     void editTask(Tasks oldTask, Tasks newTasks);
+    boolean checkForSame(Tasks task1, Tasks task2);
+    void setStatus(Tasks task, String newStatus);
+    void setTaskDate(Tasks tak,String taskDate);
 
     List<Tasks> getAllTasks();
->>>>>>>>> Temporary merge branch 2
 }

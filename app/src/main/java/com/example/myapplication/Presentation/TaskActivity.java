@@ -41,11 +41,11 @@ public class TaskActivity extends AppCompatActivity {
                 public View getView(int position, View convertView, ViewGroup parent){
                     View view = super.getView(position,convertView,parent);
 
-                    TextView text1 = (TextView) view.findViewById(android.R.id.text1);
-                    TextView text2 = (TextView) view.findViewById(android.R.id.text2);
+                    TextView title = (TextView) view.findViewById(android.R.id.nameTask);
+                    TextView  day = (TextView) view.findViewById(android.R.id.text2);
 
-                    text1.setText(tasksList.get(position).getTaskTitle());
-                    text2.setText(tasksList.get(position).getTaskDescription());
+                    title.setText(tasksList.get(position).getTaskTitle());
+                    day.setText(tasksList.get(position).getTaskDate());
                     return view;
                 }
             };

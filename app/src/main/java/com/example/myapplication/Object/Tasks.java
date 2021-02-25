@@ -7,12 +7,14 @@ public class Tasks {
     private String taskDate;
     private String taskTitle;
     private String taskDescription;
+    private String status;
 
     public Tasks(final int taskId, String taskTitle, String taskDescription, String taskDate){
         this.taskId = taskId;
         this.taskTitle = taskTitle;
         this.taskDescription = taskDescription;
         this.taskDate = taskDate;
+        this.status = "on going";
     }
 
     public int getCurrTaskId(){return taskId;}
@@ -29,4 +31,12 @@ public class Tasks {
         else
             return false;
     };
+
+    public String getStatus() {
+        return this.status;
+    }
+
+    public void setStatus(String newStatus){
+        this.status = newStatus;
+    }
 }

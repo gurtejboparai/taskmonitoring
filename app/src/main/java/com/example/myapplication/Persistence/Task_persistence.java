@@ -13,6 +13,7 @@ public interface Task_persistence {
     void editTask(Tasks oldTask, Tasks newTasks);
     void setTaskDate(Tasks target, String taskDate);
     boolean checkForSame(Tasks task1, Tasks tasks2);
+    void setStatus(Tasks task, String status);
 
     List<Tasks> getAllTasks();
 }

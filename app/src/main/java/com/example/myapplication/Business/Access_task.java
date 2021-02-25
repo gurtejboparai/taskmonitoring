@@ -56,9 +56,12 @@ public class Access_task extends AppCompatActivity {
         allTasks = taskPersistence.getAllTasks();
         return allTasks;
     }
-public void setStatus(Tasks task, String newStatus){
+    public void setStatus(Tasks task, String newStatus){
         taskPersistence.setStatus(task,newStatus);
-}
+    }
+    public boolean checkForSame(Tasks task, Tasks task1){
+        return taskPersistence.checkForSame(task, task1);
+    }
 
 
 

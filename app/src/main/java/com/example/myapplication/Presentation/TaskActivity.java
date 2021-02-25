@@ -49,7 +49,6 @@ public class TaskActivity extends AppCompatActivity {
                     View view = super.getView(position,convertView,parent);
                         TextView title = (TextView) view.findViewById(R.id.nameTask);
                         TextView day = (TextView) view.findViewById(R.id.descriptionTask);
-                        TextView status = (TextView) view.findViewById(R.id.statusTask);
 
                         title.setText(tasksList.get(position).getTaskTitle());
                         day.setText(tasksList.get(position).getTaskDate());
@@ -69,7 +68,7 @@ public class TaskActivity extends AppCompatActivity {
         Intent newTaskIntent = new Intent(TaskActivity.this, EditActivity.class);
         TaskActivity.this.startActivity(newTaskIntent);
     }
-    public void buttonAddTaskOnClick(View v){
+    public void addButtonOnclick(View v){
         Intent newTaskIntent = new Intent(TaskActivity.this, AddTask.class);
         TaskActivity.this.startActivity(newTaskIntent);
     }

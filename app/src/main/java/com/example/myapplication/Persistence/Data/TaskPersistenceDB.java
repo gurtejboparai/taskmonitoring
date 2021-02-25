@@ -9,13 +9,14 @@ import java.util.List;
 
 public class TaskPersistenceDB implements Task_persistence {
     List<Tasks> tasksList;
+    int numOfTasks;
 
     public TaskPersistenceDB(){
         tasksList = new ArrayList<>();
     }
 
     public void addTasks(){
-        int numOfTasks = 0;
+        numOfTasks = 0;
         this.tasksList.add(new Tasks(numOfTasks +1, "Call the doctor","setup appointment for Kevin", new Date(2021,3,2)));
         this.tasksList.add(new Tasks(numOfTasks +1,"Workout","Do cardio for 30 minutes",new Date(2021,3,4)));
         this.tasksList.add(new Tasks(numOfTasks +1,"COMP3350 due","Iteration-1 due on Friday",new Date(2021, 3, 3)));

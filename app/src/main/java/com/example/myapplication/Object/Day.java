@@ -6,15 +6,15 @@ public class Day {
     private int day;
     private int month;
     private int year;
-    private int startTime;
-    private int endTime;
+    //private int startTime;
+    //private int endTime;
 
-    public Day(int day, int month, int year, int startTime, int endTime){
+    public Day(int day, int month, int year){
         this.day = day;
         this.month = month;
         this.year = year;
-        this.startTime = startTime;
-        this.endTime = endTime;
+        //this.startTime = startTime;
+        //this.endTime = endTime;
     }
 
     //get the day
@@ -33,24 +33,24 @@ public class Day {
     }
 
     //get the startTime
-    public int getStartTime(){
+    /*public int getStartTime(){
         return this.startTime;
-    }
+    }*/
 
-    //get the endTime
+    /*get the endTime
     public int getEndTime(){
         return this.endTime;
-    }
+    }*/
 
-    //set startTime
+    /*set startTime
     public void changeStartTime(int newTime){
         this.startTime=newTime;
-    }
+    }*/
 
-    //set endTime
+    /*set endTime
     public void changeEndTime(int newTime){
         this.endTime=newTime;
-    }
+    }*/
 
 
 

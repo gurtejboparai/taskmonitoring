@@ -90,7 +90,7 @@ public class Access_taskTest {
         accessTaskDB.editTask(taskNeedUpdate,updateTask);
 
         assertNotEquals(oldTitle, taskNeedUpdate.getTaskTitle());
-        assertEquals(oldDescription, taskNeedUpdate.getTaskDescription());
+        assertNotEquals(oldDescription, taskNeedUpdate.getTaskDescription());
         assertEquals(newTitle, taskNeedUpdate.getTaskTitle());
 
 
@@ -116,7 +116,9 @@ public class Access_taskTest {
 
         int taskId = 2;
 
-        Tasks taskNeedDel = accessTaskDB.getTask(taskId);
+        Tasks taskNeedDel;
+
+        taskNeedDel = accessTaskDB.getTask(taskId);
 
         Assert.assertNotNull(taskNeedDel);
         assertEquals(taskId, taskNeedDel.getCurrTaskId());
@@ -142,6 +144,40 @@ public class Access_taskTest {
         assertNotNull(tasks);
 
         System.out.println("Finished testGetAllAds...");
+    }
+
+    @Test
+    public void testSetTaskDate(){
+
+        System.out.println("\nStarting testSetTaskDate...");
+
+        Tasks newTask = accessTaskDB.getTask(3);
+
+        accessTaskDB.setTaskDate(newTask, "2021-03-26");
+
+        assertNotNull(newTask);
+
+        System.out.println("Finished testSetTaskDate...");
+    }
+
+    @Test
+    public void testIfSame(){
+
+        System.out.println("\nStarting testIfSame...");
+
+        Tasks taskOne = accessTaskDB.getTask(4);
+        Tasks taskTwo = accessTaskDB.getTask(5);
+
+        assertNotNull(taskOne);
+        assertNotNull(taskTwo);
+
+        assertEquals(taskOne.getTaskTitle(), taskTwo.getTaskTitle());
+        assertEquals(taskOne.getTaskDescription(), taskTwo.getTaskDescription());
+        assertEquals(taskOne.getTaskDate(), taskTwo.getTaskDate());
+
+        accessTaskDB.checkForSame(taskOne,taskTwo);
+
+        System.out.println("Finished testIfSame...");
     }
 
 }

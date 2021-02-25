@@ -21,6 +21,7 @@ public class TasksTest {
         newTask.setTaskDate("2021-02-26");
         newTask.setStatus("To Do");
 
+        assertNotNull(oldTask);
         assertNotNull(newTask);
         assertEquals(0,newTask.getCurrTaskId());
         assertEquals("Task 1",newTask.getTaskTitle());

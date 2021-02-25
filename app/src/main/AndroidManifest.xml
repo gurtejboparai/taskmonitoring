@@ -9,7 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
-        <activity android:name=".Presentation.DayActivity"></activity>
+        <activity
+            android:name=".Presentation.TaskActivity"
+            android:label="@string/title_activity_task"
+            android:theme="@style/Theme.MyApplication.NoActionBar"></activity>
+        <activity
+            android:name=".Presentation.MainActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity android:name=".Presentation.DayActivity" />
         <activity android:name=".SplashPageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,8 +25,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".Presentation.TaskActivity" />
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

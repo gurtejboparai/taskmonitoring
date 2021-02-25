@@ -6,11 +6,13 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.myapplication.R;
+
 public class HomeActivity extends Activity {
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setcontentView(R.layout.activity_home);
+        setContentView(R.layout.activity_home);
     }
 
     public boolean onOptionsItemSelected(MenuItem item){

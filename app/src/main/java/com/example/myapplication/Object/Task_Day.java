@@ -17,10 +17,10 @@ public class Task_Day {
         this.StartTime="startTime";
         this.EndTime="EndTime";
     }
-    public Day getDay(){
+    public Day getTaskDay(){
         return this.day;
     }
-    public Tasks getTask(){
+    public Tasks getTaskwithDay(){
         return this.task;
     }
     public String getStartTime(){

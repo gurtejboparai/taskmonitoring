@@ -17,12 +17,12 @@ public class TaskPersistenceDB implements Task_persistence {
 
     public void addTasks(){
         numOfTasks = 0;
-        this.tasksList.add(new Tasks(numOfTasks +1, "Call the doctor","setup appointment for Kevin", new Date(2021,3,2)));
-        this.tasksList.add(new Tasks(numOfTasks +1,"Workout","Do cardio for 30 minutes",new Date(2021,3,4)));
-        this.tasksList.add(new Tasks(numOfTasks +1,"COMP3350 due","Iteration-1 due on Friday",new Date(2021, 3, 3)));
-        this.tasksList.add(new Tasks(numOfTasks +1,"Meal Prep","Prepare the meals for next 3 days and store",new Date(2021, 3,1)));
-        this.tasksList.add(new Tasks(numOfTasks +1,"COMP3340 lab","Lab-3 is due tomorrow", new Date(2021,2,28)));
-        this.tasksList.add(new Tasks(numOfTasks +1,"Talk to the manager","Inform my new availability to the manager ",new Date(2021,2,28)));
+        this.tasksList.add(new Tasks(numOfTasks +1, "Call the doctor","setup appointment for Kevin","2021-03-02"));
+        this.tasksList.add(new Tasks(numOfTasks +1,"Workout","Do cardio for 30 minutes","2021-03-04"));
+        this.tasksList.add(new Tasks(numOfTasks +1,"COMP3350 due","Iteration-1 due on Friday","2021-03-03"));
+        this.tasksList.add(new Tasks(numOfTasks +1,"Meal Prep","Prepare the meals for next 3 days and store","2021-03-03"));
+        this.tasksList.add(new Tasks(numOfTasks +1,"COMP3340 lab","Lab-3 is due tomorrow", "2021-02-28"));
+        this.tasksList.add(new Tasks(numOfTasks +1,"Talk to the manager","Inform my new availability to the manager ","2021-03-03"));
     }
 
 
@@ -58,7 +58,7 @@ public class TaskPersistenceDB implements Task_persistence {
     }
 
     @Override
-    public void setTaskDate(Tasks task,Date taskDate) {
+    public void setTaskDate(Tasks task, String taskDate) {
         int index = this.tasksList.indexOf(task);
         if(index>=0){
             task.setTaskDate(taskDate);

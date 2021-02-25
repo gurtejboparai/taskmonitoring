@@ -21,7 +21,7 @@ public class HomeActivity extends Activity {
     }
 
     public void buttonAddTaskOnClick(View v){
-        Intent newTaskIntent = new Intent(HomeActivity.this, TaskActivity.class);
+        Intent newTaskIntent = new Intent(HomeActivity.this, addTaskActivity.class);
         HomeActivity.this.startActivity(newTaskIntent);
     }
 

@@ -4,29 +4,25 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class DayTest {
+public class Task_DayTest {
 
     @Test
     public void getDay() {
     }
 
     @Test
-    public void getMonth() {
+    public void getTask() {
     }
 
     @Test
-    public void getYear() {
+    public void getStartTime() {
     }
 
     @Test
-    public void changeDay() {
+    public void getEndTime() {
     }
 
     @Test
-    public void changeMonth() {
-    }
-
-    @Test
-    public void changeYear() {
+    public void setDeadline() {
     }
 }

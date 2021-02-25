@@ -7,14 +7,6 @@ import static org.junit.Assert.*;
 public class Access_dayTest {
 
     @Test
-    public void setStartTime() {
-    }
-
-    @Test
-    public void setEndTime() {
-    }
-
-    @Test
     public void setMonth() {
     }
 

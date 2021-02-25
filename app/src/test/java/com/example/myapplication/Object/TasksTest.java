@@ -7,30 +7,42 @@ import static org.junit.Assert.*;
 public class TasksTest {
 
     @Test
-    public void testTasks()
-    {
-        Tasks newTask;
-        Tasks oldTask;
+    public void getCurrTaskId() {
+    }
 
-        System.out.println("\nStarting testTasks...");
+    @Test
+    public void getTaskTitle() {
+    }
 
-        oldTask = new Tasks(0, "Task 0", "Task 0 Description","2021-02-24");
-        newTask = new Tasks(1, "Task 1", "Task 1 Description","2021-02-25");
-        newTask.setTaskTitle("What's new");
-        newTask.setTaskDescription("Some changes here");
-        newTask.setTaskDate("2021-02-26");
-        newTask.setStatus("To Do");
+    @Test
+    public void setTaskTitle() {
+    }
 
-        assertNotNull(oldTask);
-        assertNotNull(newTask);
-        assertEquals(0,newTask.getCurrTaskId());
-        assertEquals("Task 1",newTask.getTaskTitle());
-        assertEquals("Task 1 Description",newTask.getTaskDescription());
-        assertEquals("2021-02-25",newTask.getTaskDate());
-        assertEquals("on going",newTask.getStatus());
-        assertFalse(newTask.checkForSame(oldTask));
+    @Test
+    public void getTaskDescription() {
+    }
 
-        System.out.println("Finished testTasks...");
+    @Test
+    public void setTaskDescription() {
+    }
 
+    @Test
+    public void getTaskDate() {
+    }
+
+    @Test
+    public void setTaskDate() {
+    }
+
+    @Test
+    public void checkForSame() {
+    }
+
+    @Test
+    public void getStatus() {
+    }
+
+    @Test
+    public void setStatus() {
     }
 }

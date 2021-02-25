@@ -18,7 +18,7 @@ public class Access_task extends AppCompatActivity {
     private Task_persistence taskPersistence;
 
     public Access_task(){
-    // need a fake database here
+
         taskPersistence = Service.getTaskPersistence();
         allTasks=new ArrayList<>();
     }
@@ -33,7 +33,7 @@ public class Access_task extends AppCompatActivity {
     }
 
     public Tasks addTask(final Tasks newTask){
-        if(newTask.getTaskTitle() == null || newTask.getTaskDescription() == null || newTask.getTaskDate() == null){ //if(newTask == null)
+        if(newTask == null ){
             String taskCreateMessage = "Please enter all fields.";
             Toast.makeText(getApplicationContext(), taskCreateMessage, Toast.LENGTH_SHORT).show();
         }
@@ -48,7 +48,7 @@ public class Access_task extends AppCompatActivity {
         taskPersistence.editTask(oldTask,newTask);
     }
 
-    public void setTaskDate(Tasks task, Date taskDate){
+    public void setTaskDate(Tasks task, String taskDate){
         taskPersistence.setTaskDate(task, taskDate);
     }
 

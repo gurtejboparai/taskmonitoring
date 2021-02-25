@@ -7,30 +7,26 @@ import static org.junit.Assert.*;
 public class TasksTest {
 
     @Test
-    public void getCurrTaskId() {
-    }
+    public void testTasks()
+    {
+        Tasks newTask;
 
-    @Test
-    public void getTaskTitle() {
-    }
+        System.out.println("\nStarting testTasks...");
 
-    @Test
-    public void setTaskTitle() {
-    }
+        newTask = new Tasks(0, "Task 1", "Task 1 Description","2021-02-25");
+        newTask.setTaskTitle("What's new");
+        newTask.setTaskDescription("Some changes here");
+        newTask.setTaskDate("2021-02-26");
+        newTask.setStatus("To Do");
 
-    @Test
-    public void getTaskDescription() {
-    }
+        assertNotNull(newTask);
+        assertEquals(0,newTask.getCurrTaskId());
+        assertEquals("Task 1",newTask.getTaskTitle());
+        assertEquals("Task 1 Description",newTask.getTaskDescription());
+        assertEquals("2021-02-25",newTask.getTaskDate());
+        //assertTrue("on going".equals(newTask.getStatus()));
 
-    @Test
-    public void setTaskDescription() {
-    }
+        System.out.println("Finished testTasks...");
 
-    @Test
-    public void getTaskDate() {
-    }
-
-    @Test
-    public void setTaskDate() {
     }
 }

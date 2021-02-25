@@ -6,11 +6,13 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.myapplication.R;
+
 public class HomeActivity extends Activity {
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setcontentView(R.layout.activity_home);
+        setContentView(R.layout.activity_home);
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
@@ -19,7 +21,7 @@ public class HomeActivity extends Activity {
     }
 
     public void buttonAddTaskOnClick(View v){
-        Intent newTaskIntent = new Intent(HomeActivity.this, TaskActivity.class);
+        Intent newTaskIntent = new Intent(HomeActivity.this, AddTask.class);
         HomeActivity.this.startActivity(newTaskIntent);
     }
 

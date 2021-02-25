@@ -9,6 +9,8 @@ import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.Presentation.HomeActivity;
+
 import static java.lang.Thread.sleep;
 
 public class SplashPageActivity extends AppCompatActivity {
@@ -26,7 +28,7 @@ public class SplashPageActivity extends AppCompatActivity {
             public void run() {
                 try {
                     sleep(3600);
-                    Intent it = new Intent(getApplicationContext(), MainActivity.class);
+                    Intent it = new Intent(getApplicationContext(), HomeActivity.class);
                     startActivity(it);
                     finish();
                 } catch (Exception e) {

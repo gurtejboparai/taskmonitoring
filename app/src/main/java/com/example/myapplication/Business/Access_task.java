@@ -6,31 +6,33 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.Object.Tasks;
 import com.example.myapplication.Persistence.Task_persistence;
+import com.example.myapplication.application.Service;
 
-
-
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Access_task extends AppCompatActivity {
 
-    private final List<Tasks> allTasks;
-    private final Task_persistence taskPersistence;
+    private List<Tasks> allTasks;
+    private Task_persistence taskPersistence;
 
     public Access_task(){
-    // need a fake database here
-        allTasks = taskPersistence.getAllTasks();
+        // need a fake database here
+        taskPersistence = Service.getTaskPersistence();
+        allTasks=new ArrayList<>();
     }
 
-    public Access_task(final Task_persistence taskPersistence){
+    public Access_task(Task_persistence taskPersistence){
         this.taskPersistence = taskPersistence;
         allTasks = taskPersistence.getAllTasks();
     }
 
-    public final Tasks getTask(int taskId) {
+    public Tasks getTask(int taskId) {
         return taskPersistence.getTask(taskId);
     }
 
-    public final Tasks addTask(final Tasks newTask){
+    public Tasks addTask(final Tasks newTask){
         if(newTask.getTaskTitle() == null || newTask.getTaskDescription() == null || newTask.getTaskDate() == null){ //if(newTask == null)
             String taskCreateMessage = "Please enter all fields.";
             Toast.makeText(getApplicationContext(), taskCreateMessage, Toast.LENGTH_SHORT).show();
@@ -38,22 +40,25 @@ public class Access_task extends AppCompatActivity {
         return taskPersistence.addTask(newTask);
     }
 
-    public final Tasks deleteTask(final Tasks taskToDel){
+    public Tasks deleteTask(Tasks taskToDel){
         return taskPersistence.deleteTask(taskToDel);
     }
 
-    public final void editTask(Tasks task){
-        taskPersistence.editTask(task);
+    public void editTask(Tasks oldTask, Tasks newTask){
+        taskPersistence.editTask(oldTask,newTask);
     }
 
-    public final List<Tasks> getAllTasks() {
+    public void setTaskDate(Tasks task, String taskDate){
+        taskPersistence.setTaskDate(task, taskDate);
+    }
+
+    public List<Tasks> getAllTasks() {
+        allTasks = taskPersistence.getAllTasks();
         return allTasks;
     }
-
-    public final int getNewTaskId(){
-        return taskPersistence.getNewTaskId();
-    }
-
+public void setStatus(Tasks task, String newStatus){
+        taskPersistence.setStatus(task,newStatus);
+}
 
 
 

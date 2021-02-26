@@ -1,27 +1,19 @@
 package com.example.myapplication.Object;
 
 public class Task_Day {
-    private Day day;
+    private final Day day;
     private final Tasks task;
     private String StartTime;
     private String EndTime;
-    public Task_Day(final Tasks task, String startTime, String EndTime){
+    public Task_Day (final Tasks task, String startTime, String EndTime) throws Day.typeInException {
         this.task=task;
-        try {
-            this.day = new Day(getaYear(), getaMonth(), getaDay());
-        }catch (Day.typeInException e){
-            e.printStackTrace();
-        }
+        this.day = new Day(getaYear(), getaMonth(), getaDay());
         this.StartTime=startTime;
         this.EndTime=EndTime;
     }
-    public Task_Day(final Tasks task){
+    public Task_Day(final Tasks task)throws Day.typeInException{
         this.task=task;
-        try{
-        this.day = new Day(getaYear(),getaMonth(),getaDay());}
-        catch (Day.typeInException e){
-            e.printStackTrace();
-        }
+        this.day = new Day(getaYear(),getaMonth(),getaDay());
         this.StartTime="startTime";
         this.EndTime="EndTime";
     }

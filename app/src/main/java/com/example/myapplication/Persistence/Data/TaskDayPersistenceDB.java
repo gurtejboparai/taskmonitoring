@@ -1,5 +1,6 @@
 package com.example.myapplication.Persistence.Data;
 
+import com.example.myapplication.Object.Day;
 import com.example.myapplication.Object.Task_Day;
 import com.example.myapplication.Object.Tasks;
 import com.example.myapplication.Persistence.Interface_TD;
@@ -14,7 +15,7 @@ public class TaskDayPersistenceDB implements Interface_TD {
         taskDayList= new ArrayList<>();
     }
 
-    public void addTaskDay(){
+    public void addTaskDay() throws Day.typeInException{
         taskDayList.add(new Task_Day(new Tasks(numOfTasks +1, "Call the doctor","setup appointment for Kevin","2021-03-02")));
         taskDayList.add(new Task_Day(new Tasks(numOfTasks +1,"Workout","Do cardio for 30 minutes","2021-03-04"), "5:00","7:00"));
         taskDayList.add(new Task_Day(new Tasks(numOfTasks +1,"COMP3350 due","Iteration-1 due on Friday","2021-03-03"),"10:00","4:00"));

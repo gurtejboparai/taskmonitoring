@@ -12,17 +12,15 @@ public class DayPersistenceDB implements Day_persistence {
         this.dayList = new ArrayList<>();
     }
 
-    public void addDays(){
-        try{
+    public void addDays()throws Day.typeInException{
+
         dayList.add(new Day(3,3,2021));
         dayList.add(new Day(3,3,2021));
         dayList.add(new Day(4,3,2021));
         dayList.add(new Day(4,3,2021));
         dayList.add(new Day(4, 3,2021));
-        dayList.add(new Day(5,3,2021));}
-        catch (Day.typeInException e){
-            e.printStackTrace();
-        }
+        dayList.add(new Day(5,3,2021));
+
     }
 
     /*@Override

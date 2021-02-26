@@ -36,7 +36,7 @@ public class TaskActivity extends AppCompatActivity {
             tasksList=new ArrayList<>();
             tasksList.addAll(accessTask.getAllTasks());
             tasksArrayAdapter = new ArrayAdapter<Tasks>(this, android.R.layout.simple_list_item_activated_2, android.R.id.text1, tasksList){
-
+                @Override
                 public View getView(int position, View convertView, ViewGroup parent){
                     View view = super.getView(position,convertView,parent);
                         TextView title = (TextView) view.findViewById(R.id.nameTask);

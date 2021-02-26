@@ -10,6 +10,7 @@ We test exception code on invalid number of Day.class variables, since day of th
 ----------
 
 [This is the link]() to describe our strategy. New branch with specific work assigned was create, then it got merged into the master branch, and the deployed branch was deleted.
+
 <img width="468" alt="Picture1" src="https://user-images.githubusercontent.com/42950390/109312965-486dde80-780d-11eb-8715-5c5687977e2b.png">
 ## SOLID
 ----------------

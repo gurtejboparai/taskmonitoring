@@ -4,7 +4,8 @@ After coming up with all possible features we can implement for the project. Thi
 This was the most important feature in the whole project that needed to be implemented at first. Unfortunately, when we did the feature, our group still struggled in defining the way of branching strategy that we wanted to use. Hence, we did not have a specific merge request for that. However, our group has meetings every week, and communicate through group chat (discord) to update and let other group members review the code. Therefore, the progress of working on the project did not get delayed while we looked for the suitable branching strategy (Github Flow).
 ## Exceptional code
 ----------------
-We test exception code on invalid number of Day.class variables, since day of the year cannot be negative, bigger than 30.
+We test exception code on invalid number of Day.class variables, since day of the year cannot be negative, bigger than 30. Hence, we will throw exception and handle them with specific error message
+
 [This is the link for our exceptional code](https://code.cs.umanitoba.ca/3350-winter-2021-a03/taskmonitoring-group4-comp3350-a03-winter2021/-/commit/1f61988758b1be775390783e91cba65bd6cef6c0)
 ## Branching
 ----------
@@ -12,6 +13,7 @@ We test exception code on invalid number of Day.class variables, since day of th
 [This is the link]() to describe our strategy. New branch with specific work assigned was create, then it got merged into the master branch, and the deployed branch was deleted.
 
 <img width="468" alt="Picture1" src="https://user-images.githubusercontent.com/42950390/109312965-486dde80-780d-11eb-8715-5c5687977e2b.png">
+
 ## SOLID
 ----------------
 

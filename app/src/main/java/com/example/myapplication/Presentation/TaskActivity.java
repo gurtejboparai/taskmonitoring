@@ -52,7 +52,6 @@ public class TaskActivity extends AppCompatActivity {
 
                         title.setText(tasksList.get(position).getTaskTitle());
                         day.setText(tasksList.get(position).getTaskDate());
-                        status.setText(tasksList.get(position).getStatus());
                     return view;
                 }
             };
@@ -65,7 +64,7 @@ public class TaskActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
     public void editButtonOnClick(View v){
-        Intent newTaskIntent = new Intent(TaskActivity.this, EditActivity.class);
+        Intent newTaskIntent = new Intent(TaskActivity.this, EditTask.class);
         TaskActivity.this.startActivity(newTaskIntent);
     }
     public void addButtonOnclick(View v){

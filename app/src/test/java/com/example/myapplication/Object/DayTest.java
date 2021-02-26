@@ -18,7 +18,7 @@ public class DayTest {
     }
 
     @Test
-    public void getDay() {
+    public void testGetDay() {
         System.out.println("\nstart: test Day.getDay()\n");
 
 
@@ -32,7 +32,7 @@ public class DayTest {
     }
 
     @Test
-    public void getMonth() {
+    public void testGetMonth() {
         System.out.println("\nstart: test Day.getMonth()\n");
 
         assertEquals("test Day.getMonth() fail, it not return correct month value",testDay.getMonth(),10);
@@ -45,7 +45,7 @@ public class DayTest {
     }
 
     @Test
-    public void getYear() {
+    public void testGetYear() {
         System.out.println("\nstart: test Day.getYear()\n");
 
 
@@ -61,7 +61,7 @@ public class DayTest {
     }
 
     @Test
-    public void changeDay() throws Day.typeInException {
+    public void testChangeDay() throws Day.typeInException {
         System.out.println("\nstart: test Day.changeDay()\n");
 
         testDay2.changeDay(30);
@@ -73,7 +73,7 @@ public class DayTest {
     }
 
     @Test
-    public void changeMonth() throws Day.typeInException {
+    public void testChangeMonth() throws Day.typeInException {
         System.out.println("\nstart: test Day.changeMonth()\n");
 
             testDay2.changeMonth(3);
@@ -83,7 +83,7 @@ public class DayTest {
     }
 
     @Test
-    public void changeYear() throws Day.typeInException {
+    public void testChangeYear() throws Day.typeInException {
         System.out.println("\nstart: test Day.changeYear()\n");
 
             testDay2.changeYear(2014);

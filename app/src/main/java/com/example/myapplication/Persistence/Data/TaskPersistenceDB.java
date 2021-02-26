@@ -60,7 +60,7 @@ public class TaskPersistenceDB implements Task_persistence {
     }
 
     @Override
-    public void setTaskDate(Tasks task, String taskDate) {
+    public void setTaskDate(Tasks task, String taskDate) throws Tasks.InPutNull{
         int index = this.tasksList.indexOf(task);
         if(index>=0){
             task.setTaskDate(taskDate);
@@ -76,7 +76,7 @@ public class TaskPersistenceDB implements Task_persistence {
     }
 
     @Override
-    public void setStatus(Tasks task, String status) {
+    public void setStatus(Tasks task, String status) throws Tasks.InPutNull{
         int index = this.tasksList.indexOf(task);
         if(index>=0){
             task.setTaskDate(status);

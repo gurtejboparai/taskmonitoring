@@ -21,29 +21,58 @@ public class Tasks {
 
     public String getTaskTitle(){return taskTitle;}
 
-    public void setTaskTitle(String taskTitle){this.taskTitle = taskTitle;}
+    public void setTaskTitle(String taskTitle)throws InPutNull{
+        if(taskTitle==null)
+            throw new InPutNull();
+        else
+            this.taskTitle = taskTitle;
+    }
 
     public String getTaskDescription(){return taskDescription;}
 
-    public void setTaskDescription(String taskDescription){this.taskDescription = taskDescription;}
+    public void setTaskDescription(String taskDescription)throws InPutNull{
+        if(taskDescription==null)
+            throw new InPutNull();
+        else
+        this.taskDescription = taskDescription;
+    }
 
     public String getTaskDate() {return taskDate;}
 
-    public void setTaskDate(String taskDate){this.taskDate = taskDate;}
-
-    public boolean checkForSame(Tasks task1){
-        if(this.taskId==task1.taskId){
-            return true;
-        }
+    public void setTaskDate(String taskDate)throws InPutNull{
+        if(taskDate==null)
+            throw new InPutNull();
         else
+        this.taskDate = taskDate;}
+
+    public boolean checkForSame(Tasks task1)throws InPutNull{
+        if(task1==null){
+            throw new InPutNull();
+        }else if(this.taskId == task1.taskId){
+
+           return true;
+
+        }
+        else {
             return false;
+        }
     }
 
     public String getStatus() {
         return this.status;
     }
 
-    public void setStatus(String newStatus){
+    public void setStatus(String newStatus)throws InPutNull{
+        if(newStatus==null)
+            throw new InPutNull();
+        else
         this.status = newStatus;
     }
+    public class InPutNull extends Exception{
+        public InPutNull(){
+            super("the Parameter is null");
+        }
+
+    }
+
 }

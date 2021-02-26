@@ -6,33 +6,33 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:contentDescription="@string/app_name"
         android:id="@+id/imageView"
-        android:layout_width="259dp"
-        android:layout_height="100dp"
+        android:layout_width="205dp"
+        android:layout_height="162dp"
         android:layout_marginStart="72dp"
         android:layout_marginLeft="72dp"
         android:layout_marginTop="2dp"
         android:layout_marginEnd="80dp"
         android:layout_marginRight="80dp"
         android:layout_marginBottom="629dp"
+        android:contentDescription="@string/app_name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/programme" />
+        app:srcCompat="@drawable/p_square" />
 
     <EditText
-        android:autofillHints=""
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/editTitle"
         android:layout_width="227dp"
         android:layout_height="53dp"
         android:layout_marginTop="116dp"
         android:layout_marginBottom="562dp"
+        android:autofillHints=""
         android:ems="10"
         android:gravity="center"
-        android:inputType="textPersonName"
         android:hint="@string/title"
+        android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -40,65 +40,25 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:autofillHints=""
-        android:id="@+id/editTextDate"
+        android:id="@+id/editDate"
         android:layout_width="222dp"
         android:layout_height="44dp"
         android:layout_marginTop="169dp"
         android:layout_marginBottom="518dp"
+        android:autofillHints=""
         android:ems="10"
         android:gravity="center"
         android:hint="@string/date"
         android:inputType="date"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
-        android:autofillHints=""
-        android:id="@+id/editTextTime"
-        android:layout_width="165dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="235dp"
-        android:layout_marginEnd="230dp"
-        android:layout_marginRight="230dp"
-        android:layout_marginBottom="450dp"
-        android:ems="10"
-        android:gravity="center"
-        android:hint="@string/start_time"
-        android:inputType="time"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:autofillHints=""
-        android:id="@+id/editTextTime2"
-        android:layout_width="159dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="226dp"
-        android:layout_marginLeft="226dp"
-        android:layout_marginTop="235dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="450dp"
-        android:ems="10"
-        android:gravity="center"
-        android:hint="@string/end_time"
-        android:inputType="time"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:autofillHints=""
-        android:id="@+id/editTextTextMultiLine"
+        android:id="@+id/editDescription"
         android:layout_width="254dp"
         android:layout_height="122dp"
         android:layout_marginStart="77dp"
@@ -107,62 +67,28 @@
         android:layout_marginEnd="77dp"
         android:layout_marginRight="77dp"
         android:layout_marginBottom="314dp"
+        android:autofillHints=""
         android:ems="10"
         android:gravity="center|top"
         android:hint="@string/description"
         android:inputType="textMultiLine"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
-
-    <RadioGroup
-        android:layout_width="265dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="72dp"
-        android:layout_marginLeft="72dp"
-        android:layout_marginTop="456dp"
-        android:layout_marginEnd="74dp"
-        android:layout_marginRight="74dp"
-        android:layout_marginBottom="239dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <RadioButton
-            android:id="@+id/radioButton"
-            android:layout_width="90dp"
-            android:layout_height="34dp"
-            android:text="@string/high" />
-
-        <RadioButton
-            android:id="@+id/radioButton2"
-            android:layout_width="90dp"
-            android:layout_height="34dp"
-            android:text="@string/medium" />
-
-        <RadioButton
-            android:id="@+id/radioButton3"
-            android:layout_width="90dp"
-            android:layout_height="34dp"
-            android:text="@string/low" />
-    </RadioGroup>
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="71dp"
         android:layout_height="32dp"
-        android:layout_marginStart="170dp"
-        android:layout_marginLeft="170dp"
-        android:layout_marginTop="424dp"
-        android:layout_marginEnd="170dp"
-        android:layout_marginRight="170dp"
-        android:layout_marginBottom="275dp"
+        android:layout_marginStart="79dp"
+        android:layout_marginLeft="79dp"
+        android:layout_marginTop="433dp"
+        android:layout_marginEnd="261dp"
+        android:layout_marginRight="261dp"
+        android:layout_marginBottom="266dp"
         android:gravity="center"
         android:text="@string/priority"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -171,15 +97,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Switch
-        android:id="@+id/switch1"
+        android:id="@+id/switchStatus"
         android:layout_width="124dp"
         android:layout_height="36dp"
-        android:layout_marginStart="213dp"
-        android:layout_marginLeft="213dp"
-        android:layout_marginTop="503dp"
-        android:layout_marginEnd="74dp"
-        android:layout_marginRight="74dp"
-        android:layout_marginBottom="192dp"
+        android:layout_marginStart="210dp"
+        android:layout_marginLeft="210dp"
+        android:layout_marginTop="471dp"
+        android:layout_marginEnd="77dp"
+        android:layout_marginRight="77dp"
+        android:layout_marginBottom="224dp"
+        android:gravity="end"
         android:text="@string/ongoing"
         android:textOff="@string/finished"
         android:textOn="@string/ongoing"
@@ -192,12 +119,12 @@
         android:id="@+id/textView2"
         android:layout_width="64dp"
         android:layout_height="32dp"
-        android:layout_marginStart="72dp"
-        android:layout_marginLeft="72dp"
-        android:layout_marginTop="507dp"
-        android:layout_marginEnd="275dp"
-        android:layout_marginRight="275dp"
-        android:layout_marginBottom="192dp"
+        android:layout_marginStart="79dp"
+        android:layout_marginLeft="79dp"
+        android:layout_marginTop="471dp"
+        android:layout_marginEnd="268dp"
+        android:layout_marginRight="268dp"
+        android:layout_marginBottom="228dp"
         android:gravity="center"
         android:text="@string/Status"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -206,7 +133,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/cancelBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="243dp"
@@ -215,14 +142,14 @@
         android:layout_marginEnd="75dp"
         android:layout_marginRight="75dp"
         android:layout_marginBottom="93dp"
-        android:text="@string/delete"
+        android:text="@android:string/cancel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/saveBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="71dp"
@@ -236,5 +163,64 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Switch
+        android:id="@+id/switchPrio"
+        android:layout_width="121dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="207dp"
+        android:layout_marginLeft="207dp"
+        android:layout_marginTop="430dp"
+        android:layout_marginEnd="83dp"
+        android:layout_marginRight="83dp"
+        android:layout_marginBottom="266dp"
+        android:gravity="end"
+        android:text="@string/low"
+        android:textOff="@string/low"
+        android:textOn="@string/high"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editStartTime"
+        android:layout_width="145dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="235dp"
+        android:layout_marginEnd="234dp"
+        android:layout_marginRight="234dp"
+        android:layout_marginBottom="447dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/start_time"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints=""/>
+
+    <EditText
+        android:id="@+id/editEndTime"
+        android:layout_width="138dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="232dp"
+        android:layout_marginLeft="232dp"
+        android:layout_marginTop="235dp"
+        android:layout_marginEnd="41dp"
+        android:layout_marginRight="41dp"
+        android:layout_marginBottom="455dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/end_time"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints=""/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

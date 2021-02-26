@@ -5,15 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    tools:context=".Presentation.AddTask">
+    tools:context=".Presentation.AddActivity">
 
     <ImageView
         android:id="@+id/appLogo"
-        android:layout_width="312dp"
-        android:layout_height="158dp"
+        android:layout_width="207dp"
+        android:layout_height="165dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="0dp"
         android:layout_marginBottom="420dp"
         android:contentDescription="TODO"
         android:scaleType="centerCrop"
@@ -22,21 +22,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/programme" />
-
-    <TextView
-        android:id="@+id/date"
-        android:layout_width="210dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="102dp"
-        android:layout_marginLeft="102dp"
-        android:layout_marginTop="231dp"
-        android:hint="DD-MM-YYYY"
-        android:textSize="24dp" />
+        app:srcCompat="@drawable/p_square" />
 
     <ImageButton
         android:id="@+id/datePicker"
@@ -45,9 +31,9 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="96dp"
-        android:layout_marginRight="96dp"
-        android:layout_marginBottom="329dp"
+        android:layout_marginEnd="76dp"
+        android:layout_marginRight="76dp"
+        android:layout_marginBottom="408dp"
         android:scaleType="fitStart"
         android:src="@drawable/calender" />
 
@@ -59,12 +45,26 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="166dp"
-        android:layout_marginEnd="104dp"
-        android:layout_marginRight="104dp"
+        android:layout_marginTop="209dp"
+        android:layout_marginEnd="103dp"
+        android:layout_marginRight="103dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Task Title" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="102dp"
+        android:layout_marginLeft="102dp"
+        android:layout_marginTop="274dp"
+        android:hint="DD-MM-YYYY"
+        android:textSize="24dp" />
 
     <EditText
         android:id="@+id/taskDescription"
@@ -72,7 +72,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
-        android:layout_marginTop="281dp"
+        android:layout_marginTop="324dp"
         android:ems="10"
         android:gravity="start|top"
         android:hint="Task Description"
@@ -99,9 +99,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="201dp"
-        android:layout_marginLeft="201dp"
-        android:layout_marginBottom="200dp"
+        android:layout_marginStart="219dp"
+        android:layout_marginLeft="219dp"
+        android:layout_marginBottom="198dp"
         android:text="High" />
 
     <Button
@@ -114,7 +114,8 @@
         android:layout_marginStart="65dp"
         android:layout_marginLeft="65dp"
         android:layout_marginBottom="107dp"
-        android:text="SAVE" />
+        android:text="SAVE"
+        android:onClick="saveBtnOnClick"/>
 
     <Button
         android:id="@+id/cancelButton"
@@ -126,6 +127,7 @@
         android:layout_marginEnd="62dp"
         android:layout_marginRight="62dp"
         android:layout_marginBottom="107dp"
-        android:text="CANCEL" />
+        android:text="CANCEL"
+        android:onClick="cancelBtnOnClick"/>
 
 </RelativeLayout>

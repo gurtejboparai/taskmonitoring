@@ -27,7 +27,7 @@ public class SplashPageActivity extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    sleep(3600);
+                    sleep(2100);
                     Intent it = new Intent(getApplicationContext(), HomeActivity.class);
                     startActivity(it);
                     finish();

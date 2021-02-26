@@ -13,8 +13,8 @@ public class DayTest {
     public void setUp(){
         System.out.println("\n\tStart the test for Day class\n\n");
 
-            testDay=new Day(12,10,2021);
-            testDay2=new Day(30,6,1990);
+        testDay=new Day(12,10,2021);
+        testDay2=new Day(30,6,1990);
     }
 
     @Test
@@ -64,8 +64,8 @@ public class DayTest {
     public void changeDay() {
         System.out.println("\nstart: test Day.changeDay()\n");
 
-            testDay2.changeDay(30);
-            assertEquals("should change day to 30, but not work",testDay2.getDay(),30);
+        testDay2.changeDay(30);
+        assertEquals("should change day to 30, but not work",testDay2.getDay(),30);
 
 
 

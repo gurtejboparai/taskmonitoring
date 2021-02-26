@@ -5,13 +5,13 @@ public class Task_Day {
     private final Tasks task;
     private String StartTime;
     private String EndTime;
-    public Task_Day(final Tasks task, String startTime, String EndTime){
+    public Task_Day (final Tasks task, String startTime, String EndTime) throws Day.typeInException {
         this.task=task;
-        this.day = new Day(getaYear(),getaMonth(),getaDay());
+        this.day = new Day(getaYear(), getaMonth(), getaDay());
         this.StartTime=startTime;
         this.EndTime=EndTime;
     }
-    public Task_Day(final Tasks task){
+    public Task_Day(final Tasks task)throws Day.typeInException{
         this.task=task;
         this.day = new Day(getaYear(),getaMonth(),getaDay());
         this.StartTime="startTime";
@@ -55,9 +55,5 @@ public class Task_Day {
             day = Integer.parseInt(list[0].trim());
         return day;
     }
-    private boolean checkValidDay(){
-        return false;
-    }
-
 
 }

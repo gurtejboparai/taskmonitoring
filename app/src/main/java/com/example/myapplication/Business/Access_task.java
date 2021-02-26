@@ -5,6 +5,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.Object.Tasks;
+import com.example.myapplication.Persistence.Data.TaskPersistenceDB;
 import com.example.myapplication.Persistence.Task_persistence;
 import com.example.myapplication.application.Service;
 
@@ -15,28 +16,30 @@ import java.util.List;
 public class Access_task extends AppCompatActivity {
 
     private List<Tasks> allTasks;
-    private Task_persistence taskPersistence;
+    private TaskPersistenceDB taskPersistence;
 
     public Access_task(){
-        // need a fake database here
-        taskPersistence = Service.getTaskPersistence();
+
+//        taskPersistence = Service.getTaskPersistence();
+        taskPersistence = new TaskPersistenceDB();
         allTasks=new ArrayList<>();
     }
 
-    public Access_task(Task_persistence taskPersistence){
-        this.taskPersistence = taskPersistence;
-        allTasks = taskPersistence.getAllTasks();
-    }
+    // we don't need this constructor for this iteration
+//    public Access_task(Task_persistence taskPersistence){
+//        this.taskPersistence = taskPersistence;
+//        allTasks = taskPersistence.getAllTasks();
+//    }
 
     public Tasks getTask(int taskId) {
         return taskPersistence.getTask(taskId);
     }
 
     public Tasks addTask(final Tasks newTask){
-        if(newTask.getTaskTitle() == null || newTask.getTaskDescription() == null || newTask.getTaskDate() == null){ //if(newTask == null)
-            String taskCreateMessage = "Please enter all fields.";
-            Toast.makeText(getApplicationContext(), taskCreateMessage, Toast.LENGTH_SHORT).show();
-        }
+//        if(newTask.getTaskTitle() == null || newTask.getTaskDescription() == null || newTask.getTaskDate() == null){ //if(newTask == null)
+//            String taskCreateMessage = "Please enter all fields.";
+//            Toast.makeText(getApplicationContext(), taskCreateMessage, Toast.LENGTH_SHORT).show();
+//        }
         return taskPersistence.addTask(newTask);
     }
 
@@ -63,10 +66,9 @@ public class Access_task extends AppCompatActivity {
         return taskPersistence.checkForSame(task, task1);
     }
 
-
-
-
-
+    public final int getNewTaskId(){
+        return taskPersistence.getNewTaskId();
+    }
 
 
 }

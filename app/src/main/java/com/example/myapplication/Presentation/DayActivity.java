@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
 
 import com.example.myapplication.R;
@@ -21,11 +20,11 @@ public class DayActivity extends AppCompatActivity {
         setContentView(R.layout.activity_day);
 
         String dateString=new SimpleDateFormat("MM dd, yyyy", Locale.getDefault()).format(new Date());
-        TextView date =findViewById(R.id.editTextDate);
+        TextView date =findViewById(R.id.editDate);
         date.setText(dateString);
     }
     public void buttonAddTaskOnClick(){
-        Intent newTaskIntent = new Intent(DayActivity.this, AddTask.class);
+        Intent newTaskIntent = new Intent(DayActivity.this, AddActivity.class);
         DayActivity.this.startActivity(newTaskIntent);
     }
 

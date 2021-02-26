@@ -9,7 +9,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 @RunWith(MockitoJUnitRunner.class)
 public class Task_DayTest {
     @Test
-    public void testTD(){
+    public void testTD() throws Day.typeInException {
         Task_Day taskTD;
         int numOfTasks =0;
         System.out.println("Start test for task_day object");

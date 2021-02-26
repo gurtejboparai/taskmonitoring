@@ -24,7 +24,7 @@ public class DayActivity extends AppCompatActivity {
         date.setText(dateString);
     }
     public void buttonAddTaskOnClick(){
-        Intent newTaskIntent = new Intent(DayActivity.this, AddTask.class);
+        Intent newTaskIntent = new Intent(DayActivity.this, AddActivity.class);
         DayActivity.this.startActivity(newTaskIntent);
     }
 

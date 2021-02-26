@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Presentation.HomeActivity">
 
     <Button
         android:id="@+id/Add_Task"
@@ -44,12 +44,12 @@
         android:layout_height="150dp"
         android:layout_marginTop="411dp"
         android:layout_marginBottom="170dp"
-        android:onClick="buttonViewTaskOnClick"
         android:text="@string/view_tasks"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="buttonViewTaskOnClick"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

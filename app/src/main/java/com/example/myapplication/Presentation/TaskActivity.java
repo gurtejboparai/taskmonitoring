@@ -1,25 +1,17 @@
 package com.example.myapplication.Presentation;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.myapplication.Business.Access_task;
 import com.example.myapplication.Object.Tasks;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.myapplication.R;
@@ -64,11 +56,11 @@ public class TaskActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
     public void editButtonOnClick(View v){
-        Intent newTaskIntent = new Intent(TaskActivity.this, EditTask.class);
+        Intent newTaskIntent = new Intent(TaskActivity.this, EditActivity.class);
         TaskActivity.this.startActivity(newTaskIntent);
     }
     public void addButtonOnclick(View v){
-        Intent newTaskIntent = new Intent(TaskActivity.this, AddTask.class);
+        Intent newTaskIntent = new Intent(TaskActivity.this, AddActivity.class);
         TaskActivity.this.startActivity(newTaskIntent);
     }
 

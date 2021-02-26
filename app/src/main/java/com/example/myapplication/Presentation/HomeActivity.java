@@ -3,7 +3,6 @@ package com.example.myapplication.Presentation;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import com.example.myapplication.R;
@@ -35,7 +34,7 @@ public class HomeActivity extends Activity {
     }
 
     public void buttonAddTaskOnClick(View v){
-        Intent newTaskIntent = new Intent(HomeActivity.this, AddTask.class);
+        Intent newTaskIntent = new Intent(HomeActivity.this, AddActivity.class);
         HomeActivity.this.startActivity(newTaskIntent);
     }
 }

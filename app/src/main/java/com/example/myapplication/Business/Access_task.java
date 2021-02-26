@@ -18,7 +18,7 @@ public class Access_task extends AppCompatActivity {
     private Task_persistence taskPersistence;
 
     public Access_task(){
-        // need a fake database here
+
         taskPersistence = Service.getTaskPersistence();
         allTasks=new ArrayList<>();
     }
@@ -63,10 +63,9 @@ public class Access_task extends AppCompatActivity {
         return taskPersistence.checkForSame(task, task1);
     }
 
-
-
-
-
+    public final int getNewTaskId(){
+        return taskPersistence.getNewTaskId();
+    }
 
 
 }

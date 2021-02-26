@@ -16,7 +16,7 @@ public class TaskPersistenceDB implements Task_persistence {
     }
 
 
-    public int getNumOfTasks(){return numOfTasks;}
+    public int getNewTaskId(){return numOfTasks;}
 
     public void addTasks(){
         numOfTasks = 0;
@@ -88,5 +88,6 @@ public class TaskPersistenceDB implements Task_persistence {
     public List<Tasks> getAllTasks() {
         return this.tasksList;
     }
+
 
 }

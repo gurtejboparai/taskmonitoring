@@ -24,10 +24,10 @@ public class HomeActivity extends Activity {
         super.onDestroy();
     }
 
-    public boolean onCreateOptionsMenu(Menu menu){
+   /* public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.menu_home, menu);
         return true;
-    }
+    }*/
 
     public void buttonAddTaskOnClick(View v){
         Intent newTaskIntent = new Intent(HomeActivity.this, TaskActivity.class);

@@ -52,8 +52,7 @@ public class Tasks {
 
            return true;
 
-        }
-        else {
+        }else {
             return false;
         }
     }

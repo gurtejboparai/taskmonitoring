@@ -10,7 +10,7 @@ public class DayTest {
     public Day testDay,testDay2;
 
     @Before
-    public void setUp(){
+    public void setUp() throws Day.typeInException {
         System.out.println("\n\tStart the test for Day class\n\n");
 
         testDay=new Day(12,10,2021);
@@ -61,7 +61,7 @@ public class DayTest {
     }
 
     @Test
-    public void changeDay() {
+    public void changeDay() throws Day.typeInException {
         System.out.println("\nstart: test Day.changeDay()\n");
 
         testDay2.changeDay(30);
@@ -73,7 +73,7 @@ public class DayTest {
     }
 
     @Test
-    public void changeMonth() {
+    public void changeMonth() throws Day.typeInException {
         System.out.println("\nstart: test Day.changeMonth()\n");
 
             testDay2.changeMonth(3);
@@ -83,7 +83,7 @@ public class DayTest {
     }
 
     @Test
-    public void changeYear() {
+    public void changeYear() throws Day.typeInException {
         System.out.println("\nstart: test Day.changeYear()\n");
 
             testDay2.changeYear(2014);

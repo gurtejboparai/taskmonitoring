@@ -76,8 +76,8 @@ public class DayTest {
     public void changeMonth() {
         System.out.println("\nstart: test Day.changeMonth()\n");
 
-        testDay2.changeMonth(3);
-        assertEquals("should change month to 3, but not work",testDay2.getMonth(),3);
+            testDay2.changeMonth(3);
+            assertEquals("should change month to 3, but not work",testDay2.getMonth(),3);
 
         System.out.println("\nend: test Day.changeMonth()\n");
     }
@@ -86,8 +86,8 @@ public class DayTest {
     public void changeYear() {
         System.out.println("\nstart: test Day.changeYear()\n");
 
-        testDay2.changeYear(2014);
-        assertEquals("should change year to 2014, but not work",testDay2.getYear(),2014);
+            testDay2.changeYear(2014);
+            assertEquals("should change year to 2014, but not work",testDay2.getYear(),2014);
 
         System.out.println("\nend: test Day.changeYear()\n");
     }

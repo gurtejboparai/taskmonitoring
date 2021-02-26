@@ -12,7 +12,7 @@ public class DayPersistenceDB implements Day_persistence {
         this.dayList = new ArrayList<>();
     }
 
-    public void addDays(Day target){
+    public void addDays(){
         dayList.add(new Day(3,3,2021));
         dayList.add(new Day(3,3,2021));
         dayList.add(new Day(4,3,2021));

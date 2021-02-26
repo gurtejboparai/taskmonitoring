@@ -11,6 +11,7 @@
         android:theme="@style/Theme.MyApplication">
         <activity android:name=".Presentation.AddActivity">
         </activity>
+        <activity android:name=".Presentation.TaskActivity" />
         <activity android:name=".Presentation.DayActivity" />
         <activity android:name=".SplashPageActivity">
             <intent-filter>

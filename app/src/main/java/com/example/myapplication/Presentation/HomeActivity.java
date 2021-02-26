@@ -29,10 +29,13 @@ public class HomeActivity extends Activity {
         return true;
     }*/
 
-    public void buttonAddTaskOnClick(View v){
+    public void buttonViewTaskOnClick(View v){
         Intent newTaskIntent = new Intent(HomeActivity.this, TaskActivity.class);
         HomeActivity.this.startActivity(newTaskIntent);
     }
 
-
+    public void buttonAddTaskOnClick(View v){
+        Intent newTaskIntent = new Intent(HomeActivity.this, AddTask.class);
+        HomeActivity.this.startActivity(newTaskIntent);
+    }
 }

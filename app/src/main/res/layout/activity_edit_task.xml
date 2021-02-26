@@ -24,7 +24,7 @@
 
     <EditText
         android:autofillHints=""
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/editTextTitle"
         android:layout_width="227dp"
         android:layout_height="53dp"
         android:layout_marginTop="116dp"
@@ -98,7 +98,7 @@
 
     <EditText
         android:autofillHints=""
-        android:id="@+id/editTextTextMultiLine"
+        android:id="@+id/editTextDescription"
         android:layout_width="254dp"
         android:layout_height="122dp"
         android:layout_marginStart="77dp"
@@ -135,19 +135,19 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/high"
             android:layout_width="90dp"
             android:layout_height="34dp"
             android:text="@string/high" />
 
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/medium"
             android:layout_width="90dp"
             android:layout_height="34dp"
             android:text="@string/medium" />
 
         <RadioButton
-            android:id="@+id/radioButton3"
+            android:id="@+id/low"
             android:layout_width="90dp"
             android:layout_height="34dp"
             android:text="@string/low" />
@@ -171,7 +171,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Switch
-        android:id="@+id/switch1"
+        android:id="@+id/switchStatus"
         android:layout_width="124dp"
         android:layout_height="36dp"
         android:layout_marginStart="213dp"
@@ -206,7 +206,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/cancelBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="243dp"
@@ -215,14 +215,14 @@
         android:layout_marginEnd="75dp"
         android:layout_marginRight="75dp"
         android:layout_marginBottom="93dp"
-        android:text="@string/delete"
+        android:text="@android:string/cancel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/saveBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="71dp"

@@ -42,41 +42,29 @@ public class DayPersistenceDB implements Day_persistence {
     }*/
 
     @Override
-    public void setMonth(Day target, int newMonth) {
+    public void setMonth(Day target, int newMonth)throws Day.typeInException {
         int index = this.dayList.indexOf(target);
         if(index>=0){
-            try {
                 target.changeMonth(newMonth);
-            }catch (Day.typeInException e){
-                e.printStackTrace();
-            }
-
-            this.dayList.set(index,target);
+                 this.dayList.set(index,target);
         }
     }
 
     @Override
-    public void setDay(Day target, int newDay) {
+    public void setDay(Day target, int newDay) throws Day.typeInException{
         int index = this.dayList.indexOf(target);
         if(index>=0){
-            try {
                 target.changeDay(newDay);
-            } catch (Day.typeInException e) {
-                e.printStackTrace();
-            }
             this.dayList.set(index,target);
         }
     }
 
     @Override
-    public void setYear(Day target, int newYear) {
+    public void setYear(Day target, int newYear)throws Day.typeInException {
         int index = this.dayList.indexOf(target);
         if(index>=0){
-            try {
+
                 target.changeYear(newYear);
-            }catch (Day.typeInException e){
-                e.printStackTrace();
-            }
 
             this.dayList.set(index,target);
         }
@@ -100,4 +88,6 @@ public class DayPersistenceDB implements Day_persistence {
     public List<Day> getAllDay() {
         return this.dayList;
     }
+
+
 }

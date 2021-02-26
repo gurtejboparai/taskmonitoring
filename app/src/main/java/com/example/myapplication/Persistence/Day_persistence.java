@@ -5,9 +5,9 @@ import java.util.List;
 public interface Day_persistence {
     //void setStartTime(Day target, int newTime);
     //void setEndTime(Day target, int newTime);
-    void setMonth(Day target, int newMonth);
-    void setDay(Day target, int newDay);
-    void setYear(Day target, int newYear);
+    void setMonth(Day target, int newMonth)throws Day.typeInException;
+    void setDay(Day target, int newDay)throws Day.typeInException;
+    void setYear(Day target, int newYear)throws Day.typeInException;
     void deleteDay(Day target);
     void addDay(Day target);
 

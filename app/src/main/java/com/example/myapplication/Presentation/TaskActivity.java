@@ -21,17 +21,15 @@ import java.util.List;
 
 public class TaskActivity extends AppCompatActivity {
 
-    private Access_task accessTask;
     private List<Tasks> tasksList;
     private ArrayAdapter<Tasks> tasksArrayAdapter;
-    int selectPos =-1;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task);
 
-        accessTask= new Access_task();
+        Access_task accessTask = new Access_task();
         try{
             tasksList=new ArrayList<>();
             tasksList.addAll(accessTask.getAllTasks());
@@ -39,11 +37,13 @@ public class TaskActivity extends AppCompatActivity {
                 @Override
                 public View getView(int position, View convertView, ViewGroup parent){
                     View view = super.getView(position,convertView,parent);
-                        TextView title = (TextView) view.findViewById(R.id.nameTask);
-                        TextView day = (TextView) view.findViewById(R.id.descriptionTask);
+                    TextView title = (TextView) view.findViewById(android.R.id.text1);
+                    TextView day = (TextView) view.findViewById(android.R.id.text2);
+                    TextView description = (TextView)view.findViewById(R.id.descriptionTask);
 
-                        title.setText(tasksList.get(position).getTaskTitle());
-                        day.setText(tasksList.get(position).getTaskDate());
+                    title.setText(tasksList.get(position).getTaskTitle());
+                    day.setText(tasksList.get(position).getTaskDate());
+                    description.setText((tasksList.get(position).getTaskDescription()));
                     return view;
                 }
             };

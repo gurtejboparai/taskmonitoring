@@ -23,6 +23,10 @@ public class Access_TD extends AppCompatActivity {
         taskDayPersistenceDB.setDeadline(task,start,end);
     }
 
+    public void addTaskDayP(Task_Day newItem){
+        taskDayPersistenceDB.addTaskDayP(newItem);
+    }
+
     public List<Task_Day> getAllTD() {
         listofTD = taskDayPersistenceDB.getAllTD();
         return listofTD;

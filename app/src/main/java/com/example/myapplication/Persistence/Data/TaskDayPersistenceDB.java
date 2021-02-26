@@ -22,6 +22,10 @@ public class TaskDayPersistenceDB implements Interface_TD {
         taskDayList.add(new Task_Day(new Tasks(numOfTasks +1,"COMP3340 lab","Lab-3 is due tomorrow", "2021-02-28")));
 
     }
+
+    public void addTaskDayP(Task_Day newItem){
+        taskDayList.add(newItem);
+    }
     @Override
     public void setDeadline(Task_Day td, String start, String end) {
         int index = taskDayList.indexOf(td);

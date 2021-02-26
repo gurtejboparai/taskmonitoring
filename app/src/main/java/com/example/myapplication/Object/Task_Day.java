@@ -56,5 +56,4 @@ public class Task_Day {
         return day;
     }
 
-
 }

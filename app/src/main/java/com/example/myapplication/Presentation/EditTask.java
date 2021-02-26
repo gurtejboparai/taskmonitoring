@@ -33,7 +33,7 @@ public class EditTask extends AppCompatActivity {
 
     EditText title,description,date;
     ImageButton calender;
-    Button highPriority, mediumPriority, lowPriority,status, save,cancel;
+    Button priority, status, save, cancel;
 
     private Access_task accessTask = new Access_task();
 
@@ -52,18 +52,19 @@ public class EditTask extends AppCompatActivity {
         taskDate = currTask.getTaskDate();
 
 
-        date = findViewById(R.id.editTextDate);
+        date = findViewById(R.id.editDate);
+
         calender = findViewById(R.id.datePicker);
-        title = findViewById(R.id.editTextTitle);
+        title = findViewById(R.id.editTitle);
         title.setText(taskTitle);
 
-        description = findViewById(R.id.editTextDescription);
+        description = findViewById(R.id.editDescription);
         description.setText(taskDescription);
 
-        highPriority = findViewById(R.id.high);
-        mediumPriority = findViewById(R.id.medium);
-        lowPriority = findViewById(R.id.low);
+        priority = findViewById(R.id.switchPrio);
+
         status = findViewById(R.id.switchStatus);
+
         save = findViewById(R.id.saveBtn);
         cancel = findViewById(R.id.cancelBtn);
 

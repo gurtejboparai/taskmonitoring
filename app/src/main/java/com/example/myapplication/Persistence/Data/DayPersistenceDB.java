@@ -13,12 +13,16 @@ public class DayPersistenceDB implements Day_persistence {
     }
 
     public void addDays(){
+        try{
         dayList.add(new Day(3,3,2021));
         dayList.add(new Day(3,3,2021));
         dayList.add(new Day(4,3,2021));
         dayList.add(new Day(4,3,2021));
         dayList.add(new Day(4, 3,2021));
-        dayList.add(new Day(5,3,2021));
+        dayList.add(new Day(5,3,2021));}
+        catch (Day.typeInException e){
+            e.printStackTrace();
+        }
     }
 
     /*@Override
@@ -43,7 +47,12 @@ public class DayPersistenceDB implements Day_persistence {
     public void setMonth(Day target, int newMonth) {
         int index = this.dayList.indexOf(target);
         if(index>=0){
-            target.changeMonth(newMonth);
+            try {
+                target.changeMonth(newMonth);
+            }catch (Day.typeInException e){
+                e.printStackTrace();
+            }
+
             this.dayList.set(index,target);
         }
     }
@@ -52,7 +61,11 @@ public class DayPersistenceDB implements Day_persistence {
     public void setDay(Day target, int newDay) {
         int index = this.dayList.indexOf(target);
         if(index>=0){
-            target.changeDay(newDay);
+            try {
+                target.changeDay(newDay);
+            } catch (Day.typeInException e) {
+                e.printStackTrace();
+            }
             this.dayList.set(index,target);
         }
     }
@@ -61,7 +74,12 @@ public class DayPersistenceDB implements Day_persistence {
     public void setYear(Day target, int newYear) {
         int index = this.dayList.indexOf(target);
         if(index>=0){
-            target.changeYear(newYear);
+            try {
+                target.changeYear(newYear);
+            }catch (Day.typeInException e){
+                e.printStackTrace();
+            }
+
             this.dayList.set(index,target);
         }
     }

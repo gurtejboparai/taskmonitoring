@@ -38,6 +38,8 @@ public class AddActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
 
+        accessTask = new Access_task();
+
         date = findViewById(R.id.date);
         calender = findViewById(R.id.datePicker);
         title = findViewById(R.id.taskTitle);
@@ -69,13 +71,13 @@ public class AddActivity extends AppCompatActivity {
                 datePickerDialog.show();
             }
         });
-    save.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            newTask=new Tasks(0,titleTxt,descriptionTxt,mYear+"-"+mMonth+"-"+mDate);
-
-        }
-    });
+//    save.setOnClickListener(new View.OnClickListener() {
+//        @Override
+//        public void onClick(View v) {
+//            newTask=new Tasks(0,titleTxt,descriptionTxt,mYear+"-"+mMonth+"-"+mDate);
+//
+//        }
+//    });
     }
 
     public void saveBtnOnClick(View view){
@@ -94,7 +96,7 @@ public class AddActivity extends AppCompatActivity {
             try{
                 title = this.title.getText().toString().trim();
                 description = this.description.getText().toString().trim();
-                date = this.description.getText().toString().trim();
+                date = this.date.getText().toString().trim();
 
                 Tasks task = new Tasks(accessTask.getNewTaskId(), title, description, date);
                 accessTask.addTask(newTask);

@@ -26,7 +26,7 @@ public class Access_taskTest {
     @Before
     public void setUp(){
         taskDB = new TaskPersistenceDB();
-        accessTaskDB = new Access_task(taskDB);
+        accessTaskDB = new Access_task();
 
         //taskPersistence = mock(Task_persistence.class);
         //accessTaskMock = new Access_task(taskPersistence);
@@ -51,7 +51,7 @@ public class Access_taskTest {
 
         System.out.println("\nStarting TestAccessTask...");
 
-        int taskId = taskDB.getNumOfTasks();
+        int taskId = taskDB.getNewTaskId();
 
         String title = "3350 Due";
         String description = "Iteration 1";

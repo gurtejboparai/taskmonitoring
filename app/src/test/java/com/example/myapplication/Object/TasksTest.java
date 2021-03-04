@@ -23,11 +23,11 @@ public class TasksTest {
 
         assertNotNull(oldTask);
         assertNotNull(newTask);
-        assertEquals(0,newTask.getCurrTaskId());
-        assertEquals("Task 1",newTask.getTaskTitle());
-        assertEquals("Task 1 Description",newTask.getTaskDescription());
-        assertEquals("2021-02-25",newTask.getTaskDate());
-        assertEquals("on going",newTask.getStatus());
+        //assertEquals(0,newTask.getCurrTaskId());
+        assertEquals("What's new",newTask.getTaskTitle());
+        assertEquals("Some changes here",newTask.getTaskDescription());
+        assertEquals("2021-02-26",newTask.getTaskDate());
+        assertEquals("To Do",newTask.getStatus());
         assertFalse(newTask.checkForSame(oldTask));
 
         System.out.println("Finished testTasks...");

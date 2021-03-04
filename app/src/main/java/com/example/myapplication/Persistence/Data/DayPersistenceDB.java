@@ -80,8 +80,7 @@ public class DayPersistenceDB implements Day_persistence {
 
     @Override
     public void addDay(Day target) {
-        if(!this.dayList.contains(target))
-            this.dayList.add(target);
+        this.dayList.add(target);
     }
 
     @Override

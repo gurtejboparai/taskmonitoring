@@ -1,6 +1,7 @@
 package com.example.myapplication.Business;
 import android.content.Context;
 
+import com.example.myapplication.Object.Day;
 import com.example.myapplication.Object.Task_Day;
 import com.example.myapplication.Object.Tasks;
 import com.example.myapplication.Persistence.Data.TaskDayPersistenceDB;
@@ -28,12 +29,12 @@ public class AccessTDTest {
         accessTd = new Access_TD(taskDayPersistenceDB);
     }
     @Test
-    public void testAddTaskDayNull(){
+    public void testAddTaskDayNull() throws Day.typeInException {
         Task_Day task = new Task_Day(null);
         assertNull(task);
     }
     @Test
-    public void testSetDeadline(){
+    public void testSetDeadline() throws Day.typeInException {
         Task_Day taskDay =  new Task_Day(new Tasks(numOfTasks +1,"COMP3340 lab","Lab-3 is due tomorrow", "2021-02-28"));
         String startTime ="13:00";
         String endTime ="15:00";

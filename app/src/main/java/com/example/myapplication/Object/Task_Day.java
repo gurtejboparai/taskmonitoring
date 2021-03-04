@@ -36,21 +36,21 @@ public class Task_Day {
 
     private int getaMonth(){
         int month =-1;
-        String list[] = task.getTaskDate().split("-");
+        String[] list = task.getTaskDate().split("-");
         if(list.length==3 )
             month = Integer.parseInt(list[1].trim());
         return month;
     }
     private int getaYear(){
         int year =-1;
-        String list[] = task.getTaskDate().split("-");
+        String[] list = task.getTaskDate().split("-");
         if(list.length==3 )
             year = Integer.parseInt(list[0].trim());
         return year;
     }
     private int getaDay(){
         int day=-1;
-        String list[] = task.getTaskDate().split("-");
+        String[] list = task.getTaskDate().split("-");
         if(list.length==3 )
             day = Integer.parseInt(list[0].trim());
         return day;

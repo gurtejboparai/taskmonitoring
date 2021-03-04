@@ -24,8 +24,9 @@ public class AccessTDTest {
     private Access_TD accessTd;
     int numOfTasks =0;
     @Before
-    public void setUp(){
+    public void setUp() throws Day.typeInException {
         taskDayPersistenceDB = new TaskDayPersistenceDB();
+        taskDayPersistenceDB.addTaskDay();
         accessTd = new Access_TD(taskDayPersistenceDB);
     }
     /*@Test

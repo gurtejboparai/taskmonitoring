@@ -9,7 +9,7 @@ public class Day {
     //private int startTime;
     //private int endTime;
 
-    public Day(int day, int month, int year)throws typeInException{
+    public Day(int year, int month, int day)throws typeInException{
         if(day>31){
             throw new typeInException("newDay can not bigger than 31");
         }else if(day<=0){

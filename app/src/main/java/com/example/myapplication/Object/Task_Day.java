@@ -11,7 +11,7 @@ public class Task_Day {
         this.StartTime=startTime;
         this.EndTime=EndTime;
     }
-    public Task_Day(final Tasks task)throws Day.typeInException{
+    public Task_Day(final Tasks task) throws Day.typeInException {
         this.task=task;
         this.day = new Day(getaYear(),getaMonth(),getaDay());
         this.StartTime="startTime";
@@ -34,25 +34,25 @@ public class Task_Day {
         this.EndTime=end;
     }
 
-    private int getaMonth(){
-        int month =-1;
+    public int getaMonth(){
+        int month =0;
         String[] list = task.getTaskDate().split("-");
         if(list.length==3 )
             month = Integer.parseInt(list[1].trim());
         return month;
     }
-    private int getaYear(){
-        int year =-1;
+    public int getaYear(){
+        int year =0;
         String[] list = task.getTaskDate().split("-");
         if(list.length==3 )
             year = Integer.parseInt(list[0].trim());
         return year;
     }
-    private int getaDay(){
-        int day=-1;
-        String[] list = task.getTaskDate().split("-");
+    public int getaDay(){
+        int day=0;
+        String[] list = this.task.getTaskDate().split("-");
         if(list.length==3 )
-            day = Integer.parseInt(list[0].trim());
+            day = Integer.parseInt(list[2].trim());
         return day;
     }
 

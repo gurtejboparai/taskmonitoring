@@ -5,6 +5,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.Object.Tasks;
+import com.example.myapplication.Persistence.Data.TaskDayPersistenceDB;
 import com.example.myapplication.Persistence.Data.TaskPersistenceDB;
 import com.example.myapplication.Persistence.Task_persistence;
 import com.example.myapplication.application.Service;
@@ -23,6 +24,10 @@ public class Access_task extends AppCompatActivity {
 //        taskPersistence = Service.getTaskPersistence();
         taskPersistence = new TaskPersistenceDB();
         allTasks=new ArrayList<>();
+    }
+    public Access_task(TaskPersistenceDB DB){
+        taskPersistence = DB;
+        allTasks= DB.getAllTasks();
     }
 
     // we don't need this constructor for this iteration

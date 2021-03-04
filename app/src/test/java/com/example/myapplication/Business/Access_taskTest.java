@@ -13,7 +13,9 @@ import java.util.List;
 import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertNull;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
 
 public class Access_taskTest {
 
@@ -26,7 +28,8 @@ public class Access_taskTest {
     @Before
     public void setUp(){
         taskDB = new TaskPersistenceDB();
-        accessTaskDB = new Access_task();
+        taskDB.addTasks();
+        accessTaskDB = new Access_task(taskDB);
 
         //taskPersistence = mock(Task_persistence.class);
         //accessTaskMock = new Access_task(taskPersistence);
@@ -69,6 +72,15 @@ public class Access_taskTest {
 
         System.out.println("Finished AccessTaskTest...");
     }
+    @Test
+    public void getTask(){
+        String title = "3350 Due";
+        String description = "Iteration 1";
+        String date = "2021-02-26";
+
+        Tasks newTask = new Tasks(0, title, description, date);
+        assertNotNull(newTask);
+    }
 
     @Test
     public void testTaskUpdate()
@@ -76,6 +88,7 @@ public class Access_taskTest {
         System.out.println("\nStarting testTaskUpdate: update task we already have...");
 
         Tasks taskNeedUpdate = accessTaskDB.getTask(0);
+        assertNotNull(taskNeedUpdate);
 
         String oldTitle = taskNeedUpdate.getTaskTitle();
         String oldDescription = taskNeedUpdate.getTaskDescription();
@@ -87,6 +100,7 @@ public class Access_taskTest {
         Tasks updateTask = new Tasks(taskNeedUpdate.getCurrTaskId(), newTitle, newDescription, oldDate);
 
         accessTaskDB.editTask(taskNeedUpdate,updateTask);
+        taskNeedUpdate = accessTaskDB.getTask(0);
 
         assertNotEquals(oldTitle, taskNeedUpdate.getTaskTitle());
         assertNotEquals(oldDescription, taskNeedUpdate.getTaskDescription());
@@ -115,19 +129,16 @@ public class Access_taskTest {
 
         int taskId = 2;
 
-        Tasks taskNeedDel;
+        Tasks taskNeedDel= accessTaskDB.getTask(taskId);
 
-        taskNeedDel = accessTaskDB.getTask(taskId);
-
-        Assert.assertNotNull(taskNeedDel);
+        assertNotNull(taskNeedDel);
         assertEquals(taskId, taskNeedDel.getCurrTaskId());
 
-        taskNeedDel = accessTaskDB.deleteTask(taskNeedDel);
+        Tasks deleteTask = accessTaskDB.deleteTask(taskNeedDel);
 
-        assertEquals(taskId, taskNeedDel.getCurrTaskId());
+        assertEquals(taskId, deleteTask.getCurrTaskId());
 
         Tasks checkTask = accessTaskDB.getTask(2);
-
         assertNull(checkTask);
 
         System.out.println("Finished testRemoveNotNull...");
@@ -170,11 +181,12 @@ public class Access_taskTest {
         assertNotNull(taskOne);
         assertNotNull(taskTwo);
 
-        assertEquals(taskOne.getTaskTitle(), taskTwo.getTaskTitle());
-        assertEquals(taskOne.getTaskDescription(), taskTwo.getTaskDescription());
-        assertEquals(taskOne.getTaskDate(), taskTwo.getTaskDate());
+        assertNotEquals(taskOne.getTaskTitle(), taskTwo.getTaskTitle());
+        assertNotEquals(taskOne.getTaskDescription(), taskTwo.getTaskDescription());
+        assertNotEquals(taskOne.getTaskDate(), taskTwo.getTaskDate());
 
-        accessTaskDB.checkForSame(taskOne,taskTwo);
+        boolean a =accessTaskDB.checkForSame(taskOne,taskTwo);
+        assertFalse(a);
 
         System.out.println("Finished testIfSame...");
     }

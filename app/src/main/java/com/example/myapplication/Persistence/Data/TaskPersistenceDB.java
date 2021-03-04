@@ -9,7 +9,7 @@ import java.util.List;
 
 public class TaskPersistenceDB implements Task_persistence {
     List<Tasks> tasksList;
-    int numOfTasks;
+    private int numOfTasks=0;
 
     public TaskPersistenceDB(){
         tasksList = new ArrayList<>();
@@ -19,22 +19,22 @@ public class TaskPersistenceDB implements Task_persistence {
     public int getNewTaskId(){return numOfTasks;}
 
     public void addTasks(){
-        numOfTasks = 0;
-        this.tasksList.add(new Tasks(numOfTasks +1, "Call the doctor","setup appointment for Kevin","2021-03-02"));
+        this.tasksList.add(new Tasks(numOfTasks, "Call the doctor","setup appointment for Kevin","2021-03-02"));
         this.tasksList.add(new Tasks(numOfTasks +1,"Workout","Do cardio for 30 minutes","2021-03-04"));
-        this.tasksList.add(new Tasks(numOfTasks +1,"COMP3350 due","Iteration-1 due on Friday","2021-03-03"));
-        this.tasksList.add(new Tasks(numOfTasks +1,"Meal Prep","Prepare the meals for next 3 days and store","2021-03-03"));
-        this.tasksList.add(new Tasks(numOfTasks +1,"COMP3340 lab","Lab-3 is due tomorrow", "2021-02-28"));
-        this.tasksList.add(new Tasks(numOfTasks +1,"Talk to the manager","Inform my new availability to the manager ","2021-03-03"));
+        this.tasksList.add(new Tasks(numOfTasks +2,"COMP3350 due","Iteration-1 due on Friday","2021-03-03"));
+        this.tasksList.add(new Tasks(numOfTasks +3,"Meal Prep","Prepare the meals for next 3 days and store","2021-03-03"));
+        this.tasksList.add(new Tasks(numOfTasks +4,"COMP3340 lab","Lab-3 is due tomorrow", "2021-02-28"));
+        this.tasksList.add(new Tasks(numOfTasks +5,"Talk to the manager","Inform my new availability to the manager ","2021-03-03"));
     }
 
 
     public Tasks getTask(int taskId) {
+        Tasks result = null;
         for(Tasks task : this.tasksList){
             if(task.getCurrTaskId()==taskId)
-                return task;
+                result =task;
         }
-        return null;
+        return result;
     }
 
     public Tasks addTask(Tasks task){
@@ -48,7 +48,13 @@ public class TaskPersistenceDB implements Task_persistence {
 
     @Override
     public Tasks deleteTask(Tasks task) {
-        return null;
+        int index = tasksList.indexOf(task);
+        if(index>=0)
+            tasksList.remove(task);
+        if(tasksList.contains(task))
+            return null;
+        else
+            return task;
     }
 
     @Override

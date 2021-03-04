@@ -10,6 +10,7 @@ public interface Day_persistence {
     void setYear(Day target, int newYear)throws Day.typeInException;
     void deleteDay(Day target);
     void addDay(Day target);
+    Day getDay(Day day);
 
     List<Day>getAllDay();
 }

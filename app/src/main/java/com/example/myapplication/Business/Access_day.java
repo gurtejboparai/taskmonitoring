@@ -6,21 +6,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.*;
 
 import com.example.myapplication.Object.Day;
+import com.example.myapplication.Persistence.Data.DayPersistenceDB;
 import com.example.myapplication.Persistence.Day_persistence;
 import com.example.myapplication.application.Service;
 
 public class Access_day extends AppCompatActivity {
     private List<Day>allDays;
-    private Day_persistence DayPersistence;
+    private DayPersistenceDB DayPersistence;
 
     public Access_day(){
         allDays = new ArrayList<>();
-        DayPersistence = Service.getDayPersistence();
+        DayPersistence = new DayPersistenceDB();
     }
 
-    public Access_day(Day_persistence DayPersistence){
-        this.DayPersistence = DayPersistence;
-        allDays = DayPersistence.getAllDay();
+    public Access_day(DayPersistenceDB DB){
+        this.DayPersistence = DB;
+        allDays = DB.getAllDay();
+    }
+    public Day getDay(Day day){
+        return this.DayPersistence.getDay(day);
     }
 
     /*void setStartTime(Day target, int newTime){

@@ -14,12 +14,12 @@ public class DayPersistenceDB implements Day_persistence {
 
     public void addDays()throws Day.typeInException{
 
-        dayList.add(new Day(3,3,2021));
-        dayList.add(new Day(3,3,2021));
-        dayList.add(new Day(4,3,2021));
-        dayList.add(new Day(4,3,2021));
-        dayList.add(new Day(4, 3,2021));
-        dayList.add(new Day(5,3,2021));
+        dayList.add(new Day(2021,3,3));
+        dayList.add(new Day(2021,3,3));
+        dayList.add(new Day(2021,3,4));
+        dayList.add(new Day(2021,3,4));
+        dayList.add(new Day(2021, 3,4));
+        dayList.add(new Day(2021,3,5));
 
     }
 
@@ -81,6 +81,15 @@ public class DayPersistenceDB implements Day_persistence {
     @Override
     public void addDay(Day target) {
         this.dayList.add(target);
+    }
+
+    @Override
+    public Day getDay(Day day){
+        int index = this.dayList.indexOf(day);
+        if(index>=0){
+            return dayList.get(index);
+        }
+        else return null;
     }
 
     @Override

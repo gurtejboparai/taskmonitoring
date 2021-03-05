@@ -11,7 +11,10 @@ public class Tasks {
 
     public Tasks(final int taskId, String taskTitle, String taskDescription, String taskDate){
         this.taskId = taskId;
-        this.taskTitle = taskTitle;
+        if(taskTitle.length()==0)
+            this.taskTitle = "no name";
+        else
+            this.taskTitle = taskTitle;
         this.taskDescription = taskDescription;
         this.taskDate = taskDate;
         this.status = "on going";
@@ -45,7 +48,8 @@ public class Tasks {
     }
 
     public void setStatus(String newStatus){
-        this.status = newStatus;
+        if(newStatus.length()!=0)
+            this.status = newStatus;
     }
 
 }

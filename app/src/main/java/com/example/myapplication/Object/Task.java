@@ -2,14 +2,14 @@ package com.example.myapplication.Object;
 
 import java.util.Date;
 
-public class Tasks {
+public class Task {
     private final int taskId;
     private String taskDate;
     private String taskTitle;
     private String taskDescription;
     private String status;
 
-    public Tasks(final int taskId, String taskTitle, String taskDescription, String taskDate){
+    public Task(final int taskId, String taskTitle, String taskDescription, String taskDate){
         this.taskId = taskId;
         if(taskTitle.length()==0)
             this.taskTitle = "no Title";
@@ -40,7 +40,7 @@ public class Tasks {
     public void setTaskDate(String taskDate){
         this.taskDate = taskDate;}
 
-    public boolean checkForSame(Tasks task1){
+    public boolean checkForSame(Task task1){
         return this.taskId == task1.taskId;
     }
 

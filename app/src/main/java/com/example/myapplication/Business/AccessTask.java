@@ -2,7 +2,7 @@ package com.example.myapplication.Business;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapplication.Object.Tasks;
+import com.example.myapplication.Object.Task;
 import com.example.myapplication.Persistence.Data.TaskPersistenceDB;
 
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import java.util.List;
 
 public class AccessTask extends AppCompatActivity {
 
-    private List<Tasks> allTasks;
+    private List<Task> allTasks;
     private final TaskPersistenceDB taskPersistence;
 
     public AccessTask(){
@@ -30,11 +30,11 @@ public class AccessTask extends AppCompatActivity {
 //        allTasks = taskPersistence.getAllTasks();
 //    }
 
-    public Tasks getTask(int taskId) {
+    public Task getTask(int taskId) {
         return taskPersistence.getTask(taskId);
     }
 
-    public Tasks addTask(final Tasks newTask){
+    public Task addTask(final Task newTask){
 //        if(newTask.getTaskTitle() == null || newTask.getTaskDescription() == null || newTask.getTaskDate() == null){ //if(newTask == null)
 //            String taskCreateMessage = "Please enter all fields.";
 //            Toast.makeText(getApplicationContext(), taskCreateMessage, Toast.LENGTH_SHORT).show();
@@ -42,26 +42,26 @@ public class AccessTask extends AppCompatActivity {
         return taskPersistence.addTask(newTask);
     }
 
-    public Tasks deleteTask(Tasks taskToDel){
+    public Task deleteTask(Task taskToDel){
         return taskPersistence.deleteTask(taskToDel);
     }
 
-    public void editTask(Tasks oldTask, Tasks newTask){
+    public void editTask(Task oldTask, Task newTask){
         taskPersistence.editTask(oldTask,newTask);
     }
 
-    public void setTaskDate(Tasks task, String taskDate){
+    public void setTaskDate(Task task, String taskDate){
         taskPersistence.setTaskDate(task, taskDate);
     }
 
-    public List<Tasks> getAllTasks() {
+    public List<Task> getAllTasks() {
         allTasks = taskPersistence.getAllTasks();
         return allTasks;
     }
-    public void setStatus(Tasks task, String newStatus){
+    public void setStatus(Task task, String newStatus){
         taskPersistence.setStatus(task,newStatus);
     }
-    public boolean checkForSame(Tasks task, Tasks task1){
+    public boolean checkForSame(Task task, Task task1){
         return taskPersistence.checkForSame(task, task1);
     }
 

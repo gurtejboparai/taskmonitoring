@@ -1,31 +1,25 @@
 package com.example.myapplication.Business;
 
-import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapplication.Object.Tasks;
-import com.example.myapplication.Persistence.Data.TaskDayPersistenceDB;
+import com.example.myapplication.Object.Task;
 import com.example.myapplication.Persistence.Data.TaskPersistenceDB;
-import com.example.myapplication.Persistence.Task_persistence;
-import com.example.myapplication.application.Service;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-public class Access_task extends AppCompatActivity {
+public class AccessTask extends AppCompatActivity {
 
-    private List<Tasks> allTasks;
+    private List<Task> allTasks;
     private final TaskPersistenceDB taskPersistence;
 
-    public Access_task(){
+    public AccessTask(){
 
 //        taskPersistence = Service.getTaskPersistence();
         taskPersistence = new TaskPersistenceDB();
         allTasks=new ArrayList<>();
     }
-    public Access_task(TaskPersistenceDB DB){
+    public AccessTask(TaskPersistenceDB DB){
         taskPersistence = DB;
         allTasks= DB.getAllTasks();
     }
@@ -36,11 +30,11 @@ public class Access_task extends AppCompatActivity {
 //        allTasks = taskPersistence.getAllTasks();
 //    }
 
-    public Tasks getTask(int taskId) {
+    public Task getTask(int taskId) {
         return taskPersistence.getTask(taskId);
     }
 
-    public Tasks addTask(final Tasks newTask){
+    public Task addTask(final Task newTask){
 //        if(newTask.getTaskTitle() == null || newTask.getTaskDescription() == null || newTask.getTaskDate() == null){ //if(newTask == null)
 //            String taskCreateMessage = "Please enter all fields.";
 //            Toast.makeText(getApplicationContext(), taskCreateMessage, Toast.LENGTH_SHORT).show();
@@ -48,26 +42,26 @@ public class Access_task extends AppCompatActivity {
         return taskPersistence.addTask(newTask);
     }
 
-    public Tasks deleteTask(Tasks taskToDel){
+    public Task deleteTask(Task taskToDel){
         return taskPersistence.deleteTask(taskToDel);
     }
 
-    public void editTask(Tasks oldTask, Tasks newTask){
+    public void editTask(Task oldTask, Task newTask){
         taskPersistence.editTask(oldTask,newTask);
     }
 
-    public void setTaskDate(Tasks task, String taskDate){
+    public void setTaskDate(Task task, String taskDate){
         taskPersistence.setTaskDate(task, taskDate);
     }
 
-    public List<Tasks> getAllTasks() {
+    public List<Task> getAllTasks() {
         allTasks = taskPersistence.getAllTasks();
         return allTasks;
     }
-    public void setStatus(Tasks task, String newStatus){
+    public void setStatus(Task task, String newStatus){
         taskPersistence.setStatus(task,newStatus);
     }
-    public boolean checkForSame(Tasks task, Tasks task1){
+    public boolean checkForSame(Task task, Task task1){
         return taskPersistence.checkForSame(task, task1);
     }
 

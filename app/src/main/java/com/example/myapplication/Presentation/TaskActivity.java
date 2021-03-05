@@ -3,8 +3,8 @@ package com.example.myapplication.Presentation;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.myapplication.Business.Access_task;
-import com.example.myapplication.Object.Tasks;
+import com.example.myapplication.Business.AccessTask;
+import com.example.myapplication.Object.Task;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,19 +21,19 @@ import java.util.List;
 
 public class TaskActivity extends AppCompatActivity {
 
-    private List<Tasks> tasksList;
-    private ArrayAdapter<Tasks> tasksArrayAdapter;
+    private List<Task> tasksList;
+    private ArrayAdapter<Task> tasksArrayAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task);
 
-        Access_task accessTask = new Access_task();
+        AccessTask accessTask = new AccessTask();
         try{
             tasksList=new ArrayList<>();
             tasksList.addAll(accessTask.getAllTasks());
-            tasksArrayAdapter = new ArrayAdapter<Tasks>(this, android.R.layout.simple_list_item_activated_2, android.R.id.text1, tasksList){
+            tasksArrayAdapter = new ArrayAdapter<Task>(this, android.R.layout.simple_list_item_activated_2, android.R.id.text1, tasksList){
                 @Override
                 public View getView(int position, View convertView, ViewGroup parent){
                     View view = super.getView(position,convertView,parent);

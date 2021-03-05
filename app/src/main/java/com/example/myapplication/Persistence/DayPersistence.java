@@ -2,7 +2,7 @@ package com.example.myapplication.Persistence;
 import com.example.myapplication.Object.Day;
 import java.util.List;
 
-public interface Day_persistence {
+public interface DayPersistence {
     //void setStartTime(Day target, int newTime);
     //void setEndTime(Day target, int newTime);
     void setMonth(Day target, int newMonth)throws Day.typeInException;

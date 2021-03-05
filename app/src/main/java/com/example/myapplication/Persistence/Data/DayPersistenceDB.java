@@ -1,12 +1,12 @@
 package com.example.myapplication.Persistence.Data;
 
 import com.example.myapplication.Object.Day;
-import com.example.myapplication.Persistence.Day_persistence;
+import com.example.myapplication.Persistence.DayPersistence;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DayPersistenceDB implements Day_persistence {
+public class DayPersistenceDB implements DayPersistence {
     List<Day> dayList;
     public DayPersistenceDB(){
         this.dayList = new ArrayList<>();

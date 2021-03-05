@@ -66,7 +66,7 @@ public class TaskPersistenceDB implements Task_persistence {
     }
 
     @Override
-    public void setTaskDate(Tasks task, String taskDate) throws Tasks.InPutNull{
+    public void setTaskDate(Tasks task, String taskDate){
         int index = this.tasksList.indexOf(task);
         if(index>=0){
             task.setTaskDate(taskDate);
@@ -76,13 +76,11 @@ public class TaskPersistenceDB implements Task_persistence {
 
     @Override
     public boolean checkForSame(Tasks task1, Tasks tasks2) {
-        if(task1.getCurrTaskId()==tasks2.getCurrTaskId())
-            return true;
-        return false;
+        return task1.getCurrTaskId() == tasks2.getCurrTaskId();
     }
 
     @Override
-    public void setStatus(Tasks task, String status) throws Tasks.InPutNull{
+    public void setStatus(Tasks task, String status) {
         int index = this.tasksList.indexOf(task);
         if(index>=0){
             task.setTaskDate(status);

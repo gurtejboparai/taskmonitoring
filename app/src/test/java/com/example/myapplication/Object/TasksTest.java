@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 public class TasksTest {
 
     @Test
-    public void testTasks ()throws Tasks.InPutNull
+    public void testTasks ()
     {
         Tasks newTask;
         Tasks oldTask;

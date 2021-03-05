@@ -17,7 +17,7 @@ import java.util.List;
 public class Access_task extends AppCompatActivity {
 
     private List<Tasks> allTasks;
-    private TaskPersistenceDB taskPersistence;
+    private final TaskPersistenceDB taskPersistence;
 
     public Access_task(){
 
@@ -57,11 +57,7 @@ public class Access_task extends AppCompatActivity {
     }
 
     public void setTaskDate(Tasks task, String taskDate){
-        try {
-            taskPersistence.setTaskDate(task, taskDate);
-        }catch ( Tasks.InPutNull e){
-            System.out.println(e.getMessage());
-        }
+        taskPersistence.setTaskDate(task, taskDate);
     }
 
     public List<Tasks> getAllTasks() {
@@ -69,11 +65,7 @@ public class Access_task extends AppCompatActivity {
         return allTasks;
     }
     public void setStatus(Tasks task, String newStatus){
-        try{
         taskPersistence.setStatus(task,newStatus);
-        }catch ( Tasks.InPutNull e){
-        System.out.println(e.getMessage());
-        }
     }
     public boolean checkForSame(Tasks task, Tasks task1){
         return taskPersistence.checkForSame(task, task1);

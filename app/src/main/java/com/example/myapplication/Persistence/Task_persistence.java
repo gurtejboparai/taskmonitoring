@@ -12,8 +12,8 @@ public interface Task_persistence {
     Tasks deleteTask( Tasks task);
     void editTask(Tasks oldTask, Tasks newTasks);
     boolean checkForSame(Tasks task1, Tasks task2);
-    void setStatus(Tasks task, String newStatus) throws Tasks.InPutNull;
-    void setTaskDate(Tasks tak,String taskDate) throws Tasks.InPutNull;
+    void setStatus(Tasks task, String newStatus) ;
+    void setTaskDate(Tasks tak,String taskDate) ;
 
     List<Tasks> getAllTasks();
 }

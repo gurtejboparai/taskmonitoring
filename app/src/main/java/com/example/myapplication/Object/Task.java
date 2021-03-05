@@ -1,15 +1,13 @@
 package com.example.myapplication.Object;
 
-import java.util.Date;
-
-public class Tasks {
+public class Task {
     private final int taskId;
     private String taskDate;
     private String taskTitle;
     private String taskDescription;
     private String status;
 
-    public Tasks(final int taskId, String taskTitle, String taskDescription, String taskDate){
+    public Task(final int taskId, String taskTitle, String taskDescription, String taskDate){
         this.taskId = taskId;
         this.taskTitle = taskTitle;
         this.taskDescription = taskDescription;
@@ -45,7 +43,7 @@ public class Tasks {
         else
         this.taskDate = taskDate;}
 
-    public boolean checkForSame(Tasks task1)throws InPutNull{
+    public boolean checkForSame(Task task1)throws InPutNull{
         if(task1==null){
             throw new InPutNull();
         }else if(this.taskId == task1.taskId){

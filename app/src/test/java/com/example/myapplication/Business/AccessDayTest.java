@@ -2,7 +2,6 @@ package com.example.myapplication.Business;
 
 import com.example.myapplication.Object.Day;
 import com.example.myapplication.Persistence.Data.DayPersistenceDB;
-import com.example.myapplication.Persistence.Day_persistence;
 
 import org.junit.After;
 import org.junit.Before;
@@ -10,8 +9,8 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class Access_dayTest {
-    Access_day testAccessDay;
+public class AccessDayTest {
+    AccessDay testAccessDay;
     DayPersistenceDB db;
     Day testDay;
     Day testDay2;
@@ -21,7 +20,7 @@ public class Access_dayTest {
         System.out.println("\n\tStart the test for Access_day class\n\n");
         db = new DayPersistenceDB();
         db.addDays();
-        testAccessDay=new Access_day();
+        testAccessDay=new AccessDay();
         testDay=new Day(2021,10,3);
         testDay2=new Day(1900,2,3);
         testAccessDay.addDay(testDay);

@@ -13,15 +13,15 @@ import android.widget.ImageButton;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapplication.Business.Access_task;
-import com.example.myapplication.Object.Tasks;
+import com.example.myapplication.Business.AccessTask;
+import com.example.myapplication.Object.Task;
 import com.example.myapplication.R;
 
 import java.util.Calendar;
 
 public class EditActivity extends AppCompatActivity {
 
-    Tasks currTask;
+    Task currTask;
 
     private int taskId;
     private int mDate,mMonth,mYear;
@@ -35,7 +35,7 @@ public class EditActivity extends AppCompatActivity {
     ImageButton calender;
     Button priority, status, save, cancel;
 
-    private Access_task accessTask = new Access_task();
+    private AccessTask accessTask = new AccessTask();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,7 +96,7 @@ public class EditActivity extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                currTask=new Tasks(0,taskTitle,taskDescription,mYear+"-"+mMonth+"-"+mDate);
+                currTask=new Task(0,taskTitle,taskDescription,mYear+"-"+mMonth+"-"+mDate);
 
             }
         });

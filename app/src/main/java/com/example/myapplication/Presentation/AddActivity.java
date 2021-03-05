@@ -3,7 +3,6 @@ package com.example.myapplication.Presentation;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Build;
@@ -15,8 +14,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.myapplication.Business.Access_task;
-import com.example.myapplication.Object.Tasks;
+import com.example.myapplication.Business.AccessTask;
+import com.example.myapplication.Object.Task;
 import com.example.myapplication.R;
 
 import java.util.Calendar;
@@ -24,21 +23,21 @@ import java.util.Calendar;
 public class AddActivity extends AppCompatActivity {
 
     private final String taskID = "taskID";
-    private Access_task accessTask;
+    private AccessTask accessTask;
     TextView date;
     ImageButton calender;
     private int mDate,mMonth,mYear;
     private String titleTxt,descriptionTxt;
     TextView title,description;
     Button highPriority,save,cancel;
-    Tasks newTask;
+    Task newTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
 
-        accessTask = new Access_task();
+        accessTask = new AccessTask();
 
         date = findViewById(R.id.date);
         calender = findViewById(R.id.datePicker);
@@ -98,7 +97,7 @@ public class AddActivity extends AppCompatActivity {
                 description = this.description.getText().toString().trim();
                 date = this.date.getText().toString().trim();
 
-                Tasks task = new Tasks(accessTask.getNewTaskId(), title, description, date);
+                Task task = new Task(accessTask.getNewTaskId(), title, description, date);
                 accessTask.addTask(newTask);
                 Toast.makeText(getApplicationContext(), "Task Added", Toast.LENGTH_LONG).show();
 

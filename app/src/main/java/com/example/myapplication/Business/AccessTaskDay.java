@@ -2,35 +2,35 @@ package com.example.myapplication.Business;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapplication.Object.Task_Day;
+import com.example.myapplication.Object.TaskDay;
 import com.example.myapplication.Persistence.Data.TaskDayPersistenceDB;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Access_TD extends AppCompatActivity {
-    List<Task_Day> listofTD;
+public class AccessTaskDay extends AppCompatActivity {
+    List<TaskDay> listofTD;
     TaskDayPersistenceDB taskDayPersistenceDB;
-    public Access_TD(){
+    public AccessTaskDay(){
         listofTD = new ArrayList<>();
         taskDayPersistenceDB = new TaskDayPersistenceDB();
     }
-    public Access_TD(TaskDayPersistenceDB n){
+    public AccessTaskDay(TaskDayPersistenceDB n){
         taskDayPersistenceDB = n;
         listofTD = taskDayPersistenceDB.getAllTD();
     }
-    public void setDeadline(Task_Day task, String start, String end){
+    public void setDeadline(TaskDay task, String start, String end){
         taskDayPersistenceDB.setDeadline(task,start,end);
     }
 
-    public void addTaskDayP(Task_Day newItem){
+    public void addTaskDayP(TaskDay newItem){
         taskDayPersistenceDB.addTaskDayP(newItem);
     }
-    public List<Task_Day> getTaskDay(int td){
+    public List<TaskDay> getTaskDay(int td){
         return taskDayPersistenceDB.getTaskDay(td);
     }
 
-    public List<Task_Day> getAllTD() {
+    public List<TaskDay> getAllTD() {
         listofTD = taskDayPersistenceDB.getAllTD();
         return listofTD;
     }

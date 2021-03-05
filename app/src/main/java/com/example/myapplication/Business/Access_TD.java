@@ -26,7 +26,7 @@ public class Access_TD extends AppCompatActivity {
     public void addTaskDayP(Task_Day newItem){
         taskDayPersistenceDB.addTaskDayP(newItem);
     }
-    public Task_Day getTaskDay(Task_Day td){
+    public List<Task_Day> getTaskDay(int td){
         return taskDayPersistenceDB.getTaskDay(td);
     }
 

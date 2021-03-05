@@ -1,19 +1,19 @@
 package com.example.myapplication.Persistence;
 
-import com.example.myapplication.Object.Tasks;
+import com.example.myapplication.Object.Task;
 
 import java.util.List;
 
 public interface Task_persistence {
 
     int getNewTaskId();
-    Tasks getTask(int taskId);
-    Tasks addTask(final Tasks task);
-    Tasks deleteTask( Tasks task);
-    void editTask(Tasks oldTask, Tasks newTasks);
-    boolean checkForSame(Tasks task1, Tasks task2);
-    void setStatus(Tasks task, String newStatus) ;
-    void setTaskDate(Tasks tak,String taskDate) ;
+    Task getTask(int taskId);
+    Task addTask(final Task task);
+    Task deleteTask( Task task);
+    void editTask(Task oldTask, Task newTasks);
+    boolean checkForSame(Task task1, Task task2);
+    void setStatus(Task task, String newStatus) ;
+    void setTaskDate(Task tak,String taskDate) ;
 
-    List<Tasks> getAllTasks();
+    List<Task> getAllTasks();
 }

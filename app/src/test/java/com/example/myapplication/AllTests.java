@@ -18,8 +18,8 @@ import org.junit.runners.Suite;
         TasksTest.class,
         Task_DayTest.class,
         Access_taskTest.class,
-        Access_dayTest.class,
-        Access_TD.class
+        Access_dayTest.class
+        //Access_TD.class
 
 })
 public class AllTests{

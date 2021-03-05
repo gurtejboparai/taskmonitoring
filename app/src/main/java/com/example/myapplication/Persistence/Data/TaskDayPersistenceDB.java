@@ -36,6 +36,16 @@ public class TaskDayPersistenceDB implements Interface_TD {
         }
     }
 
+    @Override
+    public Task_Day getTaskDay(Task_Day td) {
+        int index = taskDayList.indexOf(td);
+        if(index>=0) {
+           return taskDayList.get(index);
+        }
+        else
+            return null;
+    }
+
 
     @Override
     public List<Task_Day> getAllTD() {

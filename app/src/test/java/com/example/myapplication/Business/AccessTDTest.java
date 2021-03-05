@@ -29,11 +29,6 @@ public class AccessTDTest {
         taskDayPersistenceDB.addTaskDay();
         accessTd = new Access_TD(taskDayPersistenceDB);
     }
-    /*@Test
-    public void testAddTaskDayNull() throws Day.typeInException {
-        Task_Day task = new Task_Day(null);
-        assertNull(task);
-    }*/
     @Test
     public void testSetDeadline() throws Day.typeInException {
         Task_Day taskDay =  new Task_Day(new Tasks(numOfTasks +1,"COMP3340 lab","Lab-3 is due tomorrow", "2021-02-28"));
@@ -42,11 +37,6 @@ public class AccessTDTest {
         taskDay.setDeadline("13:00","15:00");
         assertEquals(startTime,taskDay.getStartTime());
         assertEquals(endTime,taskDay.getEndTime());
-    }
-    @Test
-    public void testList(){
-        List<Task_Day>TDList = taskDayPersistenceDB.getAllTD();
-        //assertNull(TDList);
     }
 
 }

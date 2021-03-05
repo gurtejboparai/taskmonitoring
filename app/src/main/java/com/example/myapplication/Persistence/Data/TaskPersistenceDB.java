@@ -1,13 +1,12 @@
 package com.example.myapplication.Persistence.Data;
 
 import com.example.myapplication.Object.Tasks;
-import com.example.myapplication.Persistence.Task_persistence;
+import com.example.myapplication.Persistence.TaskPersistence;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-public class TaskPersistenceDB implements Task_persistence {
+public class TaskPersistenceDB implements TaskPersistence {
     List<Tasks> tasksList;
     private int numOfTasks=0;
 

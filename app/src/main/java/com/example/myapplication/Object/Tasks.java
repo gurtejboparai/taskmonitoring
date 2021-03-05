@@ -12,9 +12,10 @@ public class Tasks {
     public Tasks(final int taskId, String taskTitle, String taskDescription, String taskDate){
         this.taskId = taskId;
         if(taskTitle.length()==0)
-            this.taskTitle = "no name";
-        else
+            this.taskTitle = "no Title";
+        else {
             this.taskTitle = taskTitle;
+        }
         this.taskDescription = taskDescription;
         this.taskDate = taskDate;
         this.status = "on going";

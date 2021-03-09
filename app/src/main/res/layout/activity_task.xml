@@ -1,107 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/addTaskBtn"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Presentation.TaskActivity">
 
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:id="@+id/listTask"
-        android:layout_weight="1"
-        android:layout_gravity="top"
-        android:choiceMode="singleChoice" />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#000000"
-        android:id="@+id/separator"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="10dp" />
-
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:columnCount="3"
-        android:rowCount="1">
-
-        <TextView
-            android:id="@+id/nameTask"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="60dp"
-            android:layout_marginBottom="60dp"
-            android:text="Title:"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
-        <TextView
-            android:id="@+id/dayTask"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="60dp"
-            android:layout_marginBottom="60dp"
-            android:text="Date:"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
-        <TextView
-            android:id="@+id/descriptionTask"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="60dp"
-            android:layout_marginBottom="60dp"
-            android:text="Detail:"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
-        <Button
-            android:id="@+id/taskEditButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_gravity="left"
-            android:enabled="false"
-            android:onClick="editButtonOnClick"
-            android:text="Edit" />
-
-        <Switch
-            android:id="@+id/switchStatus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="High priority" />
-
-        <CheckBox
-            android:id="@+id/checkBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Status" />
-    </GridLayout>
-
-    <Button
-        android:id="@+id/taskAddButton"
-        android:layout_width="121dp"
-        android:layout_height="65dp"
-        android:layout_marginStart="285dp"
-        android:layout_marginLeft="285dp"
-        android:layout_marginTop="639dp"
-        android:layout_marginEnd="33dp"
-        android:layout_marginRight="33dp"
-        android:layout_marginBottom="44dp"
-        android:onClick="addButtonOnclick"
-        android:text="Add Task"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <TextView
+        android:id="@+id/day"
+        android:layout_width="229dp"
+        android:layout_height="56dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="Day"
+        android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ScrollView
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="178dp"
+        android:layout_height="34dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="74dp"
+        android:gravity="center"
+        android:text="Date" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/taskList"
         android:layout_width="match_parent"
-        android:layout_height="615dp">
+        android:layout_height="398dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginBottom="92dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="0dp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="21dp"
+        android:onClick="addTaskBtnOnClick"
+        android:text="Add Task" />
+</RelativeLayout>

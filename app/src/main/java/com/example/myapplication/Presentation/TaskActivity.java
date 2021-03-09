@@ -1,68 +1,37 @@
 package com.example.myapplication.Presentation;
 
-import android.content.Intent;
-import android.os.Bundle;
-
-import com.example.myapplication.Business.Access_task;
-import com.example.myapplication.Object.Tasks;
-
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.view.MenuItem;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.myapplication.R;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
 
 public class TaskActivity extends AppCompatActivity {
 
-    private List<Tasks> tasksList;
-    private ArrayAdapter<Tasks> tasksArrayAdapter;
-
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task);
 
-        Access_task accessTask = new Access_task();
-        try{
-            tasksList=new ArrayList<>();
-            tasksList.addAll(accessTask.getAllTasks());
-            tasksArrayAdapter = new ArrayAdapter<Tasks>(this, android.R.layout.simple_list_item_activated_2, android.R.id.text1, tasksList){
-                @Override
-                public View getView(int position, View convertView, ViewGroup parent){
-                    View view = super.getView(position,convertView,parent);
-                    TextView title = (TextView) view.findViewById(android.R.id.text1);
-                    TextView day = (TextView) view.findViewById(android.R.id.text2);
-                    TextView description = (TextView)view.findViewById(R.id.descriptionTask);
+        String days[] = new String[]{"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+        String months[] = new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+        Date date = new Date();
 
-                    title.setText(tasksList.get(position).getTaskTitle());
-                    day.setText(tasksList.get(position).getTaskDate());
-                    description.setText((tasksList.get(position).getTaskDescription()));
-                    return view;
-                }
-            };
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        TextView currDay = findViewById(R.id.day);
+        TextView currDate = findViewById(R.id.date);
+        currDay.setText(days[date.getDay()]);
+        int year = date.getYear() + 1900;
+        currDate.setText("" + date.getDate() + " " + months[date.getMonth()] + " " + year);
     }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        int id = item.getItemId();
-        return super.onOptionsItemSelected(item);
-    }
-    public void editButtonOnClick(View v){
-        Intent newTaskIntent = new Intent(TaskActivity.this, EditActivity.class);
-        TaskActivity.this.startActivity(newTaskIntent);
-    }
-    public void addButtonOnclick(View v){
-        Intent newTaskIntent = new Intent(TaskActivity.this, AddActivity.class);
-        TaskActivity.this.startActivity(newTaskIntent);
-    }
+        public void addTaskBtnOnClick(View v){
+            Intent newTaskIntent = new Intent(TaskActivity.this, AddActivity.class);
+            TaskActivity.this.startActivity(newTaskIntent);
 
+    }
 }

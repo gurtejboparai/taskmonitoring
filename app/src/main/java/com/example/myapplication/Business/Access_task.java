@@ -22,6 +22,7 @@ public class Access_task extends AppCompatActivity {
 
 //        taskPersistence = Service.getTaskPersistence();
         taskPersistence = new TaskPersistenceDB();
+        taskPersistence.addTasks();
         allTasks=new ArrayList<>();
     }
 

@@ -1,15 +1,12 @@
 package com.example.myapplication;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.WindowInsets;
-import android.view.WindowInsetsController;
 import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapplication.Presentation.HomeActivity;
+import com.example.myapplication.Presentation.TaskActivity;
 
 import static java.lang.Thread.sleep;
 
@@ -28,7 +25,7 @@ public class SplashPageActivity extends AppCompatActivity {
             public void run() {
                 try {
                     sleep(2100);
-                    Intent it = new Intent(getApplicationContext(), HomeActivity.class);
+                    Intent it = new Intent(getApplicationContext(), TaskActivity.class);
                     startActivity(it);
                     finish();
                 } catch (Exception e) {

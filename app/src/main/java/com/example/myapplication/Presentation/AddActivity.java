@@ -115,7 +115,7 @@ public class AddActivity extends AppCompatActivity {
     }
 
     public void cancelBtnOnClick(View v){
-        Intent newTaskIntent = new Intent(AddActivity.this, HomeActivity.class);
+        Intent newTaskIntent = new Intent(AddActivity.this, TaskActivity.class);
         AddActivity.this.startActivity(newTaskIntent);
     }
 }

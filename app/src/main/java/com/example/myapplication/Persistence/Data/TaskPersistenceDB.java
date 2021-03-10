@@ -1,15 +1,14 @@
 package com.example.myapplication.Persistence.Data;
 
-import com.example.myapplication.Object.Tasks;
-import com.example.myapplication.Persistence.Task_persistence;
+import com.example.myapplication.Object.Task;
+import com.example.myapplication.Persistence.TaskPersistence;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-public class TaskPersistenceDB implements Task_persistence {
-    List<Tasks> tasksList;
-    int numOfTasks;
+public class TaskPersistenceDB implements TaskPersistence {
+    List<Task> tasksList;
+    private int numOfTasks=0;
 
     public TaskPersistenceDB(){
         tasksList = new ArrayList<>();
@@ -19,25 +18,25 @@ public class TaskPersistenceDB implements Task_persistence {
     public int getNewTaskId(){return numOfTasks;}
 
     public void addTasks(){
-        numOfTasks = 0;
-        this.tasksList.add(new Tasks(numOfTasks +1, "Call the doctor","setup appointment for Kevin","2021-03-02"));
-        this.tasksList.add(new Tasks(numOfTasks +1,"Workout","Do cardio for 30 minutes","2021-03-04"));
-        this.tasksList.add(new Tasks(numOfTasks +1,"COMP3350 due","Iteration-1 due on Friday","2021-03-03"));
-        this.tasksList.add(new Tasks(numOfTasks +1,"Meal Prep","Prepare the meals for next 3 days and store","2021-03-03"));
-        this.tasksList.add(new Tasks(numOfTasks +1,"COMP3340 lab","Lab-3 is due tomorrow", "2021-02-28"));
-        this.tasksList.add(new Tasks(numOfTasks +1,"Talk to the manager","Inform my new availability to the manager ","2021-03-03"));
+        this.tasksList.add(new Task(numOfTasks, "Call the doctor","setup appointment for Kevin","2021-03-02"));
+        this.tasksList.add(new Task(numOfTasks +1,"Workout","Do cardio for 30 minutes","2021-03-04"));
+        this.tasksList.add(new Task(numOfTasks +2,"COMP3350 due","Iteration-1 due on Friday","2021-03-03"));
+        this.tasksList.add(new Task(numOfTasks +3,"Meal Prep","Prepare the meals for next 3 days and store","2021-03-03"));
+        this.tasksList.add(new Task(numOfTasks +4,"COMP3340 lab","Lab-3 is due tomorrow", "2021-02-28"));
+        this.tasksList.add(new Task(numOfTasks +5,"Talk to the manager","Inform my new availability to the manager ","2021-03-03"));
     }
 
 
-    public Tasks getTask(int taskId) {
-        for(Tasks task : this.tasksList){
+    public Task getTask(int taskId) {
+        Task result = null;
+        for(Task task : this.tasksList){
             if(task.getCurrTaskId()==taskId)
-                return task;
+                result =task;
         }
-        return null;
+        return result;
     }
 
-    public Tasks addTask(Tasks task){
+    public Task addTask(Task task){
         if(!this.tasksList.contains(task)){
             this.tasksList.add(task);
         }
@@ -47,12 +46,18 @@ public class TaskPersistenceDB implements Task_persistence {
     }
 
     @Override
-    public Tasks deleteTask(Tasks task) {
-        return null;
+    public Task deleteTask(Task task) {
+        int index = tasksList.indexOf(task);
+        if(index>=0)
+            tasksList.remove(task);
+        if(tasksList.contains(task))
+            return null;
+        else
+            return task;
     }
 
     @Override
-    public void editTask(Tasks oldTask, Tasks newTask) {
+    public void editTask(Task oldTask, Task newTask) {
         if(this.tasksList.contains(oldTask)){
             int index = this.tasksList.indexOf(oldTask);
             this.tasksList.set(index,newTask);
@@ -60,7 +65,7 @@ public class TaskPersistenceDB implements Task_persistence {
     }
 
     @Override
-    public void setTaskDate(Tasks task, String taskDate) throws Tasks.InPutNull{
+    public void setTaskDate(Task task, String taskDate){
         int index = this.tasksList.indexOf(task);
         if(index>=0){
             task.setTaskDate(taskDate);
@@ -69,14 +74,12 @@ public class TaskPersistenceDB implements Task_persistence {
     }
 
     @Override
-    public boolean checkForSame(Tasks task1, Tasks tasks2) {
-        if(task1.getCurrTaskId()==tasks2.getCurrTaskId())
-            return true;
-        return false;
+    public boolean checkForSame(Task task1, Task tasks2) {
+        return task1.getCurrTaskId() == tasks2.getCurrTaskId();
     }
 
     @Override
-    public void setStatus(Tasks task, String status) throws Tasks.InPutNull{
+    public void setStatus(Task task, String status) {
         int index = this.tasksList.indexOf(task);
         if(index>=0){
             task.setTaskDate(status);
@@ -85,7 +88,7 @@ public class TaskPersistenceDB implements Task_persistence {
     }
 
     @Override
-    public List<Tasks> getAllTasks() {
+    public List<Task> getAllTasks() {
         return this.tasksList;
     }
 

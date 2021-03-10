@@ -13,8 +13,8 @@ public class DayTest {
     public void setUp() throws Day.typeInException {
         System.out.println("\n\tStart the test for Day class\n\n");
 
-        testDay=new Day(12,10,2021);
-        testDay2=new Day(30,6,1990);
+        testDay=new Day(2021,10,12);
+        testDay2=new Day(1990,6,30);
     }
 
     @Test

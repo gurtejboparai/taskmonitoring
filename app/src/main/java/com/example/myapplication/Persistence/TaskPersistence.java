@@ -4,7 +4,7 @@ import com.example.myapplication.Object.Task;
 
 import java.util.List;
 
-public interface Task_persistence {
+public interface TaskPersistence {
 
     int getNewTaskId();
     Task getTask(int taskId);

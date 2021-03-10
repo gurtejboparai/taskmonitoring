@@ -1,26 +1,28 @@
 package com.example.myapplication.Business;
 
-import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.*;
 
 import com.example.myapplication.Object.Day;
-import com.example.myapplication.Persistence.Day_persistence;
+import com.example.myapplication.Persistence.Data.DayPersistenceDB;
+import com.example.myapplication.Persistence.DayPersistence;
 import com.example.myapplication.application.Service;
 
-public class Access_day extends AppCompatActivity {
+public class AccessDay extends AppCompatActivity {
     private List<Day>allDays;
-    private Day_persistence DayPersistence;
+    private DayPersistenceDB dayPersistence;
 
-    public Access_day(){
+    public AccessDay(){
         allDays = new ArrayList<>();
-        DayPersistence = Service.getDayPersistence();
+        dayPersistence = new DayPersistenceDB();
     }
 
-    public Access_day(Day_persistence DayPersistence){
-        this.DayPersistence = DayPersistence;
-        allDays = DayPersistence.getAllDay();
+    public AccessDay(DayPersistenceDB DB){
+        this.dayPersistence = DB;
+        allDays = DB.getAllDay();
+    }
+    public Day getDay(Day day){
+        return this.dayPersistence.getDay(day);
     }
 
     /*void setStartTime(Day target, int newTime){
@@ -31,34 +33,34 @@ public class Access_day extends AppCompatActivity {
     };*/
     void setMonth(Day target, int newMonth){
         try {
-            DayPersistence.setMonth(target, newMonth);
+            dayPersistence.setMonth(target, newMonth);
         }catch (Day.typeInException e){
             System.out.println(e.getMessage());
         }
     }
     void setDay(Day target, int newDay){
         try{
-        DayPersistence.setDay(target,newDay);
+            dayPersistence.setDay(target,newDay);
         }catch (Day.typeInException e){
             System.out.println(e.getMessage());
         }
     }
     void setYear(Day target, int newYear){
         try{
-        DayPersistence.setYear(target,newYear);
+            dayPersistence.setYear(target,newYear);
         }catch (Day.typeInException e){
             System.out.println(e.getMessage());
         }
     }
     void deleteDay(Day target){
-        DayPersistence.deleteDay(target);
+        dayPersistence.deleteDay(target);
     }
     void addDay(Day target){
-        DayPersistence.addDay(target);
+        dayPersistence.addDay(target);
     }
 
     List<Day>getAllDay(){
-        allDays=DayPersistence.getAllDay();
+        allDays=dayPersistence.getAllDay();
         return allDays;
     }
 

@@ -1,6 +1,7 @@
 package com.example.myapplication.Presentation;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import com.example.myapplication.R;
 
 import java.util.Date;
+import java.util.List;
 
 public class TaskActivity extends AppCompatActivity {
 
@@ -22,12 +24,15 @@ public class TaskActivity extends AppCompatActivity {
         String days[] = new String[]{"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
         String months[] = new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
         Date date = new Date();
+        List<Task>
 
         TextView currDay = findViewById(R.id.day);
         TextView currDate = findViewById(R.id.date);
         currDay.setText(days[date.getDay()]);
         int year = date.getYear() + 1900;
         currDate.setText("" + date.getDate() + " " + months[date.getMonth()] + " " + year);
+
+        RecyclerView viewList
     }
         public void addTaskBtnOnClick(View v){
             Intent newTaskIntent = new Intent(TaskActivity.this, AddActivity.class);

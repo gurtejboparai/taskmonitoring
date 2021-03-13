@@ -17,8 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.Date;
 
-public class TaskPersistenceHSQLDB implements TaskPersistence
-{
+public class TaskPersistenceHSQLDB implements TaskPersistence {
     private final String dbPath;
 
 

@@ -1,16 +1,18 @@
-package com.example.myapplication.presentation;
+package com.example.myapplication.Presentation;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.icu.text.CaseMap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.myapplication.business.AccessTask;
-import com.example.myapplication.objects.Task;
+import com.example.myapplication.Business.AccessTask;
+import com.example.myapplication.Object.Task;
 import com.example.myapplication.R;
 
 import java.util.Date;

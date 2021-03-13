@@ -6,6 +6,7 @@ public class Task {
     private String taskTitle;
     private String taskDescription;
     private String status;
+    private TaskTag taskTag;
 
     public Task(final int taskId, String taskTitle, String taskDescription, String taskDate){
         this.taskId = taskId;
@@ -54,4 +55,5 @@ public class Task {
         return true;
     }
 
+    public TaskTag getTaskTag() { return taskTag; }
 }

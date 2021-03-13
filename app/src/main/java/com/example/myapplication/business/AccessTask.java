@@ -2,6 +2,7 @@ package com.example.myapplication.business;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.objects.TaskTag;
 import com.example.myapplication.objects.Task;
 import com.example.myapplication.persistence.data.TaskPersistenceDB;
 
@@ -70,5 +71,15 @@ public class AccessTask extends AppCompatActivity {
         return taskPersistence.getNewTaskId();
     }
 
+    public List<Task> getTasksByTag(TaskTag taskTag) {
+        List<Task> taskList = new ArrayList<Task>();
+
+        for (Task task : allTasks) {
+            if (task.getTaskTag() == taskTag) {
+                taskList.add(task);
+            }
+        }
+        return taskList;
+    }
 
 }

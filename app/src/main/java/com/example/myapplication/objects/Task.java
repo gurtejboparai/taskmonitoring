@@ -1,6 +1,4 @@
-package com.example.myapplication.Object;
-
-import java.util.Date;
+package com.example.myapplication.objects;
 
 public class Task {
     private final int taskId;

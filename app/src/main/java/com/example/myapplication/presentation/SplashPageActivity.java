@@ -1,4 +1,4 @@
-package com.example.myapplication.Presentation;
+package com.example.myapplication.presentation;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,7 +6,6 @@ import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapplication.Presentation.TaskActivity;
 import com.example.myapplication.R;
 
 import static java.lang.Thread.sleep;

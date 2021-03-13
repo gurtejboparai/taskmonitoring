@@ -1,9 +1,9 @@
-package com.example.myapplication.Business;
+package com.example.myapplication.business;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapplication.Object.Task;
-import com.example.myapplication.Persistence.Data.TaskPersistenceDB;
+import com.example.myapplication.objects.Task;
+import com.example.myapplication.persistence.data.TaskPersistenceDB;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,8 +47,8 @@ public class AccessTask extends AppCompatActivity {
         return taskPersistence.deleteTask(taskToDel);
     }
 
-    public void editTask(Task oldTask, Task newTask){
-        taskPersistence.editTask(oldTask,newTask);
+    public void editTask(Task task){
+        taskPersistence.editTask(task);
     }
 
     public void setTaskDate(Task task, String taskDate){

@@ -1,8 +1,8 @@
-package com.example.myapplication.Business;
+package com.example.myapplication.business;
 
-import com.example.myapplication.Object.Task;
-import com.example.myapplication.Persistence.Data.TaskPersistenceDB;
-import com.example.myapplication.Persistence.TaskPersistence;
+import com.example.myapplication.objects.Task;
+import com.example.myapplication.persistence.data.TaskPersistenceDB;
+import com.example.myapplication.persistence.TaskPersistence;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -98,7 +98,7 @@ public class AccessTaskTest {
 
         Task updateTask = new Task(taskNeedUpdate.getCurrTaskId(), newTitle, newDescription, oldDate);
 
-        accessTaskDB.editTask(taskNeedUpdate,updateTask);
+        accessTaskDB.editTask(taskNeedUpdate);
         taskNeedUpdate = accessTaskDB.getTask(0);
 
         assertNotEquals(oldTitle, taskNeedUpdate.getTaskTitle());

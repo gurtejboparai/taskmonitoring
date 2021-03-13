@@ -1,6 +1,6 @@
 package com.example.myapplication;
-import com.example.myapplication.Business.AccessTaskTest;
-import com.example.myapplication.Object.TaskTest;
+import com.example.myapplication.business.AccessTaskTest;
+import com.example.myapplication.objects.TaskTest;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;

@@ -1,7 +1,7 @@
-package com.example.myapplication.Persistence.Data;
+package com.example.myapplication.persistence.data;
 
-import com.example.myapplication.Object.Task;
-import com.example.myapplication.Persistence.TaskPersistence;
+import com.example.myapplication.objects.Task;
+import com.example.myapplication.persistence.TaskPersistence;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,10 +57,10 @@ public class TaskPersistenceDB implements TaskPersistence {
     }
 
     @Override
-    public void editTask(Task oldTask, Task newTask) {
-        if(this.tasksList.contains(oldTask)){
-            int index = this.tasksList.indexOf(oldTask);
-            this.tasksList.set(index,newTask);
+    public void editTask(Task task) {
+        if(this.tasksList.contains(task)){
+            int index = this.tasksList.indexOf(task);
+            this.tasksList.set(index,task);
         }
     }
 

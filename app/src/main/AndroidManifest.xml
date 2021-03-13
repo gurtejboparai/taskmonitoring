@@ -9,9 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
-        <activity android:name=".Presentation.TaskActivity"></activity>
-        <activity android:name=".Presentation.AddActivity"></activity>
-        <activity android:name=".Presentation.SplashPageActivity">
+        <activity android:name=".presentation.TaskActivity"></activity>
+        <activity android:name=".presentation.AddActivity"></activity>
+        <activity android:name=".presentation.SplashPageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

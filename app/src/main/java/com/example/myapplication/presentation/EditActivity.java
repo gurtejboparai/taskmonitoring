@@ -1,4 +1,4 @@
-package com.example.myapplication.Presentation;
+package com.example.myapplication.presentation;
 
 import android.app.DatePickerDialog;
 import android.os.Build;
@@ -13,8 +13,8 @@ import android.widget.ImageButton;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapplication.Business.AccessTask;
-import com.example.myapplication.Object.Task;
+import com.example.myapplication.business.AccessTask;
+import com.example.myapplication.objects.Task;
 import com.example.myapplication.R;
 
 import java.util.Calendar;

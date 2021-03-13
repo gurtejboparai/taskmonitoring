@@ -1,4 +1,4 @@
-package com.example.myapplication.Presentation;
+package com.example.myapplication.presentation;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,8 +14,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.myapplication.Business.AccessTask;
-import com.example.myapplication.Object.Task;
+import com.example.myapplication.business.AccessTask;
+import com.example.myapplication.objects.Task;
 import com.example.myapplication.R;
 
 import java.util.Calendar;

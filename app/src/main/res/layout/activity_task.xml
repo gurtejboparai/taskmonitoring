@@ -5,7 +5,7 @@
     android:id="@+id/addTaskBtn"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Presentation.TaskActivity">
+    tools:context=".presentation.TaskActivity">
 
     <TextView
         android:id="@+id/day"

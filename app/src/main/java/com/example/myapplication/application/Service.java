@@ -1,7 +1,7 @@
 package com.example.myapplication.application;
 
-import com.example.myapplication.Persistence.Data.TaskPersistenceDB;
-import com.example.myapplication.Persistence.TaskPersistence;
+import com.example.myapplication.persistence.data.TaskPersistenceDB;
+import com.example.myapplication.persistence.TaskPersistence;
 
 public class Service {
     private static TaskPersistence taskPersistence = null;

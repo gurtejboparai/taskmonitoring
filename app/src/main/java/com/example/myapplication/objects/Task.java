@@ -6,6 +6,7 @@ public class Task {
     private String taskTitle;
     private String taskDescription;
     private String status;
+    private String priority;
     private TaskTag taskTag;
 
     public Task(final int taskId, String taskTitle, String taskDescription, String taskDate){
@@ -51,6 +52,14 @@ public class Task {
         if(newStatus.length()!=0)
             this.status = newStatus;
     }
+
+    public String getPriority() { return priority; }
+
+    public void setPriority(String priority) {
+
+        this.priority = priority;
+    }
+
     private boolean validateDate(String date){
         return true;
     }

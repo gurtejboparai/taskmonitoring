@@ -1,12 +1,19 @@
 package com.example.myapplication.business;
 
+import android.util.Log;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.objects.TaskTag;
 import com.example.myapplication.objects.Task;
 import com.example.myapplication.persistence.data.TaskPersistenceDB;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 public class AccessTask extends AppCompatActivity {
@@ -72,6 +79,7 @@ public class AccessTask extends AppCompatActivity {
     }
 
     public List<Task> getTasksByTag(TaskTag taskTag) {
+
         List<Task> taskList = new ArrayList<Task>();
 
         for (Task task : allTasks) {
@@ -82,4 +90,156 @@ public class AccessTask extends AppCompatActivity {
         return taskList;
     }
 
-}
+
+    public List<Task> sortDateInAsc(List<Task> taskList) {
+
+        Collections.sort(taskList, compareTaskDateInAsc);
+
+        return taskList;
+    }
+
+    public List<Task> sortDateInDesc(List<Task> taskList) {
+
+        Collections.sort(taskList, compareTaskDateInDesc);
+
+        return taskList;
+    }
+
+    Comparator<Task> compareTaskDateInAsc = new Comparator<Task>() {
+
+        @Override
+        public int compare(Task task1, Task task2) {
+
+            String str1 = task1.getTaskDate();
+            String str2 = task2.getTaskDate();
+            String[] date1 = str1.split("-");
+            String[] date2 = str2.split("-");
+
+            if (date1 == null) {
+                return -1;
+            }
+            if (date2 == null) {
+                return -1;
+            }
+            if (date2[0].compareTo(date1[0]) < 0) {
+                return -1;
+            }
+            if ((date2[0].compareTo(date1[0]) == 0) && date2[1].compareTo(date1[1]) < 0) {
+                return -1;
+            }
+            if (((date2[0].compareTo(date1[0]) == 0) && (date2[1].compareTo(date1[1]) == 0)) && date2[2].compareTo(date1[2]) < 0) {
+                return -1;
+            }
+            if (((date2[0].compareTo(date1[0]) == 0) && (date2[1].compareTo(date1[1]) == 0)) && date2[2].compareTo(date1[2]) == 0) {
+                return 0;
+            }
+
+            return 1;
+        }
+
+    };
+
+    Comparator<Task> compareTaskDateInDesc = new Comparator<Task>() {
+
+        @Override
+        public int compare(Task task1, Task task2) {
+
+            String str1 = task1.getTaskDate();
+            String str2 = task2.getTaskDate();
+            String[] date1 = str1.split("-");
+            String[] date2 = str2.split("-");
+
+            if (date1 == null) {
+                return -1;
+            }
+            if (date2 == null) {
+                return -1;
+            }
+            if (date1[0].compareTo(date2[0]) < 0) {
+                return -1;
+            }
+            if ((date1[0].compareTo(date2[0]) == 0) && date1[1].compareTo(date2[1]) < 0) {
+                return -1;
+            }
+            if (((date1[0].compareTo(date2[0]) == 0) && (date1[1].compareTo(date2[1]) == 0)) && date1[2].compareTo(date2[2]) < 0) {
+                return -1;
+            }
+            if (((date1[0].compareTo(date2[0]) == 0) && (date1[1].compareTo(date2[1]) == 0)) && date1[2].compareTo(date2[2]) == 0) {
+                return 0;
+            }
+
+            return 1;
+        }
+
+    };
+
+
+        public List<Task> sortPriorityInAsc(List<Task> taskList) {
+
+            Collections.sort(taskList, compareTaskPriorityInAsc);
+
+            return taskList;
+        }
+
+        public List<Task> sortPriorityInDesc(List<Task> taskList) {
+
+            Collections.sort(taskList, compareTaskPriorityInDesc);
+
+            return taskList;
+        }
+
+        Comparator<Task> compareTaskPriorityInAsc = new Comparator<Task>() {
+
+            @Override
+            public int compare(Task taskOne, Task taskTwo) {
+
+                String pOne = taskOne.getPriority();
+                String pTwo = taskTwo.getPriority();
+
+                if (pOne == null) {
+                    return -1;
+                }
+                if (pTwo == null) {
+                    return -1;
+                }
+                if (pOne.equals(pTwo)) {
+                    return 0;
+                }
+                if (pOne.equals("Low") && (pTwo.equals("Medium") || pTwo.equals("High"))) {
+                    return -1;
+                }
+                if (pOne.equals("Medium") && pTwo.equals("High")) {
+                    return -1;
+                }
+                return 1;
+            }
+        };
+
+        Comparator<Task> compareTaskPriorityInDesc = new Comparator<Task>() {
+
+            @Override
+            public int compare(Task taskOne, Task taskTwo) {
+
+                String pOne = taskOne.getPriority();
+                String pTwo = taskTwo.getPriority();
+
+                if (pOne == null) {
+                    return -1;
+                }
+                if (pTwo == null) {
+                    return -1;
+                }
+                if (pOne.equals(pTwo)) {
+                    return 0;
+                }
+                if (pTwo.equals("Low") && (pOne.equals("Medium") || pOne.equals("High"))) {
+                    return -1;
+                }
+                if (pTwo.equals("Medium") && pOne.equals("High")) {
+                    return -1;
+                }
+                return 1;
+            }
+        };
+
+    };

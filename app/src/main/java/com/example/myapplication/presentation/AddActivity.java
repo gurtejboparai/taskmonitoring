@@ -8,9 +8,11 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +33,8 @@ public class AddActivity extends AppCompatActivity {
     TextView title,description;
     Button highPriority,save,cancel;
     Task newTask;
+    Spinner dropDown;
+    ArrayAdapter<CharSequence> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +50,12 @@ public class AddActivity extends AppCompatActivity {
         highPriority = findViewById(R.id.highPriority);
         save = findViewById(R.id.saveButton);
         cancel = findViewById(R.id.cancelButton);
+        dropDown=findViewById(R.id.dropDown);
+        adapter = ArrayAdapter.createFromResource(this,
+                R.array.category_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        dropDown.setAdapter(adapter);
+
 
         titleTxt = title.getText().toString();
         descriptionTxt = description.getText().toString();
@@ -70,13 +80,6 @@ public class AddActivity extends AppCompatActivity {
                 datePickerDialog.show();
             }
         });
-//    save.setOnClickListener(new View.OnClickListener() {
-//        @Override
-//        public void onClick(View v) {
-//            newTask=new Tasks(0,titleTxt,descriptionTxt,mYear+"-"+mMonth+"-"+mDate);
-//
-//        }
-//    });
     }
 
     public void saveBtnOnClick(View view){

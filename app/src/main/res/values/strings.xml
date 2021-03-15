@@ -35,5 +35,14 @@
     <string name="tabProductivity">Productivity</string>
     <string name="tabMislenious">Mislenious</string>
     <string name="plus">+</string>
+    <string-array name="category_array">
+        <item>Select Category</item>
+        <item>Fitness</item>
+        <item>Work</item>
+        <item>School</item>
+        <item>Appointment</item>
+        <item>Productivity</item>
+        <item>Others</item>
+    </string-array>
 
 </resources>

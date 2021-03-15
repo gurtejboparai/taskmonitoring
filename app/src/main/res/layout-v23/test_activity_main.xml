@@ -42,7 +42,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
 
-            android:layout_marginLeft="105dp"
             android:fontFamily="@font/cherry_cream_soda"
             android:gravity="center"
             android:onClick="sortBtnOnClick"
@@ -64,14 +63,12 @@
             android:onClick="sortBtnOnClick"
 
             android:src="@drawable/ic_baseline_sort_24"
-            tools:ignore="contentDescription"
-            android:layout_marginLeft="4dp" />
+            tools:ignore="contentDescription" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingActionButton"
             android:layout_width="45dp"
             android:layout_height="46dp"
-            android:layout_marginLeft="250dp"
             android:layout_marginTop="5dp"
 
             android:onClick="addTaskBtnOnClick"
@@ -83,8 +80,7 @@
             app:borderWidth="16dp"
             app:rippleColor="@color/white"
             tools:ignore="contentDescription"
-            android:layout_marginStart="250dp"
-            tools:targetApi="m" />
+            android:layout_marginStart="250dp" />
 
 
     </LinearLayout>
@@ -161,7 +157,7 @@
         android:id="@+id/viewpager_activity"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:targetApi="m">
+        android:layout_gravity="end">
 
     </androidx.viewpager.widget.ViewPager>
 </LinearLayout>

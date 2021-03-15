@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,10 +27,8 @@ public class EditActivity extends AppCompatActivity {
     private int taskId;
     private int mDate,mMonth,mYear;
 
-    private String taskDate;
-
-    private String taskTitle, taskDescription;
-    private final String taskID = "taskID";
+    private String taskTitle, taskDescription,taskDate,taskPriority;
+    private final String tID = "taskID";
 
     EditText title,description,date;
     ImageButton calender;
@@ -43,7 +42,7 @@ public class EditActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_task);
 
-        taskId = getIntent().getIntExtra(taskID,-1);
+        taskId = getIntent().getIntExtra(tID,-1);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         currTask = accessTask.getTask(taskId);
@@ -101,4 +100,5 @@ public class EditActivity extends AppCompatActivity {
             }
         });
     }
+
 }

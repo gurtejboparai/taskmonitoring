@@ -8,6 +8,7 @@
     android:background="@color/white"
     android:orientation="vertical"
     android:padding="3dp"
+    android:clickable="true"
     tools:context=".presentation.RecyclerViewAdapter">
 
 
@@ -25,7 +26,9 @@
             android:gravity="start"
             android:text="@string/description"
             android:textColor="@color/darkGrey"
-            android:textSize="22sp"
+            android:textSize="24sp"
+            android:singleLine="true"
+            android:ellipsize="end"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.16"

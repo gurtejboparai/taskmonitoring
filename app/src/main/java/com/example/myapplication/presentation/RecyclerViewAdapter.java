@@ -19,14 +19,13 @@ import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<com.example.myapplication.presentation.RecyclerViewAdapter.MyViewHolder> {
 
-    private Context myContext;
-    private List<Task> myTask;
-
-    private final String TaskID = "TaskID";
+    private Context context;
+    private List<Task> taskList;
+    private final String TaskID = "TID";
 
     public RecyclerViewAdapter(Context context, List<Task> task) {
-        myContext = context;
-        myTask = task;
+        this.context = context;
+        taskList = task;
     }
 
 
@@ -36,7 +35,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<com.example.myappl
 
         View view;
 
-        view = LayoutInflater.from(myContext).inflate(R.layout.row, viewGroup, false);
+        view = LayoutInflater.from(context).inflate(R.layout.row, viewGroup, false);
 
         final MyViewHolder viewHolder = new MyViewHolder(view);
 
@@ -46,12 +45,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<com.example.myappl
             public void onClick(View v)
             {
 
-                int taskId = myTask.get(viewHolder.getAdapterPosition()).getCurrTaskId();
+                int taskId = taskList.get(viewHolder.getAdapterPosition()).getCurrTaskId();
 
-                Intent viewAd = new Intent(myContext, Task.class);
+                Intent viewTask = new Intent(context, Task.class);
 
-                viewAd.putExtra(TaskID, taskId);
-                myContext.startActivity(viewAd);
+                viewTask.putExtra(TaskID, taskId);
+
+                context.startActivity(viewTask);
             }
         });
 
@@ -63,10 +63,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<com.example.myappl
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
 
-        String title = myTask.get(i).getTaskTitle();
-        String description = myTask.get(i).getTaskDescription();
-        String date = myTask.get(i).getTaskDate();
-        String priority = myTask.get(i).getTaskDate();
+        String title = taskList.get(i).getTaskTitle();
+        String description = taskList.get(i).getTaskDescription();
+        String date = taskList.get(i).getTaskDate();
+        String priority = taskList.get(i).getTaskDate();
 
 
         myViewHolder.taskTitle.setText(title);
@@ -80,7 +80,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<com.example.myappl
     @Override
     public int getItemCount()
     {
-        return myTask.size();
+        return taskList.size();
     }
 
 

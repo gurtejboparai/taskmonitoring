@@ -108,6 +108,13 @@ public class Task {
         this.priority = priority;
     }
 
+    public String getDeadLine(){
+        return deadLine;
+    }
+    public void setDeadline(String newDeadline){
+        this.deadLine = newDeadline;
+    }
+
 
     public TaskTag getTaskTag() { return taskTag; }
 }

@@ -4,6 +4,7 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
+import com.example.myapplication.objects.TaskTag;
 import com.example.myapplication.persistence.TaskPersistence;
 import com.example.myapplication.objects.Task;
 
@@ -19,36 +20,42 @@ import java.sql.Date;
 
 public class TaskPersistenceHSQLDB implements TaskPersistence {
     private final String dbPath;
-
-
-    public TaskPersistenceHSQLDB(String dbPath)
-    {
+    public TaskPersistenceHSQLDB(final String dbPath){
         this.dbPath = dbPath;
     }
 
+    private Connection connection() throws SQLException{
+        return DriverManager.getConnection("jdbc:hsqldb:file:" + dbPath + ";shutdown=true", "SA", "");
 
-    private Connection connection() throws SQLException {
-        Connection connection = DriverManager.getConnection("jdbc:hsqldb:file:" + dbPath + ";shutdown=true", "SA", "");
-        if (connection != null) {
-
-            System.out.println("Connection created successfully");
-        } else {
-
-            System.out.println("Problem with creating connection");
-        }
-        return connection;
     }
 
+    private Task fromResultSet(final ResultSet rs) throws SQLException {
+        final int taskID = rs.getInt("taskID");
+        final String taskTitle =rs.getString("taskTitle");
+        final String taskDescription=rs.getString(("taskDescription"));
+        final String taskDate = rs.getString("taskDate");
+        /*final String taskTag = rs.getString("taskTag");
+        final String deadLine = rs.getString("deadLine");
+        final TaskTag tag;
+        if(taskTag.equalsIgnoreCase(String.valueOf(TaskTag.SCHOOL))){
+            tag=TaskTag.SCHOOL;
+        }
+        else if(taskTag.equalsIgnoreCase(String.valueOf(TaskTag.WORK))) {
+            tag = TaskTag.WORK;
+        }
+        else if(taskTag.equalsIgnoreCase(String.valueOf(TaskTag.FITNESS))){
+            tag= TaskTag.FITNESS;
+        }
+        else if(taskTag.equalsIgnoreCase(String.valueOf(TaskTag.APPOINTMENT))){
+            tag= TaskTag.APPOINTMENT;
+        }
+        else if(taskTag.equalsIgnoreCase(String.valueOf(TaskTag.PRODUCTIVITY))){
+            tag = TaskTag.PRODUCTIVITY;
+        }
+        else
+            tag = TaskTag.MISLENIOUS;*/
+        return new Task(taskID,taskTitle,taskDescription,taskDate);
 
-    private Task fromResultSet(final ResultSet resultSet) throws SQLException {
-
-        final int taskId = resultSet.getInt("TASKID");
-
-        final String title = resultSet.getString("TITLE");
-        final String description = resultSet.getString("DESCRIPTION");
-        final String date = resultSet.getString("DATE");
-
-        return new Task(taskId, title, description, date);
     }
 
 
@@ -201,26 +208,18 @@ public class TaskPersistenceHSQLDB implements TaskPersistence {
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public List<Task> getAllTasks() {
-
-        List<Task> tasks = new ArrayList<>();
-
-        try (final Connection connection = connection()) {
-
-            final Statement st = connection.createStatement();
-            final ResultSet rs = st.executeQuery("SELECT * FROM TASKS");
-
+        final List<Task> tasks = new ArrayList<>();
+        try (final Connection c = connection()) {
+            final Statement st = c.createStatement();
+            final ResultSet rs = st.executeQuery("SELCECT * FROM TASK");
             while (rs.next()) {
-                final Task task = fromResultSet(rs);
-                tasks.add(task);
+                final Task aTask = fromResultSet(rs);
+                tasks.add(aTask);
             }
-
             rs.close();
             st.close();
-
             return tasks;
-
         } catch (final SQLException e) {
-
             throw new PersistenceException(e);
         }
     }

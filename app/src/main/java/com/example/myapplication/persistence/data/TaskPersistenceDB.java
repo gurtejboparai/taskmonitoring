@@ -8,14 +8,14 @@ import java.util.List;
 
 public class TaskPersistenceDB implements TaskPersistence {
     List<Task> tasksList;
-    private int numOfTasks=0;
+    private static int numOfTasks=0;
 
     public TaskPersistenceDB(){
         tasksList = new ArrayList<>();
     }
 
 
-    public int getNewTaskId(){return numOfTasks++;}
+    public int getNewTaskId(){return numOfTasks ;}
 
     public void addTasks(){
         this.tasksList.add(new Task(numOfTasks, "Call the doctor","setup appointment for Kevin","02-03-2021"));

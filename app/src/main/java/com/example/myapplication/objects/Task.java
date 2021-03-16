@@ -12,7 +12,7 @@ public class Task {
     private String status;
     private String priority;
     private TaskTag taskTag;
-    private String deadLine;
+    //private String deadLine;
 
     public Task(int taskId,String taskTitle, String taskDescription, String taskDate){
         this.taskId = taskId;
@@ -25,10 +25,10 @@ public class Task {
         this.taskDate = taskDate;
         this.status = "on going";
         this.taskTag = TaskTag.MISLENIOUS;
-        this.deadLine="";
+        //this.deadLine="";
     }
 
-    public Task(final int taskId, String taskTitle, String taskDescription, String taskDate, TaskTag taskTag){
+    /*public Task(final int taskId, String taskTitle, String taskDescription, String taskDate, TaskTag taskTag){
         this.taskId = taskId;
         if(taskTitle.length()==0)
             this.taskTitle = "no Title";
@@ -65,7 +65,7 @@ public class Task {
         this.status = "on going";
         this.taskTag= TaskTag.MISLENIOUS;
         this.deadLine = deadLine;
-    }
+    }*/
 
 
 
@@ -108,12 +108,13 @@ public class Task {
         this.priority = priority;
     }
 
-    public String getDeadLine(){
+
+    /*public String getDeadLine(){
         return deadLine;
     }
     public void setDeadline(String newDeadline){
         this.deadLine = newDeadline;
-    }
+    }*/
 
 
     public TaskTag getTaskTag() { return taskTag; }

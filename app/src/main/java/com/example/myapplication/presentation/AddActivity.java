@@ -26,11 +26,10 @@ public class AddActivity extends AppCompatActivity {
 
     private final String taskID = "taskID";
     private AccessTask accessTask;
-    TextView date;
     ImageButton calender;
     private int mDate,mMonth,mYear;
     private String titleTxt,descriptionTxt;
-    TextView title,description;
+    TextView title,description,date;
     Button highPriority,save,cancel;
     Task newTask;
     Spinner dropDown;
@@ -72,7 +71,7 @@ public class AddActivity extends AppCompatActivity {
                         android.R.style.Theme_DeviceDefault_Dialog, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
-                        date.setText(dayOfMonth+"-"+month+"-"+year);
+                        date.setText(dayOfMonth+"-"+(month+1)+"-"+year);
 
                     }
                 },mYear,mMonth,mDate);
@@ -83,9 +82,9 @@ public class AddActivity extends AppCompatActivity {
     }
 
     public void saveBtnOnClick(View view){
-        String title;
-        String description;
-        String date;
+        String titleText="";
+        String descriptionText="";
+        String dateText="";
 
         boolean titleEmpty = this.title.getText().toString().isEmpty();
         boolean descriptionEmpty = this.description.getText().toString().isEmpty();
@@ -96,17 +95,19 @@ public class AddActivity extends AppCompatActivity {
         }else{
 
             try{
-                title = this.title.getText().toString().trim();
-                description = this.description.getText().toString().trim();
-                date = this.date.getText().toString().trim();
+                titleText = this.title.getText().toString().trim();
+                descriptionText = this.description.getText().toString().trim();
+                dateText = this.date.getText().toString().trim();
 
-                Task task = new Task(accessTask.getNewTaskId(), title, description, date);
-                accessTask.addTask(newTask);
+                //Task task = new Task(accessTask.getNewTaskId(),title, description, date);
+                //accessTask.addTask(newTask);
                 Toast.makeText(getApplicationContext(), "Task Added", Toast.LENGTH_LONG).show();
 
                 finish();
-                Intent viewTasks = new Intent(getApplicationContext(), TaskActivity.class);
-                viewTasks.putExtra(taskID, task.getCurrTaskId());
+                Intent viewTasks = new Intent(AddActivity.this, TaskActivity.class);
+                viewTasks.putExtra("Title", titleText);
+                viewTasks.putExtra("Description",descriptionText);
+                viewTasks.putExtra("Date",dateText);
 
                 startActivity(viewTasks);
             }

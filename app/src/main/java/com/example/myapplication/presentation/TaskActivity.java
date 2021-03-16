@@ -40,6 +40,10 @@ public class TaskActivity extends AppCompatActivity {
 
     private String tagName;
     private String typeResult;
+    private String Title;
+    private String Description;
+    private String date;
+    Bundle extras;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +51,18 @@ public class TaskActivity extends AppCompatActivity {
         setContentView(R.layout.test_activity_main);
 
         accessTask = new AccessTask();
-        initialTabFragment();
+        extras=getIntent().getExtras();
+        if(extras!=null)
+        {
+        Title=extras.getString("Title");
+        Description=extras.getString("Description");
+        date=extras.getString("Date");
+        accessTask.addTask(new Task(accessTask.getNewTaskId(),Title,Description,date));
+        }
 
+        initialTabFragment();
         tabSetUp();
+
 
 //        String days[] = new String[]{"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
 //        String months[] = new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};

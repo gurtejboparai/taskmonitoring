@@ -1,5 +1,9 @@
 package com.example.myapplication.objects;
 
+import android.graphics.Color;
+
+import java.util.ArrayList;
+
 public class Task {
     private final int taskId;
     private String taskDate;
@@ -8,6 +12,7 @@ public class Task {
     private String status;
     private String priority;
     private TaskTag taskTag;
+    private String deadLine;
 
     public Task(int taskId,String taskTitle, String taskDescription, String taskDate){
         this.taskId = taskId;
@@ -19,7 +24,50 @@ public class Task {
         this.taskDescription = taskDescription;
         this.taskDate = taskDate;
         this.status = "on going";
+        this.taskTag = TaskTag.MISLENIOUS;
+        this.deadLine="";
     }
+
+    public Task(final int taskId, String taskTitle, String taskDescription, String taskDate, TaskTag taskTag){
+        this.taskId = taskId;
+        if(taskTitle.length()==0)
+            this.taskTitle = "no Title";
+        else {
+            this.taskTitle = taskTitle;
+        }
+        this.taskDescription = taskDescription;
+        this.taskDate = taskDate;
+        this.status = "on going";
+        this.taskTag=taskTag;
+    }
+    public Task(final int taskId, String taskTitle, String taskDescription, String taskDate, TaskTag taskTag, String deadLine){
+        this.taskId = taskId;
+        if(taskTitle.length()==0)
+            this.taskTitle = "no Title";
+        else {
+            this.taskTitle = taskTitle;
+        }
+        this.taskDescription = taskDescription;
+        this.taskDate = taskDate;
+        this.status = "on going";
+        this.taskTag=taskTag;
+        this.deadLine = deadLine;
+    }
+    public Task(final int taskId, String taskTitle, String taskDescription, String taskDate,String deadLine){
+        this.taskId = taskId;
+        if(taskTitle.length()==0)
+            this.taskTitle = "no Title";
+        else {
+            this.taskTitle = taskTitle;
+        }
+        this.taskDescription = taskDescription;
+        this.taskDate = taskDate;
+        this.status = "on going";
+        this.taskTag= TaskTag.MISLENIOUS;
+        this.deadLine = deadLine;
+    }
+
+
 
     public int getCurrTaskId(){return taskId;}
 
@@ -60,9 +108,13 @@ public class Task {
         this.priority = priority;
     }
 
-    private boolean validateDate(String date){
-        return true;
+    public String getDeadLine(){
+        return deadLine;
     }
+    public void setDeadline(String newDeadline){
+        this.deadLine = newDeadline;
+    }
+
 
     public TaskTag getTaskTag() { return taskTag; }
 }

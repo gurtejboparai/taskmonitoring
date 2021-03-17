@@ -40,9 +40,8 @@ public class TaskActivity extends AppCompatActivity {
 
     private String tagName;
     private String typeResult;
-    private String Title;
-    private String Description;
-    private String date;
+    private String Title,Description,date,priority;
+    private Task newTask;
     Bundle extras;
 
     @Override
@@ -57,7 +56,11 @@ public class TaskActivity extends AppCompatActivity {
         Title=extras.getString("Title");
         Description=extras.getString("Description");
         date=extras.getString("Date");
-        accessTask.addTask(new Task(accessTask.getNewTaskId(),Title,Description,date));
+        priority=extras.getString("Priority");
+        newTask=new Task(accessTask.getNewTaskId(),Title,Description,date);
+        accessTask.addTask(newTask);
+        newTask.setPriority(priority);
+
         }
 
         initialTabFragment();

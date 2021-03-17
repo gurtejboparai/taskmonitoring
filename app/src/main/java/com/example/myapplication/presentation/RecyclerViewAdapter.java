@@ -3,9 +3,12 @@ package com.example.myapplication.presentation;
 import android.content.Context;
 import android.content.Intent;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.res.ColorStateList;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +17,7 @@ import android.widget.TextView;
 
 import com.example.myapplication.objects.Task;
 import com.example.myapplication.R;
+import com.google.android.material.chip.Chip;
 
 import java.util.List;
 
@@ -66,13 +70,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<com.example.myappl
         String title = taskList.get(i).getTaskTitle();
         String description = taskList.get(i).getTaskDescription();
         String date = taskList.get(i).getTaskDate();
-        String priority = taskList.get(i).getTaskDate();
+        String priority = taskList.get(i).getPriority();
 
 
         myViewHolder.taskTitle.setText(title);
         myViewHolder.taskDescription.setText(description);
         myViewHolder.taskDate.setText(date);
-        //myViewHolder.taskPriority.setText(priority);
+        if(priority.equals("True"))
+        myViewHolder.taskPriority.setChipBackgroundColor(ColorStateList.valueOf(ContextCompat.getColor(context, R.color.red)));
 
     }
 
@@ -89,7 +94,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<com.example.myappl
         private TextView taskTitle;
         private TextView taskDescription;
         private TextView taskDate;
-        //private TextView taskPriority;
+        private Chip taskPriority;
         private LinearLayout row;
 
 
@@ -99,7 +104,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<com.example.myappl
             taskTitle = (TextView) itemView.findViewById(R.id.taskTitle);
             taskDescription = (TextView) itemView.findViewById(R.id.taskDescription);
             taskDate = (TextView) itemView.findViewById(R.id.taskDate);
-            //taskPriority = (TextView) itemView.findViewById(R.id.taskPriority);
+            taskPriority = (Chip) itemView.findViewById(R.id.priorityChip);
             row = (LinearLayout) itemView.findViewById(R.id.rowForOneTask);
         }
     }

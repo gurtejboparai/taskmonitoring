@@ -26,6 +26,7 @@ public class Task {
         this.status = null;
         this.taskTag = TaskTag.MISLENIOUS;
         this.deadLine=null;
+        this.priority="False";
     }
 
 

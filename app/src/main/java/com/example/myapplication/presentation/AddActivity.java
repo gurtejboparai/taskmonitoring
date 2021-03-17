@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,7 +31,7 @@ public class AddActivity extends AppCompatActivity {
     private int mDate,mMonth,mYear;
     private String titleTxt,descriptionTxt;
     TextView title,description,date;
-    Button highPriority,save,cancel;
+    Button save,cancel,highPriority;
     Task newTask;
     Spinner dropDown;
     ArrayAdapter<CharSequence> adapter;
@@ -85,6 +86,7 @@ public class AddActivity extends AppCompatActivity {
         String titleText="";
         String descriptionText="";
         String dateText="";
+        String priority="False";
 
         boolean titleEmpty = this.title.getText().toString().isEmpty();
         boolean descriptionEmpty = this.description.getText().toString().isEmpty();
@@ -98,6 +100,8 @@ public class AddActivity extends AppCompatActivity {
                 titleText = this.title.getText().toString().trim();
                 descriptionText = this.description.getText().toString().trim();
                 dateText = this.date.getText().toString().trim();
+                if(highPriority.isEnabled())
+                    priority="True";
 
                 //Task task = new Task(accessTask.getNewTaskId(),title, description, date);
                 //accessTask.addTask(newTask);
@@ -108,6 +112,7 @@ public class AddActivity extends AppCompatActivity {
                 viewTasks.putExtra("Title", titleText);
                 viewTasks.putExtra("Description",descriptionText);
                 viewTasks.putExtra("Date",dateText);
+                viewTasks.putExtra("Priority",priority);
 
                 startActivity(viewTasks);
             }

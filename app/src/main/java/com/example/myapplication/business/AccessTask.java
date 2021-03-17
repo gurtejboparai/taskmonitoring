@@ -1,12 +1,18 @@
 package com.example.myapplication.business;
 
+import android.os.Build;
 import android.util.Log;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.application.Main;
+import com.example.myapplication.application.Service;
 import com.example.myapplication.objects.TaskTag;
 import com.example.myapplication.objects.Task;
+import com.example.myapplication.persistence.TaskPersistence;
 import com.example.myapplication.persistence.data.TaskPersistenceDB;
+import com.example.myapplication.persistence.hsqldb.TaskPersistenceHSQLDB;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -19,13 +25,13 @@ import java.util.List;
 public class AccessTask extends AppCompatActivity {
 
     private List<Task> allTasks;
-    private final TaskPersistenceDB taskPersistence;
+    private final TaskPersistence taskPersistence;
 
     public AccessTask(){
 
-//      taskPersistence = Service.getTaskPersistence();
-        taskPersistence = new TaskPersistenceDB();
-        taskPersistence.addTasks();
+      taskPersistence = Service.getTaskPersistence();
+        //taskPersistence = new TaskPersistenceHSQLDB(Main.getDBPathName());
+        ((TaskPersistenceDB)taskPersistence).addTasks();
         allTasks=new ArrayList<>();
     }
     public AccessTask(TaskPersistenceDB DB){

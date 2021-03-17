@@ -9,7 +9,7 @@ public class Service {
 
     public static synchronized TaskPersistence getTaskPersistence(){
         if(taskPersistence==null)
-            taskPersistence = new TaskPersistenceHSQLDB(Main.getDBPathName());
+            taskPersistence = new TaskPersistenceDB();
         return taskPersistence;
     }
 

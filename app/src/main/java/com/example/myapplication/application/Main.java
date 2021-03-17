@@ -1,7 +1,7 @@
 package com.example.myapplication.application;
 
 public class Main {
-    private static String dbName = "SS";
+    private static String dbName = "TaskMonitor";
 
     public static void main(String[] args) {
         System.out.println("All done");
@@ -9,20 +9,18 @@ public class Main {
 
 
     public static void setDBPathName(final String name) {
-        try{
+        try {
             Class.forName("org.hsqldb.jdbcDriver").newInstance();
-        }
-        catch (InstantiationException e) {
+        } catch (InstantiationException e) {
             e.printStackTrace();
-        }
-        catch (IllegalAccessException e) {
+        } catch (IllegalAccessException e) {
             e.printStackTrace();
-        }
-        catch (ClassNotFoundException e) {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         dbName = name;
     }
+
 
     public static String getDBPathName() {
         return dbName;

@@ -2,9 +2,10 @@ package com.example.myapplication.objects;
 
 import android.graphics.Color;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Task {
+public class Task implements Serializable {
     private final int taskId;
     private String taskDate;
     private String taskTitle;

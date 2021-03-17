@@ -1,28 +1,17 @@
 package com.example.myapplication.presentation;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
-
-import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+
+import com.example.myapplication.R;
 import com.example.myapplication.business.AccessTask;
 import com.example.myapplication.objects.Task;
-import com.example.myapplication.R;
 import com.example.myapplication.objects.TaskTag;
 import com.google.android.material.tabs.TabLayout;
-
-import java.util.Date;
-import java.util.List;
 
 public class TaskActivity extends AppCompatActivity {
 
@@ -40,7 +29,7 @@ public class TaskActivity extends AppCompatActivity {
 
     private String tagName;
     private String typeResult;
-    private String Title,Description,date,priority;
+    private String Title, Description, date, priority;
     private Task newTask;
     Bundle extras;
 
@@ -50,16 +39,15 @@ public class TaskActivity extends AppCompatActivity {
         setContentView(R.layout.test_activity_main);
 
         accessTask = new AccessTask();
-        extras=getIntent().getExtras();
-        if(extras!=null)
-        {
-        Title=extras.getString("Title");
-        Description=extras.getString("Description");
-        date=extras.getString("Date");
-        priority=extras.getString("Priority");
-        newTask=new Task(accessTask.getNewTaskId(),Title,Description,date);
-        accessTask.addTask(newTask);
-        newTask.setPriority(priority);
+        extras = getIntent().getExtras();
+        if (extras != null) {
+            Title = extras.getString("Title");
+            Description = extras.getString("Description");
+            date = extras.getString("Date");
+            priority = extras.getString("Priority");
+            newTask = new Task(accessTask.getNewTaskId(), Title, Description, date);
+            accessTask.addTask(newTask);
+            newTask.setPriority(priority);
 
         }
 
@@ -133,9 +121,9 @@ public class TaskActivity extends AppCompatActivity {
         tabMislenious.categorizeTask(taskCategory);
     }
 
-    public void addTaskBtnOnClick(View v){
-            Intent newTaskIntent = new Intent(TaskActivity.this, AddActivity.class);
-            TaskActivity.this.startActivity(newTaskIntent);
+    public void addTaskBtnOnClick(View v) {
+        Intent newTaskIntent = new Intent(TaskActivity.this, AddActivity.class);
+        TaskActivity.this.startActivity(newTaskIntent);
     }
 
 //    public void editBtnOnClick(View v) {

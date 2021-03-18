@@ -4,7 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.myapplication.R;
@@ -53,6 +56,7 @@ public class TaskActivity extends AppCompatActivity {
 
         initialTabFragment();
         tabSetUp();
+
     }
 
     private void initialTabFragment() {

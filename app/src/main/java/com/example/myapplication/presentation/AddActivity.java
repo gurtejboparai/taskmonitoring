@@ -31,7 +31,8 @@ public class AddActivity extends AppCompatActivity {
     private int mDate,mMonth,mYear;
     private String titleTxt,descriptionTxt;
     TextView title,description,date;
-    Button save,cancel,highPriority;
+    Button save,cancel;
+    Switch highPriority;
     Task newTask;
     Spinner dropDown;
     ArrayAdapter<CharSequence> adapter;
@@ -100,7 +101,7 @@ public class AddActivity extends AppCompatActivity {
                 titleText = this.title.getText().toString().trim();
                 descriptionText = this.description.getText().toString().trim();
                 dateText = this.date.getText().toString().trim();
-                if(highPriority.isEnabled())
+                if(highPriority.isChecked())
                     priority="True";
 
                 //Task task = new Task(accessTask.getNewTaskId(),title, description, date);

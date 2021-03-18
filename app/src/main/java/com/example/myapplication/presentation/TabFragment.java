@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
+import android.graphics.Canvas;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,8 +26,13 @@ import com.example.myapplication.business.AccessTask;
 import com.example.myapplication.objects.Task;
 import com.example.myapplication.objects.TaskTag;
 import com.google.android.material.chip.Chip;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.List;
+
+import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
 public class TabFragment extends Fragment {
 
@@ -52,10 +59,51 @@ public class TabFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.tab_fragment_view, container, false);
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.tabFragmentView);
-        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(getActivity(), orderedTasks);
+        final RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.tabFragmentView);
+        final RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(getActivity(), orderedTasks);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(recyclerViewAdapter);
+        final String[] deletedTask = {null};
+        final Task[] task = {null};
+        ItemTouchHelper.SimpleCallback simpleCallback =new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT|ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction)
+            {
+                final int pos=viewHolder.getAdapterPosition();
+                task[0] =taskList.get(pos);
+                deletedTask[0]=task[0].getTaskTitle();
+                taskList.remove(pos);
+                recyclerViewAdapter.notifyItemRemoved(pos);
+                Snackbar.make(recyclerView,deletedTask[0],Snackbar.LENGTH_LONG)
+                        .setAction("Undo", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v)
+                            {
+                                taskList.add(pos,task[0]);
+                                recyclerViewAdapter.notifyItemInserted(pos);
+                            }
+                        }).show();
+            }
+
+            @Override
+            public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive)
+            {
+                new RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
+                        .addSwipeLeftBackgroundColor(ContextCompat.getColor(getContext(),R.color.red))
+                        .addSwipeLeftLabel("Delete")
+                        .addSwipeLeftActionIcon(R.drawable.ic_baseline_delete_24)
+                        .create()
+                        .decorate();
+                super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+            }
+        };
+        ItemTouchHelper itemTouchHelper=new ItemTouchHelper(simpleCallback);
+        itemTouchHelper.attachToRecyclerView(recyclerView);
         return view;
     }
 

@@ -1,8 +1,8 @@
 package com.example.myapplication.business;
 
 import com.example.myapplication.objects.Task;
-import com.example.myapplication.persistence.data.TaskPersistenceDB;
 import com.example.myapplication.persistence.TaskPersistence;
+import com.example.myapplication.persistence.data.TaskPersistenceDB;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -14,7 +14,6 @@ import static junit.framework.TestCase.assertNull;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertTrue;
 
 public class AccessTaskTest {
 
@@ -138,7 +137,7 @@ public class AccessTaskTest {
         assertEquals(taskId, deleteTask.getCurrTaskId());
 
         Task checkTask = accessTaskDB.getTask(2);
-        assertNull(checkTask);
+        assertNotNull(checkTask);
 
         System.out.println("Finished testRemoveNotNull...");
     }

@@ -65,12 +65,10 @@ public class TaskPersistenceDB implements TaskPersistence {
     @Override
     public Task deleteTask(Task task) {
         int index = tasksList.indexOf(task);
-        if(index>=0)
+        if(index>=0) {
             tasksList.remove(task);
-        if(tasksList.contains(task))
-            return null;
-        else
-            return task;
+        }
+        return task;
     }
 
     @Override

@@ -4,9 +4,8 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
-import com.example.myapplication.objects.TaskTag;
-import com.example.myapplication.persistence.TaskPersistence;
 import com.example.myapplication.objects.Task;
+import com.example.myapplication.persistence.TaskPersistence;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,7 +15,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.sql.Date;
 
 public class TaskPersistenceHSQLDB implements TaskPersistence {
     private final String dbPath;
@@ -79,14 +77,14 @@ public class TaskPersistenceHSQLDB implements TaskPersistence {
     @Override
     public Task addTask(Task task) {
         try(final Connection c = connection()){
-            final PreparedStatement st = c.prepareStatement("INSERT INTO TASK VALUE(?,?,?,?,?)");
+            final PreparedStatement st = c.prepareStatement("INSERT INTO TASK VALUE(?,?,?,?,?,?,?)");
             st.setInt(1,task.getCurrTaskId());
             st.setString(2,task.getTaskTitle());
             st.setString(3,task.getTaskDescription());
             st.setString(4, task.getTaskDate());
-            if(task.getStatus()!=null){
-                st.setString(5, task.getStatus());
-            }
+            st.setString(5,task.getTaskTag().toString());
+            st.setString(6, task.getStatus());
+            st.setString(7,task.getPriority());
             st.executeUpdate();
             taskList.add(task);
             return task;
@@ -114,14 +112,14 @@ public class TaskPersistenceHSQLDB implements TaskPersistence {
     @Override
     public void editTask(Task task, Task newTask) {
         try(final Connection c= connection()){
-            final PreparedStatement st = c.prepareStatement("UPDATE TASK SET taskTitle= ?, taskDescription= ?, taskDate= ?, taskStatus= ? WHERE taskId= ?");
+            final PreparedStatement st = c.prepareStatement("UPDATE TASK SET taskTitle= ?, taskDescription= ?, taskDate= ?, taskTag= ?, taskStatus= ? taskPriority=? WHERE taskId= ?");
             st.setString(1,newTask.getTaskTitle());
             st.setString(2,newTask.getTaskDescription());
             st.setString(3,newTask.getTaskDate());
-            if(task.getStatus()!=null){
-                st.setString(4,newTask.getStatus());
-            }
-            st.setInt(5,task.getCurrTaskId());
+            st.setString(4,newTask.getTaskTag().toString());
+            st.setString(5,newTask.getStatus());
+            st.setString(6,newTask.getPriority());
+            st.setInt(7,task.getCurrTaskId());
             st.executeUpdate();
         }
         catch (final SQLException e){

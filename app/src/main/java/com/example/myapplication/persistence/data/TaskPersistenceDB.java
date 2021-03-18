@@ -8,7 +8,7 @@ import java.util.List;
 
 public class TaskPersistenceDB implements TaskPersistence {
     List<Task> tasksList;
-    private static int numOfTasks=0;
+    private int numOfTasks=0;
 
     public TaskPersistenceDB(){
 
@@ -17,18 +17,15 @@ public class TaskPersistenceDB implements TaskPersistence {
     }
 
 
-    public int getNewTaskId(){return numOfTasks+1 ;}
+    public int getNewTaskId(){return numOfTasks;}
 
-    public void addTasks()
-    {
-        Task task1=new Task(numOfTasks, "Call the doctor","setup appointment for Kevin","02-03-2021");
-        this.tasksList.add(task1);
-        task1.setPriority("True");
-        this.tasksList.add(new Task(numOfTasks +1,"Workout","Do cardio for 30 minutes","03-03-2021"));
-        this.tasksList.add(new Task(numOfTasks +2,"COMP3350 due","Iteration-1 due on Friday","04-03-2021"));
-        this.tasksList.add(new Task(numOfTasks +3,"Meal Prep","Prepare the meals for next 3 days and store","08-03-2021"));
-        this.tasksList.add(new Task(numOfTasks +4,"COMP3340 lab","Lab-3 is due tomorrow", "07-03-2021"));
-        this.tasksList.add(new Task(numOfTasks +5,"Talk to the manager","Inform my new availability to the manager ","10-03-2021"));
+    public void addTasks(){
+        this.tasksList.add(new Task(numOfTasks, "Call the doctor","setup appointment for Kevin","2021-03-02"));
+        this.tasksList.add(new Task(numOfTasks +1,"Workout","Do cardio for 30 minutes","2021-03-04"));
+        this.tasksList.add(new Task(numOfTasks +2,"COMP3350 due","Iteration-1 due on Friday","2021-03-03"));
+        this.tasksList.add(new Task(numOfTasks +3,"Meal Prep","Prepare the meals for next 3 days and store","2021-03-03"));
+        this.tasksList.add(new Task(numOfTasks +4,"COMP3340 lab","Lab-3 is due tomorrow", "2021-02-28"));
+        this.tasksList.add(new Task(numOfTasks +5,"Talk to the manager","Inform my new availability to the manager ","2021-03-03","WORK"));
     }
 
 
@@ -62,10 +59,10 @@ public class TaskPersistenceDB implements TaskPersistence {
     }
 
     @Override
-    public void editTask(Task task) {
-        if(this.tasksList.contains(task)){
-            int index = this.tasksList.indexOf(task);
-            this.tasksList.set(index,task);
+    public void editTask(Task oldTask, Task newTask) {
+        if(this.tasksList.contains(oldTask)){
+            int index = this.tasksList.indexOf(oldTask);
+            this.tasksList.set(index,newTask);
         }
     }
 
@@ -81,7 +78,6 @@ public class TaskPersistenceDB implements TaskPersistence {
     @Override
     public boolean checkForSame(Task task1, Task tasks2) {
         return task1.getCurrTaskId() == tasks2.getCurrTaskId();
-
     }
 
     @Override

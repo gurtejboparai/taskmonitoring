@@ -10,7 +10,7 @@ public interface TaskPersistence {
     Task getTask(int taskId);
     Task addTask(final Task task);
     Task deleteTask( Task task);
-    void editTask(Task task);
+    void editTask(Task oldtask, Task newTask);
     boolean checkForSame(Task task1, Task task2);
     void setStatus(Task task, String newStatus) ;
     void setTaskDate(Task tak,String taskDate) ;

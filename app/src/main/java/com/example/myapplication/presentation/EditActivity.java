@@ -1,5 +1,6 @@
 package com.example.myapplication.presentation;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Build;
@@ -12,7 +13,6 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -46,12 +46,11 @@ public class EditActivity extends AppCompatActivity {
     TextView title, description, date;
     //    ImageButton calender;
     Button status, save, cancel;
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
     Switch priority;
     ImageButton calender;
     Spinner dropDown;
     ArrayAdapter<CharSequence> adapter;
-    private AccessTask accessTask;
-    private TaskPersistenceDB taskDB;
 
 
 //    private AccessTask accessTask = new AccessTask();
@@ -69,7 +68,7 @@ public class EditActivity extends AppCompatActivity {
         taskTitle = currTask.getTaskTitle();
         taskDescription = currTask.getTaskDescription();
         taskDate = currTask.getTaskDate();
-        taskPriority = currTask.getPriority();
+        taskPriority=currTask.getPriority();
 
 
         date = findViewById(R.id.date);
@@ -80,10 +79,10 @@ public class EditActivity extends AppCompatActivity {
         description = findViewById(R.id.taskDescription);
         description.setText(currTask.getTaskDescription());
 
-        priority = findViewById(R.id.highPriority);
-        dropDown = findViewById(R.id.dropDown);
-        calender = findViewById(R.id.datePicker);
-        if (taskPriority.equals("True"))
+        priority =findViewById(R.id.highPriority);
+        dropDown=findViewById(R.id.dropDown);
+        calender=findViewById(R.id.datePicker);
+        if(taskPriority.equals("True"))
             priority.setChecked(Boolean.TRUE);
         //status = findViewById(R.id.switchStatus);
 
@@ -108,53 +107,48 @@ public class EditActivity extends AppCompatActivity {
                 mYear = calendar.get(Calendar.YEAR);
                 DatePickerDialog datePickerDialog = new DatePickerDialog(EditActivity.this,
                         android.R.style.Theme_DeviceDefault_Dialog, new DatePickerDialog.OnDateSetListener() {
+                    @SuppressLint("SetTextI18n")
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
-                        date.setText(dayOfMonth + "-" + (month + 1) + "-" + year);
+                        date.setText(dayOfMonth+"-"+month+"-"+year);
 
                     }
-                }, mYear, mMonth, mDate);
+                },mYear,mMonth,mDate);
 
                 datePickerDialog.show();
             }
         });
-
-                save.setOnClickListener(new View.OnClickListener() {
+        save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                currTask.setTaskTitle(title.getText().toString());
-                currTask.setTaskDescription(description.getText().toString());
+                Task newTask = new Task(currTask.getCurrTaskId(),title.getText().toString(),description.getText().toString(),date.getText().toString());
+                //currTask.setTaskTitle(title.getText().toString());
+                //currTask.setTaskDescription(description.getText().toString());
 
                 taskDB = new TaskPersistenceDB();
-                accessTask = new AccessTask(taskDB);
-                accessTask.editTask(currTask);
+                taskDB.addTasks();
+                accessTaskDB = new AccessTask(taskDB);
+                accessTaskDB.editTask(currTask,newTask);
 
-                List<Task> te= accessTask.getAllTasks();
+                List<Task> te= accessTaskDB.getAllTasks();
                 Log.v("-----1",te.size()+"");
-                Intent it = new Intent(getApplicationContext(), TaskActivity.class);
-                startActivity(it);
+//                Intent it = new Intent(getApplicationContext(), TaskActivity.class);
+//                startActivity(it);
                 finish();
             }
         });
 
-        findViewById(R.id.cancelButton).
-
-                setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        finish();
-                    }
-                });
+        findViewById(R.id.cancelButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
-//        public void saveBtnOnClick(View v)
-//        {
-//            accessTask=new AccessTask();
-//            accessTask.editTask(currTask);
-//            Intent newTaskIntent = new Intent(EditActivity.this, TaskActivity.class);
-//            EditActivity.this.startActivity(newTaskIntent);
-//        }
 
-
+    private TaskPersistence taskPersistence;
+    private TaskPersistenceDB taskDB;
+    private AccessTask accessTaskDB;
 
 //        String dbPath;
 //

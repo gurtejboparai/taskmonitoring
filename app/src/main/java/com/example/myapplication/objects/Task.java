@@ -13,61 +13,77 @@ public class Task implements Serializable {
     private String status;
     private String priority;
     private TaskTag taskTag;
-    private String deadLine;
 
     public Task(int taskId,String taskTitle, String taskDescription, String taskDate){
         this.taskId = taskId;
-        if(taskTitle.length()==0)
-            this.taskTitle = "no Title";
-        else {
-            this.taskTitle = taskTitle;
-        }
+        this.taskTitle=taskTitle;
         this.taskDescription = taskDescription;
         this.taskDate = taskDate;
-        this.status = null;
+        this.status = "on going";
         this.taskTag = TaskTag.MISLENIOUS;
-        this.deadLine=null;
         this.priority="False";
     }
 
 
-    public Task(final int taskId, String taskTitle, String taskDescription, String taskDate, TaskTag taskTag){
+    public Task(final int taskId, String taskTitle, String taskDescription, String taskDate, String taskTag){
         this.taskId = taskId;
-        if(taskTitle.length()==0)
-            this.taskTitle = "no Title";
-        else {
-            this.taskTitle = taskTitle;
-        }
+        this.taskTitle=taskTitle;
         this.taskDescription = taskDescription;
         this.taskDate = taskDate;
         this.status = "on going";
-        this.taskTag=taskTag;
+        this.priority="False";
+        if(taskTag.equalsIgnoreCase(TaskTag.SCHOOL.toString()))
+            this.taskTag=TaskTag.SCHOOL;
+        else if(taskTag.equalsIgnoreCase(TaskTag.WORK.toString()))
+            this.taskTag=TaskTag.WORK;
+        else if(taskTag.equalsIgnoreCase(TaskTag.FITNESS.toString()))
+            this.taskTag=TaskTag.FITNESS;
+        else if(taskTag.equalsIgnoreCase(TaskTag.PRODUCTIVITY.toString()))
+            this.taskTag=TaskTag.PRODUCTIVITY;
+        else if(taskTag.equalsIgnoreCase(TaskTag.APPOINTMENT.toString()))
+            this.taskTag=TaskTag.APPOINTMENT;
+        else
+            this.taskTag=TaskTag.MISLENIOUS;
     }
-    public Task(final int taskId, String taskTitle, String taskDescription, String taskDate, TaskTag taskTag, String deadLine){
+    public Task(final int taskId, String taskTitle, String taskDescription, String taskDate, String taskTag, String priority){
         this.taskId = taskId;
-        if(taskTitle.length()==0)
-            this.taskTitle = "no Title";
-        else {
-            this.taskTitle = taskTitle;
-        }
+        this.taskTitle=taskTitle;
         this.taskDescription = taskDescription;
         this.taskDate = taskDate;
         this.status = "on going";
-        this.taskTag=taskTag;
-        this.deadLine = deadLine;
+        if(taskTag.equalsIgnoreCase(TaskTag.SCHOOL.toString()))
+            this.taskTag=TaskTag.SCHOOL;
+        else if(taskTag.equalsIgnoreCase(TaskTag.WORK.toString()))
+            this.taskTag=TaskTag.WORK;
+        else if(taskTag.equalsIgnoreCase(TaskTag.FITNESS.toString()))
+            this.taskTag=TaskTag.FITNESS;
+        else if(taskTag.equalsIgnoreCase(TaskTag.PRODUCTIVITY.toString()))
+            this.taskTag=TaskTag.PRODUCTIVITY;
+        else if(taskTag.equalsIgnoreCase(TaskTag.APPOINTMENT.toString()))
+            this.taskTag=TaskTag.APPOINTMENT;
+        else
+            this.taskTag=TaskTag.MISLENIOUS;
+        this.priority=priority;
     }
-    public Task(final int taskId, String taskTitle, String taskDescription, String taskDate,String deadLine){
+    public Task(final int taskId, String taskTitle, String taskDescription, String taskDate,String taskTag,String status,String priority){
         this.taskId = taskId;
-        if(taskTitle.length()==0)
-            this.taskTitle = "no Title";
-        else {
-            this.taskTitle = taskTitle;
-        }
+        this.taskTitle=taskTitle;
         this.taskDescription = taskDescription;
         this.taskDate = taskDate;
-        this.status = "on going";
-        this.taskTag= TaskTag.MISLENIOUS;
-        this.deadLine = deadLine;
+        this.status = status;
+        this.priority=priority;
+        if(taskTag.equalsIgnoreCase(TaskTag.SCHOOL.toString()))
+            this.taskTag=TaskTag.SCHOOL;
+        else if(taskTag.equalsIgnoreCase(TaskTag.WORK.toString()))
+            this.taskTag=TaskTag.WORK;
+        else if(taskTag.equalsIgnoreCase(TaskTag.FITNESS.toString()))
+            this.taskTag=TaskTag.FITNESS;
+        else if(taskTag.equalsIgnoreCase(TaskTag.PRODUCTIVITY.toString()))
+            this.taskTag=TaskTag.PRODUCTIVITY;
+        else if(taskTag.equalsIgnoreCase(TaskTag.APPOINTMENT.toString()))
+            this.taskTag=TaskTag.APPOINTMENT;
+        else
+            this.taskTag=TaskTag.MISLENIOUS;
     }
 
 
@@ -109,14 +125,6 @@ public class Task implements Serializable {
     public void setPriority(String priority) {
 
         this.priority = priority;
-    }
-
-
-    public String getDeadLine(){
-        return deadLine;
-    }
-    public void setDeadline(String newDeadline){
-        this.deadLine = newDeadline;
     }
 
 

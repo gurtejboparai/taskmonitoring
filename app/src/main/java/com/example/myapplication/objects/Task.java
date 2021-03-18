@@ -20,7 +20,7 @@ public class Task implements Serializable {
         this.taskDescription = taskDescription;
         this.taskDate = taskDate;
         this.status = "on going";
-        this.taskTag = TaskTag.MISLENIOUS;
+        this.taskTag = TaskTag.OTHERS;
         this.priority="False";
     }
 
@@ -43,7 +43,7 @@ public class Task implements Serializable {
         else if(taskTag.equalsIgnoreCase(TaskTag.APPOINTMENT.toString()))
             this.taskTag=TaskTag.APPOINTMENT;
         else
-            this.taskTag=TaskTag.MISLENIOUS;
+            this.taskTag=TaskTag.OTHERS;
     }
     public Task(final int taskId, String taskTitle, String taskDescription, String taskDate, String taskTag, String priority){
         this.taskId = taskId;
@@ -62,7 +62,7 @@ public class Task implements Serializable {
         else if(taskTag.equalsIgnoreCase(TaskTag.APPOINTMENT.toString()))
             this.taskTag=TaskTag.APPOINTMENT;
         else
-            this.taskTag=TaskTag.MISLENIOUS;
+            this.taskTag=TaskTag.OTHERS;
         this.priority=priority;
     }
     public Task(final int taskId, String taskTitle, String taskDescription, String taskDate,String taskTag,String status,String priority){
@@ -83,7 +83,7 @@ public class Task implements Serializable {
         else if(taskTag.equalsIgnoreCase(TaskTag.APPOINTMENT.toString()))
             this.taskTag=TaskTag.APPOINTMENT;
         else
-            this.taskTag=TaskTag.MISLENIOUS;
+            this.taskTag=TaskTag.OTHERS;
     }
 
 

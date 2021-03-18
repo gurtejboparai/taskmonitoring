@@ -64,7 +64,7 @@ public class ViewTaskActivity extends AppCompatActivity {
         tabSchool = new TabFragment(accessTask.getTasksByTag(TaskTag.SCHOOL), accessTask);
         tabAppointment = new TabFragment(accessTask.getTasksByTag(TaskTag.APPOINTMENT), accessTask);
         tabProductivity = new TabFragment(accessTask.getTasksByTag(TaskTag.PRODUCTIVITY), accessTask);
-        tabMislenious = new TabFragment(accessTask.getTasksByTag(TaskTag.MISLENIOUS), accessTask);
+        tabMislenious = new TabFragment(accessTask.getTasksByTag(TaskTag.OTHERS), accessTask);
     }
 
 

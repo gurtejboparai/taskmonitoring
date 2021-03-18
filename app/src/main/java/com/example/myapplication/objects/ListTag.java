@@ -45,7 +45,7 @@ public class ListTag {
         }
         else {
             colour = Color.GREEN;
-            this.tag = TaskTag.MISLENIOUS;
+            this.tag = TaskTag.OTHERS;
         }
     }
 

@@ -34,8 +34,10 @@ public class TaskPersistenceHSQLDB implements TaskPersistence {
         final String taskTitle = rs.getString("taskTitle");
         final String taskDescription = rs.getString("taskDescription");
         final String taskDay = rs.getString("taskDate");
+        final String taskPriority = rs.getString("taskPriority");
+        final String taskTag = rs.getString("taskTag");
         final String taskStatus = rs.getString("taskStatus");
-        return new Task(taskId,taskTitle,taskDescription,taskDay);
+        return new Task(taskId,taskTitle,taskDescription,taskDay,taskTag,taskStatus,taskPriority);
     }
 
 

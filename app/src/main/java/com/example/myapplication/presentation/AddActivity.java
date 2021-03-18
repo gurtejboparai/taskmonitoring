@@ -57,7 +57,6 @@ public class AddActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         dropDown.setAdapter(adapter);
 
-
         titleTxt = title.getText().toString();
         descriptionTxt = description.getText().toString();
 

@@ -16,11 +16,7 @@ public class Task implements Serializable {
 
     public Task(int taskId,String taskTitle, String taskDescription, String taskDate){
         this.taskId = taskId;
-        if(taskTitle.length()==0)
-            this.taskTitle = "no Title";
-        else {
-            this.taskTitle = taskTitle;
-        }
+        this.taskTitle=taskTitle;
         this.taskDescription = taskDescription;
         this.taskDate = taskDate;
         this.status = "on going";
@@ -31,11 +27,7 @@ public class Task implements Serializable {
 
     public Task(final int taskId, String taskTitle, String taskDescription, String taskDate, String taskTag){
         this.taskId = taskId;
-        if(taskTitle.length()==0)
-            this.taskTitle = "no Title";
-        else {
-            this.taskTitle = taskTitle;
-        }
+        this.taskTitle=taskTitle;
         this.taskDescription = taskDescription;
         this.taskDate = taskDate;
         this.status = "on going";
@@ -55,11 +47,7 @@ public class Task implements Serializable {
     }
     public Task(final int taskId, String taskTitle, String taskDescription, String taskDate, String taskTag, String priority){
         this.taskId = taskId;
-        if(taskTitle.length()==0)
-            this.taskTitle = "no Title";
-        else {
-            this.taskTitle = taskTitle;
-        }
+        this.taskTitle=taskTitle;
         this.taskDescription = taskDescription;
         this.taskDate = taskDate;
         this.status = "on going";
@@ -79,11 +67,7 @@ public class Task implements Serializable {
     }
     public Task(final int taskId, String taskTitle, String taskDescription, String taskDate,String taskTag,String status,String priority){
         this.taskId = taskId;
-        if(taskTitle.length()==0)
-            this.taskTitle = "no Title";
-        else {
-            this.taskTitle = taskTitle;
-        }
+        this.taskTitle=taskTitle;
         this.taskDescription = taskDescription;
         this.taskDate = taskDate;
         this.status = status;

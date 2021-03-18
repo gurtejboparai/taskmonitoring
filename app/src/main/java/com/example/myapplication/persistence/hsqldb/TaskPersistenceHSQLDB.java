@@ -18,13 +18,16 @@ import java.util.List;
 
 public class TaskPersistenceHSQLDB implements TaskPersistence {
     private final String dbPath;
+    private final String dbScriptName;
     private List<Task>taskList;
-    public TaskPersistenceHSQLDB(final String dbPath){
+    public TaskPersistenceHSQLDB(final String dbPath, final String dbScriptName){
         this.dbPath=dbPath;
+        this.dbScriptName = dbScriptName;
         taskList = new ArrayList<>();
     }
-    private Connection connection() throws SQLException {
-        return DriverManager.getConnection("jdbc:hsqldb:file:" + dbPath + ";shutdown=true", "SA", "");
+    private Connection connection() throws SQLException, ClassNotFoundException {
+        Class.forName("org.hsqldb.jdbcDriver");
+        return DriverManager.getConnection("jdbc:hsqldb:file:" + dbPath+dbScriptName+ ";shutdown=true", "SA", "");
     }
 
     private Task fromResultSet(final ResultSet rs) throws SQLException {
@@ -51,7 +54,7 @@ public class TaskPersistenceHSQLDB implements TaskPersistence {
             }
             rs.close();
             st.close();
-        } catch (final SQLException e) {
+        } catch (final SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e.getMessage());
         }
     }
@@ -88,7 +91,7 @@ public class TaskPersistenceHSQLDB implements TaskPersistence {
             st.executeUpdate();
             taskList.add(task);
             return task;
-        }catch (final SQLException e){
+        }catch (final SQLException | ClassNotFoundException e){
             throw new RuntimeException(e.getMessage());
         }
     }
@@ -102,7 +105,7 @@ public class TaskPersistenceHSQLDB implements TaskPersistence {
             st.executeUpdate();
             taskList.remove(task);
         }
-        catch (final SQLException e){
+        catch (final SQLException | ClassNotFoundException e){
             throw new RuntimeException(e.getMessage());
         }
         return null;
@@ -122,7 +125,7 @@ public class TaskPersistenceHSQLDB implements TaskPersistence {
             st.setInt(7,task.getCurrTaskId());
             st.executeUpdate();
         }
-        catch (final SQLException e){
+        catch (final SQLException | ClassNotFoundException e){
             throw new RuntimeException((e.getMessage()));
         }
     }
@@ -142,7 +145,7 @@ public class TaskPersistenceHSQLDB implements TaskPersistence {
             st.executeUpdate();
 
         }
-        catch (final SQLException e){
+        catch (final SQLException | ClassNotFoundException e){
             throw new RuntimeException(e.getMessage());
         }
 
@@ -157,7 +160,7 @@ public class TaskPersistenceHSQLDB implements TaskPersistence {
             st.setInt(2,tak.getCurrTaskId());
             st.executeUpdate();
         }
-        catch(final SQLException e){
+        catch(final SQLException | ClassNotFoundException e){
             throw new RuntimeException(e.getMessage());
         }
 

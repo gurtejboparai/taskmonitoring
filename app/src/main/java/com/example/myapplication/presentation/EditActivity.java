@@ -127,8 +127,8 @@ public class EditActivity extends AppCompatActivity {
 
                 List<Task> te= accessTaskDB.getAllTasks();
                 Log.v("-----1",te.size()+"");
-                Intent it = new Intent(getApplicationContext(), TaskActivity.class);
-                startActivity(it);
+//                Intent it = new Intent(getApplicationContext(), TaskActivity.class);
+//                startActivity(it);
                 finish();
             }
         });

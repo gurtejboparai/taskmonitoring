@@ -72,7 +72,7 @@ public class AddActivity extends AppCompatActivity {
                         android.R.style.Theme_DeviceDefault_Dialog, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
-                        date.setText(dayOfMonth+"-"+(month+1)+"-"+year);
+                        date.setText(year+"-"+(month+1)+"-"+dayOfMonth);
 
                     }
                 },mYear,mMonth,mDate);

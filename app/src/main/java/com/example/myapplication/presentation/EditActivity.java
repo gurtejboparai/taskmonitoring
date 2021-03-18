@@ -111,7 +111,7 @@ public class EditActivity extends AppCompatActivity {
                     @SuppressLint("SetTextI18n")
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
-                        date.setText(dayOfMonth+"-"+(month+1)+"-"+year);
+                        date.setText(year+"-"+"0"+(month+1)+"-"+dayOfMonth);
 
                     }
                 },mYear,mMonth,mDate);

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -143,12 +144,10 @@ public class TabFragment extends Fragment {
 
         }
 
-
         @Override
         public int getItemCount() {
             return taskList.size();
         }
-
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
 

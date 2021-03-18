@@ -53,31 +53,6 @@ public class TaskActivity extends AppCompatActivity {
 
         initialTabFragment();
         tabSetUp();
-
-
-//        String days[] = new String[]{"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
-//        String months[] = new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
-//        Date date = new Date();
-//        AccessTask accessTask=new AccessTask();
-//        List<Task> listOfTasks = accessTask.getAllTasks();
-//        String titles[]=new String[listOfTasks.size()];
-//        String descriptions[]=new String[listOfTasks.size()];
-//        for (int i=0;i<listOfTasks.size();i++)
-//        {
-//            titles[i]=listOfTasks.get(i).getTaskTitle();
-//            descriptions[i]=listOfTasks.get(i).getTaskDescription();
-//        }
-//        TextView currDay = findViewById(R.id.day);
-//        TextView currDate = findViewById(R.id.date);
-//        currDay.setText(days[date.getDay()]);
-//        int year = date.getYear() + 1900;
-//        currDate.setText("" + date.getDate() + " " + months[date.getMonth()] + " " + year);
-//
-//        RecyclerView recyclerView=findViewById(R.id.taskList);
-//        MyAdapter myAdapter=new MyAdapter(this,titles,descriptions);
-//        recyclerView.setAdapter(myAdapter);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
     }
 
     private void initialTabFragment() {

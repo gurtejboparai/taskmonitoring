@@ -1,5 +1,6 @@
 package com.example.myapplication.presentation;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Build;
@@ -45,6 +46,7 @@ public class EditActivity extends AppCompatActivity {
     TextView title, description, date;
     //    ImageButton calender;
     Button status, save, cancel;
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
     Switch priority;
     ImageButton calender;
     Spinner dropDown;
@@ -105,6 +107,7 @@ public class EditActivity extends AppCompatActivity {
                 mYear = calendar.get(Calendar.YEAR);
                 DatePickerDialog datePickerDialog = new DatePickerDialog(EditActivity.this,
                         android.R.style.Theme_DeviceDefault_Dialog, new DatePickerDialog.OnDateSetListener() {
+                    @SuppressLint("SetTextI18n")
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
                         date.setText(dayOfMonth+"-"+month+"-"+year);
@@ -118,12 +121,14 @@ public class EditActivity extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                currTask.setTaskTitle(title.getText().toString());
-                currTask.setTaskDescription(description.getText().toString());
+                Task newTask = new Task(currTask.getCurrTaskId(),title.getText().toString(),description.getText().toString(),date.getText().toString());
+                //currTask.setTaskTitle(title.getText().toString());
+                //currTask.setTaskDescription(description.getText().toString());
 
                 taskDB = new TaskPersistenceDB();
+                taskDB.addTasks();
                 accessTaskDB = new AccessTask(taskDB);
-                accessTaskDB.editTask(currTask);
+                accessTaskDB.editTask(currTask,newTask);
 
                 List<Task> te= accessTaskDB.getAllTasks();
                 Log.v("-----1",te.size()+"");

@@ -98,7 +98,7 @@ public class AccessTaskTest {
 
         Task updateTask = new Task(taskNeedUpdate.getCurrTaskId(), newTitle, newDescription, oldDate);
 
-        accessTaskDB.editTask(taskNeedUpdate);
+        accessTaskDB.editTask(taskNeedUpdate,updateTask);
         taskNeedUpdate = accessTaskDB.getTask(0);
 
         assertNotEquals(oldTitle, taskNeedUpdate.getTaskTitle());

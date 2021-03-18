@@ -34,7 +34,7 @@ public class TaskPersistenceHSQLDB implements TaskPersistence {
         final String taskTitle = rs.getString("taskTitle");
         final String taskDescription = rs.getString("taskDescription");
         final String taskDay = rs.getString("taskDate");
-        //final String taskStatus = rs.getString("taskStatus");
+        final String taskStatus = rs.getString("taskStatus");
         return new Task(taskId,taskTitle,taskDescription,taskDay);
     }
 
@@ -110,14 +110,14 @@ public class TaskPersistenceHSQLDB implements TaskPersistence {
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
-    public void editTask(Task task) {
+    public void editTask(Task task, Task newTask) {
         try(final Connection c= connection()){
             final PreparedStatement st = c.prepareStatement("UPDATE TASK SET taskTitle= ?, taskDescription= ?, taskDate= ?, taskStatus= ? WHERE taskId= ?");
-            st.setString(1,task.getTaskTitle());
-            st.setString(2,task.getTaskDescription());
-            st.setString(3,task.getTaskDate());
+            st.setString(1,newTask.getTaskTitle());
+            st.setString(2,newTask.getTaskDescription());
+            st.setString(3,newTask.getTaskDate());
             if(task.getStatus()!=null){
-                st.setString(4,task.getStatus());
+                st.setString(4,newTask.getStatus());
             }
             st.setInt(5,task.getCurrTaskId());
             st.executeUpdate();

@@ -61,8 +61,8 @@ public class AccessTask extends AppCompatActivity {
         return taskPersistence.deleteTask(taskToDel);
     }
 
-    public void editTask(Task task){
-        taskPersistence.editTask(task);
+    public void editTask(Task oldtask, Task newTask){
+        taskPersistence.editTask(oldtask, newTask);
     }
 
     public void setTaskDate(Task task, String taskDate){
@@ -86,7 +86,7 @@ public class AccessTask extends AppCompatActivity {
 
     public List<Task> getTasksByTag(TaskTag taskTag) {
 
-        List<Task> taskList = new ArrayList<Task>();
+        List<Task> taskList = new ArrayList<>();
 
         for (Task task : allTasks) {
             if (task.getTaskTag() == taskTag) {
@@ -248,4 +248,4 @@ public class AccessTask extends AppCompatActivity {
             }
         };
 
-    };
+    }

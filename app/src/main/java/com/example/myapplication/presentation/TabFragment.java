@@ -188,7 +188,8 @@ public class TabFragment extends Fragment {
             myViewHolder.taskDescription.setText(description);
             myViewHolder.taskDate.setText(date);
             if (priority.equals("True"))
-                myViewHolder.taskPriority.setChipBackgroundColor(ColorStateList.valueOf(ContextCompat.getColor(getActivity(), R.color.red)));
+                myViewHolder.taskPriority.setChipBackgroundColor(ColorStateList.valueOf(ContextCompat.getColor(getActivity(), R.color.OrangeRed)));
+
 
         }
 

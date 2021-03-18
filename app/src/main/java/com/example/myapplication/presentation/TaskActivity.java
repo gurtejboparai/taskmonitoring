@@ -35,13 +35,14 @@ public class TaskActivity extends AppCompatActivity {
     private String Title, Description, date, priority;
     private Task newTask;
     Bundle extras;
+    private boolean firstCall=Boolean.TRUE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.test_activity_main);
 
-        accessTask = new AccessTask();
+            accessTask = new AccessTask();
         extras = getIntent().getExtras();
         if (extras != null) {
             Title = extras.getString("Title");
@@ -105,10 +106,6 @@ public class TaskActivity extends AppCompatActivity {
         TaskActivity.this.startActivity(newTaskIntent);
     }
 
-//    public void editBtnOnClick(View v) {
-//        Intent taskIntent = new Intent(TaskActivity.this, EditActivity.class);
-//        TaskActivity.this.startActivity(taskIntent);
-//    }
 
     public void sortBtnOnClick(View view) {
         int pos = tabView.getSelectedTabPosition();

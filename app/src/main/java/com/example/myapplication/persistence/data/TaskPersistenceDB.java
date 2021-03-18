@@ -11,7 +11,9 @@ public class TaskPersistenceDB implements TaskPersistence {
     private static int numOfTasks=0;
 
     public TaskPersistenceDB(){
+
         tasksList = new ArrayList<>();
+        addTasks();
     }
 
 

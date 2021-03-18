@@ -81,6 +81,14 @@ public class AddActivity extends AppCompatActivity {
                 datePickerDialog.show();
             }
         });
+        findViewById(R.id.cancelButton).
+
+                setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        finish();
+                    }
+                });
     }
 
     public void saveBtnOnClick(View view){
@@ -121,10 +129,5 @@ public class AddActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Invalid fields", Toast.LENGTH_LONG).show();
             }
         }
-    }
-
-    public void cancelBtnOnClick(View v){
-        Intent newTaskIntent = new Intent(AddActivity.this, TaskActivity.class);
-        AddActivity.this.startActivity(newTaskIntent);
     }
 }

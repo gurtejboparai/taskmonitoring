@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -49,6 +50,8 @@ public class EditActivity extends AppCompatActivity {
     ImageButton calender;
     Spinner dropDown;
     ArrayAdapter<CharSequence> adapter;
+    private AccessTask accessTask;
+    private TaskPersistenceDB taskDB;
 
 
 //    private AccessTask accessTask = new AccessTask();
@@ -66,7 +69,7 @@ public class EditActivity extends AppCompatActivity {
         taskTitle = currTask.getTaskTitle();
         taskDescription = currTask.getTaskDescription();
         taskDate = currTask.getTaskDate();
-        taskPriority=currTask.getPriority();
+        taskPriority = currTask.getPriority();
 
 
         date = findViewById(R.id.date);
@@ -77,10 +80,10 @@ public class EditActivity extends AppCompatActivity {
         description = findViewById(R.id.taskDescription);
         description.setText(currTask.getTaskDescription());
 
-        priority =findViewById(R.id.highPriority);
-        dropDown=findViewById(R.id.dropDown);
-        calender=findViewById(R.id.datePicker);
-        if(taskPriority.equals("True"))
+        priority = findViewById(R.id.highPriority);
+        dropDown = findViewById(R.id.dropDown);
+        calender = findViewById(R.id.datePicker);
+        if (taskPriority.equals("True"))
             priority.setChecked(Boolean.TRUE);
         //status = findViewById(R.id.switchStatus);
 
@@ -107,43 +110,51 @@ public class EditActivity extends AppCompatActivity {
                         android.R.style.Theme_DeviceDefault_Dialog, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
-                        date.setText(dayOfMonth+"-"+month+"-"+year);
+                        date.setText(dayOfMonth + "-" + (month + 1) + "-" + year);
 
                     }
-                },mYear,mMonth,mDate);
+                }, mYear, mMonth, mDate);
 
                 datePickerDialog.show();
             }
         });
-        save.setOnClickListener(new View.OnClickListener() {
+
+                save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 currTask.setTaskTitle(title.getText().toString());
                 currTask.setTaskDescription(description.getText().toString());
 
                 taskDB = new TaskPersistenceDB();
-                accessTaskDB = new AccessTask(taskDB);
-                accessTaskDB.editTask(currTask);
+                accessTask = new AccessTask(taskDB);
+                accessTask.editTask(currTask);
 
-                List<Task> te= accessTaskDB.getAllTasks();
+                List<Task> te= accessTask.getAllTasks();
                 Log.v("-----1",te.size()+"");
-//                Intent it = new Intent(getApplicationContext(), TaskActivity.class);
-//                startActivity(it);
+                Intent it = new Intent(getApplicationContext(), TaskActivity.class);
+                startActivity(it);
                 finish();
             }
         });
 
-        findViewById(R.id.cancelButton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        findViewById(R.id.cancelButton).
+
+                setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        finish();
+                    }
+                });
     }
+//        public void saveBtnOnClick(View v)
+//        {
+//            accessTask=new AccessTask();
+//            accessTask.editTask(currTask);
+//            Intent newTaskIntent = new Intent(EditActivity.this, TaskActivity.class);
+//            EditActivity.this.startActivity(newTaskIntent);
+//        }
 
-    private TaskPersistence taskPersistence;
-    private TaskPersistenceDB taskDB;
-    private AccessTask accessTaskDB;
+
 
 //        String dbPath;
 //

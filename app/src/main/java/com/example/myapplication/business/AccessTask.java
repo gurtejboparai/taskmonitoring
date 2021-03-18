@@ -27,11 +27,12 @@ public class AccessTask extends AppCompatActivity {
     private List<Task> allTasks;
     private final TaskPersistence taskPersistence;
 
+
+
     public AccessTask(){
 
       taskPersistence = Service.getTaskPersistence();
         //taskPersistence = new TaskPersistenceHSQLDB(Main.getDBPathName());
-        ((TaskPersistenceDB)taskPersistence).addTasks();
         allTasks=new ArrayList<>();
     }
     public AccessTask(TaskPersistenceDB DB){

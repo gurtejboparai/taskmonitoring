@@ -22,13 +22,13 @@
             android:layout_height="43dp"
             android:layout_margin="7dp"
             android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:gravity="start"
+            android:ellipsize="end"
+            android:gravity="center|start"
+            android:singleLine="true"
             android:text="@string/description"
             android:textColor="@color/darkGrey"
             android:textSize="24sp"
-            android:singleLine="true"
-            android:ellipsize="end"
+            android:textStyle="normal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.16"
@@ -74,18 +74,20 @@
 
         <com.google.android.material.chip.Chip
             android:id="@+id/priorityChip"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
             android:layout_marginStart="239dp"
-            android:layout_marginLeft="239dp"
             android:layout_marginTop="2dp"
+            android:button="@android:drawable/btn_star_big_on"
+            android:buttonTint="@color/White"
+            android:clickable="false"
+            app:chipBackgroundColor="@color/white"
             app:layout_constraintBottom_toTopOf="@+id/taskDate"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.677"
+            app:layout_constraintHorizontal_bias="0.862"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            app:chipBackgroundColor="@color/white"/>
+            app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

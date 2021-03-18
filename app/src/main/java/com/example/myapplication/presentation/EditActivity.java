@@ -51,6 +51,7 @@ public class EditActivity extends AppCompatActivity {
     ImageButton calender;
     Spinner dropDown;
     ArrayAdapter<CharSequence> adapter;
+    private AccessTask accessTask;
 
 
 //    private AccessTask accessTask = new AccessTask();
@@ -110,7 +111,7 @@ public class EditActivity extends AppCompatActivity {
                     @SuppressLint("SetTextI18n")
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
-                        date.setText(dayOfMonth+"-"+month+"-"+year);
+                        date.setText(dayOfMonth+"-"+(month+1)+"-"+year);
 
                     }
                 },mYear,mMonth,mDate);
@@ -121,19 +122,17 @@ public class EditActivity extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Task newTask = new Task(currTask.getCurrTaskId(),title.getText().toString(),description.getText().toString(),date.getText().toString());
-                //currTask.setTaskTitle(title.getText().toString());
-                //currTask.setTaskDescription(description.getText().toString());
-
-                taskDB = new TaskPersistenceDB();
-                taskDB.addTasks();
-                accessTaskDB = new AccessTask(taskDB);
-                accessTaskDB.editTask(currTask,newTask);
-
-                List<Task> te= accessTaskDB.getAllTasks();
-                Log.v("-----1",te.size()+"");
-//                Intent it = new Intent(getApplicationContext(), ViewTaskActivity.class);
-//                startActivity(it);
+                  accessTask = new AccessTask();
+                  Task task=accessTask.getTask(currTask.getCurrTaskId());
+                  task.setTaskTitle(title.getText().toString());
+                  task.setTaskDescription(description.getText().toString());
+                  task.setTaskDate(date.getText().toString());
+                  if(priority.isChecked())
+                      task.setPriority("True");
+                  else
+                      task.setPriority("False");
+                Intent intent = new Intent(getApplicationContext(), ViewTaskActivity.class);
+                startActivity(intent);
                 finish();
             }
         });
@@ -146,9 +145,6 @@ public class EditActivity extends AppCompatActivity {
         });
     }
 
-    private TaskPersistence taskPersistence;
-    private TaskPersistenceDB taskDB;
-    private AccessTask accessTaskDB;
 
 //        String dbPath;
 //

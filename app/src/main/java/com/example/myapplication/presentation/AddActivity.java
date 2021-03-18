@@ -116,7 +116,7 @@ public class AddActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Task Added", Toast.LENGTH_LONG).show();
 
                 finish();
-                Intent viewTasks = new Intent(AddActivity.this, TaskActivity.class);
+                Intent viewTasks = new Intent(AddActivity.this, ViewTaskActivity.class);
                 viewTasks.putExtra("Title", titleText);
                 viewTasks.putExtra("Description",descriptionText);
                 viewTasks.putExtra("Date",dateText);

@@ -132,7 +132,7 @@ public class EditActivity extends AppCompatActivity {
 
                 List<Task> te= accessTaskDB.getAllTasks();
                 Log.v("-----1",te.size()+"");
-//                Intent it = new Intent(getApplicationContext(), TaskActivity.class);
+//                Intent it = new Intent(getApplicationContext(), ViewTaskActivity.class);
 //                startActivity(it);
                 finish();
             }

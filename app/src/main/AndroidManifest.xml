@@ -12,7 +12,7 @@
 
         <activity android:name=".presentation.AddActivity"></activity>
         <activity android:name=".presentation.EditActivity"></activity>
-        <activity android:name=".presentation.TaskActivity"></activity>
+        <activity android:name=".presentation.ViewTaskActivity"></activity>
 
 
         <activity android:name=".presentation.SplashPageActivity">

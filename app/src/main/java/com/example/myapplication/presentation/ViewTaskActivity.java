@@ -4,10 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.ItemTouchHelper;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.myapplication.R;
@@ -16,7 +13,7 @@ import com.example.myapplication.objects.Task;
 import com.example.myapplication.objects.TaskTag;
 import com.google.android.material.tabs.TabLayout;
 
-public class TaskActivity extends AppCompatActivity {
+public class ViewTaskActivity extends AppCompatActivity {
 
     private TabLayout tabView;
     private ViewPager viewPager;
@@ -102,8 +99,8 @@ public class TaskActivity extends AppCompatActivity {
     }
 
     public void addTaskBtnOnClick(View v) {
-        Intent newTaskIntent = new Intent(TaskActivity.this, AddActivity.class);
-        TaskActivity.this.startActivity(newTaskIntent);
+        Intent newTaskIntent = new Intent(ViewTaskActivity.this, AddActivity.class);
+        ViewTaskActivity.this.startActivity(newTaskIntent);
     }
 
 
@@ -130,7 +127,7 @@ public class TaskActivity extends AppCompatActivity {
 //        AlertDialog.Builder builder;
 //        final String[] types = {"All", "Priority From Low To High", "Priority From High To Low", "Date In Ascending","Date In Descending"};
 //
-//        builder = new AlertDialog.Builder(TaskActivity.this);
+//        builder = new AlertDialog.Builder(ViewTaskActivity.this);
 //
 //        builder.setSingleChoiceItems(types, -1, new DialogInterface.OnClickListener()
 //        {

@@ -95,6 +95,7 @@ public class AddActivity extends AppCompatActivity {
         String descriptionText="";
         String dateText="";
         String priority="False";
+        String tasktag="No Category";
 
         boolean titleEmpty = this.title.getText().toString().isEmpty();
         boolean descriptionEmpty = this.description.getText().toString().isEmpty();
@@ -110,9 +111,8 @@ public class AddActivity extends AppCompatActivity {
                 dateText = this.date.getText().toString().trim();
                 if(highPriority.isChecked())
                     priority="True";
+                tasktag=dropDown.getSelectedItem().toString();
 
-                //Task task = new Task(accessTask.getNewTaskId(),title, description, date);
-                //accessTask.addTask(newTask);
                 Toast.makeText(getApplicationContext(), "Task Added", Toast.LENGTH_LONG).show();
 
                 finish();
@@ -121,6 +121,7 @@ public class AddActivity extends AppCompatActivity {
                 viewTasks.putExtra("Description",descriptionText);
                 viewTasks.putExtra("Date",dateText);
                 viewTasks.putExtra("Priority",priority);
+                viewTasks.putExtra("Tag",tasktag);
 
                 startActivity(viewTasks);
             }

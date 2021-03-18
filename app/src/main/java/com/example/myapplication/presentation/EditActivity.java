@@ -127,6 +127,7 @@ public class EditActivity extends AppCompatActivity {
                   task.setTaskTitle(title.getText().toString());
                   task.setTaskDescription(description.getText().toString());
                   task.setTaskDate(date.getText().toString());
+                  task.setCategory(dropDown.getSelectedItem().toString());
                   if(priority.isChecked())
                       task.setPriority("True");
                   else

@@ -29,7 +29,7 @@ public class ViewTaskActivity extends AppCompatActivity {
 
     private String tagName;
     private String typeResult;
-    private String Title, Description, date, priority;
+    private String Title, Description, date, priority,taskTag;
     private Task newTask;
     Bundle extras;
     private boolean firstCall=Boolean.TRUE;
@@ -46,9 +46,11 @@ public class ViewTaskActivity extends AppCompatActivity {
             Description = extras.getString("Description");
             date = extras.getString("Date");
             priority = extras.getString("Priority");
+            taskTag=extras.getString("Tag");
             newTask = new Task(accessTask.getNewTaskId(), Title, Description, date);
             accessTask.addTask(newTask);
             newTask.setPriority(priority);
+            newTask.setCategory(taskTag);
 
         }
 

@@ -21,13 +21,26 @@ public class TaskPersistenceDB implements TaskPersistence {
 
     public void addTasks(){
         Task task1=new Task(numOfTasks, "Call the doctor","setup appointment for Kevin","2021-03-02");
+        Task task2=new Task(numOfTasks +1,"Workout","Do cardio for 30 minutes","2021-03-04");
+        Task task3=new Task(numOfTasks +2,"COMP3350 due","Iteration-1 due on Friday","2021-03-03");
+        Task task4=new Task(numOfTasks +3,"Meal Prep","Prepare the meals for next 3 days and store","2021-03-03");
+        Task task5=new Task(numOfTasks +4,"COMP3340 lab","Lab-3 is due tomorrow", "2021-02-28");
+        Task task6=new Task(numOfTasks +5,"Talk to the manager","Inform my new availability to the manager ","2021-03-03");
         this.tasksList.add(task1);
+        this.tasksList.add(task2);
+        this.tasksList.add(task3);
+        this.tasksList.add(task4);
+        this.tasksList.add(task5);
+        this.tasksList.add(task6);
         task1.setPriority("True");
-        this.tasksList.add(new Task(numOfTasks +1,"Workout","Do cardio for 30 minutes","2021-03-04"));
-        this.tasksList.add(new Task(numOfTasks +2,"COMP3350 due","Iteration-1 due on Friday","2021-03-03"));
-        this.tasksList.add(new Task(numOfTasks +3,"Meal Prep","Prepare the meals for next 3 days and store","2021-03-03"));
-        this.tasksList.add(new Task(numOfTasks +4,"COMP3340 lab","Lab-3 is due tomorrow", "2021-02-28"));
-        this.tasksList.add(new Task(numOfTasks +5,"Talk to the manager","Inform my new availability to the manager ","2021-03-03","WORK"));
+        task3.setPriority("True");
+        task1.setCategory("Appointment");
+        task2.setCategory("Fitness");
+        task3.setCategory("School");
+        task4.setCategory("Fitness");
+        task5.setCategory("School");
+        task6.setCategory("Work");
+
     }
 
 

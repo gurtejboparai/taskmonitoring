@@ -126,6 +126,21 @@ public class Task implements Serializable {
 
         this.priority = priority;
     }
+    public void setCategory(String taskTag)
+    {
+        if(taskTag.equalsIgnoreCase(TaskTag.SCHOOL.toString()))
+            this.taskTag=TaskTag.SCHOOL;
+        else if(taskTag.equalsIgnoreCase(TaskTag.WORK.toString()))
+            this.taskTag=TaskTag.WORK;
+        else if(taskTag.equalsIgnoreCase(TaskTag.FITNESS.toString()))
+            this.taskTag=TaskTag.FITNESS;
+        else if(taskTag.equalsIgnoreCase(TaskTag.PRODUCTIVITY.toString()))
+            this.taskTag=TaskTag.PRODUCTIVITY;
+        else if(taskTag.equalsIgnoreCase(TaskTag.APPOINTMENT.toString()))
+            this.taskTag=TaskTag.APPOINTMENT;
+        else
+            this.taskTag=TaskTag.OTHERS;
+    }
 
 
     public TaskTag getTaskTag() { return taskTag; }

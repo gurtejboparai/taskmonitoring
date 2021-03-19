@@ -1,6 +1,9 @@
 package com.example.myapplication.objects;
 
+import android.graphics.Color;
+
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Task implements Serializable {
     private final int taskId;
@@ -91,7 +94,7 @@ public class Task implements Serializable {
     public String getTaskTitle(){return taskTitle;}
 
     public void setTaskTitle(String taskTitle){
-        this.taskTitle = taskTitle;
+            this.taskTitle = taskTitle;
     }
 
     public String getTaskDescription(){return taskDescription;}

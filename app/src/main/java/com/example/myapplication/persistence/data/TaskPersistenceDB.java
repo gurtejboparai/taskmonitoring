@@ -72,10 +72,16 @@ public class TaskPersistenceDB implements TaskPersistence {
     }
 
     @Override
-    public void editTask(Task oldTask, Task newTask) {
-        if(this.tasksList.contains(oldTask)){
+    public void editTask(Task task) {
+        Task oldTask = null;
+        for (Task t : this.tasksList) {
+            if(t.getCurrTaskId() == task.getCurrTaskId()) {
+                oldTask = t;
+            }
+        }
+        if(oldTask != null){
             int index = this.tasksList.indexOf(oldTask);
-            this.tasksList.set(index,newTask);
+            this.tasksList.set(index,task);
         }
     }
 

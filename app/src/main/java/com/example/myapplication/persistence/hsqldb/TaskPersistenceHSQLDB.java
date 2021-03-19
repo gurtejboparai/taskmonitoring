@@ -163,16 +163,15 @@ public class TaskPersistenceHSQLDB implements TaskPersistence {
 
 //    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
-    public void editTask(Task task, Task newTask) {
+    public void editTask(Task task) {
         try(final Connection c= connection()){
-            final PreparedStatement st = c.prepareStatement("UPDATE TASK SET taskTitle= ?, taskDescription= ?, taskDate= ?, taskTag= ?, taskStatus= ? taskPriority=? WHERE taskId= ?");
-            st.setString(1,newTask.getTaskTitle());
-            st.setString(2,newTask.getTaskDescription());
-            st.setString(3,newTask.getTaskDate());
-            st.setString(4,newTask.getTaskTag().toString());
-            st.setString(5,newTask.getStatus());
-            st.setString(6,newTask.getPriority());
-            st.setInt(7,task.getCurrTaskId());
+            final PreparedStatement st = c.prepareStatement("UPDATE TASK SET taskTitle= ?, taskDescription= ?, taskDate= ?, taskTag= ?, taskPriority=? WHERE taskId= ?");
+            st.setString(1,task.getTaskTitle());
+            st.setString(2,task.getTaskDescription());
+            st.setString(3,task.getTaskDate());
+            st.setString(4,task.getTaskTag().toString());
+            st.setString(5,task.getPriority());
+            st.setInt(6,task.getCurrTaskId());
             st.executeUpdate();
         }
         catch (final SQLException | ClassNotFoundException e){

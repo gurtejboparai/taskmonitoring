@@ -64,8 +64,8 @@ public class AccessTask extends AppCompatActivity {
         return taskPersistence.deleteTask(taskToDel);
     }
 
-    public void editTask(Task oldtask, Task newTask){
-        taskPersistence.editTask(oldtask, newTask);
+    public void editTask(Task task){
+        taskPersistence.editTask(task);
     }
 
     public void setTaskDate(Task task, String taskDate){

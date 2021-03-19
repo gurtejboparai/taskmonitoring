@@ -122,13 +122,11 @@ public class TabFragment extends Fragment {
     public void sort() {
         if (!inAscendingOrder) {
 
-            //orderedTasks = tasks.sortPriorityInAsc(orderedTasks);
             orderedTasks = tasks.sortDateInAsc(orderedTasks);
             inAscendingOrder = true;
 
         } else {
 
-            //orderedTasks = tasks.sortPriorityInDesc(orderedTasks);
             orderedTasks = tasks.sortDateInDesc(orderedTasks);
             inAscendingOrder = false;
         }

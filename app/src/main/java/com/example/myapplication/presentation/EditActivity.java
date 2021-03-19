@@ -37,13 +37,11 @@ public class EditActivity extends AppCompatActivity {
 
     Task currTask;
 
-    //    private int taskId;
     private int mDate, mMonth, mYear;
 
     private String taskTitle, taskDescription, taskDate, taskPriority, taskCategory;
 
     TextView title, description, date;
-    //    ImageButton calender;
     Button status, save, cancel;
     @SuppressLint("UseSwitchCompatOrMaterialCode")
     Switch priority;
@@ -52,16 +50,12 @@ public class EditActivity extends AppCompatActivity {
     ArrayAdapter<CharSequence> adapter;
     private AccessTask accessTask;
 
-
-//    private AccessTask accessTask = new AccessTask();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_task);
         currTask = (Task) getIntent().getSerializableExtra("TID");
-//        taskId = getIntent().getIntExtra(tID,-1);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
 
@@ -86,7 +80,6 @@ public class EditActivity extends AppCompatActivity {
         calender=findViewById(R.id.datePicker);
         if(taskPriority.equals("True"))
             priority.setChecked(Boolean.TRUE);
-        //status = findViewById(R.id.switchStatus);
 
         save = findViewById(R.id.saveButton);
         cancel = findViewById(R.id.cancelButton);

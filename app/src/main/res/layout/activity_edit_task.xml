@@ -1,167 +1,152 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".presentation.ViewTaskActivity"
-    tools:visibility="visible">
+    android:layout_gravity="center"
+    tools:context=".presentation.AddActivity">
 
+    <ImageView
+        android:id="@+id/appLogo"
+        android:layout_width="158dp"
+        android:layout_height="158dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="420dp"
+        android:contentDescription="TODO"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/p_square" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <ImageButton
+        android:id="@+id/datePicker"
+        android:layout_width="59dp"
+        android:layout_height="57dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="140dp"
+        android:layout_marginRight="140dp"
+        android:layout_marginBottom="565dp"
+        android:scaleType="fitStart"
+        android:src="@drawable/calender" />
+
+    <EditText
+        android:id="@+id/taskTitle"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@color/blue">
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="209dp"
+        android:layout_marginEnd="203dp"
+        android:layout_marginRight="203dp"
+        android:ems="10"
+        android:gravity="center_horizontal"
+        android:inputType="textPersonName"
+        android:text="Task Title" />
 
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="187dp"
+        android:layout_marginLeft="187dp"
+        android:layout_marginTop="277dp"
+        android:gravity="center"
+        android:hint="DD-MM-YYYY"
+        android:textSize="24dp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="16dp"
-            android:fontFamily="@font/audiowide"
-            android:gravity="center"
-            android:text="@string/app_name"
-            android:textColor="@android:color/white"
-            android:textSize="30sp" />
-    </LinearLayout>
+    <EditText
+        android:id="@+id/taskDescription"
+        android:layout_width="267dp"
+        android:layout_height="71dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="327dp"
+        android:ems="10"
+        android:gravity="center_horizontal|center_vertical"
+        android:hint="Task Description"
+        android:inputType="textMultiLine" />
 
+    <TextView
+        android:id="@+id/priority"
+        android:layout_width="99dp"
+        android:layout_height="45dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="150dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginBottom="406dp"
+        android:gravity="center_vertical"
+        android:text="Priority:"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
-    <LinearLayout
+    <Switch
+        android:id="@+id/highPriority"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="379dp"
+        android:layout_marginLeft="379dp"
+        android:layout_marginBottom="406dp"
+        android:text="High"
+        android:checked="false"/>
 
-        android:layout_width="match_parent"
-        android:layout_height="58dp"
-        android:background="@color/blue">
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="123dp"
+        android:layout_marginLeft="123dp"
+        android:layout_marginBottom="146dp"
+        android:backgroundTint="@color/blue"
+        android:onClick="saveBtnOnClick"
+        android:text="SAVE" />
 
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="125dp"
+        android:layout_marginRight="125dp"
+        android:layout_marginBottom="146dp"
+        android:backgroundTint="@color/blue"
+        android:onClick="cancelBtnOnClick"
+        android:text="CANCEL" />
 
-        <TextView
-            android:id="@+id/sort"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+    <Spinner
+        android:id="@+id/dropDown"
+        android:layout_width="285dp"
+        android:layout_height="88dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="172dp"
+        android:layout_marginTop="512dp"
+        android:layout_marginBottom="287dp"
+        android:gravity="center"
+        android:scrollbarSize="8dp" />
 
-            android:layout_marginLeft="105dp"
-            android:fontFamily="@font/cherry_cream_soda"
-            android:gravity="center"
-            android:onClick="sortBtnOnClick"
-
-            android:text="@string/sort"
-            android:textAlignment="center"
-            android:textColor="@android:color/background_light"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            android:layout_marginStart="105dp" />
-
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="17dp"
-            android:layout_marginStart="4dp"
-            android:background="@color/blue"
-            android:onClick="sortBtnOnClick"
-
-            android:src="@drawable/ic_baseline_sort_24"
-            tools:ignore="contentDescription"
-            android:layout_marginLeft="4dp" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton"
-            android:layout_width="45dp"
-            android:layout_height="46dp"
-            android:layout_marginLeft="250dp"
-            android:layout_marginTop="5dp"
-
-            android:onClick="addTaskBtnOnClick"
-
-            android:foreground="@drawable/ic_baseline_add_24"
-            android:foregroundGravity="center_vertical|center_horizontal"
-            android:foregroundTint="@color/white"
-            app:backgroundTint="@color/blue"
-            app:borderWidth="16dp"
-            app:rippleColor="@color/white"
-            tools:ignore="contentDescription"
-            android:layout_marginStart="250dp"
-            tools:targetApi="m" />
-
-
-    </LinearLayout>
-
-
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabview_activity"
-        android:layout_width="match_parent"
-        android:layout_height="46dp"
-        android:background="@color/blue"
-        android:contextClickable="true"
-
-        app:tabIconTint="@color/grey"
-        app:tabIndicatorColor="@color/white"
-        app:tabIndicatorHeight="5dp"
-        app:tabSelectedTextColor="@color/white"
-        app:tabMode="scrollable"
-        app:tabRippleColor="@color/white"
-
-        app:tabTextAppearance="@style/CustomTabText"
-        app:tabTextColor="@color/white"
-        tools:targetApi="m">
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tabAllTasks"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contextClickable="true"
-
-            android:text="@string/tabAll" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tabWork"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contextClickable="true"
-
-            android:text="@string/tabWork" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tabSchool"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contextClickable="true"
-
-            android:text="@string/tabSchool" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tabAppointment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contextClickable="true"
-
-            android:text="@string/tabAppointment" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tabProductivity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contextClickable="true"
-            android:text="@string/tabProductivity" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tabMislenious"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contextClickable="true"
-            android:text="@string/tabMislenious" />
-
-
-    </com.google.android.material.tabs.TabLayout>
-
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewpager_activity"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:targetApi="m">
-
-    </androidx.viewpager.widget.ViewPager>
-</LinearLayout>
+</RelativeLayout>

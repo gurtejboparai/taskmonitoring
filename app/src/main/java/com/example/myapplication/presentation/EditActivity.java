@@ -40,7 +40,7 @@ public class EditActivity extends AppCompatActivity {
     //    private int taskId;
     private int mDate, mMonth, mYear;
 
-    private String taskTitle, taskDescription, taskDate, taskPriority;
+    private String taskTitle, taskDescription, taskDate, taskPriority, taskCategory;
     private final String tID = "taskID";
 
     TextView title, description, date;
@@ -70,6 +70,8 @@ public class EditActivity extends AppCompatActivity {
         taskDescription = currTask.getTaskDescription();
         taskDate = currTask.getTaskDate();
         taskPriority=currTask.getPriority();
+        taskCategory=currTask.getCategory();
+
 
 
         date = findViewById(R.id.date);
@@ -96,6 +98,9 @@ public class EditActivity extends AppCompatActivity {
                 R.array.category_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         dropDown.setAdapter(adapter);
+        int pos=adapter.getPosition(taskCategory);
+        dropDown.setSelection(pos);
+
         calender.setOnClickListener(new View.OnClickListener() {
 
             @RequiresApi(api = Build.VERSION_CODES.N)
@@ -119,6 +124,7 @@ public class EditActivity extends AppCompatActivity {
                 datePickerDialog.show();
             }
         });
+
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

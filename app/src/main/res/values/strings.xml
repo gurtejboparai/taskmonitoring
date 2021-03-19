@@ -37,12 +37,12 @@
     <string name="plus">+</string>
     <string-array name="category_array">
         <item>Select Category</item>
-        <item>Fitness</item>
-        <item>Work</item>
-        <item>School</item>
-        <item>Appointment</item>
-        <item>Productivity</item>
-        <item>Others</item>
+        <item>FITNESS</item>
+        <item>WORK</item>
+        <item>SCHOOL</item>
+        <item>APPOINTMENT</item>
+        <item>PRODUCTIVITY</item>
+        <item>OTHERS</item>
     </string-array>
 
 </resources>

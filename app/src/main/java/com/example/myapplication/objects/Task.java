@@ -13,6 +13,7 @@ public class Task implements Serializable {
     private String status;
     private String priority;
     private TaskTag taskTag;
+    private String taskCategory;
 
     public Task(int taskId,String taskTitle, String taskDescription, String taskDate){
         this.taskId = taskId;
@@ -126,8 +127,13 @@ public class Task implements Serializable {
 
         this.priority = priority;
     }
+    public String getCategory()
+    {
+        return taskCategory;
+    }
     public void setCategory(String taskTag)
     {
+        taskCategory=taskTag;
         if(taskTag.equalsIgnoreCase(TaskTag.SCHOOL.toString()))
             this.taskTag=TaskTag.SCHOOL;
         else if(taskTag.equalsIgnoreCase(TaskTag.WORK.toString()))

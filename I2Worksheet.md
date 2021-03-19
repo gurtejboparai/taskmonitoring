@@ -15,6 +15,10 @@ Retrospective is necessary for our group in changing ideas and managing our time
 -----------------------------------------------
 In the project, for [task class object/logic layer](https://code.cs.umanitoba.ca/3350-winter-2021-a03/taskmonitoring-group4-comp3350-a03-winter2021/-/blob/master/app/src/main/java/com/example/myapplication/objects/Task.java), we all agree that we depend heavily on [singleton](https://refactoring.guru/design-patterns/singleton), we don't provide global access varibales, instead, we use the instance for client to call each varibales in task class or access task class. However, since there is only 1 class provide these instance for client, instead of building from different class, it not a builder.
 
+## Solid principle
+-------------------------------------
+[Solid principle for group 4 section A01](https://code.cs.umanitoba.ca/3350-winter-2021-a01/weBudget/-/issues)
+
 
 ## Feedback fixes in iteration 1
 ----------------------------------------------

@@ -39,7 +39,7 @@ public class EditActivity extends AppCompatActivity {
 
     private int mDate, mMonth, mYear;
 
-    private String taskTitle, taskDescription, taskDate, taskPriority, taskCategory;
+    private String taskTitle, taskDescription, taskDate, taskPriority, taskCategory, taskTag;
 
     TextView title, description, date;
     Button status, save, cancel;
@@ -52,19 +52,20 @@ public class EditActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        accessTask = new AccessTask();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_task);
         currTask = (Task) getIntent().getSerializableExtra("TID");
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
-
         taskTitle = currTask.getTaskTitle();
         taskDescription = currTask.getTaskDescription();
         taskDate = currTask.getTaskDate();
         taskPriority=currTask.getPriority();
+        taskTag = currTask.getTaskTag().toString();
+        currTask.setCategory(taskTag);
         taskCategory=currTask.getCategory();
-
 
 
         date = findViewById(R.id.date);
@@ -90,9 +91,8 @@ public class EditActivity extends AppCompatActivity {
                 R.array.category_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         dropDown.setAdapter(adapter);
-        System.out.println("current category - " + taskCategory);
-        int pos=adapter.getPosition(taskCategory);
-        System.out.println("current category position - " + pos);
+        int pos= adapter.getPosition(taskCategory.toUpperCase());
+
         dropDown.setSelection(pos);
 
         calender.setOnClickListener(new View.OnClickListener() {
@@ -122,7 +122,6 @@ public class EditActivity extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                  accessTask = new AccessTask();
                   Task task=accessTask.getTask(currTask.getCurrTaskId());
                   task.setTaskTitle(title.getText().toString());
                   task.setTaskDescription(description.getText().toString());

@@ -13,8 +13,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertNull;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 
 public class AccessTaskIT {
     private AccessTask accessTask;
@@ -49,6 +52,14 @@ public class AccessTaskIT {
         Task compare = accessTask.getTask(0);
         assertEquals(taskToEdit.getTaskTitle(),compare.getTaskTitle());
     }
+
+    @Test
+    public void testEditDate(){
+        final Task task = accessTask.getTask(0);
+        accessTask.setTaskDate(task,"2021-05-06");
+        assertNotEquals(task.getTaskDate(),accessTask.getTask(0).getTaskDate());
+    }
+
 
 
 }

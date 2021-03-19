@@ -65,7 +65,7 @@ public class TabFragment extends Fragment {
         recyclerView.setAdapter(recyclerViewAdapter);
         final String[] deletedTask = {null};
         final Task[] task = {null};
-        ItemTouchHelper.SimpleCallback simpleCallback =new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT|ItemTouchHelper.RIGHT) {
+        ItemTouchHelper.SimpleCallback simpleCallback =new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT) {
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
                 return false;
@@ -78,6 +78,7 @@ public class TabFragment extends Fragment {
                 task[0] =taskList.get(pos);
                 deletedTask[0]=task[0].getTaskTitle();
                 taskList.remove(pos);
+                tasks.deleteTask(task[0]);
                 recyclerViewAdapter.notifyItemRemoved(pos);
                 Snackbar.make(recyclerView,deletedTask[0],Snackbar.LENGTH_LONG)
                         .setAction("Undo", new View.OnClickListener() {
@@ -85,6 +86,7 @@ public class TabFragment extends Fragment {
                             public void onClick(View v)
                             {
                                 taskList.add(pos,task[0]);
+                                tasks.addTask(task[0]);
                                 recyclerViewAdapter.notifyItemInserted(pos);
                             }
                         }).show();

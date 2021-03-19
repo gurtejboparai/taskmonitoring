@@ -23,7 +23,6 @@ public class TaskTest {
 
         assertNotNull(oldTask);
         assertNotNull(newTask);
-        //assertEquals(0,newTask.getCurrTaskId());
         assertEquals("What's new",newTask.getTaskTitle());
         assertEquals("Some changes here",newTask.getTaskDescription());
         assertEquals("2021-02-26",newTask.getTaskDate());

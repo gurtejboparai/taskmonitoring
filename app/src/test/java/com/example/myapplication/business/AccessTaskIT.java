@@ -40,24 +40,30 @@ public class AccessTaskIT {
 
     @Test
     public void testDeleteTask(){
-        final Task taskToDelete = accessTask.getTask(0);
+        final Task tasktoAdd = new Task(10, "New task", "Hello Im new","2021-04-04","OTHER","on going","False");
+        accessTask.addTask(tasktoAdd);
+        final Task taskToDelete = accessTask.getTask(10);
         Task deleteTask=accessTask.deleteTask(taskToDelete);
         assertEquals(taskToDelete.getCurrTaskId(),deleteTask.getCurrTaskId());
     }
 
     @Test
     public void testEditTask(){
-        final Task taskToEdit = new Task(0 , "new title","new description","2021-04-04","OTHER","new status","False");
+        final Task tasktoAdd = new Task(10, "New task", "Hello Im new","2021-04-04","OTHER","on going","False");
+        accessTask.addTask(tasktoAdd);
+        final Task taskToEdit = new Task(10 , "new title","new description","2021-04-04","OTHER","new status","False");
         accessTask.editTask(taskToEdit);
-        Task compare = accessTask.getTask(0);
+        Task compare = accessTask.getTask(10);
         assertEquals(taskToEdit.getTaskTitle(),compare.getTaskTitle());
     }
 
     @Test
     public void testEditDate(){
-        final Task task = accessTask.getTask(0);
+        final Task tasktoAdd = new Task(10, "New task", "Hello Im new","2021-04-04","OTHER","on going","False");
+        accessTask.addTask(tasktoAdd);
+        final Task task = accessTask.getTask(10);
         accessTask.setTaskDate(task,"2021-05-06");
-        assertNotEquals(task.getTaskDate(),accessTask.getTask(0).getTaskDate());
+        assertNotEquals(task.getTaskDate(),accessTask.getTask(10).getTaskDate());
     }
 
 

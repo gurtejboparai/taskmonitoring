@@ -1,6 +1,6 @@
-[i2_worksheet]()
+[i2_worksheet](https://code.cs.umanitoba.ca/3350-winter-2021-a03/taskmonitoring-group4-comp3350-a03-winter2021/-/blob/master/I2Worksheet.md)
 
-[architect.md]()
+[architect.md](https://code.cs.umanitoba.ca/3350-winter-2021-a03/taskmonitoring-group4-comp3350-a03-winter2021/-/blob/master/architecture.md)
 
 
 ------------------------------------------------------

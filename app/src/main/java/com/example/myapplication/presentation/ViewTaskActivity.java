@@ -48,9 +48,10 @@ public class ViewTaskActivity extends AppCompatActivity {
             priority = extras.getString("Priority");
             taskTag=extras.getString("Tag");
             newTask = new Task(accessTask.getNewTaskId(), Title, Description, date);
-            accessTask.addTask(newTask);
             newTask.setPriority(priority);
             newTask.setCategory(taskTag);
+            accessTask.addTask(newTask);
+
 
         }
 

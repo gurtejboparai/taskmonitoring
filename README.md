@@ -1,3 +1,11 @@
+[i2_worksheet](https://code.cs.umanitoba.ca/3350-winter-2021-a03/taskmonitoring-group4-comp3350-a03-winter2021/-/blob/master/I2Worksheet.md)
+
+[architect.md](https://code.cs.umanitoba.ca/3350-winter-2021-a03/taskmonitoring-group4-comp3350-a03-winter2021/-/blob/master/architecture.md)
+## Something to be aware while running the app in iteration 2
+- The app is run perfect on device Nexus 7 (2012) - due to big screen can capture the whole design interface
+- There some bugs issues that we will address in i3 about database which is that our database can be work toward the app without already recorded instance in script
+- There still have some technical debt from i1 need to be pay. However, most the function in the interface working. Thus, we develop new feature for app and will be cover more toward the next iteration
+----------------------------------------------------
 # Task Monitor
 ## Vision statement
 The Task Monitoring System will be used to schedule tasks and events for daily, monthly or yearly based on personal need. The system will display all the activities that have been scheduled in a day. Thus, the system will monitor people about upcoming events in their schedule. In addition, it also maintains information about tasks that have been completed, in progress and in waiting. 

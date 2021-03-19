@@ -19,7 +19,6 @@ import static org.junit.Assert.assertNotEquals;
 
 public class AccessTaskTest {
 
-    //private Access_task accessTaskMock;
     private TaskPersistence taskPersistence;
     private TaskPersistenceDB taskDB;
     private AccessTask accessTaskDB;
@@ -30,9 +29,6 @@ public class AccessTaskTest {
         taskDB = new TaskPersistenceDB();
         taskDB.getAllTasks();
         accessTaskDB = new AccessTask(taskDB);
-
-        //taskPersistence = mock(Task_persistence.class);
-        //accessTaskMock = new Access_task(taskPersistence);
 
     }
 

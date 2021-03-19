@@ -30,9 +30,6 @@ public class AccessTask extends AppCompatActivity {
 
 
     public AccessTask(){
-
-//      taskPersistence = Service.getTaskPersistence();
-//      taskPersistence = new TaskPersistenceHSQLDB(Main.getDBPathName());
         taskPersistence = Service.getTaskPersistence();
         allTasks=new ArrayList<>();
 
@@ -42,21 +39,12 @@ public class AccessTask extends AppCompatActivity {
         allTasks= DB.getAllTasks();
     }
 
-    // we don't need this constructor for this iteration
-//    public Access_task(Task_persistence taskPersistence){
-//        this.taskPersistence = taskPersistence;
-//        allTasks = taskPersistence.getAllTasks();
-//    }
 
     public Task getTask(int taskId) {
         return taskPersistence.getTask(taskId);
     }
 
     public Task addTask(final Task newTask){
-//        if(newTask.getTaskTitle() == null || newTask.getTaskDescription() == null || newTask.getTaskDate() == null){ //if(newTask == null)
-//            String taskCreateMessage = "Please enter all fields.";
-//            Toast.makeText(getApplicationContext(), taskCreateMessage, Toast.LENGTH_SHORT).show();
-//        }
         return taskPersistence.addTask(newTask);
     }
 

@@ -2,7 +2,6 @@ package com.example.myapplication.application;
 
 public class Main {
     private static String dbName = "TaskMonitor";
-//    private static String path = ""
 
     public static void main(String[] args) {
 

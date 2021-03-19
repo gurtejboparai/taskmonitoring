@@ -1,8 +1,10 @@
 package com.example.myapplication.business;
 
+import com.example.myapplication.application.Service;
 import com.example.myapplication.objects.Task;
 import com.example.myapplication.persistence.TaskPersistence;
 import com.example.myapplication.persistence.data.TaskPersistenceDB;
+import com.example.myapplication.persistence.hsqldb.TaskPersistenceHSQLDB;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -19,14 +21,14 @@ public class AccessTaskTest {
 
     //private Access_task accessTaskMock;
     private TaskPersistence taskPersistence;
-    private TaskPersistenceDB taskDB;
+    private TaskPersistenceHSQLDB taskDB;
     private AccessTask accessTaskDB;
 
 
     @Before
     public void setUp(){
-        taskDB = new TaskPersistenceDB();
-        taskDB.addTasks();
+        taskDB = (TaskPersistenceHSQLDB) Service.getTaskPersistence();
+        taskDB.getAllTasks();
         accessTaskDB = new AccessTask(taskDB);
 
         //taskPersistence = mock(Task_persistence.class);

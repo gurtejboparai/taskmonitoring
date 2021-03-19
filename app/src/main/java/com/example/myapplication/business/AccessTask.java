@@ -37,7 +37,7 @@ public class AccessTask extends AppCompatActivity {
         allTasks=new ArrayList<>();
 
     }
-    public AccessTask(TaskPersistenceDB DB){
+    public AccessTask(TaskPersistenceHSQLDB DB){
         taskPersistence = DB;
         allTasks= DB.getAllTasks();
     }

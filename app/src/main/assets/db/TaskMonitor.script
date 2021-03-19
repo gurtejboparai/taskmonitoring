@@ -8,3 +8,9 @@ GRANT DBA TO SA
 SET WRITE_DELAY 20
 SET FILES SCALE 32
 SET SCHEMA PUBLIC
+INSERT INTO TASK VALUES(0,"Doctor appointment","Setup appointment for Kevin","2021-03-02","APPOINTMENT","not done","True")
+INSERT INTO TASK VALUES(1,"Workout","Do cardio for 30 minutes","2021-03-04","FITNESS","on going","False")
+INSERT INTO TASK VALUES(2,"COMP3350 due","Iteration-1 due on Friday","2021-03-03","SCHOOL","on going","True")
+INSERT INTO TASK VALUES(3,"Meal Prep","Prepare the meals for next 3 days and store","2021-03-03","OTHER","on going","False")
+INSERT INTO TASK VALUES(4,"Talk to the manager","Inform my new availability to the manager ","2021-03-03","WORK","done","True")
+

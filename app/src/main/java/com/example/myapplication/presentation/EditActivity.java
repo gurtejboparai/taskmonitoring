@@ -41,7 +41,6 @@ public class EditActivity extends AppCompatActivity {
     private int mDate, mMonth, mYear;
 
     private String taskTitle, taskDescription, taskDate, taskPriority, taskCategory;
-    private final String tID = "taskID";
 
     TextView title, description, date;
     //    ImageButton calender;
@@ -98,7 +97,9 @@ public class EditActivity extends AppCompatActivity {
                 R.array.category_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         dropDown.setAdapter(adapter);
+        System.out.println("current category - " + taskCategory);
         int pos=adapter.getPosition(taskCategory);
+        System.out.println("current category position - " + pos);
         dropDown.setSelection(pos);
 
         calender.setOnClickListener(new View.OnClickListener() {
@@ -116,7 +117,7 @@ public class EditActivity extends AppCompatActivity {
                     @SuppressLint("SetTextI18n")
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
-                        date.setText(year+"-"+"0"+(month+1)+"-"+dayOfMonth);
+                        date.setText(year+"-"+(month+1)+"-"+dayOfMonth);
 
                     }
                 },mYear,mMonth,mDate);
@@ -138,9 +139,11 @@ public class EditActivity extends AppCompatActivity {
                       task.setPriority("True");
                   else
                       task.setPriority("False");
-                Intent intent = new Intent(getApplicationContext(), ViewTaskActivity.class);
-                startActivity(intent);
-                finish();
+
+                  accessTask.editTask(task);
+                  Intent intent = new Intent(getApplicationContext(), ViewTaskActivity.class);
+                  startActivity(intent);
+                  finish();
             }
         });
 
@@ -151,24 +154,4 @@ public class EditActivity extends AppCompatActivity {
             }
         });
     }
-
-
-//        String dbPath;
-//
-//    public void editTask(Task task) {
-//        try(final Connection c= DriverManager.getConnection("jdbc:hsqldb:file:" + dbPath + ";shutdown=true", "SA", "")){
-//            final PreparedStatement st = c.prepareStatement("UPDATE TASK SET taskTitle= ?, taskDescription= ?, taskDate= ?, taskStatus= ? WHERE taskId= ?");
-//            st.setString(1,task.getTaskTitle());
-//            st.setString(2,task.getTaskDescription());
-//            st.setString(3,task.getTaskDate());
-//            if(task.getStatus()!=null){
-//                st.setString(4,task.getStatus());
-//            }
-//            st.setInt(5,task.getCurrTaskId());
-//            st.executeUpdate();
-//        }
-//        catch (final SQLException e){
-//            throw new RuntimeException((e.getMessage()));
-//        }
-//    }
 }

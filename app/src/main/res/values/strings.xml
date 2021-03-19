@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Task Monitor</string>
     <string name="title_activity_main">MainActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -26,4 +26,23 @@
     <string name="delete">Delete</string>
     <string name="date">Date</string>
     <string name="title">Title</string>
+    <string name="sort">Sort</string>
+    <string name="tabAll">All</string>
+    <string name="tabFitness">Fitness</string>
+    <string name="tabWork">Work</string>
+    <string name="tabSchool">School</string>
+    <string name="tabAppointment">Appointment</string>
+    <string name="tabProductivity">Productivity</string>
+    <string name="tabMislenious">Mislenious</string>
+    <string name="plus">+</string>
+    <string-array name="category_array">
+        <item>Select Category</item>
+        <item>Fitness</item>
+        <item>Work</item>
+        <item>School</item>
+        <item>Appointment</item>
+        <item>Productivity</item>
+        <item>Others</item>
+    </string-array>
+
 </resources>

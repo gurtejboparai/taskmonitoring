@@ -25,7 +25,7 @@ public class SplashPageActivity extends AppCompatActivity {
             public void run() {
                 try {
                     sleep(2100);
-                    Intent it = new Intent(getApplicationContext(), TaskActivity.class);
+                    Intent it = new Intent(getApplicationContext(), ViewTaskActivity.class);
                     startActivity(it);
                     finish();
                 } catch (Exception e) {

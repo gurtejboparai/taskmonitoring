@@ -4,8 +4,8 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
-import com.example.myapplication.persistence.TaskPersistence;
 import com.example.myapplication.objects.Task;
+import com.example.myapplication.persistence.TaskPersistence;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -15,215 +15,161 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.sql.Date;
 
-public class TaskPersistenceHSQLDB implements TaskPersistence
-{
+public class TaskPersistenceHSQLDB implements TaskPersistence {
     private final String dbPath;
-
-
-    public TaskPersistenceHSQLDB(String dbPath)
-    {
-        this.dbPath = dbPath;
+//    private final String dbScriptName;
+    private List<Task>taskList;
+    public TaskPersistenceHSQLDB(final String dbPath, final String dbScriptName){
+        this.dbPath=dbPath;
+//        this.dbScriptName = dbScriptName;
+        taskList = new ArrayList<>();
+    }
+    private Connection connection() throws SQLException, ClassNotFoundException {
+        Class.forName("org.hsqldb.jdbcDriver");
+        return DriverManager.getConnection("jdbc:hsqldb:file:" + dbPath+ ";shutdown=true", "SA", "");
     }
 
-
-    private Connection connection() throws SQLException {
-        Connection connection = DriverManager.getConnection("jdbc:hsqldb:file:" + dbPath + ";shutdown=true", "SA", "");
-        if (connection != null) {
-
-            System.out.println("Connection created successfully");
-        } else {
-
-            System.out.println("Problem with creating connection");
-        }
-        return connection;
+    private Task fromResultSet(final ResultSet rs) throws SQLException {
+        final int taskId = rs.getInt("taskId");
+        final String taskTitle = rs.getString("taskTitle");
+        final String taskDescription = rs.getString("taskDescription");
+        final String taskDay = rs.getString("taskDate");
+        final String taskPriority = rs.getString("taskPriority");
+        final String taskTag = rs.getString("taskTag");
+        final String taskStatus = rs.getString("taskStatus");
+        return new Task(taskId,taskTitle,taskDescription,taskDay,taskTag,taskStatus,taskPriority);
     }
 
-
-    private Task fromResultSet(final ResultSet resultSet) throws SQLException {
-
-        final int taskId = resultSet.getInt("TASKID");
-
-        final String title = resultSet.getString("TITLE");
-        final String description = resultSet.getString("DESCRIPTION");
-        final String date = resultSet.getString("DATE");
-
-        return new Task(taskId, title, description, date);
-    }
 
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public void addTasks() {
+        try (final Connection c = connection()) {
+            final Statement st = c.createStatement();
+            final ResultSet rs = st.executeQuery("SELECT * FROM TASK");
+            while (rs.next()) {
+                final Task task = fromResultSet(rs);
+                taskList.add(task);
+            }
+            rs.close();
+            st.close();
+        } catch (final SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
+
     @Override
     public int getNewTaskId() {
-        int currTaskId;
-        int currMaxId = -1;
-
-        List<Task> taskList = getAllTasks();
-
-        for (Task task : taskList)
-        {
-            currTaskId = task.getCurrTaskId();
-
-            if (currTaskId > currMaxId)
-            {
-                currMaxId = currTaskId;
-            }
-        }
-        return currMaxId+1;
-
+        int count = taskList.size();
+        count+=1;
+        return count;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public Task getTask(int taskId) {
-
-        Task returnTask;
-
-        try (final Connection connection = connection()) {
-            final PreparedStatement statement = connection.prepareStatement("SELECT * FROM TASK WHERE TASKID = ?");
-            statement.setString(1, String.valueOf(taskId));
-            final ResultSet resultSet = statement.executeQuery();
-
-            resultSet.next();
-            returnTask = fromResultSet(resultSet);
-            resultSet.close();
-            statement.close();
-
-            return returnTask;
-
-        } catch (final SQLException e) {
-
-            throw new PersistenceException(e);
+        Task result =null;
+        for(Task task: taskList){
+            if(task.getCurrTaskId()==taskId)
+                result=task;
         }
+        return result;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public Task addTask(Task task) {
-        try (final Connection connection = connection()) {
-
-            final PreparedStatement statement = connection.prepareStatement("ADD INTO TASK VALUES(?, ?, ?, ?)");
-
-            statement.setInt(1, task.getCurrTaskId());
-            statement.setString(2, task.getTaskTitle());
-            statement.setString(3, task.getTaskDescription());
-            statement.setString(4, task.getTaskDate());
-
-            statement.executeUpdate();
-            statement.close();
-
+        try(final Connection c = connection()){
+            final PreparedStatement st = c.prepareStatement("INSERT INTO TASK VALUE(?,?,?,?,?,?,?)");
+            st.setInt(1,task.getCurrTaskId());
+            st.setString(2,task.getTaskTitle());
+            st.setString(3,task.getTaskDescription());
+            st.setString(4, task.getTaskDate());
+            st.setString(5,task.getTaskTag().toString());
+            st.setString(6, task.getStatus());
+            st.setString(7,task.getPriority());
+            st.executeUpdate();
+            taskList.add(task);
             return task;
-
-        } catch (final SQLException e) {
-            throw new PersistenceException(e);
+        }catch (final SQLException | ClassNotFoundException e){
+            throw new RuntimeException(e.getMessage());
         }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public Task deleteTask(Task task) {
-
-        try (final Connection connection = connection()) {
-            final PreparedStatement sc = connection.prepareStatement("DELETE FROM TASK WHERE TASKID = ?");
-            sc.setString(1, String.valueOf(task.getCurrTaskId()));
-            sc.executeUpdate();
-            sc.close();
-            return task;
-
-        } catch (final SQLException e) {
-            throw new PersistenceException(e);
+        try( final Connection c = connection()){
+            final PreparedStatement st= c.prepareStatement("DELETE FROM TASK WHERE taskId= ?");
+            st.setInt(1, task.getCurrTaskId());
+            st.executeUpdate();
+            taskList.remove(task);
         }
+        catch (final SQLException | ClassNotFoundException e){
+            throw new RuntimeException(e.getMessage());
+        }
+        return null;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
-    public void editTask(Task task) {
-
-        try (final Connection connection = connection()) {
-
-            final PreparedStatement statement = connection.prepareStatement("UPDATE TASK SET TITLE = ?, DESCRIPTION = ?,"
-                    + " DATE = ? WHERE TASKID = ?");
-
-            statement.setString(1, task.getTaskTitle());
-            statement.setString(2, task.getTaskDescription());
-            statement.setString(3, task.getTaskDate());
-            statement.setInt(4, task.getCurrTaskId());
-
-            statement.executeUpdate();
-
-        } catch (final SQLException e) {
-
-            throw new PersistenceException(e);
+    public void editTask(Task task, Task newTask) {
+        try(final Connection c= connection()){
+            final PreparedStatement st = c.prepareStatement("UPDATE TASK SET taskTitle= ?, taskDescription= ?, taskDate= ?, taskTag= ?, taskStatus= ? taskPriority=? WHERE taskId= ?");
+            st.setString(1,newTask.getTaskTitle());
+            st.setString(2,newTask.getTaskDescription());
+            st.setString(3,newTask.getTaskDate());
+            st.setString(4,newTask.getTaskTag().toString());
+            st.setString(5,newTask.getStatus());
+            st.setString(6,newTask.getPriority());
+            st.setInt(7,task.getCurrTaskId());
+            st.executeUpdate();
         }
-
+        catch (final SQLException | ClassNotFoundException e){
+            throw new RuntimeException((e.getMessage()));
+        }
     }
 
     @Override
     public boolean checkForSame(Task task1, Task task2) {
-        return false;
+        return task1.getCurrTaskId() == task2.getCurrTaskId();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void setStatus(Task task, String newStatus) {
+        try(final Connection c= connection()){
+            final PreparedStatement st= c.prepareStatement("UPDATE TASK SET taskStatus= ? WHERE taskId = ?");
+            st.setString(1,newStatus);
+            st.setInt(2,task.getCurrTaskId());
+            st.executeUpdate();
 
-        try (final Connection connection = connection()) {
-            final PreparedStatement statement = connection.prepareStatement("UPDATE TASK SET NEWSTATUS =?, WHERE TASKID = ?");
-
-            statement.setString(1, task.getStatus());
-
-            statement.setInt(2, task.getCurrTaskId());
-
-            statement.executeUpdate();
-        } catch (final SQLException e) {
-            throw new PersistenceException(e);
+        }
+        catch (final SQLException | ClassNotFoundException e){
+            throw new RuntimeException(e.getMessage());
         }
 
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
-    public void setTaskDate(Task task, String taskDate) {
-
-        try (final Connection connection = connection()) {
-            final PreparedStatement statement = connection.prepareStatement("UPDATE TASK SET DATE = ? WHERE TASKID = ?");
-
-            statement.setString(1, taskDate);
-            statement.setInt(2, task.getCurrTaskId());
-
-            statement.executeUpdate();
-
-        } catch (final SQLException e) {
-            throw new PersistenceException(e);
+    public void setTaskDate(Task tak, String taskDate) {
+        try(final Connection c= connection()){
+            final PreparedStatement st=c.prepareStatement("UPDATE TASK SET taskDate= ? WHERE taskId= ?");
+            st.setString(1, taskDate);
+            st.setInt(2,tak.getCurrTaskId());
+            st.executeUpdate();
         }
+        catch(final SQLException | ClassNotFoundException e){
+            throw new RuntimeException(e.getMessage());
+        }
+
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT )
     @Override
     public List<Task> getAllTasks() {
-
-        List<Task> tasks = new ArrayList<>();
-
-        try (final Connection connection = connection()) {
-
-            final Statement st = connection.createStatement();
-            final ResultSet rs = st.executeQuery("SELECT * FROM TASKS");
-
-            while (rs.next()) {
-                final Task task = fromResultSet(rs);
-                tasks.add(task);
-            }
-
-            rs.close();
-            st.close();
-
-            return tasks;
-
-        } catch (final SQLException e) {
-
-            throw new PersistenceException(e);
-        }
+        return taskList;
     }
 }
 

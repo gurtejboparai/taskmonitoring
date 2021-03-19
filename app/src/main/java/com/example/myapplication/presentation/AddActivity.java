@@ -8,9 +8,12 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
+import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,13 +27,15 @@ public class AddActivity extends AppCompatActivity {
 
     private final String taskID = "taskID";
     private AccessTask accessTask;
-    TextView date;
     ImageButton calender;
     private int mDate,mMonth,mYear;
     private String titleTxt,descriptionTxt;
-    TextView title,description;
-    Button highPriority,save,cancel;
+    TextView title,description,date;
+    Button save,cancel;
+    Switch highPriority;
     Task newTask;
+    Spinner dropDown;
+    ArrayAdapter<CharSequence> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +51,11 @@ public class AddActivity extends AppCompatActivity {
         highPriority = findViewById(R.id.highPriority);
         save = findViewById(R.id.saveButton);
         cancel = findViewById(R.id.cancelButton);
+        dropDown=findViewById(R.id.dropDown);
+        adapter = ArrayAdapter.createFromResource(this,
+                R.array.category_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        dropDown.setAdapter(adapter);
 
         titleTxt = title.getText().toString();
         descriptionTxt = description.getText().toString();
@@ -62,7 +72,7 @@ public class AddActivity extends AppCompatActivity {
                         android.R.style.Theme_DeviceDefault_Dialog, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
-                        date.setText(dayOfMonth+"-"+month+"-"+year);
+                        date.setText(year+"-"+(month+1)+"-"+dayOfMonth);
 
                     }
                 },mYear,mMonth,mDate);
@@ -70,19 +80,22 @@ public class AddActivity extends AppCompatActivity {
                 datePickerDialog.show();
             }
         });
-//    save.setOnClickListener(new View.OnClickListener() {
-//        @Override
-//        public void onClick(View v) {
-//            newTask=new Tasks(0,titleTxt,descriptionTxt,mYear+"-"+mMonth+"-"+mDate);
-//
-//        }
-//    });
+        findViewById(R.id.cancelButton).
+
+                setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        finish();
+                    }
+                });
     }
 
     public void saveBtnOnClick(View view){
-        String title;
-        String description;
-        String date;
+        String titleText="";
+        String descriptionText="";
+        String dateText="";
+        String priority="False";
+        String tasktag="No Category";
 
         boolean titleEmpty = this.title.getText().toString().isEmpty();
         boolean descriptionEmpty = this.description.getText().toString().isEmpty();
@@ -93,17 +106,22 @@ public class AddActivity extends AppCompatActivity {
         }else{
 
             try{
-                title = this.title.getText().toString().trim();
-                description = this.description.getText().toString().trim();
-                date = this.date.getText().toString().trim();
+                titleText = this.title.getText().toString().trim();
+                descriptionText = this.description.getText().toString().trim();
+                dateText = this.date.getText().toString().trim();
+                if(highPriority.isChecked())
+                    priority="True";
+                tasktag=dropDown.getSelectedItem().toString();
 
-                Task task = new Task(accessTask.getNewTaskId(), title, description, date);
-                accessTask.addTask(newTask);
                 Toast.makeText(getApplicationContext(), "Task Added", Toast.LENGTH_LONG).show();
 
                 finish();
-                Intent viewTasks = new Intent(getApplicationContext(), TaskActivity.class);
-                viewTasks.putExtra(taskID, task.getCurrTaskId());
+                Intent viewTasks = new Intent(AddActivity.this, ViewTaskActivity.class);
+                viewTasks.putExtra("Title", titleText);
+                viewTasks.putExtra("Description",descriptionText);
+                viewTasks.putExtra("Date",dateText);
+                viewTasks.putExtra("Priority",priority);
+                viewTasks.putExtra("Tag",tasktag);
 
                 startActivity(viewTasks);
             }
@@ -111,10 +129,5 @@ public class AddActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Invalid fields", Toast.LENGTH_LONG).show();
             }
         }
-    }
-
-    public void cancelBtnOnClick(View v){
-        Intent newTaskIntent = new Intent(AddActivity.this, TaskActivity.class);
-        AddActivity.this.startActivity(newTaskIntent);
     }
 }

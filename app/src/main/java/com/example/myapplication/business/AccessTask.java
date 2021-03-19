@@ -31,11 +31,17 @@ public class AccessTask extends AppCompatActivity {
 
     public AccessTask(){
 
-      taskPersistence = Service.getTaskPersistence();
-        //taskPersistence = new TaskPersistenceHSQLDB(Main.getDBPathName());
+//      taskPersistence = Service.getTaskPersistence();
+//      taskPersistence = new TaskPersistenceHSQLDB(Main.getDBPathName());
+        taskPersistence = Service.getTaskPersistence();
         allTasks=new ArrayList<>();
+
     }
     public AccessTask(TaskPersistenceDB DB){
+        taskPersistence = DB;
+        allTasks= DB.getAllTasks();
+    }
+    public AccessTask(TaskPersistenceHSQLDB DB){
         taskPersistence = DB;
         allTasks= DB.getAllTasks();
     }
@@ -62,8 +68,8 @@ public class AccessTask extends AppCompatActivity {
         return taskPersistence.deleteTask(taskToDel);
     }
 
-    public void editTask(Task oldtask, Task newTask){
-        taskPersistence.editTask(oldtask, newTask);
+    public void editTask(Task task){
+        taskPersistence.editTask(task);
     }
 
     public void setTaskDate(Task task, String taskDate){

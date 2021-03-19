@@ -19,15 +19,25 @@ import java.util.List;
 public class TaskPersistenceHSQLDB implements TaskPersistence {
     private final String dbPath;
 //    private final String dbScriptName;
-    private List<Task>taskList;
-    public TaskPersistenceHSQLDB(final String dbPath, final String dbScriptName){
+    // private List<Task>taskList;
+    public TaskPersistenceHSQLDB(final String dbPath){
         this.dbPath=dbPath;
 //        this.dbScriptName = dbScriptName;
-        taskList = new ArrayList<>();
+        // taskList = new ArrayList<>();
     }
     private Connection connection() throws SQLException, ClassNotFoundException {
-        Class.forName("org.hsqldb.jdbcDriver");
-        return DriverManager.getConnection("jdbc:hsqldb:file:" + dbPath+ ";shutdown=true", "SA", "");
+        // Class.forName("org.hsqldb.jdbcDriver");
+//        return DriverManager.getConnection("jdbc:hsqldb:file:" + dbPath+ ";shutdown=true", "SA", "");
+        System.out.println("jdbc:hsqldb:file:" + dbPath+ ";shutdown=true");
+        Connection connection =  DriverManager.getConnection("jdbc:hsqldb:file:" + dbPath+ ";shutdown=true", "SA", "");
+        if (connection != null) {
+            System.out.println("connection done.");
+        }
+        else {
+            System.out.println("Fail when connecting to HSQLDB");
+        }
+
+        return connection;
     }
 
     private Task fromResultSet(final ResultSet rs) throws SQLException {
@@ -43,44 +53,83 @@ public class TaskPersistenceHSQLDB implements TaskPersistence {
 
 
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public void addTasks() {
-        try (final Connection c = connection()) {
-            final Statement st = c.createStatement();
-            final ResultSet rs = st.executeQuery("SELECT * FROM TASK");
-            while (rs.next()) {
-                final Task task = fromResultSet(rs);
-                taskList.add(task);
-            }
-            rs.close();
-            st.close();
-        } catch (final SQLException | ClassNotFoundException e) {
-            throw new RuntimeException(e.getMessage());
-        }
-    }
+//    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+//    public void addTasks() {
+//        try (final Connection c = connection()) {
+//            final Statement st = c.createStatement();
+//            final ResultSet rs = st.executeQuery("SELECT * FROM TASK");
+//            while (rs.next()) {
+//                final Task task = fromResultSet(rs);
+//                taskList.add(task);
+//            }
+//            rs.close();
+//            st.close();
+//        } catch (final SQLException | ClassNotFoundException e) {
+//            throw new RuntimeException(e.getMessage());
+//        }
+//    }
 
     @Override
     public int getNewTaskId() {
-        int count = taskList.size();
-        count+=1;
-        return count;
+        int currentMaxId = -1;
+        int currentId;
+
+        List<Task> tasks = getAllTasks();
+
+        for ( Task task : tasks) {
+            currentId = task.getCurrTaskId();
+
+            if ( currentId > currentMaxId) {
+                currentMaxId = currentId;
+            }
+        }
+
+        return currentMaxId + 1;
     }
 
     @Override
     public Task getTask(int taskId) {
-        Task result =null;
-        for(Task task: taskList){
-            if(task.getCurrTaskId()==taskId)
-                result=task;
+//        Task result =null;
+//        for(Task task: taskList){
+//            if(task.getCurrTaskId()==taskId)
+//                result=task;
+//        }
+//        return result;
+
+        Task result;
+
+        try (final Connection c = connection())
+        {
+            final PreparedStatement st = c.prepareStatement("SELECT * FROM TASK WHERE taskId = ?");
+            st.setString(1, String.valueOf(taskId));
+            final ResultSet rs = st.executeQuery();
+
+            rs.next();
+            result = fromResultSet(rs);
+            rs.close();
+            st.close();
+
+            return result;
+        }catch (final SQLException | ClassNotFoundException e){
+            throw new RuntimeException(e.getMessage());
         }
-        return result;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+//    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public Task addTask(Task task) {
+        System.out.println("task - id:" + task.getCurrTaskId());
+        System.out.println("task - getTaskTitle:" + task.getTaskTitle());
+
+        System.out.println("task - getTaskDescription:" + task.getTaskDescription());
+        System.out.println("task - getTaskDate:" + task.getTaskDate());
+        System.out.println("task - getTaskTag:" + task.getTaskTag().toString());
+        System.out.println("task - getStatus:" + task.getStatus());
+        System.out.println("task - getPriority:" + task.getPriority());
+
+
         try(final Connection c = connection()){
-            final PreparedStatement st = c.prepareStatement("INSERT INTO TASK VALUE(?,?,?,?,?,?,?)");
+            final PreparedStatement st = c.prepareStatement("INSERT INTO TASK VALUES(?,?,?,?,?,?,?)");
             st.setInt(1,task.getCurrTaskId());
             st.setString(2,task.getTaskTitle());
             st.setString(3,task.getTaskDescription());
@@ -89,40 +138,40 @@ public class TaskPersistenceHSQLDB implements TaskPersistence {
             st.setString(6, task.getStatus());
             st.setString(7,task.getPriority());
             st.executeUpdate();
-            taskList.add(task);
+//            taskList.add(task);
             return task;
         }catch (final SQLException | ClassNotFoundException e){
             throw new RuntimeException(e.getMessage());
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+//    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public Task deleteTask(Task task) {
         try( final Connection c = connection()){
             final PreparedStatement st= c.prepareStatement("DELETE FROM TASK WHERE taskId= ?");
-            st.setInt(1, task.getCurrTaskId());
+            st.setString(1, String.valueOf(task.getCurrTaskId()));
             st.executeUpdate();
-            taskList.remove(task);
+            st.close();
+//            taskList.remove(task);
         }
         catch (final SQLException | ClassNotFoundException e){
             throw new RuntimeException(e.getMessage());
         }
-        return null;
+        return task;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+//    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
-    public void editTask(Task task, Task newTask) {
+    public void editTask(Task task) {
         try(final Connection c= connection()){
-            final PreparedStatement st = c.prepareStatement("UPDATE TASK SET taskTitle= ?, taskDescription= ?, taskDate= ?, taskTag= ?, taskStatus= ? taskPriority=? WHERE taskId= ?");
-            st.setString(1,newTask.getTaskTitle());
-            st.setString(2,newTask.getTaskDescription());
-            st.setString(3,newTask.getTaskDate());
-            st.setString(4,newTask.getTaskTag().toString());
-            st.setString(5,newTask.getStatus());
-            st.setString(6,newTask.getPriority());
-            st.setInt(7,task.getCurrTaskId());
+            final PreparedStatement st = c.prepareStatement("UPDATE TASK SET taskTitle= ?, taskDescription= ?, taskDate= ?, taskTag= ?, taskPriority=? WHERE taskId= ?");
+            st.setString(1,task.getTaskTitle());
+            st.setString(2,task.getTaskDescription());
+            st.setString(3,task.getTaskDate());
+            st.setString(4,task.getTaskTag().toString());
+            st.setString(5,task.getPriority());
+            st.setInt(6,task.getCurrTaskId());
             st.executeUpdate();
         }
         catch (final SQLException | ClassNotFoundException e){
@@ -135,7 +184,7 @@ public class TaskPersistenceHSQLDB implements TaskPersistence {
         return task1.getCurrTaskId() == task2.getCurrTaskId();
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+//    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void setStatus(Task task, String newStatus) {
         try(final Connection c= connection()){
@@ -151,7 +200,7 @@ public class TaskPersistenceHSQLDB implements TaskPersistence {
 
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+//    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void setTaskDate(Task tak, String taskDate) {
         try(final Connection c= connection()){
@@ -166,10 +215,30 @@ public class TaskPersistenceHSQLDB implements TaskPersistence {
 
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT )
+//    @RequiresApi(api = Build.VERSION_CODES.KITKAT )
     @Override
     public List<Task> getAllTasks() {
-        return taskList;
+        List<Task> tasks = new ArrayList<>();
+
+        try (final Connection c = connection()) {
+            final Statement st = c.createStatement();
+            final ResultSet rs = st.executeQuery("SELECT * FROM TASK");
+            while (rs.next())
+            {
+                final Task task = fromResultSet(rs);
+                tasks.add(task);
+            }
+            rs.close();
+            st.close();
+
+            return tasks;
+        }
+        catch (final SQLException | ClassNotFoundException e)
+        {
+//            throw new PersistenceException(e);
+            throw new RuntimeException(e.getMessage());
+        }
+
     }
 }
 

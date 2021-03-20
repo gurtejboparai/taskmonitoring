@@ -164,7 +164,7 @@ public class TabFragment extends Fragment {
 
                     Intent viewTask = new Intent(getActivity(), EditActivity.class);
 
-                    viewTask.putExtra("TID", orderedTasks.get(taskId));
+                    viewTask.putExtra("TID", taskId);
 
                     getActivity().startActivity(viewTask);
                 }

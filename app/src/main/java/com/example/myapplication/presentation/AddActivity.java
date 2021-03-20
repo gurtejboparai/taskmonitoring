@@ -70,13 +70,14 @@ public class AddActivity extends AppCompatActivity {
                 mYear=calendar.get(Calendar.YEAR);
                 DatePickerDialog datePickerDialog=new DatePickerDialog(AddActivity.this,
                         android.R.style.Theme_DeviceDefault_Dialog, new DatePickerDialog.OnDateSetListener() {
+
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
                         date.setText(year+"-"+(month+1)+"-"+dayOfMonth);
-
                     }
                 },mYear,mMonth,mDate);
 
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
                 datePickerDialog.show();
             }
         });
@@ -91,11 +92,11 @@ public class AddActivity extends AppCompatActivity {
     }
 
     public void saveBtnOnClick(View view){
-        String titleText="";
-        String descriptionText="";
-        String dateText="";
-        String priority="False";
-        String tasktag="No Category";
+        String titleText;
+        String descriptionText;
+        String dateText;
+        String priority = "False";
+        String tasktag;
 
         boolean titleEmpty = this.title.getText().toString().isEmpty();
         boolean descriptionEmpty = this.description.getText().toString().isEmpty();

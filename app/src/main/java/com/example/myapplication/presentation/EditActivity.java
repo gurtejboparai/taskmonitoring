@@ -121,6 +121,7 @@ public class EditActivity extends AppCompatActivity {
                     }
                 },mYear,mMonth,mDate);
 
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
                 datePickerDialog.show();
             }
         });

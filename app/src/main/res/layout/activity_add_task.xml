@@ -91,7 +91,7 @@
         android:textSize="18sp"
         android:textStyle="bold" />
 
-    <androidx.appcompat.widget.SwitchCompat
+    <Switch
         android:id="@+id/highPriority"
         android:layout_width="99dp"
         android:layout_height="45dp"

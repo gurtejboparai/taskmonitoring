@@ -25,7 +25,7 @@ public class ViewTaskActivity extends AppCompatActivity {
     private TabFragment tabSchool;
     private TabFragment tabAppointment;
     private TabFragment tabProductivity;
-    private TabFragment tabMislenious;
+    private TabFragment tabOthers;
 
     private String tagName;
     private String typeResult;
@@ -39,8 +39,9 @@ public class ViewTaskActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.test_activity_main);
 
-            accessTask = new AccessTask();
+        accessTask = new AccessTask();
         extras = getIntent().getExtras();
+
         if (extras != null) {
             Title = extras.getString("Title");
             Description = extras.getString("Description");
@@ -51,8 +52,6 @@ public class ViewTaskActivity extends AppCompatActivity {
             newTask.setPriority(priority);
             newTask.setCategory(taskTag);
             accessTask.addTask(newTask);
-
-
         }
 
         initialTabFragment();
@@ -67,7 +66,7 @@ public class ViewTaskActivity extends AppCompatActivity {
         tabSchool = new TabFragment(accessTask.getTasksByTag(TaskTag.SCHOOL), accessTask);
         tabAppointment = new TabFragment(accessTask.getTasksByTag(TaskTag.APPOINTMENT), accessTask);
         tabProductivity = new TabFragment(accessTask.getTasksByTag(TaskTag.PRODUCTIVITY), accessTask);
-        tabMislenious = new TabFragment(accessTask.getTasksByTag(TaskTag.OTHERS), accessTask);
+        tabOthers = new TabFragment(accessTask.getTasksByTag(TaskTag.OTHERS), accessTask);
     }
 
 
@@ -83,7 +82,7 @@ public class ViewTaskActivity extends AppCompatActivity {
         adapter.addFragment(tabSchool, "School");
         adapter.addFragment(tabAppointment, "Appointment");
         adapter.addFragment(tabProductivity, "Productivity");
-        adapter.addFragment(tabMislenious, "Others");
+        adapter.addFragment(tabOthers, "Others");
 
 
         // adapter setup
@@ -98,7 +97,7 @@ public class ViewTaskActivity extends AppCompatActivity {
         tabSchool.categorizeTask(taskCategory);
         tabAppointment.categorizeTask(taskCategory);
         tabProductivity.categorizeTask(taskCategory);
-        tabMislenious.categorizeTask(taskCategory);
+        tabOthers.categorizeTask(taskCategory);
     }
 
     public void addTaskBtnOnClick(View v) {
@@ -116,7 +115,7 @@ public class ViewTaskActivity extends AppCompatActivity {
         tabSchool.sort();
         tabAppointment.sort();
         tabProductivity.sort();
-        tabMislenious.sort();
+        tabOthers.sort();
 
         tabSetUp();
 

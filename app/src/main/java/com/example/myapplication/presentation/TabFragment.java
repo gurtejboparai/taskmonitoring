@@ -79,6 +79,8 @@ public class TabFragment extends Fragment {
                 deletedTask[0]=task[0].getTaskTitle();
                 taskList.remove(pos);
                 tasks.deleteTask(task[0]);
+                Intent homepage = new Intent(getActivity(), ViewTaskActivity.class);
+                startActivity(homepage);
                 recyclerViewAdapter.notifyItemRemoved(pos);
                 Snackbar.make(recyclerView,deletedTask[0],Snackbar.LENGTH_LONG)
                         .setAction("Undo", new View.OnClickListener() {
@@ -155,7 +157,7 @@ public class TabFragment extends Fragment {
             view = LayoutInflater.from(getActivity()).inflate(R.layout.row, viewGroup, false);
 
             final MyViewHolder viewHolder = new MyViewHolder(view);
-            final int sd=i;
+
             viewHolder.row.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

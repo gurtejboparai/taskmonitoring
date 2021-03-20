@@ -15,7 +15,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="0dp"
         android:layout_marginBottom="420dp"
-        android:contentDescription="TODO"
+        tools:ignore="contentDescription"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,13 +29,12 @@
         android:layout_width="59dp"
         android:layout_height="57dp"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="140dp"
-        android:layout_marginRight="140dp"
         android:layout_marginBottom="565dp"
         android:scaleType="fitStart"
-        android:src="@drawable/calender" />
+        android:src="@drawable/calender"
+        tools:ignore="contentDescription"/>
 
     <EditText
         android:id="@+id/taskTitle"
@@ -43,30 +42,28 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="209dp"
         android:layout_marginEnd="203dp"
-        android:layout_marginRight="203dp"
         android:ems="10"
         android:gravity="center_horizontal"
+        android:hint="@string/title"
         android:inputType="textPersonName"
-        android:text="Task Title" />
+        android:autofillHints="@string/title"
+        tools:ignore="RelativeOverlap" />
 
     <TextView
         android:id="@+id/date"
         android:layout_width="210dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="187dp"
-        android:layout_marginLeft="187dp"
         android:layout_marginTop="277dp"
         android:gravity="center"
-        android:hint="DD-MM-YYYY"
-        android:textSize="24dp" />
+        android:hint="@string/yyyy_mm_dd"
+        android:textSize="24sp" />
 
     <EditText
         android:id="@+id/taskDescription"
@@ -77,63 +74,57 @@
         android:layout_marginTop="327dp"
         android:ems="10"
         android:gravity="center_horizontal|center_vertical"
-        android:hint="Task Description"
-        android:inputType="textMultiLine" />
+        android:hint="@string/description"
+        android:inputType="textMultiLine"
+        android:autofillHints="@string/description" />
 
     <TextView
         android:id="@+id/priority"
         android:layout_width="99dp"
         android:layout_height="45dp"
         android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="150dp"
-        android:layout_marginLeft="150dp"
         android:layout_marginBottom="406dp"
         android:gravity="center_vertical"
-        android:text="Priority:"
+        android:text="@string/priority"
         android:textSize="18sp"
         android:textStyle="bold" />
 
-    <Switch
+    <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/highPriority"
         android:layout_width="99dp"
         android:layout_height="45dp"
         android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="379dp"
-        android:layout_marginLeft="379dp"
         android:layout_marginBottom="406dp"
-        android:text="High" />
+        android:text="@string/high" />
 
     <Button
         android:id="@+id/saveButton"
         android:layout_width="150dp"
         android:layout_height="70dp"
         android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="123dp"
-        android:layout_marginLeft="123dp"
         android:layout_marginBottom="146dp"
         android:backgroundTint="@color/blue"
         android:onClick="saveBtnOnClick"
-        android:text="SAVE" />
+        android:text="@string/save" />
 
     <Button
         android:id="@+id/cancelButton"
         android:layout_width="150dp"
         android:layout_height="70dp"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="125dp"
-        android:layout_marginRight="125dp"
         android:layout_marginBottom="146dp"
         android:backgroundTint="@color/blue"
-        android:onClick="cancelBtnOnClick"
-        android:text="CANCEL" />
+        android:clickable="true"
+        android:text="@string/cancel"
+        android:focusable="true" />
 
     <Spinner
         android:id="@+id/dropDown"
@@ -146,8 +137,6 @@
         android:layout_marginTop="512dp"
         android:layout_marginBottom="287dp"
         android:gravity="center"
-        android:scrollbarSize="8dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="172dp" />
+        android:scrollbarSize="8dp" />
 
 </RelativeLayout>

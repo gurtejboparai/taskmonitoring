@@ -33,11 +33,8 @@ public class ViewTaskActivity extends AppCompatActivity {
     private TabFragment tabProductivity;
     private TabFragment tabOthers;
 
-    private String tagName;
-    private String typeResult;
     private String Title, Description, date, priority,taskTag;
     private Task newTask;
-    private int currPos = 0;
     Bundle extras;
     Spinner dropDown;
     ArrayAdapter<CharSequence> adapter;
@@ -152,12 +149,12 @@ public class ViewTaskActivity extends AppCompatActivity {
     public void sortDefault(View view){
         int pos = tabView.getSelectedTabPosition();
         tabAllTasks.sortDefault();
-        tabFitness.sortDefault();
-        tabWork.sortDefault();
-        tabSchool.sortDefault();
-        tabAppointment.sortDefault();
-        tabProductivity.sortDefault();
-        tabOthers.sortDefault();
+//        tabFitness.sortDefault();
+//        tabWork.sortDefault();
+//        tabSchool.sortDefault();
+//        tabAppointment.sortDefault();
+//        tabProductivity.sortDefault();
+//        tabOthers.sortDefault();
         tabSetUp();
         viewPager.setCurrentItem(pos);
     }

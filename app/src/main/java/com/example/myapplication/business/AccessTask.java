@@ -173,16 +173,12 @@ public class AccessTask extends AppCompatActivity {
 
         public List<Task> sortPriorityInAsc(List<Task> taskList) {
 
-            System.out.println("------------------"+taskList);
-
             Collections.sort(taskList, compareTaskPriorityInAsc);
 
             return taskList;
         }
 
         public List<Task> sortPriorityInDesc(List<Task> taskList) {
-
-            System.out.println("------------------"+taskList);
 
             Collections.sort(taskList, compareTaskPriorityInDesc);
 

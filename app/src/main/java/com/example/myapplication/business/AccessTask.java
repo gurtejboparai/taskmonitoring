@@ -173,12 +173,16 @@ public class AccessTask extends AppCompatActivity {
 
         public List<Task> sortPriorityInAsc(List<Task> taskList) {
 
+            System.out.println("------------------"+taskList);
+
             Collections.sort(taskList, compareTaskPriorityInAsc);
 
             return taskList;
         }
 
         public List<Task> sortPriorityInDesc(List<Task> taskList) {
+
+            System.out.println("------------------"+taskList);
 
             Collections.sort(taskList, compareTaskPriorityInDesc);
 
@@ -193,19 +197,19 @@ public class AccessTask extends AppCompatActivity {
                 String pOne = taskOne.getPriority();
                 String pTwo = taskTwo.getPriority();
 
-                if (pOne == null) {
-                    return -1;
-                }
-                if (pTwo == null) {
-                    return -1;
-                }
+                System.out.println("pOne: "+ pOne);
+                System.out.println("pTwo: "+ pTwo);
+
+//                if (pOne == null) {
+//                    return -1;
+//                }
+//                if (pTwo == null) {
+//                    return -1;
+//                }
                 if (pOne.equals(pTwo)) {
                     return 0;
                 }
-                if (pOne.equals("Low") && (pTwo.equals("Medium") || pTwo.equals("High"))) {
-                    return -1;
-                }
-                if (pOne.equals("Medium") && pTwo.equals("High")) {
+                if (pOne.equals("False") && (pTwo.equals("True"))) {
                     return -1;
                 }
                 return 1;
@@ -220,22 +224,22 @@ public class AccessTask extends AppCompatActivity {
                 String pOne = taskOne.getPriority();
                 String pTwo = taskTwo.getPriority();
 
-                if (pOne == null) {
-                    return -1;
-                }
-                if (pTwo == null) {
-                    return -1;
-                }
+                System.out.println("pOne: "+ pOne);
+                System.out.println("pTwo: "+ pTwo);
+
+//                if (pOne == null) {
+//                    return -1;
+//                }
+//                if (pTwo == null) {
+//                    return -1;
+//                }
                 if (pOne.equals(pTwo)) {
                     return 0;
                 }
-                if (pTwo.equals("Low") && (pOne.equals("Medium") || pOne.equals("High"))) {
-                    return -1;
+                if (pOne.equals("False") && (pTwo.equals("True"))) {
+                    return 1;
                 }
-                if (pTwo.equals("Medium") && pOne.equals("High")) {
-                    return -1;
-                }
-                return 1;
+                return -1;
             }
         };
 

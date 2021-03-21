@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -39,7 +41,9 @@ public class TabFragment extends Fragment {
     private List<Task> taskList;
     private List<Task> orderedTasks;
     private AccessTask tasks;
-    private boolean inAscendingOrder = false;
+    private boolean prioInAscendingOrder = false;
+    private boolean dateInAscendingOrder = false;
+
 
     public TabFragment() {
     }
@@ -106,6 +110,7 @@ public class TabFragment extends Fragment {
                 super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
             }
         };
+
         ItemTouchHelper itemTouchHelper=new ItemTouchHelper(simpleCallback);
         itemTouchHelper.attachToRecyclerView(recyclerView);
         return view;
@@ -118,29 +123,30 @@ public class TabFragment extends Fragment {
     }
 
 
-    public void categorizeTask(TaskTag taskCategory) {
-        orderedTasks = tasks.getTasksByTag(taskCategory);
+    public void sortDefault(){
+        orderedTasks = tasks.getAllTasks();
     }
 
+    public void sortPrioA() {
+        orderedTasks = tasks.sortPriorityInAsc(orderedTasks);
+    }
 
-    public void sort() {
-        if (!inAscendingOrder) {
+    public void sortPrioD(){
+        orderedTasks = tasks.sortPriorityInDesc(orderedTasks);
+    }
 
-            orderedTasks = tasks.sortDateInAsc(orderedTasks);
-            inAscendingOrder = true;
+    public void sortDateA(){
+        orderedTasks = tasks.sortDateInAsc(orderedTasks);
+    }
 
-        } else {
-
-            orderedTasks = tasks.sortDateInDesc(orderedTasks);
-            inAscendingOrder = false;
-        }
+    public void sortDateD(){
+        orderedTasks = tasks.sortDateInDesc(orderedTasks);
     }
 
     class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
 
         private Context context;
         private List<Task> taskList;
-        private final String TaskID = "TID";
 
         public RecyclerViewAdapter(Context context, List<Task> task) {
             this.context = context;

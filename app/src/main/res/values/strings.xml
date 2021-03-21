@@ -46,5 +46,13 @@
         <item>PRODUCTIVITY</item>
         <item>OTHERS</item>
     </string-array>
+    <string-array name="sortBy">
+        <item><b>Default</b></item>
+        <item><b>Priority ▼</b></item>
+        <item><b>Priority ▲</b></item>
+        <item><b>Date ▲</b></item>
+        <item><b>Date ▼</b></item>
+    </string-array>
+    
 
 </resources>

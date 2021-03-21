@@ -25,7 +25,6 @@ import java.util.Calendar;
 
 public class AddActivity extends AppCompatActivity {
 
-    private final String taskID = "taskID";
     private AccessTask accessTask;
     ImageButton calender;
     private int mDate,mMonth,mYear;

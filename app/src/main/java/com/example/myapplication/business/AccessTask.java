@@ -88,6 +88,38 @@ public class AccessTask extends AppCompatActivity {
     }
 
 
+    public List<Task> sortDefault(List<Task> taskList) {
+
+        Collections.sort(taskList, compareTaskID);
+
+        return taskList;
+    }
+    Comparator<Task> compareTaskID = new Comparator<Task>() {
+
+        @Override
+        public int compare(Task task1, Task task2) {
+
+            int id1 = task1.getCurrTaskId();
+            int id2 = task2.getCurrTaskId();
+
+            if (id1 < 0) {
+                return -1;
+            }
+            if (id2 < 0) {
+                return -1;
+            }
+            if (id1 - id2 < 0) {
+                return -1;
+            }
+            if (id1 - id2 == 0) {
+                return 0;
+            }
+
+            return 1;
+        }
+
+    };
+
     public List<Task> sortDateInAsc(List<Task> taskList) {
 
         Collections.sort(taskList, compareTaskDateInAsc);

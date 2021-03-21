@@ -41,9 +41,6 @@ public class TabFragment extends Fragment {
     private List<Task> taskList;
     private List<Task> orderedTasks;
     private AccessTask tasks;
-    private boolean prioInAscendingOrder = false;
-    private boolean dateInAscendingOrder = false;
-
 
     public TabFragment() {
     }
@@ -124,7 +121,7 @@ public class TabFragment extends Fragment {
 
 
     public void sortDefault(){
-        orderedTasks = tasks.getAllTasks();
+        orderedTasks = tasks.sortDefault(orderedTasks);
     }
 
     public void sortPrioA() {

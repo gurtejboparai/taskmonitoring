@@ -149,12 +149,12 @@ public class ViewTaskActivity extends AppCompatActivity {
     public void sortDefault(View view){
         int pos = tabView.getSelectedTabPosition();
         tabAllTasks.sortDefault();
-//        tabFitness.sortDefault();
-//        tabWork.sortDefault();
-//        tabSchool.sortDefault();
-//        tabAppointment.sortDefault();
-//        tabProductivity.sortDefault();
-//        tabOthers.sortDefault();
+        tabFitness.sortDefault();
+        tabWork.sortDefault();
+        tabSchool.sortDefault();
+        tabAppointment.sortDefault();
+        tabProductivity.sortDefault();
+        tabOthers.sortDefault();
         tabSetUp();
         viewPager.setCurrentItem(pos);
     }

@@ -41,41 +41,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-
-            android:layout_marginLeft="105dp"
             android:fontFamily="@font/cherry_cream_soda"
             android:gravity="center"
-            android:onClick="sortBtnOnClick"
-
-            android:text="@string/sort"
             android:textAlignment="center"
             android:textColor="@android:color/background_light"
             android:textSize="26sp"
             android:textStyle="bold"
             android:layout_marginStart="105dp" />
 
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="17dp"
-            android:layout_marginStart="4dp"
-            android:background="@color/blue"
-            android:onClick="sortBtnOnClick"
-
-            android:src="@drawable/ic_baseline_sort_24"
-            tools:ignore="contentDescription"
-            android:layout_marginLeft="4dp" />
-
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingActionButton"
             android:layout_width="45dp"
             android:layout_height="46dp"
-            android:layout_marginLeft="250dp"
             android:layout_marginTop="5dp"
-
             android:onClick="addTaskBtnOnClick"
-
             android:foreground="@drawable/ic_baseline_add_24"
             android:foregroundGravity="center_vertical|center_horizontal"
             android:foregroundTint="@color/white"
@@ -83,7 +62,7 @@
             app:borderWidth="16dp"
             app:rippleColor="@color/white"
             tools:ignore="contentDescription"
-            android:layout_marginStart="250dp"
+            android:layout_marginStart="190dp"
             tools:targetApi="m" />
 
 
@@ -152,7 +131,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contextClickable="true"
-            android:text="@string/tabMislenious" />
+            android:text="@string/tabOthers" />
 
 
     </com.google.android.material.tabs.TabLayout>

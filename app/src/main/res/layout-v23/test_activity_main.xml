@@ -36,43 +36,23 @@
         android:background="@color/blue">
 
 
-        <TextView
-            android:id="@+id/sort"
-            android:layout_width="wrap_content"
+        <Spinner
+            android:id="@+id/sortSpinner"
+            android:layout_width="235dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:backgroundTint="#FFFFFF"
+            android:paddingStart="50dp"
+            android:dropDownVerticalOffset="38dp"
+            android:entries="@array/sortBy" />
 
-            android:fontFamily="@font/cherry_cream_soda"
-            android:gravity="center"
-            android:onClick="sortBtnOnClick"
-
-            android:text="@string/sort"
-            android:textAlignment="center"
-            android:textColor="@android:color/background_light"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            android:layout_marginStart="105dp" />
-
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="17dp"
-            android:layout_marginStart="4dp"
-            android:background="@color/blue"
-            android:onClick="sortBtnOnClick"
-
-            android:src="@drawable/ic_baseline_sort_24"
-            tools:ignore="contentDescription" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingActionButton"
             android:layout_width="45dp"
             android:layout_height="46dp"
             android:layout_marginTop="5dp"
-
             android:onClick="addTaskBtnOnClick"
-
             android:foreground="@drawable/ic_baseline_add_24"
             android:foregroundGravity="center_vertical|center_horizontal"
             android:foregroundTint="@color/white"
@@ -80,7 +60,7 @@
             app:borderWidth="16dp"
             app:rippleColor="@color/white"
             tools:ignore="contentDescription"
-            android:layout_marginStart="250dp" />
+            android:layout_marginStart="180dp" />
 
 
     </LinearLayout>
@@ -148,7 +128,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contextClickable="true"
-            android:text="@string/tabMislenious" />
+            android:text="@string/tabOthers" />
 
 
     </com.google.android.material.tabs.TabLayout>

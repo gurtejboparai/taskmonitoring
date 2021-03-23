@@ -37,6 +37,8 @@ public class EditActivity extends AppCompatActivity {
 
     Task currTask;
 
+    private int currTaskId;
+
     private int mDate, mMonth, mYear;
 
     private String taskTitle, taskDescription, taskDate, taskPriority, taskCategory, taskTag;
@@ -56,7 +58,11 @@ public class EditActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_task);
-        currTask = (Task) getIntent().getSerializableExtra("TID");
+
+        // get the task from DB
+        currTaskId = getIntent().getIntExtra("TID", -1);
+        currTask = accessTask.getTask(currTaskId);
+
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         taskTitle = currTask.getTaskTitle();
@@ -115,6 +121,7 @@ public class EditActivity extends AppCompatActivity {
                     }
                 },mYear,mMonth,mDate);
 
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
                 datePickerDialog.show();
             }
         });

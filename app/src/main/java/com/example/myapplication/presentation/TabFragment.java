@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -39,7 +41,6 @@ public class TabFragment extends Fragment {
     private List<Task> taskList;
     private List<Task> orderedTasks;
     private AccessTask tasks;
-    private boolean inAscendingOrder = false;
 
     public TabFragment() {
     }
@@ -79,6 +80,8 @@ public class TabFragment extends Fragment {
                 deletedTask[0]=task[0].getTaskTitle();
                 taskList.remove(pos);
                 tasks.deleteTask(task[0]);
+                Intent homepage = new Intent(getActivity(), ViewTaskActivity.class);
+                startActivity(homepage);
                 recyclerViewAdapter.notifyItemRemoved(pos);
                 Snackbar.make(recyclerView,deletedTask[0],Snackbar.LENGTH_LONG)
                         .setAction("Undo", new View.OnClickListener() {
@@ -104,6 +107,7 @@ public class TabFragment extends Fragment {
                 super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
             }
         };
+
         ItemTouchHelper itemTouchHelper=new ItemTouchHelper(simpleCallback);
         itemTouchHelper.attachToRecyclerView(recyclerView);
         return view;
@@ -116,29 +120,30 @@ public class TabFragment extends Fragment {
     }
 
 
-    public void categorizeTask(TaskTag taskCategory) {
-        orderedTasks = tasks.getTasksByTag(taskCategory);
+    public void sortDefault(){
+        orderedTasks = tasks.sortDefault(orderedTasks);
     }
 
+    public void sortPrioA() {
+        orderedTasks = tasks.sortPriorityInAsc(orderedTasks);
+    }
 
-    public void sort() {
-        if (!inAscendingOrder) {
+    public void sortPrioD(){
+        orderedTasks = tasks.sortPriorityInDesc(orderedTasks);
+    }
 
-            orderedTasks = tasks.sortDateInAsc(orderedTasks);
-            inAscendingOrder = true;
+    public void sortDateA(){
+        orderedTasks = tasks.sortDateInAsc(orderedTasks);
+    }
 
-        } else {
-
-            orderedTasks = tasks.sortDateInDesc(orderedTasks);
-            inAscendingOrder = false;
-        }
+    public void sortDateD(){
+        orderedTasks = tasks.sortDateInDesc(orderedTasks);
     }
 
     class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
 
         private Context context;
         private List<Task> taskList;
-        private final String TaskID = "TID";
 
         public RecyclerViewAdapter(Context context, List<Task> task) {
             this.context = context;
@@ -155,7 +160,7 @@ public class TabFragment extends Fragment {
             view = LayoutInflater.from(getActivity()).inflate(R.layout.row, viewGroup, false);
 
             final MyViewHolder viewHolder = new MyViewHolder(view);
-            final int sd=i;
+
             viewHolder.row.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -164,7 +169,7 @@ public class TabFragment extends Fragment {
 
                     Intent viewTask = new Intent(getActivity(), EditActivity.class);
 
-                    viewTask.putExtra("TID", orderedTasks.get(taskId));
+                    viewTask.putExtra("TID", taskId);
 
                     getActivity().startActivity(viewTask);
                 }

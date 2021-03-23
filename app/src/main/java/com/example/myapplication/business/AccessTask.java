@@ -88,6 +88,38 @@ public class AccessTask extends AppCompatActivity {
     }
 
 
+    public List<Task> sortDefault(List<Task> taskList) {
+
+        Collections.sort(taskList, compareTaskID);
+
+        return taskList;
+    }
+    Comparator<Task> compareTaskID = new Comparator<Task>() {
+
+        @Override
+        public int compare(Task task1, Task task2) {
+
+            int id1 = task1.getCurrTaskId();
+            int id2 = task2.getCurrTaskId();
+
+            if (id1 < 0) {
+                return -1;
+            }
+            if (id2 < 0) {
+                return -1;
+            }
+            if (id1 - id2 < 0) {
+                return -1;
+            }
+            if (id1 - id2 == 0) {
+                return 0;
+            }
+
+            return 1;
+        }
+
+    };
+
     public List<Task> sortDateInAsc(List<Task> taskList) {
 
         Collections.sort(taskList, compareTaskDateInAsc);
@@ -193,19 +225,19 @@ public class AccessTask extends AppCompatActivity {
                 String pOne = taskOne.getPriority();
                 String pTwo = taskTwo.getPriority();
 
-                if (pOne == null) {
-                    return -1;
-                }
-                if (pTwo == null) {
-                    return -1;
-                }
+                System.out.println("pOne: "+ pOne);
+                System.out.println("pTwo: "+ pTwo);
+
+//                if (pOne == null) {
+//                    return -1;
+//                }
+//                if (pTwo == null) {
+//                    return -1;
+//                }
                 if (pOne.equals(pTwo)) {
                     return 0;
                 }
-                if (pOne.equals("Low") && (pTwo.equals("Medium") || pTwo.equals("High"))) {
-                    return -1;
-                }
-                if (pOne.equals("Medium") && pTwo.equals("High")) {
+                if (pOne.equals("False") && (pTwo.equals("True"))) {
                     return -1;
                 }
                 return 1;
@@ -220,22 +252,22 @@ public class AccessTask extends AppCompatActivity {
                 String pOne = taskOne.getPriority();
                 String pTwo = taskTwo.getPriority();
 
-                if (pOne == null) {
-                    return -1;
-                }
-                if (pTwo == null) {
-                    return -1;
-                }
+                System.out.println("pOne: "+ pOne);
+                System.out.println("pTwo: "+ pTwo);
+
+//                if (pOne == null) {
+//                    return -1;
+//                }
+//                if (pTwo == null) {
+//                    return -1;
+//                }
                 if (pOne.equals(pTwo)) {
                     return 0;
                 }
-                if (pTwo.equals("Low") && (pOne.equals("Medium") || pOne.equals("High"))) {
-                    return -1;
+                if (pOne.equals("False") && (pTwo.equals("True"))) {
+                    return 1;
                 }
-                if (pTwo.equals("Medium") && pOne.equals("High")) {
-                    return -1;
-                }
-                return 1;
+                return -1;
             }
         };
 

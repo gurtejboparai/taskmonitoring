@@ -14,7 +14,7 @@
     <string name="add_task">Add Task</string>
     <string name="start_time">Start Time</string>
     <string name="end_time">End Time</string>
-    <string name="description">Description</string>
+    <string name="description">Task Description</string>
     <string name="priority">Priority</string>
     <string name="high">High</string>
     <string name="medium">Medium</string>
@@ -23,9 +23,10 @@
     <string name="ongoing">Ongoing</string>
     <string name="finished">Finished</string>
     <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
     <string name="delete">Delete</string>
     <string name="date">Date</string>
-    <string name="title">Title</string>
+    <string name="title">Task Title</string>
     <string name="sort">Sort</string>
     <string name="tabAll">All</string>
     <string name="tabFitness">Fitness</string>
@@ -33,8 +34,9 @@
     <string name="tabSchool">School</string>
     <string name="tabAppointment">Appointment</string>
     <string name="tabProductivity">Productivity</string>
-    <string name="tabMislenious">Mislenious</string>
+    <string name="tabOthers">Others</string>
     <string name="plus">+</string>
+    <string name="yyyy_mm_dd">YYYY-MM-DD</string>
     <string-array name="category_array">
         <item>Select Category</item>
         <item>FITNESS</item>
@@ -44,5 +46,13 @@
         <item>PRODUCTIVITY</item>
         <item>OTHERS</item>
     </string-array>
+    <string-array name="sortBy">
+        <item><b>Default</b></item>
+        <item><b>Priority ▼</b></item>
+        <item><b>Priority ▲</b></item>
+        <item><b>Date ▲</b></item>
+        <item><b>Date ▼</b></item>
+    </string-array>
+    
 
 </resources>

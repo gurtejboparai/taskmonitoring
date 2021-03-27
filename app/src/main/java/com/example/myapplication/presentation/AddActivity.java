@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.example.myapplication.business.AccessTask;
 import com.example.myapplication.objects.Task;
 import com.example.myapplication.R;
+import com.example.myapplication.objects.TaskTag;
 
 import java.util.Calendar;
 
@@ -29,6 +30,7 @@ public class AddActivity extends AppCompatActivity {
     ImageButton calender;
     private int mDate,mMonth,mYear;
     private String titleTxt,descriptionTxt;
+    private TaskTag category = null;
     TextView title,description,date;
     Button save,cancel;
     Switch highPriority;
@@ -97,11 +99,11 @@ public class AddActivity extends AppCompatActivity {
         String priority = "False";
         String tasktag;
 
-        boolean titleEmpty = this.title.getText().toString().isEmpty();
-        boolean descriptionEmpty = this.description.getText().toString().isEmpty();
-        boolean dateEmpty = this.date.getText().toString().isEmpty();
+        boolean titleEmpty = this.title.getText().toString().trim().isEmpty();
+        boolean descriptionEmpty = this.description.getText().toString().trim().isEmpty();
+        boolean dateEmpty = this.date.getText().toString().trim().isEmpty();
 
-        if (titleEmpty || descriptionEmpty || dateEmpty) {
+        if (titleEmpty || descriptionEmpty || dateEmpty ) {
             Toast.makeText(getApplicationContext(), "Please enter all fields", Toast.LENGTH_SHORT).show();
         }else{
 

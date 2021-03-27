@@ -16,6 +16,7 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -68,10 +69,10 @@ public class EditActivity extends AppCompatActivity {
         taskTitle = currTask.getTaskTitle();
         taskDescription = currTask.getTaskDescription();
         taskDate = currTask.getTaskDate();
-        taskPriority=currTask.getPriority();
+        taskPriority = currTask.getPriority();
         taskTag = currTask.getTaskTag().toString();
         currTask.setCategory(taskTag);
-        taskCategory=currTask.getCategory();
+        taskCategory = currTask.getCategory();
 
 
         date = findViewById(R.id.date);
@@ -82,10 +83,10 @@ public class EditActivity extends AppCompatActivity {
         description = findViewById(R.id.taskDescription);
         description.setText(currTask.getTaskDescription());
 
-        priority =findViewById(R.id.highPriority);
-        dropDown=findViewById(R.id.dropDown);
-        calender=findViewById(R.id.datePicker);
-        if(taskPriority.equals("True"))
+        priority = findViewById(R.id.highPriority);
+        dropDown = findViewById(R.id.dropDown);
+        calender = findViewById(R.id.datePicker);
+        if (taskPriority.equals("True"))
             priority.setChecked(Boolean.TRUE);
 
         save = findViewById(R.id.saveButton);
@@ -97,7 +98,7 @@ public class EditActivity extends AppCompatActivity {
                 R.array.category_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         dropDown.setAdapter(adapter);
-        int pos= adapter.getPosition(taskCategory.toUpperCase());
+        int pos = adapter.getPosition(taskCategory.toUpperCase());
 
         dropDown.setSelection(pos);
 
@@ -116,10 +117,10 @@ public class EditActivity extends AppCompatActivity {
                     @SuppressLint("SetTextI18n")
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
-                        date.setText(year+"-"+(month+1)+"-"+dayOfMonth);
+                        date.setText(year + "-" + (month + 1) + "-" + dayOfMonth);
 
                     }
-                },mYear,mMonth,mDate);
+                }, mYear, mMonth, mDate);
 
                 datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
                 datePickerDialog.show();
@@ -129,27 +130,41 @@ public class EditActivity extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                  Task task=accessTask.getTask(currTask.getCurrTaskId());
-                  task.setTaskTitle(title.getText().toString());
-                  task.setTaskDescription(description.getText().toString());
-                  task.setTaskDate(date.getText().toString());
-                  task.setCategory(dropDown.getSelectedItem().toString());
-                  if(priority.isChecked())
-                      task.setPriority("True");
-                  else
-                      task.setPriority("False");
 
-                  accessTask.editTask(task);
-                  Intent intent = new Intent(getApplicationContext(), ViewTaskActivity.class);
-                  startActivity(intent);
-                  finish();
-            }
-        });
+                Task task = accessTask.getTask(currTask.getCurrTaskId());
+                boolean titleEmpty = title.getText().toString().trim().isEmpty();
+                boolean descriptionEmpty = description.getText().toString().trim().isEmpty();
+                boolean dateEmpty = date.getText().toString().trim().isEmpty();
 
-        findViewById(R.id.cancelButton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
+                if (titleEmpty || descriptionEmpty || dateEmpty) {
+                    Toast.makeText(getApplicationContext(), "Please enter all fields", Toast.LENGTH_SHORT).show();
+                } else {
+                    try {
+                        task.setTaskTitle(title.getText().toString());
+                        task.setTaskDescription(description.getText().toString());
+                        task.setTaskDate(date.getText().toString());
+                        task.setCategory(dropDown.getSelectedItem().toString());
+                        if (priority.isChecked())
+                            task.setPriority("True");
+                        else
+                            task.setPriority("False");
+
+                        accessTask.editTask(task);
+                        Intent intent = new Intent(getApplicationContext(), ViewTaskActivity.class);
+                        startActivity(intent);
+                        finish();
+                    } catch (Exception e) {
+                        Toast.makeText(getApplicationContext(), "Invalid fields", Toast.LENGTH_LONG).show();
+                    }
+                }
+                ;
+
+                findViewById(R.id.cancelButton).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        finish();
+                    }
+                });
             }
         });
     }

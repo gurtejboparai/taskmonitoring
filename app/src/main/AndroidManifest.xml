@@ -10,9 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
 
-        <activity android:name=".presentation.AddActivity"></activity>
-        <activity android:name=".presentation.EditActivity"></activity>
-        <activity android:name=".presentation.ViewTaskActivity"></activity>
+        <activity
+            android:name=".presentation.AddActivity"
+            android:configChanges="keyboardHidden|orientation" />
+        <activity
+            android:name=".presentation.EditActivity"
+            android:configChanges="keyboardHidden|orientation" />
+        <activity
+            android:name=".presentation.ViewTaskActivity"
+            android:configChanges="keyboardHidden|orientation" />
 
 
         <activity android:name=".presentation.SplashPageActivity">

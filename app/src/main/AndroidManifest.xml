@@ -12,13 +12,13 @@
 
         <activity
             android:name=".presentation.AddActivity"
-            android:configChanges="keyboardHidden|orientation" />
+            android:configChanges="keyboardHidden|orientation|screenSize" />
         <activity
             android:name=".presentation.EditActivity"
-            android:configChanges="keyboardHidden|orientation" />
+            android:configChanges="keyboardHidden|orientation|screenSize" />
         <activity
             android:name=".presentation.ViewTaskActivity"
-            android:configChanges="keyboardHidden|orientation" />
+            android:configChanges="keyboardHidden|orientation|screenSize" />
 
 
         <activity android:name=".presentation.SplashPageActivity">

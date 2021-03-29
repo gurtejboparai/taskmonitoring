@@ -1,41 +1,20 @@
 <resources>
     <string name="app_name">Task Monitor</string>
-    <string name="title_activity_main">MainActivity</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="view_tasks">View Tasks</string>
-    <string name="title_activity_task">TaskActivity</string>
-    <string name="add_task">Add Task</string>
-    <string name="start_time">Start Time</string>
-    <string name="end_time">End Time</string>
     <string name="description">Task Description</string>
     <string name="priority">Priority</string>
     <string name="high">High</string>
-    <string name="medium">Medium</string>
-    <string name="low">Low</string>
-    <string name="Status">Status</string>
-    <string name="ongoing">Ongoing</string>
-    <string name="finished">Finished</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
-    <string name="delete">Delete</string>
     <string name="date">Date</string>
     <string name="title">Task Title</string>
-    <string name="sort">Sort</string>
     <string name="tabAll">All</string>
-    <string name="tabFitness">Fitness</string>
     <string name="tabWork">Work</string>
     <string name="tabSchool">School</string>
     <string name="tabAppointment">Appointment</string>
     <string name="tabProductivity">Productivity</string>
     <string name="tabOthers">Others</string>
-    <string name="plus">+</string>
     <string name="yyyy_mm_dd">YYYY-MM-DD</string>
     <string-array name="category_array">
         <item>Select Category</item>

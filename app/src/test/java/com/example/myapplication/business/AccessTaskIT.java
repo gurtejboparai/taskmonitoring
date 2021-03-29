@@ -27,7 +27,7 @@ public class AccessTaskIT {
     public void setUp() throws IOException {
         File tempDB = TestUtils.copyDB();
         final TaskPersistence taskPersistence= new TaskPersistenceHSQLDB(tempDB.getAbsolutePath().replace(".script", ""));
-        this.accessTask=new AccessTask((TaskPersistenceHSQLDB) taskPersistence);
+        this.accessTask=new AccessTask(taskPersistence);
         taskList=accessTask.getAllTasks();
     }
     @Test

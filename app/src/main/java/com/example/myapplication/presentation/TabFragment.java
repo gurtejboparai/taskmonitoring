@@ -60,7 +60,7 @@ public class TabFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.tab_fragment_view, container, false);
-        final RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.tabFragmentView);
+        final RecyclerView recyclerView = view.findViewById(R.id.tabFragmentView);
         final RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(getActivity(), orderedTasks);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(recyclerViewAdapter);
@@ -142,8 +142,8 @@ public class TabFragment extends Fragment {
 
     class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
 
-        private Context context;
-        private List<Task> taskList;
+        private final Context context;
+        private final List<Task> taskList;
 
         public RecyclerViewAdapter(Context context, List<Task> task) {
             this.context = context;
@@ -205,21 +205,21 @@ public class TabFragment extends Fragment {
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
 
-            private TextView taskTitle;
-            private TextView taskDescription;
-            private TextView taskDate;
-            private Chip taskPriority;
-            private LinearLayout row;
+            private final TextView taskTitle;
+            private final TextView taskDescription;
+            private final TextView taskDate;
+            private final Chip taskPriority;
+            private final LinearLayout row;
 
 
             public MyViewHolder(@NonNull View itemView) {
                 super(itemView);
 
-                taskTitle = (TextView) itemView.findViewById(R.id.taskTitle);
-                taskDescription = (TextView) itemView.findViewById(R.id.taskDescription);
-                taskDate = (TextView) itemView.findViewById(R.id.taskDate);
-                taskPriority = (Chip) itemView.findViewById(R.id.priorityChip);
-                row = (LinearLayout) itemView.findViewById(R.id.rowForOneTask);
+                taskTitle = itemView.findViewById(R.id.taskTitle);
+                taskDescription = itemView.findViewById(R.id.taskDescription);
+                taskDate = itemView.findViewById(R.id.taskDate);
+                taskPriority = itemView.findViewById(R.id.priorityChip);
+                row = itemView.findViewById(R.id.rowForOneTask);
             }
         }
     }

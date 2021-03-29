@@ -30,7 +30,7 @@ public class AddActivity extends AppCompatActivity {
     ImageButton calender;
     private int mDate,mMonth,mYear;
     private String titleTxt,descriptionTxt;
-    private TaskTag category = null;
+    private final TaskTag category = null;
     TextView title,description,date;
     Button save,cancel;
     Switch highPriority;

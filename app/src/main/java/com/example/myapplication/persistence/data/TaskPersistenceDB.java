@@ -8,7 +8,7 @@ import java.util.List;
 
 public class TaskPersistenceDB implements TaskPersistence {
     List<Task> tasksList;
-    private int numOfTasks=0;
+    private final int numOfTasks=0;
 
     public TaskPersistenceDB(){
 

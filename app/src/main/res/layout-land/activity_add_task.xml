@@ -133,9 +133,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="209dp"
-        android:layout_marginTop="362dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginStart="213dp"
+        android:layout_marginTop="377dp"
+        android:layout_marginBottom="10dp"
         android:gravity="center"
         android:scrollbarSize="8dp" />
 

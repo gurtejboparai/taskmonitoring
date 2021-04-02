@@ -31,7 +31,7 @@ public class SplashPageActivity extends AppCompatActivity {
 
         if(getSupportActionBar() != null)
             getSupportActionBar().hide();
-        setContentView(R.layout.PlashActivity);
+        setContentView(R.layout.activity_splash);
         Thread splashThread = new Thread() {
             @Override
             public void run() {

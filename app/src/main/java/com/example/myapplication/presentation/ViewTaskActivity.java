@@ -42,14 +42,14 @@ public class ViewTaskActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.ActivityMain);
+        setContentView(R.layout.test_activity_main);
 
         accessTask = new AccessTask();
         extras = getIntent().getExtras();
         dropDown=findViewById(R.id.sortSpinner);
         adapter = ArrayAdapter.createFromResource(this,
-                R.array.sortBy, R.layout.SpinnerStyle);
-        adapter.setDropDownViewResource(R.layout.SpinnerPopupStyle);
+                R.array.sortBy, R.layout.spinner_style);
+        adapter.setDropDownViewResource(R.layout.spinner_popup_style);
         dropDown.setAdapter(adapter);
 
         dropDown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){

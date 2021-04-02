@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,6 +50,7 @@ public class TabFragment extends Fragment {
         this.tasks = tasks;
 
         orderedTasks = taskList;
+
     }
 
 
@@ -62,33 +64,51 @@ public class TabFragment extends Fragment {
         recyclerView.setAdapter(recyclerViewAdapter);
         final String[] deletedTask = {null};
         final Task[] task = {null};
-        ItemTouchHelper.SimpleCallback simpleCallback =new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT) {
+        final String[] label = {"Done"};
+        ItemTouchHelper.SimpleCallback simpleCallback =new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT|ItemTouchHelper.RIGHT)
+        {
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
                 return false;
             }
 
             @Override
-            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction)
-            {
-                final int pos=viewHolder.getAdapterPosition();
-                task[0] =taskList.get(pos);
-                deletedTask[0]=task[0].getTaskTitle();
-                taskList.remove(pos);
-                tasks.deleteTask(task[0]);
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                final int pos = viewHolder.getAdapterPosition();
+                task[0] = taskList.get(pos);
+                switch (direction) {
+                    case ItemTouchHelper.LEFT:
+                        deletedTask[0] = task[0].getTaskTitle();
+                        taskList.remove(pos);
+                        tasks.deleteTask(task[0]);
+                        recyclerViewAdapter.notifyItemRemoved(pos);
+                        Snackbar.make(recyclerView, deletedTask[0], Snackbar.LENGTH_LONG)
+                                .setAction("Undo", new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        taskList.add(pos, task[0]);
+                                        tasks.addTask(task[0]);
+                                        recyclerViewAdapter.notifyItemInserted(pos);
+                                    }
+                                }).show();
+                        break;
+
+                    case ItemTouchHelper.RIGHT:
+                        if(task[0].getStatus().equals("completed"))
+                        {
+                            tasks.setStatus(task[0],"on going");
+                            label[0]="Done";
+                        }
+                        else {
+                            tasks.setStatus(task[0],"completed");
+                            label[0]="On going";
+                        }
+                        recyclerViewAdapter.notifyItemChanged(pos);
+                        break;
+                }
                 Intent homepage = new Intent(getActivity(), ViewTaskActivity.class);
                 startActivity(homepage);
-                recyclerViewAdapter.notifyItemRemoved(pos);
-                Snackbar.make(recyclerView,deletedTask[0],Snackbar.LENGTH_LONG)
-                        .setAction("Undo", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v)
-                            {
-                                taskList.add(pos,task[0]);
-                                tasks.addTask(task[0]);
-                                recyclerViewAdapter.notifyItemInserted(pos);
-                            }
-                        }).show();
+
             }
 
             @Override
@@ -98,10 +118,14 @@ public class TabFragment extends Fragment {
                         .addSwipeLeftBackgroundColor(ContextCompat.getColor(getContext(),R.color.red))
                         .addSwipeLeftLabel("Delete")
                         .addSwipeLeftActionIcon(R.drawable.ic_baseline_delete_24)
+                        .addSwipeRightBackgroundColor(ContextCompat.getColor(getContext(),R.color.green))
+                        .addSwipeRightLabel(label[0])
+                        .addSwipeRightActionIcon(R.drawable.ic_baseline_done_24)
                         .create()
                         .decorate();
                 super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
             }
+
         };
 
         ItemTouchHelper itemTouchHelper=new ItemTouchHelper(simpleCallback);
@@ -183,6 +207,7 @@ public class TabFragment extends Fragment {
             String description = taskList.get(i).getTaskDescription();
             String date = taskList.get(i).getTaskDate();
             String priority = taskList.get(i).getPriority();
+            String status=taskList.get(i).getStatus();
 
 
             myViewHolder.taskTitle.setText(title);
@@ -190,7 +215,9 @@ public class TabFragment extends Fragment {
             myViewHolder.taskDate.setText(date);
             if (priority.equals("True"))
                 myViewHolder.taskPriority.setChipBackgroundColor(ColorStateList.valueOf(ContextCompat.getColor(getActivity(), R.color.OrangeRed)));
-
+            if(status.equals("completed")) {
+                myViewHolder.taskTitle.setPaintFlags(myViewHolder.taskTitle.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+            }
 
         }
 

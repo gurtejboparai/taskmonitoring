@@ -227,13 +227,7 @@ public class AccessTask extends AppCompatActivity {
 
                 System.out.println("pOne: "+ pOne);
                 System.out.println("pTwo: "+ pTwo);
-
-//                if (pOne == null) {
-//                    return -1;
-//                }
-//                if (pTwo == null) {
-//                    return -1;
-//                }
+                
                 if (pOne.equals(pTwo)) {
                     return 0;
                 }
@@ -255,12 +249,6 @@ public class AccessTask extends AppCompatActivity {
                 System.out.println("pOne: "+ pOne);
                 System.out.println("pTwo: "+ pTwo);
 
-//                if (pOne == null) {
-//                    return -1;
-//                }
-//                if (pTwo == null) {
-//                    return -1;
-//                }
                 if (pOne.equals(pTwo)) {
                     return 0;
                 }

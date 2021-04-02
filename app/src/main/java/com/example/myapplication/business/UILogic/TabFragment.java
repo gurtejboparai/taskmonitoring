@@ -1,4 +1,4 @@
-package com.example.myapplication.presentation;
+package com.example.myapplication.business.UILogic;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -27,6 +27,8 @@ import com.example.myapplication.R;
 import com.example.myapplication.business.AccessTask;
 import com.example.myapplication.objects.Task;
 import com.example.myapplication.objects.TaskTag;
+import com.example.myapplication.presentation.EditActivity;
+import com.example.myapplication.presentation.ViewTaskActivity;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;

@@ -1,20 +1,19 @@
 package com.example.myapplication.presentation;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.myapplication.R;
 import com.example.myapplication.business.AccessTask;
+import com.example.myapplication.business.UILogic.TabFragment;
+import com.example.myapplication.business.UILogic.TabPagerAdapter;
 import com.example.myapplication.objects.Task;
 import com.example.myapplication.objects.TaskTag;
 import com.google.android.material.tabs.TabLayout;

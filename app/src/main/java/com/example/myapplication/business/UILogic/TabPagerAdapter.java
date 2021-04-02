@@ -1,4 +1,4 @@
-package com.example.myapplication.presentation;
+package com.example.myapplication.business.UILogic;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;

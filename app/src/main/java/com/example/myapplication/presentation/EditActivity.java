@@ -5,13 +5,11 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Switch;
@@ -24,15 +22,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.business.AccessTask;
 import com.example.myapplication.objects.Task;
-import com.example.myapplication.persistence.TaskPersistence;
-import com.example.myapplication.persistence.data.TaskPersistenceDB;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.Calendar;
-import java.util.List;
 
 public class EditActivity extends AppCompatActivity {
 
@@ -58,7 +49,7 @@ public class EditActivity extends AppCompatActivity {
         accessTask = new AccessTask();
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_task);
+        setContentView(R.layout.EditTaskActivity);
 
         // get the task from DB
         currTaskId = getIntent().getIntExtra("TID", -1);

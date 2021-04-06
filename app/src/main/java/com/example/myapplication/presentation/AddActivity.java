@@ -3,6 +3,9 @@ package com.example.myapplication.presentation;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Build;
@@ -37,7 +40,8 @@ public class AddActivity extends AppCompatActivity {
     Task newTask;
     Spinner dropDown;
     ArrayAdapter<CharSequence> adapter;
-
+    int currNotification = 0;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -124,6 +128,10 @@ public class AddActivity extends AppCompatActivity {
                 viewTasks.putExtra("Date",dateText);
                 viewTasks.putExtra("Priority",priority);
                 viewTasks.putExtra("Tag",tasktag);
+                
+                if(priority == "True" ){
+                    createNotification(titleText);
+                }
 
                 startActivity(viewTasks);
             }
@@ -131,5 +139,23 @@ public class AddActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Invalid fields", Toast.LENGTH_LONG).show();
             }
         }
+    }
+    public void createNotification(String title){
+        //open the tasks list from the notification
+        Intent intent = new Intent(this, ViewTaskActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent pending = PendingIntent.getActivity(this,0, intent,0);
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, NotificationChannel.DEFAULT_CHANNEL_ID)
+                .setSmallIcon(R.drawable.p_square)
+                .setContentTitle("Upcoming Task")
+                .setContentText(title)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setContentIntent(pending)
+                .setAutoCancel(true);
+
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+        notificationManager.notify(currNotification, builder.build());
+        currNotification++;
     }
 }

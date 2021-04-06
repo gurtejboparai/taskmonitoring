@@ -45,6 +45,9 @@ public class SplashPageActivity extends AppCompatActivity {
                 }
             }
         };
+            
+            Notifications startChannel = new Notifications(this);
+            
             splashThread.start();
     }
 

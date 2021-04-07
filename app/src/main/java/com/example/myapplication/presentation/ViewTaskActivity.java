@@ -155,17 +155,6 @@ public class ViewTaskActivity extends AppCompatActivity {
         tabView.setupWithViewPager(viewPager);
     }
 
-//
-//    private void categorizeTags(TaskTag taskCategory) {
-//        tabAllTasks.categorizeTask(taskCategory);
-//        tabFitness.categorizeTask(taskCategory);
-//        tabWork.categorizeTask(taskCategory);
-//        tabSchool.categorizeTask(taskCategory);
-//        tabAppointment.categorizeTask(taskCategory);
-//        tabProductivity.categorizeTask(taskCategory);
-//        tabOthers.categorizeTask(taskCategory);
-//    }
-
     public void addTaskBtnOnClick(View v) {
         Intent newTaskIntent = new Intent(ViewTaskActivity.this, AddActivity.class);
         ViewTaskActivity.this.startActivity(newTaskIntent);

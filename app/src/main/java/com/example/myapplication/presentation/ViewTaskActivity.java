@@ -90,6 +90,7 @@ public class ViewTaskActivity extends AppCompatActivity {
             newTask.setPriority(priority);
             newTask.setCategory(taskTag);
             accessTask.addTask(newTask);
+            Notifications startChannel = new Notifications(accessTask);
         }
 
         initialTabFragment();

@@ -7,6 +7,8 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 import android.app.DatePickerDialog;
+import android.app.NotificationChannel;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -96,6 +98,7 @@ public class AddActivity extends AppCompatActivity {
                 });
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void saveBtnOnClick(View view){
         String titleText;
         String descriptionText;
@@ -129,7 +132,7 @@ public class AddActivity extends AppCompatActivity {
                 viewTasks.putExtra("Priority",priority);
                 viewTasks.putExtra("Tag",tasktag);
                 
-                if(priority == "True" ){
+                if(priority.equalsIgnoreCase("True") ){
                     createNotification(titleText);
                 }
 
@@ -140,6 +143,7 @@ public class AddActivity extends AppCompatActivity {
             }
         }
     }
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void createNotification(String title){
         //open the tasks list from the notification
         Intent intent = new Intent(this, ViewTaskActivity.class);

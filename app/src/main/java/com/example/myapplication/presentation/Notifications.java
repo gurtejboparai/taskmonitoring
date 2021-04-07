@@ -7,14 +7,18 @@ import android.os.Build;
 
 
 public class Notifications {
-
+    private Context currContext;
     public Notifications(Context currContext){
-        createChannel(currContext);
+        this.currContext = currContext;
+    }
+
+    public Context getCurrContext(){
+        return this.currContext;
     }
 
     //build a notification channel for the application
     //At this stage we only need one
-    private void createChannel(Context currContext){
+    static public void createChannel(Context currContext){
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             CharSequence name = "tasks notifications";
             String description = "tasks that have yet to be completed";

@@ -6,6 +6,8 @@ import com.example.myapplication.persistence.data.TaskPersistenceDB;
 
 import org.junit.Test;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 
@@ -68,8 +70,10 @@ public class FakeDBUnitTest {
     }
 
     @Test
-    public void TestForSame(){
-
+    public void TestGetAllTask(){
+        TaskPersistence db = new TaskPersistenceDB();
+        List aList = db.getAllTasks();
+        assertNotNull(aList);
     }
 
 }

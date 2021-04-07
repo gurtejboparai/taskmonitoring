@@ -131,10 +131,6 @@ public class AddActivity extends AppCompatActivity {
                 viewTasks.putExtra("Date",dateText);
                 viewTasks.putExtra("Priority",priority);
                 viewTasks.putExtra("Tag",tasktag);
-                
-                if(priority.equalsIgnoreCase("True") ){
-                    createNotification(titleText);
-                }
 
                 startActivity(viewTasks);
             }
@@ -142,24 +138,5 @@ public class AddActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Invalid fields", Toast.LENGTH_LONG).show();
             }
         }
-    }
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public void createNotification(String title){
-        //open the tasks list from the notification
-        Intent intent = new Intent(this, ViewTaskActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        PendingIntent pending = PendingIntent.getActivity(this,0, intent,0);
-
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, NotificationChannel.DEFAULT_CHANNEL_ID)
-                .setSmallIcon(R.drawable.p_square)
-                .setContentTitle("Upcoming Task")
-                .setContentText(title)
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                .setContentIntent(pending)
-                .setAutoCancel(true);
-
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-        notificationManager.notify(currNotification, builder.build());
-        currNotification++;
     }
 }

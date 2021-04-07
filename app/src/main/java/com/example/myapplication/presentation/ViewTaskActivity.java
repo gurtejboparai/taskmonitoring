@@ -1,7 +1,12 @@
 package com.example.myapplication.presentation;
 
+import android.app.AlarmManager;
+import android.app.Notification;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -90,12 +95,32 @@ public class ViewTaskActivity extends AppCompatActivity {
             newTask.setPriority(priority);
             newTask.setCategory(taskTag);
             accessTask.addTask(newTask);
-            Notifications startChannel = new Notifications(accessTask);
+            if(priority.equalsIgnoreCase("True"))
+                scheduleNotification(getNotification(Title,Description),5000);
         }
 
         initialTabFragment();
         tabSetUp();
 
+    }
+
+    private void scheduleNotification(Notification notification, int delay){
+        Intent notificationIntent = new Intent(this, NotificationTask.class);
+        notificationIntent.putExtra(NotificationTask.NOTIFICATION_ID, 1);
+        notificationIntent.putExtra(NotificationTask.NOTIFICATION, notification);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        long futureInMillis = SystemClock.elapsedRealtime() + delay;
+        AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+        alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, pendingIntent);
+    }
+
+    private Notification getNotification(String title, String content){
+        Notification.Builder builder = new Notification.Builder(this);
+        builder.setContentTitle(title);
+        builder.setContentText(content);
+        builder.setSmallIcon(R.drawable.ic_launcher_background);
+        return builder.build();
     }
 
 

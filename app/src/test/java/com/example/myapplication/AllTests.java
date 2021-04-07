@@ -1,4 +1,5 @@
 package com.example.myapplication;
+import com.example.myapplication.Persistence.FakeDBUnitTest;
 import com.example.myapplication.business.AccessTaskTest;
 import com.example.myapplication.objects.TaskTest;
 
@@ -9,6 +10,7 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
         TaskTest.class,
         AccessTaskTest.class,
+        FakeDBUnitTest.class,
 
 })
 public class AllTests{

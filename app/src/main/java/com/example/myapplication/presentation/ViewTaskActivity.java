@@ -2,9 +2,12 @@ package com.example.myapplication.presentation;
 
 import android.app.AlarmManager;
 import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.View;
@@ -120,6 +123,15 @@ public class ViewTaskActivity extends AppCompatActivity {
         builder.setContentTitle(title);
         builder.setContentText(content);
         builder.setSmallIcon(R.drawable.ic_launcher_background);
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
+            String chanelID = "Your_chanel_Id";
+            NotificationChannel channel = new NotificationChannel(chanelID,title, NotificationManager.IMPORTANCE_HIGH);
+            channel.setDescription(content);
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
         return builder.build();
     }
 

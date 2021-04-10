@@ -143,6 +143,29 @@ public class TaskAcceptanceTest {
 
     }
 
+    //sort
+    @Test
+    public void sortTaskTest() {
+        SystemClock.sleep(2500);
+        onView(withId(R.id.tabview_activity)).perform(swipeRight());
+        onView(allOf(withText("ALL"), isDisplayed())).perform(click());
+        SystemClock.sleep(1000);
+        onView(withId(R.id.sortSpinner)).perform(click());
+        onView(allOf(withText("Priority ▼"), isDisplayed())).perform(click());
+        SystemClock.sleep(1000);
+        onView(withId(R.id.sortSpinner)).perform(click());
+        onView(allOf(withText("Priority ▲"), isDisplayed())).perform(click());
+        SystemClock.sleep(1000);
+        onView(withId(R.id.sortSpinner)).perform(click());
+        onView(allOf(withText("Date ▲"), isDisplayed())).perform(click());
+        SystemClock.sleep(1000);
+        onView(withId(R.id.sortSpinner)).perform(click());
+        onView(allOf(withText("Date ▼"), isDisplayed())).perform(click());
+        SystemClock.sleep(1000);
+        onView(withId(R.id.sortSpinner)).perform(click());
+        onView(allOf(withText("Default"), isDisplayed())).perform(click());
+        SystemClock.sleep(1000);
+    }
 
 
 }

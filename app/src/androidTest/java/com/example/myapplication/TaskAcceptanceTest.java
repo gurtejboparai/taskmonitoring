@@ -102,5 +102,47 @@ public class TaskAcceptanceTest {
         onView(allOf(withText("OTHERS"), isDisplayed())).perform(click());
         SystemClock.sleep(1000);
     }
+//    @Test
+//    public void viewRecipeTest() {
+//        SystemClock.sleep(2500);
+//        onView(withId(R.id.viewpager_activity));
+//        onView(allOf(withText("COMP 3350 Iteration 3"), isDisplayed())).perform(click());
+//        SystemClock.sleep(1000);
+//
+//        onView(withId(R.id.taskTitle)).check(matches(withText("COMP 3350 Iteration 3")));
+//        onView(withId(R.id.taskDescription)).check(matches(withText("Debug features and add acceptance tests")));
+//        onView(withId(R.id.cancelButton)).perform(click());
+//    }
+
+
+    //edit task
+    @Test
+    public void editTaskTest() {
+        onView(withId(R.id.viewpager_activity));
+        onView(allOf(withText("COMP 3350 Iteration 3"), isDisplayed())).perform(click());
+        onView(withId(R.id.taskTitle)).perform(clearText());
+        onView(withId(R.id.taskTitle)).perform(typeText("Comp 3350 I3 and Presentation Due"));
+        onView(withId(R.id.datePicker)).perform(click());
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(PickerActions.setDate(2021, 4, 16));
+        onView(withText("OK")).perform(click());
+        onView(withId(R.id.taskDescription)).perform(clearText());
+        onView(withId(R.id.taskDescription)).perform(typeText("Debug the feature and Prepare the Presentation"));
+        onView(withId(R.id.highPriority)).perform(click());
+        pressBack();
+        onView(withId(R.id.dropDown)).perform(click());
+        onView(withText("SCHOOL")).perform(click());
+        onView(withId(R.id.saveButton)).perform(click());
+        SystemClock.sleep(1000);
+
+        onView(withId(R.id.tabview_activity));
+        onView(allOf(withText("SCHOOL"), isDisplayed())).perform(click());
+        SystemClock.sleep(1000);
+        onView(withId(R.id.tabview_activity)).perform(swipeLeft());
+        onView(allOf(withText("OTHERS"), isDisplayed())).perform(click());
+        SystemClock.sleep(1000);
+
+    }
+
+
 
 }

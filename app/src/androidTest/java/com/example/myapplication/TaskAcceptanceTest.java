@@ -28,6 +28,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static androidx.test.espresso.Espresso.closeSoftKeyboard;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.Espresso.pressBack;
 import static androidx.test.espresso.action.ViewActions.clearText;
@@ -118,17 +119,20 @@ public class TaskAcceptanceTest {
     //edit task
     @Test
     public void editTaskTest() {
+        SystemClock.sleep(2500);
         onView(withId(R.id.viewpager_activity));
         onView(allOf(withText("COMP 3350 Iteration 3"), isDisplayed())).perform(click());
         onView(withId(R.id.taskTitle)).perform(clearText());
         onView(withId(R.id.taskTitle)).perform(typeText("Comp 3350 I3 and Presentation Due"));
+        closeSoftKeyboard();
         onView(withId(R.id.datePicker)).perform(click());
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(PickerActions.setDate(2021, 4, 16));
         onView(withText("OK")).perform(click());
         onView(withId(R.id.taskDescription)).perform(clearText());
         onView(withId(R.id.taskDescription)).perform(typeText("Debug the feature and Prepare the Presentation"));
+        closeSoftKeyboard();
         onView(withId(R.id.highPriority)).perform(click());
-        pressBack();
+//        pressBack();
         onView(withId(R.id.dropDown)).perform(click());
         onView(withText("SCHOOL")).perform(click());
         onView(withId(R.id.saveButton)).perform(click());

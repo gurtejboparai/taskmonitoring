@@ -103,17 +103,40 @@ public class TaskAcceptanceTest {
         onView(allOf(withText("OTHERS"), isDisplayed())).perform(click());
         SystemClock.sleep(1000);
     }
-//    @Test
-//    public void viewRecipeTest() {
-//        SystemClock.sleep(2500);
-//        onView(withId(R.id.viewpager_activity));
-//        onView(allOf(withText("COMP 3350 Iteration 3"), isDisplayed())).perform(click());
-//        SystemClock.sleep(1000);
-//
-//        onView(withId(R.id.taskTitle)).check(matches(withText("COMP 3350 Iteration 3")));
-//        onView(withId(R.id.taskDescription)).check(matches(withText("Debug features and add acceptance tests")));
-//        onView(withId(R.id.cancelButton)).perform(click());
-//    }
+    @Test
+    public void deleteTaskTest() {
+        SystemClock.sleep(2500);
+        onView(withId(R.id.viewpager_activity));
+        onView(allOf(withText("Workout"), isDisplayed())).perform(swipeLeft());
+        SystemClock.sleep(1000);
+
+
+        onView(allOf(withText("FITNESS"), isDisplayed())).perform(click());
+        SystemClock.sleep(1000);
+        onView(withId(R.id.tabview_activity)).perform(swipeLeft());
+        onView(allOf(withText("APPOINTMENT"), isDisplayed())).perform(click());
+        SystemClock.sleep(1000);
+        onView(withId(R.id.tabview_activity)).perform(swipeLeft());
+        onView(allOf(withText("OTHERS"), isDisplayed())).perform(click());
+        SystemClock.sleep(1000);
+    }
+
+    @Test
+    public void changeStatusTest(){
+        SystemClock.sleep(2500);
+        onView(withId(R.id.viewpager_activity));
+        onView(allOf(withText("Call the doctor"), isDisplayed())).perform(swipeRight());
+        SystemClock.sleep(1000);
+
+        onView(allOf(withText("FITNESS"), isDisplayed())).perform(click());
+        SystemClock.sleep(1000);
+        onView(withId(R.id.tabview_activity)).perform(swipeLeft());
+        onView(allOf(withText("APPOINTMENT"), isDisplayed())).perform(click());
+        SystemClock.sleep(1000);
+        onView(withId(R.id.tabview_activity)).perform(swipeLeft());
+        onView(allOf(withText("OTHERS"), isDisplayed())).perform(click());
+        SystemClock.sleep(1000);
+    }
 
 
     //edit task

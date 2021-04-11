@@ -110,7 +110,7 @@ public class TaskAcceptanceTest {
         onView(allOf(withText("Workout"), isDisplayed())).perform(swipeLeft());
         SystemClock.sleep(1000);
 
-
+        onView(withId(R.id.tabview_activity));
         onView(allOf(withText("FITNESS"), isDisplayed())).perform(click());
         SystemClock.sleep(1000);
         onView(withId(R.id.tabview_activity)).perform(swipeLeft());
@@ -128,6 +128,7 @@ public class TaskAcceptanceTest {
         onView(allOf(withText("Call the doctor"), isDisplayed())).perform(swipeRight());
         SystemClock.sleep(1000);
 
+        onView(withId(R.id.tabview_activity));
         onView(allOf(withText("FITNESS"), isDisplayed())).perform(click());
         SystemClock.sleep(1000);
         onView(withId(R.id.tabview_activity)).perform(swipeLeft());

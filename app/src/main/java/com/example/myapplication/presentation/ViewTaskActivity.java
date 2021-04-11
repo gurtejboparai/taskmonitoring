@@ -20,6 +20,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.myapplication.R;
 import com.example.myapplication.business.AccessTask;
+import com.example.myapplication.business.UILogic.NotificationTask;
 import com.example.myapplication.business.UILogic.TabFragment;
 import com.example.myapplication.business.UILogic.TabPagerAdapter;
 import com.example.myapplication.objects.Task;

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -43,6 +44,7 @@ public class TabFragment extends Fragment {
 
     private List<Task> taskList;
     private List<Task> orderedTasks;
+    private List<Task> completedTasks;
     private AccessTask tasks;
 
     public TabFragment() {
@@ -56,6 +58,7 @@ public class TabFragment extends Fragment {
         this.tasks = tasks;
 
         orderedTasks = taskList;
+        completedTasks=null;
 
     }
 
@@ -70,7 +73,6 @@ public class TabFragment extends Fragment {
         recyclerView.setAdapter(recyclerViewAdapter);
         final String[] deletedTask = {null};
         final Task[] task = {null};
-        final String[] label = {"Done"};
         ItemTouchHelper.SimpleCallback simpleCallback =new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT|ItemTouchHelper.RIGHT)
         {
             @Override
@@ -100,16 +102,8 @@ public class TabFragment extends Fragment {
                         break;
 
                     case ItemTouchHelper.RIGHT:
-                        if(task[0].getStatus().equals("completed"))
-                        {
-                            tasks.setStatus(task[0],"on going");
-                            label[0]="Done";
-                        }
-                        else {
                             tasks.setStatus(task[0],"completed");
-                            label[0]="On going";
-                        }
-                        recyclerViewAdapter.notifyItemChanged(pos);
+                            recyclerViewAdapter.notifyItemChanged(pos);
                         break;
                 }
                 Intent homepage = new Intent(getActivity(), ViewTaskActivity.class);
@@ -125,7 +119,7 @@ public class TabFragment extends Fragment {
                         .addSwipeLeftLabel("Delete")
                         .addSwipeLeftActionIcon(R.drawable.ic_baseline_delete_24)
                         .addSwipeRightBackgroundColor(ContextCompat.getColor(getContext(),R.color.green))
-                        .addSwipeRightLabel(label[0])
+                        .addSwipeRightLabel("Done")
                         .addSwipeRightActionIcon(R.drawable.ic_baseline_done_24)
                         .create()
                         .decorate();

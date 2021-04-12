@@ -44,6 +44,7 @@ public class TabFragment extends Fragment {
 
     private List<Task> taskList;
     private List<Task> orderedTasks;
+    private List<Task> completedTasks;
     private AccessTask tasks;
 
     public TabFragment() {
@@ -57,6 +58,7 @@ public class TabFragment extends Fragment {
         this.tasks = tasks;
 
         orderedTasks = taskList;
+        completedTasks=null;
 
     }
 
@@ -100,14 +102,8 @@ public class TabFragment extends Fragment {
                         break;
 
                     case ItemTouchHelper.RIGHT:
-                        if(!task[0].getStatus().equals("completed"))
-                        {
                             tasks.setStatus(task[0],"completed");
-                        }
-                        else {
-                            tasks.setStatus(task[0],"on going");
-                        }
-                        recyclerViewAdapter.notifyItemChanged(pos);
+                            recyclerViewAdapter.notifyItemChanged(pos);
                         break;
                 }
                 Intent homepage = new Intent(getActivity(), ViewTaskActivity.class);

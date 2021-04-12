@@ -27,6 +27,9 @@ import com.example.myapplication.objects.Task;
 import com.example.myapplication.objects.TaskTag;
 import com.google.android.material.tabs.TabLayout;
 
+import java.util.Date;
+import java.util.Random;
+
 public class ViewTaskActivity extends AppCompatActivity {
 
     private TabLayout tabView;
@@ -100,7 +103,7 @@ public class ViewTaskActivity extends AppCompatActivity {
             newTask.setCategory(taskTag);
             accessTask.addTask(newTask);
             if(priority.equalsIgnoreCase("True"))
-                scheduleNotification(getNotification(Title,Description),5000);
+                scheduleNotification(Title,Description,5000);
         }
 
         initialTabFragment();
@@ -108,32 +111,18 @@ public class ViewTaskActivity extends AppCompatActivity {
 
     }
 
-    private void scheduleNotification(Notification notification, int delay){
-        Intent notificationIntent = new Intent(this, NotificationTask.class);
-        notificationIntent.putExtra(NotificationTask.NOTIFICATION_ID, 1);
-        notificationIntent.putExtra(NotificationTask.NOTIFICATION, notification);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+    private void scheduleNotification(String Title, String Description, int delay){
+        Intent intent = new Intent(this, NotificationTask.class);
+        intent.putExtra(NotificationTask.NOTIFICATION_ID,Title);
+        intent.putExtra(NotificationTask.NOTIFICATION,Description);
+
+        int r = (int) ((new Date().getTime() / 1000L) % Integer.MAX_VALUE);
+        r += new Random().nextInt(100) + 1;
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, r, intent, 0);
 
         long futureInMillis = SystemClock.elapsedRealtime() + delay;
         AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
-        alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, pendingIntent);
-    }
-
-    private Notification getNotification(String title, String content){
-        Notification.Builder builder = new Notification.Builder(this);
-        builder.setContentTitle(title);
-        builder.setContentText(content);
-        builder.setSmallIcon(R.drawable.ic_launcher_background);
-        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
-            String chanelID = "Your_chanel_Id";
-            NotificationChannel channel = new NotificationChannel(chanelID,title, NotificationManager.IMPORTANCE_HIGH);
-            channel.setDescription(content);
-            // Register the channel with the system; you can't change the importance
-            // or other notification behaviors after this
-            NotificationManager notificationManager = getSystemService(NotificationManager.class);
-            notificationManager.createNotificationChannel(channel);
-        }
-        return builder.build();
+        alarmManager.setExact(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, pendingIntent);
     }
 
 

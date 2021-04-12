@@ -7,17 +7,35 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+
+import com.example.myapplication.objects.Channel;
+
+import java.util.Date;
+import java.util.Random;
+
 public class NotificationTask extends BroadcastReceiver {
 
     public static String NOTIFICATION_ID = "notification-id";
     public static String NOTIFICATION = "notification";
+    private Channel channel;
 
     public void onReceive(Context context, Intent intent) {
+        channel = new Channel(context);
+        createAlarm(context, intent,
+                intent.getStringExtra(NOTIFICATION_ID),
+                intent.getStringExtra(NOTIFICATION));
 
-        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+    }
 
-        Notification notification = intent.getParcelableExtra(NOTIFICATION);
-        int id = intent.getIntExtra(NOTIFICATION_ID, 0);
-        notificationManager.notify(id, notification);
+    private void createAlarm(Context context, Intent intent, String Title, String Description){
+        NotificationCompat.Builder aChannel = channel.getChannel(Title, Description);
+
+        int r = (int) ((new Date().getTime() / 1000L) % Integer.MAX_VALUE);
+        r += new Random().nextInt(100) + 1;
+
+        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(context);
+        notificationManagerCompat.notify(r, aChannel.build());
     }
 }

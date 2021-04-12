@@ -61,7 +61,7 @@ public class TaskAcceptanceTest {
         onView(withId(R.id.floatingActionButton)).perform(click());
         onView(withId(R.id.taskTitle)).perform(typeText("COMP 3350 Iteration 3"));
         onView(withId(R.id.datePicker)).perform(click());
-        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(PickerActions.setDate(2021, 4, 14));
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(PickerActions.setDate(2021, 4, 20));
         onView(withText("OK")).perform(click());
         onView(withId(R.id.taskDescription)).perform(typeText("Debug features and add acceptance tests"));
         pressBack();
@@ -71,7 +71,7 @@ public class TaskAcceptanceTest {
         onView(withId(R.id.floatingActionButton)).perform(click());
         onView(withId(R.id.taskTitle)).perform(typeText("Call the doctor"));
         onView(withId(R.id.datePicker)).perform(click());
-        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(PickerActions.setDate(2021, 4, 17));
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(PickerActions.setDate(2021, 4, 20));
         onView(withText("OK")).perform(click());
         onView(withId(R.id.taskDescription)).perform(typeText("Setup appointment for Kevin"));
         onView(withId(R.id.highPriority)).perform(click());
@@ -150,7 +150,7 @@ public class TaskAcceptanceTest {
         onView(withId(R.id.taskTitle)).perform(typeText("Comp 3350 I3 and Presentation Due"));
         closeSoftKeyboard();
         onView(withId(R.id.datePicker)).perform(click());
-        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(PickerActions.setDate(2021, 4, 16));
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(PickerActions.setDate(2021, 4, 29));
         onView(withText("OK")).perform(click());
         onView(withId(R.id.taskDescription)).perform(clearText());
         onView(withId(R.id.taskDescription)).perform(typeText("Debug the feature and Prepare the Presentation"));

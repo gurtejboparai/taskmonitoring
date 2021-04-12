@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -70,7 +71,6 @@ public class TabFragment extends Fragment {
         recyclerView.setAdapter(recyclerViewAdapter);
         final String[] deletedTask = {null};
         final Task[] task = {null};
-        final String[] label = {"Done"};
         ItemTouchHelper.SimpleCallback simpleCallback =new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT|ItemTouchHelper.RIGHT)
         {
             @Override
@@ -100,14 +100,12 @@ public class TabFragment extends Fragment {
                         break;
 
                     case ItemTouchHelper.RIGHT:
-                        if(task[0].getStatus().equals("completed"))
+                        if(!task[0].getStatus().equals("completed"))
                         {
-                            tasks.setStatus(task[0],"on going");
-                            label[0]="Done";
+                            tasks.setStatus(task[0],"completed");
                         }
                         else {
-                            tasks.setStatus(task[0],"completed");
-                            label[0]="On going";
+                            tasks.setStatus(task[0],"on going");
                         }
                         recyclerViewAdapter.notifyItemChanged(pos);
                         break;
@@ -125,7 +123,7 @@ public class TabFragment extends Fragment {
                         .addSwipeLeftLabel("Delete")
                         .addSwipeLeftActionIcon(R.drawable.ic_baseline_delete_24)
                         .addSwipeRightBackgroundColor(ContextCompat.getColor(getContext(),R.color.green))
-                        .addSwipeRightLabel(label[0])
+                        .addSwipeRightLabel("Done")
                         .addSwipeRightActionIcon(R.drawable.ic_baseline_done_24)
                         .create()
                         .decorate();

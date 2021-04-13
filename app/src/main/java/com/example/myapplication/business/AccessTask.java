@@ -102,18 +102,18 @@ public class AccessTask extends AppCompatActivity {
             int id1 = task1.getCurrTaskId();
             int id2 = task2.getCurrTaskId();
 
-            if (id1 < 0) {
-                return -1;
-            }
-            if (id2 < 0) {
-                return -1;
-            }
-            if (id1 - id2 < 0) {
-                return -1;
-            }
-            if (id1 - id2 == 0) {
-                return 0;
-            }
+                if (id1 < 0) {
+                    return -1;
+                }
+                if (id2 < 0) {
+                    return -1;
+                }
+                if (id1 - id2 < 0) {
+                    return -1;
+                }
+                if (id1 - id2 == 0) {
+                    return 0;
+                }
 
             return 1;
         }
@@ -228,12 +228,6 @@ public class AccessTask extends AppCompatActivity {
                 System.out.println("pOne: "+ pOne);
                 System.out.println("pTwo: "+ pTwo);
 
-//                if (pOne == null) {
-//                    return -1;
-//                }
-//                if (pTwo == null) {
-//                    return -1;
-//                }
                 if (pOne.equals(pTwo)) {
                     return 0;
                 }
@@ -255,12 +249,6 @@ public class AccessTask extends AppCompatActivity {
                 System.out.println("pOne: "+ pOne);
                 System.out.println("pTwo: "+ pTwo);
 
-//                if (pOne == null) {
-//                    return -1;
-//                }
-//                if (pTwo == null) {
-//                    return -1;
-//                }
                 if (pOne.equals(pTwo)) {
                     return 0;
                 }

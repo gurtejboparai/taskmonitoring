@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
 
-    tools:context=".presentation.TabFragment">
+    tools:context=".business.UILogic.TabFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/tabFragmentView"

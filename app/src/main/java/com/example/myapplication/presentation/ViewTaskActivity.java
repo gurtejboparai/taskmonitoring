@@ -1,23 +1,34 @@
 package com.example.myapplication.presentation;
 
+import android.app.AlarmManager;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.SystemClock;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.myapplication.R;
 import com.example.myapplication.business.AccessTask;
+import com.example.myapplication.business.UILogic.NotificationTask;
+import com.example.myapplication.business.UILogic.TabFragment;
+import com.example.myapplication.business.UILogic.TabPagerAdapter;
 import com.example.myapplication.objects.Task;
 import com.example.myapplication.objects.TaskTag;
 import com.google.android.material.tabs.TabLayout;
+
+import java.util.Date;
+import java.util.Random;
 
 public class ViewTaskActivity extends AppCompatActivity {
 
@@ -91,11 +102,24 @@ public class ViewTaskActivity extends AppCompatActivity {
             newTask.setPriority(priority);
             newTask.setCategory(taskTag);
             accessTask.addTask(newTask);
+            if(priority.equalsIgnoreCase("True"))
+                scheduleNotification(Title,Description,1000);
         }
 
         initialTabFragment();
         tabSetUp();
 
+    }
+
+    private void scheduleNotification(String Title, String Description, int delay){
+        Intent intent = new Intent(this, NotificationTask.class);
+        intent.putExtra(NotificationTask.NOTIFICATION_ID,Title);
+        intent.putExtra(NotificationTask.NOTIFICATION,Description);
+        int r = (int) ((new Date().getTime() / 1000L) % Integer.MAX_VALUE);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, r, intent, 0);
+        long futureInMillis = SystemClock.elapsedRealtime() + delay;
+        AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+        alarmManager.setExact(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, pendingIntent);
     }
 
 
@@ -129,17 +153,6 @@ public class ViewTaskActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
         tabView.setupWithViewPager(viewPager);
     }
-
-//
-//    private void categorizeTags(TaskTag taskCategory) {
-//        tabAllTasks.categorizeTask(taskCategory);
-//        tabFitness.categorizeTask(taskCategory);
-//        tabWork.categorizeTask(taskCategory);
-//        tabSchool.categorizeTask(taskCategory);
-//        tabAppointment.categorizeTask(taskCategory);
-//        tabProductivity.categorizeTask(taskCategory);
-//        tabOthers.categorizeTask(taskCategory);
-//    }
 
     public void addTaskBtnOnClick(View v) {
         Intent newTaskIntent = new Intent(ViewTaskActivity.this, AddActivity.class);

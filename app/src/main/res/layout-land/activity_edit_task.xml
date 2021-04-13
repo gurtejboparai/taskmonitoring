@@ -30,8 +30,8 @@
         android:layout_height="57dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="166dp"
-        android:layout_marginBottom="336dp"
+        android:layout_marginEnd="360dp"
+        android:layout_marginBottom="268dp"
         android:scaleType="fitStart"
         android:src="@drawable/calender"
         tools:ignore="contentDescription" />
@@ -43,14 +43,13 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="118dp"
-        android:layout_marginEnd="447dp"
+        android:layout_marginTop="134dp"
+        android:layout_marginEnd="385dp"
         android:autofillHints="@string/title"
         android:ems="10"
         android:gravity="center_horizontal"
         android:hint="@string/title"
         android:inputType="textPersonName"
-        android:textSize="18sp"
         tools:ignore="RelativeOverlap" />
 
     <TextView
@@ -60,8 +59,8 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="336dp"
-        android:layout_marginTop="233dp"
+        android:layout_marginStart="362dp"
+        android:layout_marginTop="219dp"
         android:gravity="center"
         android:hint="@string/yyyy_mm_dd"
         android:textSize="24sp" />
@@ -72,11 +71,11 @@
         android:layout_height="71dp"
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
-        android:layout_marginTop="327dp"
+        android:layout_marginTop="274dp"
+        android:autofillHints="@string/description"
         android:ems="10"
         android:gravity="center_horizontal|center_vertical"
         android:hint="@string/description"
-        android:autofillHints="@string/description"
         android:inputType="textMultiLine" />
 
     <TextView
@@ -85,8 +84,8 @@
         android:layout_height="45dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="271dp"
-        android:layout_marginBottom="165dp"
+        android:layout_marginStart="387dp"
+        android:layout_marginBottom="124dp"
         android:gravity="center_vertical"
         android:text="@string/priority"
         android:textSize="18sp"
@@ -94,15 +93,13 @@
 
     <Switch
         android:id="@+id/highPriority"
-        android:layout_width="wrap_content"
+        android:layout_width="99dp"
         android:layout_height="45dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="376dp"
-        android:layout_marginBottom="165dp"
-        android:checked="false"
-        android:text="@string/high"
-        tools:ignore="RelativeOverlap" />
+        android:layout_marginStart="480dp"
+        android:layout_marginBottom="124dp"
+        android:text="@string/high" />
 
     <Button
         android:id="@+id/saveButton"
@@ -110,8 +107,8 @@
         android:layout_height="70dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="41dp"
-        android:layout_marginBottom="11dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginBottom="31dp"
         android:backgroundTint="@color/blue"
         android:onClick="saveBtnOnClick"
         android:text="@string/save" />
@@ -122,8 +119,8 @@
         android:layout_height="70dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="41dp"
-        android:layout_marginBottom="19dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="34dp"
         android:backgroundTint="@color/blue"
         android:clickable="true"
         android:focusable="true"
@@ -136,9 +133,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="172dp"
-        android:layout_marginTop="512dp"
-        android:layout_marginBottom="287dp"
+        android:layout_marginStart="213dp"
+        android:layout_marginTop="377dp"
+        android:layout_marginBottom="10dp"
         android:gravity="center"
         android:scrollbarSize="8dp" />
 

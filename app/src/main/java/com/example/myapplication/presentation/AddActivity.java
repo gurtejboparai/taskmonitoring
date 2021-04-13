@@ -3,7 +3,12 @@ package com.example.myapplication.presentation;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+
 import android.app.DatePickerDialog;
+import android.app.NotificationChannel;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -37,7 +42,8 @@ public class AddActivity extends AppCompatActivity {
     Task newTask;
     Spinner dropDown;
     ArrayAdapter<CharSequence> adapter;
-
+    int currNotification = 0;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,6 +98,7 @@ public class AddActivity extends AppCompatActivity {
                 });
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void saveBtnOnClick(View view){
         String titleText;
         String descriptionText;

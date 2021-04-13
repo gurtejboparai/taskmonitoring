@@ -55,6 +55,7 @@ public class AccessTaskIT {
         accessTask.editTask(taskToEdit);
         Task compare = accessTask.getTask(10);
         assertEquals(taskToEdit.getTaskTitle(),compare.getTaskTitle());
+        assertEquals(taskToEdit.getTaskDescription(),compare.getTaskDescription());
     }
 
     @Test

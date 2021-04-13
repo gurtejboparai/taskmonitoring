@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.R;
 import com.example.myapplication.application.Main;
+import com.example.myapplication.business.UILogic.Messages;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -44,6 +45,9 @@ public class SplashPageActivity extends AppCompatActivity {
                 }
             }
         };
+            
+           // Notifications startChannel = new Notifications(this);
+            
             splashThread.start();
     }
 

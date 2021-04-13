@@ -10,6 +10,7 @@ import android.content.Intent;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+import com.example.myapplication.R;
 import com.example.myapplication.objects.Channel;
 
 import java.util.Date;
@@ -30,7 +31,11 @@ public class NotificationTask extends BroadcastReceiver {
     }
 
     private void createAlarm(Context context, Intent intent, String Title, String Description){
-        NotificationCompat.Builder aChannel = channel.getChannel(Title, Description);
+        NotificationCompat.Builder aChannel = new NotificationCompat.Builder(channel.getApplicationContext(), Channel.CHANNEL_ID)
+                .setContentTitle(Title)
+                .setContentText(Description)
+                .setSmallIcon(R.drawable.programme)
+                .setAutoCancel(true);
 
         int r = (int) ((new Date().getTime() / 1000L) % Integer.MAX_VALUE);
         r += new Random().nextInt(100) + 1;

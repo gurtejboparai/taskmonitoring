@@ -24,23 +24,14 @@ public class NotificationTask extends BroadcastReceiver {
 
     public void onReceive(Context context, Intent intent) {
         channel = new Channel(context);
-        createAlarm(context, intent,
-                intent.getStringExtra(NOTIFICATION_ID),
-                intent.getStringExtra(NOTIFICATION));
-
-    }
-
-    private void createAlarm(Context context, Intent intent, String Title, String Description){
         NotificationCompat.Builder aChannel = new NotificationCompat.Builder(channel.getApplicationContext(), Channel.CHANNEL_ID)
-                .setContentTitle(Title)
-                .setContentText(Description)
+                .setContentTitle(intent.getStringExtra(NOTIFICATION_ID))
+                .setContentText(intent.getStringExtra(NOTIFICATION))
                 .setSmallIcon(R.drawable.programme)
                 .setAutoCancel(true);
-
-        int r = (int) ((new Date().getTime() / 1000L) % Integer.MAX_VALUE);
-        r += new Random().nextInt(100) + 1;
-
+        int r = (int) ((new Date().getTime() / 1000L) % Integer.MAX_VALUE);//go by current day
         NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(context);
         notificationManagerCompat.notify(r, aChannel.build());
     }
+
 }

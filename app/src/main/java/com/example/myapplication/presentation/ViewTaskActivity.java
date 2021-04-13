@@ -103,7 +103,7 @@ public class ViewTaskActivity extends AppCompatActivity {
             newTask.setCategory(taskTag);
             accessTask.addTask(newTask);
             if(priority.equalsIgnoreCase("True"))
-                scheduleNotification(Title,Description,5000);
+                scheduleNotification(Title,Description,1000);
         }
 
         initialTabFragment();
@@ -115,11 +115,8 @@ public class ViewTaskActivity extends AppCompatActivity {
         Intent intent = new Intent(this, NotificationTask.class);
         intent.putExtra(NotificationTask.NOTIFICATION_ID,Title);
         intent.putExtra(NotificationTask.NOTIFICATION,Description);
-
         int r = (int) ((new Date().getTime() / 1000L) % Integer.MAX_VALUE);
-        r += new Random().nextInt(100) + 1;
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, r, intent, 0);
-
         long futureInMillis = SystemClock.elapsedRealtime() + delay;
         AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
         alarmManager.setExact(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, pendingIntent);

@@ -36,6 +36,7 @@ import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
@@ -44,7 +45,7 @@ public class TabFragment extends Fragment {
 
     private List<Task> taskList;
     private List<Task> orderedTasks;
-    private List<Task> completedTasks;
+    private ArrayList<Task> completedTasks;
     private AccessTask tasks;
 
     public TabFragment() {
@@ -58,7 +59,7 @@ public class TabFragment extends Fragment {
         this.tasks = tasks;
 
         orderedTasks = taskList;
-        completedTasks=null;
+        completedTasks=new ArrayList<>();
 
     }
 
@@ -142,24 +143,46 @@ public class TabFragment extends Fragment {
 
     public void sortDefault(){
         orderedTasks = tasks.sortDefault(orderedTasks);
+        copyCompletedTasks();
     }
 
     public void sortPrioA() {
         orderedTasks = tasks.sortPriorityInAsc(orderedTasks);
+        copyCompletedTasks();
     }
 
     public void sortPrioD(){
         orderedTasks = tasks.sortPriorityInDesc(orderedTasks);
+        copyCompletedTasks();
     }
 
     public void sortDateA(){
         orderedTasks = tasks.sortDateInAsc(orderedTasks);
+        copyCompletedTasks();
     }
 
     public void sortDateD(){
         orderedTasks = tasks.sortDateInDesc(orderedTasks);
+        copyCompletedTasks();
     }
 
+    public void copyCompletedTasks()
+    {
+        orderedTasks=taskList;
+        completedTasks=new ArrayList<>();
+        for(int i=0;i<orderedTasks.size();i++)
+        {
+            if(orderedTasks.get(i).getStatus().equals("completed"))
+            {
+                completedTasks.add(orderedTasks.remove(i));
+                i--;
+            }
+        }
+        for (int i=0;i<completedTasks.size();i++)
+        {
+            orderedTasks.add(completedTasks.get(i));
+        }
+    }
     class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
 
         private final Context context;

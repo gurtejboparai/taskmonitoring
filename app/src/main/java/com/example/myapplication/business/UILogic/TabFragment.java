@@ -72,6 +72,7 @@ public class TabFragment extends Fragment {
         final RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(getActivity(), orderedTasks);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(recyclerViewAdapter);
+
         final String[] deletedTask = {null};
         final Task[] task = {null};
         ItemTouchHelper.SimpleCallback simpleCallback =new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT|ItemTouchHelper.RIGHT)
@@ -103,7 +104,16 @@ public class TabFragment extends Fragment {
                         break;
 
                     case ItemTouchHelper.RIGHT:
-                            tasks.setStatus(task[0],"completed");
+                        if(task[0].getStatus().equals("on going")) {
+                            tasks.setStatus(task[0], "completed");
+
+                        }
+                        else {
+                            tasks.setStatus(task[0], "on going");
+
+                        }
+
+
                             recyclerViewAdapter.notifyItemChanged(pos);
                         break;
                 }

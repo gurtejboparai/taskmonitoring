@@ -143,30 +143,30 @@ public class TabFragment extends Fragment {
 
     public void sortDefault(){
         orderedTasks = tasks.sortDefault(orderedTasks);
-        copyCompletedTasks();
+        pushCompletedTasks();
     }
 
     public void sortPrioA() {
         orderedTasks = tasks.sortPriorityInAsc(orderedTasks);
-        copyCompletedTasks();
+        pushCompletedTasks();
     }
 
     public void sortPrioD(){
         orderedTasks = tasks.sortPriorityInDesc(orderedTasks);
-        copyCompletedTasks();
+        pushCompletedTasks();
     }
 
     public void sortDateA(){
         orderedTasks = tasks.sortDateInAsc(orderedTasks);
-        copyCompletedTasks();
+        pushCompletedTasks();
     }
 
     public void sortDateD(){
         orderedTasks = tasks.sortDateInDesc(orderedTasks);
-        copyCompletedTasks();
+        pushCompletedTasks();
     }
 
-    public void copyCompletedTasks()
+    public void pushCompletedTasks()
     {
         orderedTasks=taskList;
         completedTasks=new ArrayList<>();
@@ -183,6 +183,7 @@ public class TabFragment extends Fragment {
             orderedTasks.add(completedTasks.get(i));
         }
     }
+
     class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
 
         private final Context context;

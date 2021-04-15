@@ -31,6 +31,7 @@ import org.junit.runner.RunWith;
 import static androidx.test.espresso.Espresso.closeSoftKeyboard;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.Espresso.pressBack;
+import static androidx.test.espresso.action.ViewActions.actionWithAssertions;
 import static androidx.test.espresso.action.ViewActions.clearText;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.longClick;
@@ -56,20 +57,40 @@ public class TaskAcceptanceTest {
     public ActivityTestRule<SplashPageActivity> activityTestRule = new ActivityTestRule<>(SplashPageActivity.class);
 
     @Test
-    public void addTaskTest() {
+    public void addEditTaskTest() {
         SystemClock.sleep(2500);
         onView(withId(R.id.floatingActionButton)).perform(click());
-        onView(withId(R.id.taskTitle)).perform(typeText("COMP 3350 Iteration 3"));
+        onView(withId(R.id.taskTitle)).perform(typeText("I1 Due"));
         onView(withId(R.id.datePicker)).perform(click());
-        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(PickerActions.setDate(2021, 4, 20));
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(PickerActions.setDate(2021, 4, 18));
         onView(withText("OK")).perform(click());
-        onView(withId(R.id.taskDescription)).perform(typeText("Debug features and add acceptance tests"));
+        onView(withId(R.id.taskDescription)).perform(typeText("Debugging and testing."));
         pressBack();
+        onView(withId(R.id.dropDown)).perform(click());
+        onView(withText("SCHOOL")).perform(click());
+        onView(withId(R.id.saveButton)).perform(click());
+        SystemClock.sleep(1200);
+
+        //edit
+        onView(withId(R.id.viewpager_activity));
+        onView(allOf(withText("I1 Due"))).perform(click());
+        onView(withId(R.id.taskTitle)).perform(clearText());
+        onView(withId(R.id.taskTitle)).perform(typeText("335 I3 Due"));
+        onView(withId(R.id.datePicker)).perform(click());
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(PickerActions.setDate(2021, 4, 29));
+        onView(withText("OK")).perform(click());
+        onView(withId(R.id.taskDescription)).perform(clearText());
+        onView(withId(R.id.taskDescription)).perform(typeText("Debug the feature and Prepare the Presentation"));
+        onView(withId(R.id.highPriority)).perform(click());
+        pressBack();
+        onView(withId(R.id.dropDown)).perform(click());
+        onView(withText("SCHOOL")).perform(click());
         onView(withId(R.id.saveButton)).perform(click());
         SystemClock.sleep(1000);
 
+        //continue adding
         onView(withId(R.id.floatingActionButton)).perform(click());
-        onView(withId(R.id.taskTitle)).perform(typeText("Call the doctor"));
+        onView(withId(R.id.taskTitle)).perform(typeText("Call Doc"));
         onView(withId(R.id.datePicker)).perform(click());
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(PickerActions.setDate(2021, 4, 20));
         onView(withText("OK")).perform(click());
@@ -79,102 +100,77 @@ public class TaskAcceptanceTest {
         onView(withId(R.id.dropDown)).perform(click());
         onView(withText("APPOINTMENT")).perform(click());
         onView(withId(R.id.saveButton)).perform(click());
-        SystemClock.sleep(1000);
+        SystemClock.sleep(1200);
 
         onView(withId(R.id.floatingActionButton)).perform(click());
         onView(withId(R.id.taskTitle)).perform(typeText("Workout"));
         onView(withId(R.id.datePicker)).perform(click());
-        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(PickerActions.setDate(2021, 4, 29));
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(PickerActions.setDate(2021, 4, 19));
         onView(withText("OK")).perform(click());
         onView(withId(R.id.taskDescription)).perform(typeText("Do cardio for 30 minutes"));
         pressBack();
         onView(withId(R.id.dropDown)).perform(click());
         onView(withText("FITNESS")).perform(click());
         onView(withId(R.id.saveButton)).perform(click());
-        SystemClock.sleep(1000);
+        SystemClock.sleep(1200);
 
-        onView(withId(R.id.tabview_activity));
-        onView(allOf(withText("FITNESS"), isDisplayed())).perform(click());
-        SystemClock.sleep(1000);
-        onView(withId(R.id.tabview_activity)).perform(swipeLeft());
-        onView(allOf(withText("APPOINTMENT"), isDisplayed())).perform(click());
-        SystemClock.sleep(1000);
-        onView(withId(R.id.tabview_activity)).perform(swipeLeft());
-        onView(allOf(withText("OTHERS"), isDisplayed())).perform(click());
-        SystemClock.sleep(1000);
-    }
-    @Test
-    public void deleteTaskTest() {
-        SystemClock.sleep(2500);
-        onView(withId(R.id.viewpager_activity));
-        onView(allOf(withText("Workout"), isDisplayed())).perform(swipeLeft());
-        SystemClock.sleep(1000);
-
-        onView(withId(R.id.tabview_activity));
-        onView(allOf(withText("FITNESS"), isDisplayed())).perform(click());
-        SystemClock.sleep(1000);
-        onView(withId(R.id.tabview_activity)).perform(swipeLeft());
-        onView(allOf(withText("APPOINTMENT"), isDisplayed())).perform(click());
-        SystemClock.sleep(1000);
-        onView(withId(R.id.tabview_activity)).perform(swipeLeft());
-        onView(allOf(withText("OTHERS"), isDisplayed())).perform(click());
-        SystemClock.sleep(1000);
-    }
-
-    @Test
-    public void changeStatusTest(){
-        SystemClock.sleep(2500);
-        onView(withId(R.id.viewpager_activity));
-        onView(allOf(withText("Call the doctor"), isDisplayed())).perform(swipeRight());
-        SystemClock.sleep(1000);
-
-        onView(withId(R.id.tabview_activity));
-        onView(allOf(withText("FITNESS"), isDisplayed())).perform(click());
-        SystemClock.sleep(1000);
-        onView(withId(R.id.tabview_activity)).perform(swipeLeft());
-        onView(allOf(withText("APPOINTMENT"), isDisplayed())).perform(click());
-        SystemClock.sleep(1000);
-        onView(withId(R.id.tabview_activity)).perform(swipeLeft());
-        onView(allOf(withText("OTHERS"), isDisplayed())).perform(click());
-        SystemClock.sleep(1000);
-    }
-
-
-    //edit task
-    @Test
-    public void editTaskTest() {
-        SystemClock.sleep(2500);
-        onView(withId(R.id.viewpager_activity));
-        onView(allOf(withText("COMP 3350 Iteration 3"), isDisplayed())).perform(click());
-        onView(withId(R.id.taskTitle)).perform(clearText());
-        onView(withId(R.id.taskTitle)).perform(typeText("Comp 3350 I3 and Presentation Due"));
-        closeSoftKeyboard();
+        onView(withId(R.id.floatingActionButton)).perform(click());
+        onView(withId(R.id.taskTitle)).perform(typeText("G.O.T."));
         onView(withId(R.id.datePicker)).perform(click());
-        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(PickerActions.setDate(2021, 4, 29));
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(PickerActions.setDate(2021, 4, 18));
         onView(withText("OK")).perform(click());
-        onView(withId(R.id.taskDescription)).perform(clearText());
-        onView(withId(R.id.taskDescription)).perform(typeText("Debug the feature and Prepare the Presentation"));
-        closeSoftKeyboard();
-        onView(withId(R.id.highPriority)).perform(click());
-//        pressBack();
-        onView(withId(R.id.dropDown)).perform(click());
-        onView(withText("SCHOOL")).perform(click());
+        onView(withId(R.id.taskDescription)).perform(typeText("Game Of Thrones - Winter is coming"));
+        pressBack();
         onView(withId(R.id.saveButton)).perform(click());
+        SystemClock.sleep(1200);
+
+        onView(withId(R.id.tabview_activity));
+        onView(allOf(withText("FITNESS"), isDisplayed())).perform(click());
+        SystemClock.sleep(1000);
+        onView(allOf(withText("SCHOOL"), isDisplayed())).perform(click());
+        SystemClock.sleep(1000);
+        onView(withId(R.id.tabview_activity));
+        onView(allOf(withText("APPOINTMENT"), isDisplayed())).perform(click());
+        SystemClock.sleep(1000);
+        onView(withId(R.id.tabview_activity)).perform(swipeLeft());
+        onView(allOf(withText("OTHERS"), isDisplayed())).perform(click());
         SystemClock.sleep(1000);
 
+        onView(withId(R.id.tabview_activity)).perform(swipeRight());
+        onView(allOf(withText("ALL"), isDisplayed())).perform(click());
+
+        onView(withId(R.id.viewpager_activity)).check(matches(hasDescendant(withText("335 I3 Due"))));
+        onView(withId(R.id.viewpager_activity)).check(matches(hasDescendant(withText("Call Doc"))));
+        onView(withId(R.id.viewpager_activity)).check(matches(hasDescendant(withText("Workout"))));
+        onView(withId(R.id.viewpager_activity)).check(matches(hasDescendant(withText("G.O.T."))));
+    }
+
+
+    @Test
+    public void changeStatusAndSortTest(){
+        SystemClock.sleep(2500);
+
+        onView(withId(R.id.viewpager_activity));
+        onView(allOf(withText("Workout"), isDisplayed())).perform(swipeRight());
+        SystemClock.sleep(1500);
+        onView(allOf(withText("Call Doc"), isDisplayed())).perform(swipeRight());
+        SystemClock.sleep(1500);
+        onView(allOf(withText("Workout"), isDisplayed())).perform(swipeRight());
+        SystemClock.sleep(1500);
+
+        onView(withId(R.id.tabview_activity));
+        onView(allOf(withText("FITNESS"), isDisplayed())).perform(click());
+        SystemClock.sleep(1000);
         onView(withId(R.id.tabview_activity));
         onView(allOf(withText("SCHOOL"), isDisplayed())).perform(click());
         SystemClock.sleep(1000);
         onView(withId(R.id.tabview_activity)).perform(swipeLeft());
+        onView(allOf(withText("APPOINTMENT"), isDisplayed())).perform(click());
+        SystemClock.sleep(1000);
+        onView(withId(R.id.tabview_activity)).perform(swipeLeft());
         onView(allOf(withText("OTHERS"), isDisplayed())).perform(click());
         SystemClock.sleep(1000);
 
-    }
-
-    //sort
-    @Test
-    public void sortTaskTest() {
-        SystemClock.sleep(2500);
         onView(withId(R.id.tabview_activity)).perform(swipeRight());
         onView(allOf(withText("ALL"), isDisplayed())).perform(click());
         SystemClock.sleep(1000);
@@ -195,5 +191,32 @@ public class TaskAcceptanceTest {
         SystemClock.sleep(1000);
     }
 
+
+    @Test
+    public void deleteTaskTest() {
+        SystemClock.sleep(2500);
+        onView(withId(R.id.viewpager_activity));
+        onView(allOf(withText("G.O.T."),isDisplayed())).perform(swipeLeft());
+        SystemClock.sleep(1500);
+        onView(allOf(withText("Call Doc"),isDisplayed())).perform(swipeLeft());
+        SystemClock.sleep(1500);
+        onView(allOf(withText("Workout"),isDisplayed())).perform(swipeLeft());
+        SystemClock.sleep(1500);
+        onView(allOf(withText("335 I3 Due"),isDisplayed())).perform(swipeLeft());
+        SystemClock.sleep(1500);
+
+        onView(withId(R.id.tabview_activity));
+        onView(allOf(withText("FITNESS"), isDisplayed())).perform(click());
+        SystemClock.sleep(1000);
+        onView(withId(R.id.tabview_activity)).perform(swipeLeft());
+        onView(allOf(withText("SCHOOL"), isDisplayed())).perform(click());
+        SystemClock.sleep(1000);
+        onView(withId(R.id.tabview_activity)).perform(swipeLeft());
+        onView(allOf(withText("APPOINTMENT"), isDisplayed())).perform(click());
+        SystemClock.sleep(1000);
+        onView(withId(R.id.tabview_activity)).perform(swipeLeft());
+        onView(allOf(withText("OTHERS"), isDisplayed())).perform(click());
+        SystemClock.sleep(1000);
+    }
 
 }

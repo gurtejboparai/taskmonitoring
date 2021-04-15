@@ -22,6 +22,8 @@ in order to make the app run smoothly and meet requirement:
     - Report task progress
     - Add sticker/picture to task
 
+[Website for presentation](https://emily0906.github.io/Task-Monitoring/)
+
 [architecture.md](https://code.cs.umanitoba.ca/3350-winter-2021-a03/taskmonitoring-group4-comp3350-a03-winter2021/-/blob/master/architecture.md)
 
 [i3 doc](https://code.cs.umanitoba.ca/3350-winter-2021-a03/taskmonitoring-group4-comp3350-a03-winter2021/-/blob/master/i3_worksheet.md)

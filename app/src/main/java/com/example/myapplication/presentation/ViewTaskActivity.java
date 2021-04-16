@@ -1,13 +1,9 @@
 package com.example.myapplication.presentation;
 
 import android.app.AlarmManager;
-import android.app.Notification;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.View;
@@ -28,7 +24,6 @@ import com.example.myapplication.objects.TaskTag;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.Date;
-import java.util.Random;
 
 public class ViewTaskActivity extends AppCompatActivity {
 
@@ -54,14 +49,14 @@ public class ViewTaskActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.test_activity_main);
+        setContentView(R.layout.testactivitymain);
 
         accessTask = new AccessTask();
         extras = getIntent().getExtras();
         dropDown=findViewById(R.id.sortSpinner);
         adapter = ArrayAdapter.createFromResource(this,
-                R.array.sortBy, R.layout.spinner_style);
-        adapter.setDropDownViewResource(R.layout.spinner_popup_style);
+                R.array.sortBy, R.layout.spinnerstyle);
+        adapter.setDropDownViewResource(R.layout.spinnerpopupstyle);
         dropDown.setAdapter(adapter);
 
         dropDown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){

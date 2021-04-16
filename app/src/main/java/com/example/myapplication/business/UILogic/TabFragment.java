@@ -5,15 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -28,13 +24,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.R;
 import com.example.myapplication.business.AccessTask;
 import com.example.myapplication.objects.Task;
-import com.example.myapplication.objects.TaskTag;
 import com.example.myapplication.presentation.EditActivity;
 import com.example.myapplication.presentation.ViewTaskActivity;
 import com.google.android.material.chip.Chip;
-import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,7 +60,7 @@ public class TabFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.tab_fragment_view, container, false);
+        View view = inflater.inflate(R.layout.tabfragmentview, container, false);
         final RecyclerView recyclerView = view.findViewById(R.id.tabFragmentView);
         final RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(getActivity(), orderedTasks);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));

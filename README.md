@@ -1,4 +1,3 @@
-
 **Note while run the app for iteration 3**
 
 - The app need to run on Nexus 7 to be able to use all the button and display all the feature.
@@ -23,12 +22,14 @@ in order to make the app run smoothly and meet requirement:
     - Report task progress
     - Add sticker/picture to task
 
-[architecture.md]()
+[Website for presentation](https://emily0906.github.io/Task-Monitoring/)
 
-[i3 doc]()
+[architecture.md](https://code.cs.umanitoba.ca/3350-winter-2021-a03/taskmonitoring-group4-comp3350-a03-winter2021/-/blob/master/architecture.md)
 
-[i2 doc]()
+[i3 doc](https://code.cs.umanitoba.ca/3350-winter-2021-a03/taskmonitoring-group4-comp3350-a03-winter2021/-/blob/master/i3_worksheet.md)
 
-[i1 doc]()
+[i2 doc](https://code.cs.umanitoba.ca/3350-winter-2021-a03/taskmonitoring-group4-comp3350-a03-winter2021/-/blob/master/I2Worksheet.md)
 
-[vision statement]()
+[i1 doc](https://code.cs.umanitoba.ca/3350-winter-2021-a03/taskmonitoring-group4-comp3350-a03-winter2021/-/blob/master/i1_worksheet.md)
+
+[vision statement](https://code.cs.umanitoba.ca/3350-winter-2021-a03/taskmonitoring-group4-comp3350-a03-winter2021/-/blob/master/Vision.md)

@@ -1,10 +1,11 @@
 What technical debt has been cleaned up
 ========================================
 - Tech debt has been cleaned up is
-1. [Empty task can be accept]()
-2. [Task can be create in the past]()
-3. [app become unreposive when change orentation]()
-4. [Data is not available for editing when orientation is horizontal]()
+1. [Empty task can be accept](https://code.cs.umanitoba.ca/3350-winter-2021-a03/taskmonitoring-group4-comp3350-a03-winter2021/-/issues/63)
+2. [Task can be create in the past](https://code.cs.umanitoba.ca/3350-winter-2021-a03/taskmonitoring-group4-comp3350-a03-winter2021/-/issues/64)
+3. [app become unreposive when change orentation](https://code.cs.umanitoba.ca/3350-winter-2021-a03/taskmonitoring-group4-comp3350-a03-winter2021/-/issues/61)
+4. [Data is not available for editing when orientation is horizontal](https://code.cs.umanitoba.ca/3350-winter-2021-a03/taskmonitoring-group4-comp3350-a03-winter2021/-/issues/62)
+
 For the first one, we put restriction so that empty task cannot be create during while user using the app. Moreover, we set the day properly so that user can only create task in the current day and future day. Then our group work on reposive for the app and creating landscap mode so that app can work on any orientation
 
 What technical debt did you leave?
@@ -20,7 +21,7 @@ When we work on the app. Some of the features we intially think it will work wel
 Acceptance test/end-to-end
 ==========================
 - We test on 5 main things that appear as UI in the app. Creating task, edit task, swipe left change status of task and swipe right to delete task. We also test on how user use sorted mode that the task provide and check how user can see tasks got categorize.
-- We using espresso in android studio to fake our interface test. Thus we also add permission in our depencies for gradle so the test can be run on real database. By using esspresso, we can fake user action to do test on interface that we want, such as onclick, typing, and swiping. This is our acceptance file: [Test task](), that will include all the test.
+- We using espresso in android studio to fake our interface test. Thus we also add permission in our depencies for gradle so the test can be run on real database. By using esspresso, we can fake user action to do test on interface that we want, such as onclick, typing, and swiping. This is our acceptance file: [Test task](https://code.cs.umanitoba.ca/3350-winter-2021-a03/taskmonitoring-group4-comp3350-a03-winter2021/-/commit/31581285a6215bab82f8de7e2138e590ae8a350a), that will include all the test.
 
 Acceptance test, untestable
 ===============
@@ -30,5 +31,21 @@ Acceptance test, untestable
 
 Velocity/teamwork
 =================
+From our Iteration Velocity Chart, we can see the time we actually spent 
+on our project nearly twice as long as we estimated for Iteration 1. 
+The main reason for this is because most of us are new to the android studio and not familiar with each other. 
+We assigned work without understanding each others' strengths and weaknesses, misjudged the situation led to this result. 
+For Iteration 2, we made progress based on Iteration 1. We started it early to avoid the previous case 
+(unclear division of labour and uneven workload) from happening again. We made it, but we met other problems simultaneously. 
+Debugging and made HSQLDB work cost us tons of time, which we have never expected, 
+which is why we improved than before but still have some gap between the estimated time 
+and actually spent time. By learning the lessons of the previous two iterations, 
+we did an excellent job in Iteration 3. 
+Although we lack one teammate, the time
+we actually spent on our project is less than what we 
+estimated, we organized everything well, and everyone did their 
+job perfectly. The success of Iteration 3 tells us good communication 
+and clear cognition are two essential factors for teamwork, 
+which is what this course teaches us besides the theoretical knowledge.
 
-We get better estimate and setting up deadline for our work during the course. In i1, we was very ambious and set deadline way too soon. Hence, we shipped the project while it have a bunch of bug and we couldn't have the test work properly. However, in i2, we have better way to assign work for people, and have most of our task assign finish and pay some tech debt within maintain to meet the requirement of the i2. In i3, we still behind the schedule for a bit. However, we catch up to pay most of our debt, also design new features.
+![Velocity](https://user-images.githubusercontent.com/42950390/114966182-a98e5780-9e37-11eb-913a-83260443bfa7.png)

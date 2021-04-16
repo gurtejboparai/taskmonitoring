@@ -12,52 +12,75 @@
     <link rel="stylesheet" href="css/templatemo-style.css">                                   <!-- Templatemo style -->
 </head>
 <body>
-  <div class="container">
-      <section class="tm-2-col-img-text">
+<div class="container">
+    <section class="tm-2-col-img-text">
 
-          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-7 col-xl-7 tm-2-col-text">
-              <h2 class="tm-section-title">Postmortem</h2>
-              <p class="tm-2-col-text-description">
-                <h4>Did any features work better than expected?</h4>
-- In iteration 3, we added a new feature to mark a task as completed and it turned out to be better than expected. Initially, we planned on adding the delete task option only which would allow the users to delete a task after completing it. But that didn't quite justify the purpose of our app. As a user too, we would prefer to see the tasks we have completed for self motivation. To fulfill this purpose, we added a "swipe right to left" option to mark a task as completed and push the task to the bottom of the list with the title crossed with a horizontal line. This feature made the list of tasks look more organized, having both the uncompleted tasks on the top and the completed tasks on the bottom.
-              </p>
-              <h2 class="tm-section-title">Velocity</h2>
-              <p class="tm-2-col-text-description">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-7 col-xl-7 tm-2-col-text">
+            <h2 class="tm-section-title">Postmortem</h2>
+            <p class="tm-2-col-text-description">
+            <h4>What was the overall architecture of your system (particularly if it is different from the demo system)?</h4>
+            The overall architecture for the system is 3 tiers layer where we have storange, interface and logic layer.
+            The way we design the architecture is not change much from the demo. However, we change element in each layer
+            since during the course we learn that GUI can have storange and logic to maintain the work flow of GUI too. Hence,
+            while develop the system throughout each iteration, we move element, mark them up and make sure they in the right place
+            of architecture layout. For example, when we create a notification for the app. This feature most likely dealing with
+            interface layer. However, we realize that some class actually is for storange the object (Channel.java), and some act
+            as logic layer in architecture design (NotificationTask.java). Hence, we divide them and store them in package that mark down
+            whatever layer they belong so we have better orginization in the group work.
+            <h4>Did any features work better than expected?</h4>
+            - In iteration 3, we added a new feature to mark a task as completed and it turned out to be better than expected.
+            Initially, we planned on adding the delete task option only
+            which would allow the users to delete a task after completing it.
+            But that didn't quite justify the purpose of our app.
+            As a user too, we would prefer to see the tasks we have completed for self motivation.
+            To fulfill this purpose, we added a "swipe right to left" option to mark a task as completed and push the task to the bottom of the list with the title crossed with a horizontal line. This feature made the list of tasks look more organized, having both the uncompleted tasks on the top and the completed tasks on the bottom.
+            <h4>What did you learn about team or large project development? What will you start doing, keep doing, or stop doing next time?</h4>
+            - Team work is hard and your team not come together naturally, it requirement the work and responsible
+            of individual to the team to make the project happen and go well. After this finish this course, we learn that
+            something you plan as initial plan might be change, and your team need to be prepare for the flexible of changes
+            as well as cooporate with each other to finish the project. We will start on planning ahead and assign works
+            on some dynamic IDE that everybody in our team can see task work and assign them by themselve. Moreover, we will
+            start to communicate more in the team to see what is the strength of each member while working on the project, since some group
+            member good at communicate, some good at coding for the base code, some good at GUI etc. In contrast, we will stop just left the big
+            and difficult work as 1 chunk and let for one member to handle it. Instead, work need to be divide equally and people can choose to the work they comfortable with.
+            <br>
+            </p>
+            <h2 class="tm-section-title">Velocity</h2>
+            <p class="tm-2-col-text-description">
+                <img src="https://user-images.githubusercontent.com/42950390/114966182-a98e5780-9e37-11eb-913a-83260443bfa7.png">
                 From our Iteration Velocity Chart, we can see the time we actually spent
-on our project nearly twice as long as we estimated for Iteration 1.
-The main reason for this is because most of us are new to the android studio and not familiar with each other.
-We assigned work without understanding each others' strengths and weaknesses, misjudged the situation led to this result.
-For Iteration 2, we made progress based on Iteration 1. We started it early to avoid the previous case
-(unclear division of labour and uneven workload) from happening again. We made it, but we met other problems simultaneously.
-Debugging and made HSQLDB work cost us tons of time, which we have never expected,
-which is why we improved than before but still have some gap between the estimated time
-and actually spent time. By learning the lessons of the previous two iterations,
-we did an excellent job in Iteration 3.
-Although we lack one teammate, the time
-we actually spent on our project is less than what we
-estimated, we organized everything well, and everyone did their
-job perfectly. The success of Iteration 3 tells us good communication
-and clear cognition are two essential factors for teamwork,
-which is what this course teaches us besides the theoretical knowledge.
+                on our project nearly twice as long as we estimated for Iteration 1.
+                The main reason for this is because most of us are new to the android studio and not familiar with each other.
+                We assigned work without understanding each others' strengths and weaknesses, misjudged the situation led to this result.
+                For Iteration 2, we made progress based on Iteration 1. We started it early to avoid the previous case
+                (unclear division of labour and uneven workload) from happening again. We made it, but we met other problems simultaneously.
+                Debugging and made HSQLDB work cost us tons of time, which we have never expected,
+                which is why we improved than before but still have some gap between the estimated time
+                and actually spent time. By learning the lessons of the previous two iterations,
+                we did an excellent job in Iteration 3.
+                Although we lack one teammate, the time
+                we actually spent on our project is less than what we
+                estimated, we organized everything well, and everyone did their
+                job perfectly. The success of Iteration 3 tells us good communication
+                and clear cognition are two essential factors for teamwork,
+                which is what this course teaches us besides the theoretical knowledge.
 
-<img src="https://user-images.githubusercontent.com/42950390/114966182-a98e5780-9e37-11eb-913a-83260443bfa7.png">
+            </p>
+        </div>
 
-              </p>
-          </div>
+    </section>
+    <div class="row tm-footer" id="tm-footer">
+        <footer class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-xs-center">
+            <p>
+            <h4> Contributors </h4>
+            <h6>Nguyen, Emily</h6>
+            <h6>Boparai, Gurtej</h6>
+            <h6>Wang, Yanjia</h6>
+            <h6>Friesen, Jared</h6>
+            </p>
+        </footer>
 
-      </section>
-      <div class="row tm-footer" id="tm-footer">
-          <footer class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-xs-center">
-              <p>
-                <h4> Contributors </h4>
-                 <h6>Nguyen, Emily</h6>
-                 <h6>Boparai, Gurtej</h6>
-                 <h6>Wang, Yanjia</h6>
-                 <h6>Friesen, Jared</h6>
-              </p>
-          </footer>
-
-      </div>
-  </div>
+    </div>
+</div>
 </body>
 </html>
